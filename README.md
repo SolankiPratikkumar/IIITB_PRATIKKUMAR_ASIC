@@ -181,7 +181,7 @@ OPENLANE installed
 
 (4) https://ngspice.sourceforge.io/
 
-(5) https://github.com/The-O</details>penROAD-Project/OpenSTA/
+(5) https://github.com/The-OpenROAD-Project/OpenSTA/
 
 (6) http://opencircuitdesign.com/magic/
 
