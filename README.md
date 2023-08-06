@@ -4,7 +4,7 @@
 <summary>DAY-0</summary>
 <br>
 
-## CLASS 1
+## CLASS 0
 <details>
 <summary>Yosys</summary>
     YoSys Installation
