@@ -1,7 +1,7 @@
 [](url) Physical Design of ASICs
 
 <details>
-<summary>DAY-1</summary>
+<summary>DAY-0</summary>
 <br>
 
 ## CLASS 1
