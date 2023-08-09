@@ -292,8 +292,7 @@ OPENLANE installed
 </details>
 
 
-
-  ## DAY 1
+## DAY 1
 <summary>DAY-1</summary>
 <br>
 
@@ -302,16 +301,19 @@ OPENLANE installed
 
 **Summary:**
 
-This section shows how I simulated and synthesized a 2x1 mux using iverilog and yosys respectively. iverilog generates from the RTL design and its testbench a value changing dump file (vcd). gtkwave is the tool used to plot the simulation results of the design. Yosys is a tool which synthesizes RTL designs into a netlist. It is also used to test the synthesized netlist when we provide it with a testbench.
-
+This section shows how I simulated and synthesized a good mux using iverilog. iverilog generates from the RTL design and its testbench a value changing dump file (vcd). gtkwave is the tool used to plot the simulation results of the design. 
 
 *Introduction to open source simulator IVerilog Flowchat* 
+
 ![Screenshot from 2023-08-09 11-04-08](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/43742cda-2eb7-47d8-9cdc-daac26f3ac1f)
 
 	
 <details>
  <summary> Library Installation of Verilog Files</summary>
-![Screenshot from 2023-08-09 11-01-24](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/e883bed6-4b73-466f-a520-4406c484e1a2)
+ Open the terminal from VLSI Directory and git clone the library from link
+	https://github.com/kunalg123/sky130RTLDesignAndSynthesisWorkshop.git
+	
+(https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/e883bed6-4b73-466f-a520-4406c484e1a2)
 </details>
 
 <details>
@@ -320,12 +322,10 @@ This section shows how I simulated and synthesized a 2x1 mux using iverilog and 
 The verilog codes of the 2x1 mux (good_mux.v) and its testbench (tb_good_mux.v) are taken from https://github.com/kunalg123/sky130RTLDesignAndSynthesisWorkshop.git
 
 
-
-
 <details>
- <summary> Simulation: iverilog and gtkwave </summary>
+ <summary> Simulation: Iverilog and GTKWave </summary>
  
- I used the following commands to simulate and view the plots of the RTL design:
+I used the following commands to simulate and view the plots of the RTL design:
  Firstly open terminal from Verilog Files directory from sky130RTLDesignAndSynthesisWorkshop and then 
 	
  ```
@@ -336,11 +336,12 @@ The verilog codes of the 2x1 mux (good_mux.v) and its testbench (tb_good_mux.v) 
 ![Screenshot from 2023-08-09 12-14-32](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/77c2cad0-1fc4-4560-bdcc-b5c68aaf6e78)
 
 	
- Below is the screenshot of the gtkwave plots:
+ *Below is the screenshot of the gtkwave plots:
  
 ![Screenshot from 2023-08-09 12-16-00](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/995d38f6-f006-423c-add8-30e866be19df)
 
-Below is gvim steps image and verilog testbench and code:
+*Below is gvim steps image and verilog testbench and code:
+
 ![Screenshot from 2023-08-09 12-41-13](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/648dc393-2030-4945-bfcd-82db6cbe692a)
 ![Screenshot from 2023-08-09 12-40-33](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/9072bbd4-f6a3-4cb7-9f39-53aefbb46768)
 
