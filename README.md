@@ -6,6 +6,11 @@
 <summary>DAY-0</summary>
 <br>
 
+<details>
+<summary>Summary</summary>
+ 
+Here we are installing Yosys,Iverilog,GTKWave, MAGIC,OpenLane,OPENSTA which are needed tools for ahead coursework. 
+</details>
 
 <details>
 <summary>Yosys</summary>
@@ -291,6 +296,7 @@ OPENLANE installed
 
 </details>
 
+</details>
 
 ## DAY 1
 <summary>DAY-1</summary>
@@ -344,9 +350,40 @@ I used the following commands to simulate and view the plots of the RTL design:
 
 ![Screenshot from 2023-08-09 12-41-13](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/648dc393-2030-4945-bfcd-82db6cbe692a)
 ![Screenshot from 2023-08-09 12-40-33](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/9072bbd4-f6a3-4cb7-9f39-53aefbb46768)
+</details>
 
-
+ 
+<details>
+<summary>Synthesis of Yosys</summary>
  </details>
+ *Overview Of Yosys:
+ 
+The Netlist here is the representation of Design by using Standard Cells in .lib file.
+How to Verify the Synthesis?
+Solution: We run the Netlist and Testbench in iVerilog and get output .vcd file and the generated output must be same as that observed in RTL Simulation.
+And also,the Testbench is same as that of RTL Design Testbench.
+
+*Lab1: Logic Synthesis:
+RTL To GATE level is called as Synthesis
+![Screenshot from 2023-08-09 17-51-26](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/795ca21c-a5bb-4dcc-82bd-78a4d85d150b)
+
+What is .lib?
+Its the collection of logical modules and it include AND ,OR,and many other standard cells with different flavour in their speed operation and Different inputs terminal like slow AND, Medium AND, Fast AND.
+While we can execute any Boolean Expression as NAND and NOR gate are also available.
+
+*Why different Flavours of GATE?
+Combinational delay in logic path determines the maximum speed of operation of digital logic circuits
+Tclk > Ta+ Tcomb + Tb
+So we need Cell that  work fast to make Tcomb small
+Hence, fmax =1/Tclk min
+So,the clock clk Time must be less as possible to make Fmax high.
+
+
+*Then Is Faster cells are Sufficient?
+
+
+
+
 
 
 
