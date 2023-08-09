@@ -298,10 +298,12 @@ OPENLANE installed
 
 </details>
 
-## DAY 1
+<details>
+
 <summary>DAY-1</summary>
 <br>
 
+	
 <details>
 <summary>IVerilog and GTKWave </summary>
 
@@ -313,6 +315,7 @@ This section shows how I simulated and synthesized a good mux using iverilog. iv
 
 ![Screenshot from 2023-08-09 11-04-08](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/43742cda-2eb7-47d8-9cdc-daac26f3ac1f)
 
+</details>
 	
 <details>
  <summary> Library Installation of Verilog Files</summary>
@@ -326,7 +329,7 @@ This section shows how I simulated and synthesized a good mux using iverilog. iv
  <summary> Verilog Codes</summary>
     
 The verilog codes of the 2x1 mux (good_mux.v) and its testbench (tb_good_mux.v) are taken from https://github.com/kunalg123/sky130RTLDesignAndSynthesisWorkshop.git
-
+</details>
 
 <details>
  <summary> Simulation: Iverilog and GTKWave </summary>
@@ -356,6 +359,8 @@ I used the following commands to simulate and view the plots of the RTL design:
 <details>
 <summary>Synthesis of Yosys</summary>
  </details>
+
+ <details>
  *Overview Of Yosys:
  
 The Netlist here is the representation of Design by using Standard Cells in .lib file.
@@ -386,7 +391,7 @@ So,the clock clk Time must be less as possible to make Fmax high.
 
 
 
-
+</details>
 
 
 </details>
