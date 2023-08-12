@@ -393,27 +393,33 @@ Following is the link of the github repository used for git clone in ubuntu:
 </details>
 
 <details>
- <summary> Simulation: Iverilog and GTKWave </summary>
- 
-I used the following commands to simulate and view the plots of the RTL design:
- Firstly open terminal from Verilog Files directory from sky130RTLDesignAndSynthesisWorkshop and then 
-	
- ```
- iverilog <name verilog: good_mux.v> <name testbench: tb_good_mux.v>
- ./a.out
- gtkwave tb_good_mux.vcd
- ```
-![Screenshot from 2023-08-09 12-14-32](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/77c2cad0-1fc4-4560-bdcc-b5c68aaf6e78)
-
-	
- *Below is the screenshot of the gtkwave plots:
- 
-![Screenshot from 2023-08-09 12-16-00](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/995d38f6-f006-423c-add8-30e866be19df)
+ <summary> Simulation: Iverilog and GTKWave Part2 </summary>
 
 *Below is gvim steps image and verilog testbench and code:
 
+```
+gvim tb_good_mux.v -o good_mux.v
+```
+
 ![Screenshot from 2023-08-09 12-41-13](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/648dc393-2030-4945-bfcd-82db6cbe692a)
-![Screenshot from 2023-08-09 12-40-33](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/9072bbd4-f6a3-4cb7-9f39-53aefbb46768)
+
+* By the above step we have obtain main verilog code and testbench code of good_mux.v and tb_good_mux.v file
+* And it can be observe as below:
+
+  ![Screenshot from 2023-08-12 17-42-08](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/deacf04d-4c43-4282-a51a-cd9553721293)
+
+  ![Screenshot from 2023-08-12 17-42-50](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/9a8b28fc-17e6-4158-9704-a3c5275aebaa)
+
+
+* There are multiples way to write one the verilog code
+* Testbench instantiates the design by uut(unit under test) or it can also be started by dut(Design under test)\
+* Note that Testbench doesn't have primary input and primary output
+* Here Initalize input there thye stimulus is given to the system
+* #300 is the delay after which the output will be obtain and its changeable according to our need
+* Command always #75 sel=~sel here the select line will toggle after every 75 sec delay
+* Here,there is no stimulus in tb file; we are dumping vcd file and observing output in GTKWave
+
+ 
 </details>
 
  
