@@ -9,7 +9,7 @@
 <details>
 <summary>Summary</summary>
  
-Here we are installing Yosys,Iverilog,GTKWave, MAGIC,OpenLane,OPENSTA which are needed tools for ahead coursework. 
+Here we are installing Yosys, Iverilog, GTKWave, MAGIC, OpenLane, OPENSTA which are needed tools for ahead coursework. 
 </details>
 
 <details>
@@ -182,7 +182,7 @@ Installed OpenSTA
 
 (3) Grid-Based Editing: MAGIC employs a grid-based editing system that simplifies the alignment of components and connections, ensuring proper design alignment and manufacturability.
 
-(4) Design Rule Checking (DRC): MAGIC includes basic design rule checking capabilities to help identify potential layout violations, ensuring that the design adheres to the foundry's design rules.
+(4) Design Rule Checking (DRC): MAGIC includes basic design rule-checking capabilities to help identify potential layout violations, ensuring that the design adheres to the foundry's design rules.
 
 (5) Layer-Based Approach: MAGIC works with multiple layers that represent different aspects of the layout, such as metal layers, diffusion layers, and more. This layer-based approach allows designers to work with complex process technologies.
 
@@ -297,6 +297,11 @@ OPENLANE installed
 </details>
 
 </details>
+</details>
+</details>
+
+## DAY 1
+
 
 <details>
 
@@ -307,9 +312,9 @@ OPENLANE installed
 <details>
 <summary>IVerilog and GTKWave </summary>
 
-**-->Introduction to open source simulator IVerilog**
+**-->Introduction to open source simulator Iverilog**
 
-* RTL Design checked for adherence to the spec by simulating the design, Here we use the simulation tools for simulating the Design as IVerilog
+* RTL Design checked for adherence to the spec by simulating the design, Here we use the simulation tools for simulating the Design as Iverilog
 
 **Design:**
 
@@ -334,7 +339,7 @@ OPENLANE installed
 * Design may have one or more primary inputs and one or more primary outputs.
 * TestBench doesn't have a Primary input or Primary outputs.
 
-**IVerilog Based Simulation Flow:**
+**Iverilog Based Simulation Flow:**
 
 ![Screenshot from 2023-08-09 11-04-08](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/43742cda-2eb7-47d8-9cdc-daac26f3ac1f)
 
@@ -344,15 +349,15 @@ OPENLANE installed
  
 <details>
  <summary> Introduction to LAB 1</summary>
- Open the terminal from VLSI Directory created on the desktop and git clone the library from link by following steps:
+ Open the terminal from VLSI Directory created on the desktop and git clone the library from the link by following the steps:
 
 ![Screenshot from 2023-08-12 12-32-19](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/ab5c525f-432e-4aec-99ad-2097670cbfa7)
 
-Following is the link of the github repository used for git clone in ubuntu:
+Following is the link to the GitHub repository used for git clone in Ubuntu:
 ```
 	#git clone https://github.com/kunalg123/sky130RTLDesignAndSynthesisWorkshop.git
 ```
- type following command to view all directory and enter into the directory:
+ type the following command to view all directories and enter the directory:
 
   ```
          #ls
@@ -360,16 +365,16 @@ Following is the link of the github repository used for git clone in ubuntu:
 ```
 ![Screenshot from 2023-08-12 12-45-48](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/7a98cdd8-271b-4184-bb07-1dbbdb839ebb)
 
-* Directory named sky130RTLDesignAndSynthesisWorkshop contain inside directory named verilog files has all the standard cells with main .v files and tb_.v files inside it, as shown in above screenshot.
+* Directory named sky130RTLDesignAndSynthesisWorkshop contains an inside directory named verilog files that has all the standard cells with main .v files and tb_.v files inside it, as shown in the above screenshot.
 
 </details>
 
 <details>
  <summary> Introduction to IVerilog and GTKWave part1</summary>
 
-* Open the directory verilog files in terminal of sky130RTLDesignAndSynthesisWorkshop
+* Open the directory verilog files in the terminal of sky130RTLDesignAndSynthesisWorkshop
 * Use the file good_mux.v and tb_good_mux.v in IVerilog which has one to one correspondence
-* Then a.out file is created and it will dump tb_good_mux.vcd file
+* Then a.out file is created and it will dump the tb_good_mux.vcd file
 * Open tb_good_mux.vcd file in GTKWave 
 * Observe the output in GTKWave
 
@@ -386,10 +391,10 @@ Following is the link of the github repository used for git clone in ubuntu:
 
 ![Screenshot from 2023-08-12 13-17-24](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/cf6e946c-7ff3-4cff-b072-b0d6bb92975e)
 
-* We can observe the waveform after drag and drop all input and output on Time
-* Click to zoomfit because the simulator is showing the waveform at very small scale
+* We can observe the waveform after dragging and dropping all input and output on Time
+* Click to zoom fit because the simulator is showing the waveform at a very small scale
 * By selecting + & - we can zoom in and out respectively after selecting the waveform
-* This icon > and < trace the forward transition and backward transition respectively of waveform after selecting a particular waveform  
+* This icon > and < trace the forward transition and backward transition respectively of the waveform after selecting a particular waveform  
 
 </details>
 
@@ -404,8 +409,8 @@ gvim tb_good_mux.v -o good_mux.v
 
 ![Screenshot from 2023-08-09 12-41-13](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/648dc393-2030-4945-bfcd-82db6cbe692a)
 
-* By the above step we have obtain main verilog code and testbench code of good_mux.v and tb_good_mux.v file
-* And it can be observe as below:
+* By the above step we have obtained the main verilog code and testbench code of good_mux.v and tb_good_mux.v file
+* And it can be observed as below:
 
   ![Screenshot from 2023-08-12 17-42-08](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/deacf04d-4c43-4282-a51a-cd9553721293)
 
@@ -414,26 +419,40 @@ gvim tb_good_mux.v -o good_mux.v
 
 * There are multiples ways to write verilog code
 * Note that Testbench doesn't have primary input and primary output
-* Here Initalize input there the stimulus is given to the system
-* #300 is the delay after which the output will be obtain and its changeable according to our need
+* Here Initialize input there the stimulus is given to the system
+* #300 is the delay after which the output will be obtained and changeable according to our need
 * Command always #75 sel=~sel here the select line will toggle after every 75 sec delay
-* Here,there is no stimulus in tb file; we are dumping vcd file and observing output in GTKWave
+* Here, there is no stimulus in the tb file; we are dumping the vcd file and observing output in GTKWave
 
  
 </details>
 
 <details>
-<summary>Synthesis of Yosys</summary>
+<summary>Introduction to Yosys & Logic Synthesis</summary>
 
- **Overview Of Yosys:**
- 
-* The Netlist here is the representation of Design by using Standard Cells in .lib file.
-* How to Verify the Synthesis?
-* Solution: We run the Netlist and Testbench in iVerilog and get output .vcd file and the generated output must be same as that observed in RTL Simulation.
-And also,the Testbench is same as that of RTL Design Testbench.
+ **Overview Of Yosys Synthesizer:**
+* Tool used for converting RTL to Netlist AND Yosys is the synthesizer used here
+* NOTE: The Netlist is the representation of this design in the form of Standard Cells present in .lib file
+
+**Yosys Synthesizer:**
+![Screenshot from 2023-08-12 21-39-39](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/c9b89be4-01e8-4156-8dee-c5615b8eb4a4)
+
+**How to Verify the Synthesis:** 
+* Solution: We run the Netlist and Testbench in iVerilog and get output .vcd file and the generated output must be the same as that observed in RTL Simulation.
+And also, the Testbench is the same used here as that of RTL Design Testbench.
+
+![Screenshot from 2023-08-12 21-44-33](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/e96392b7-79ea-4a00-8c3e-45617461275f)
+
+</details>
+
+
+<details>
+<summary>Introduction to  Logic Synthesis</summary>
+
+
 
 * Lab1: Logic Synthesis:
-RTL To GATE level is called as Synthesis
+RTL To GATE level is called Synthesis
 ![Screenshot from 2023-08-09 17-51-26](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/795ca21c-a5bb-4dcc-82bd-78a4d85d150b)
 
 * What is .lib?
