@@ -436,7 +436,7 @@ And also,the Testbench is same as that of RTL Design Testbench.
 RTL To GATE level is called as Synthesis
 ![Screenshot from 2023-08-09 17-51-26](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/795ca21c-a5bb-4dcc-82bd-78a4d85d150b)
 
-What is .lib?
+* What is .lib?
 Its the collection of logical modules and it include AND ,OR,and many other standard cells with different flavour in their speed operation and Different inputs terminal like slow AND, Medium AND, Fast AND.
 While we can execute any Boolean Expression as NAND and NOR gate are also available.
 
@@ -451,13 +451,14 @@ So,the clock clk Time must be less as possible to make Fmax high.
 * Then Is Faster cells are Sufficient?
 
 
+</details>
 
 <details>
  <summary>Summary</summary>
 
 This section shows how I simulated and synthesized a good mux using iverilog. iverilog generates from the RTL design and its testbench a value changing dump file (vcd). gtkwave is the tool used to plot the simulation results of the design. 
 
-<./details>
+</details>
 
 </details>
 
