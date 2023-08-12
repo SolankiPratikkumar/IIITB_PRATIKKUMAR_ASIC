@@ -307,28 +307,89 @@ OPENLANE installed
 <details>
 <summary>IVerilog and GTKWave </summary>
 
-**Summary:**
+**-->Introduction to open source simulator IVerilog**
 
-This section shows how I simulated and synthesized a good mux using iverilog. iverilog generates from the RTL design and its testbench a value changing dump file (vcd). gtkwave is the tool used to plot the simulation results of the design. 
+* RTL Design checked for adherence to the spec by simulating the design, Here we use the simulation tools for simulating the Design as IVerilog
 
-*Introduction to open source simulator IVerilog Flowchat* 
+**Design:**
+
+* Design is actual Verilog code or set of Verilog code which has the intended functionality to meet with required specification
+
+**TestBench:**
+
+* TestBench is the setup to apply simulation(test_vectors) to the design to check its functionality.
+
+**How Simulator Works:**
+
+* Simulator looks for changes in the input signals.
+* Upon change to the input the output is evaluated.
+* If no change to the input, no change to the output!
+  
+**Important Point**
+* Simulator is looking for changes in the values of input!
+
+![Screenshot from 2023-08-12 10-57-20](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/81b9df2e-b4c1-46ba-bded-43181cedb7c0)
+
+**NOTE**
+* Design may have one or more primary inputs and one or more primary outputs.
+* TestBench doesn't have a Primary input or Primary outputs.
+
+**IVerilog Based Simulation Flow:**
 
 ![Screenshot from 2023-08-09 11-04-08](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/43742cda-2eb7-47d8-9cdc-daac26f3ac1f)
 
 </details>
-	
+
+
+ 
 <details>
- <summary> Library Installation of Verilog Files</summary>
- Open the terminal from VLSI Directory and git clone the library from link
-	https://github.com/kunalg123/sky130RTLDesignAndSynthesisWorkshop.git
-	
-(https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/e883bed6-4b73-466f-a520-4406c484e1a2)
+ <summary> Introduction to LAB 1</summary>
+ Open the terminal from VLSI Directory created on the desktop and git clone the library from link by following steps:
+
+![Screenshot from 2023-08-12 12-32-19](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/ab5c525f-432e-4aec-99ad-2097670cbfa7)
+
+Following is the link of the github repository used for git clone in ubuntu:
+```
+	#git clone https://github.com/kunalg123/sky130RTLDesignAndSynthesisWorkshop.git
+```
+ type following command to view all directory and enter into the directory:
+
+  ```
+         #ls
+         #cd @directory name
+```
+![Screenshot from 2023-08-12 12-45-48](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/7a98cdd8-271b-4184-bb07-1dbbdb839ebb)
+
+* Directory named sky130RTLDesignAndSynthesisWorkshop contain inside directory named verilog files has all the standard cells with main .v files and tb_.v files inside it, as shown in above screenshot.
+
 </details>
 
 <details>
- <summary> Verilog Codes</summary>
-    
-The verilog codes of the 2x1 mux (good_mux.v) and its testbench (tb_good_mux.v) are taken from https://github.com/kunalg123/sky130RTLDesignAndSynthesisWorkshop.git
+ <summary> Introduction to IVerilog and GTKWave part1</summary>
+
+* Open the directory verilog files in terminal of sky130RTLDesignAndSynthesisWorkshop
+* Use the file good_mux.v and tb_good_mux.v in IVerilog which has one to one correspondence
+* Then a.out file is created and it will dump tb_good_mux.vcd file
+* Open tb_good_mux.vcd file in GTKWave 
+* Observe the output in GTKWave
+
+**Command Written in Ubuntu**
+```
+#cd verilog_files
+#iverilog good_mux.v tb_good_mux.v
+#./a.out
+#gtkwave tb_good_mux.vcd
+```
+![Screenshot from 2023-08-12 13-14-20](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/37d11677-9821-4d19-b75d-133ae8803816)
+
+**Observing GTKWave Functionality**
+![Screenshot from 2023-08-12 13-17-24](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/cf6e946c-7ff3-4cff-b072-b0d6bb92975e)
+
+* We can observe the waveform after drag and drop all input and output on Time
+* Click to zoomfit because the simulator is showing the waveform at very small scale
+* By selecting + & - we can zoom in and out respectively after selecting the waveform
+* This icon > and < trace the forward transition and backward transition respectively of waveform after selecting a particular waveform  
+
 </details>
 
 <details>
@@ -356,19 +417,20 @@ I used the following commands to simulate and view the plots of the RTL design:
 </details>
 
  
-<details>
+<details>![Screenshot from 2023-08-09 12-14-32](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/d084e6f9-6ebe-4b45-ae2c-f0fa84e32c88)
+
 <summary>Synthesis of Yosys</summary>
  </details>
 
  <details>
- *Overview Of Yosys:
+ * Overview Of Yosys:
  
 The Netlist here is the representation of Design by using Standard Cells in .lib file.
 How to Verify the Synthesis?
 Solution: We run the Netlist and Testbench in iVerilog and get output .vcd file and the generated output must be same as that observed in RTL Simulation.
 And also,the Testbench is same as that of RTL Design Testbench.
 
-*Lab1: Logic Synthesis:
+* Lab1: Logic Synthesis:
 RTL To GATE level is called as Synthesis
 ![Screenshot from 2023-08-09 17-51-26](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/795ca21c-a5bb-4dcc-82bd-78a4d85d150b)
 
@@ -376,7 +438,7 @@ What is .lib?
 Its the collection of logical modules and it include AND ,OR,and many other standard cells with different flavour in their speed operation and Different inputs terminal like slow AND, Medium AND, Fast AND.
 While we can execute any Boolean Expression as NAND and NOR gate are also available.
 
-*Why different Flavours of GATE?
+* Why different Flavours of GATE?
 Combinational delay in logic path determines the maximum speed of operation of digital logic circuits
 Tclk > Ta+ Tcomb + Tb
 So we need Cell that  work fast to make Tcomb small
@@ -384,12 +446,16 @@ Hence, fmax =1/Tclk min
 So,the clock clk Time must be less as possible to make Fmax high.
 
 
-*Then Is Faster cells are Sufficient?
+* Then Is Faster cells are Sufficient?
 
 
 
+<details>
+ <summary>Summary</summary>
 
+This section shows how I simulated and synthesized a good mux using iverilog. iverilog generates from the RTL design and its testbench a value changing dump file (vcd). gtkwave is the tool used to plot the simulation results of the design. 
 
+<./details>
 
 </details>
 
