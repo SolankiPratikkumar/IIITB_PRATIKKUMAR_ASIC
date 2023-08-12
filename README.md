@@ -383,6 +383,7 @@ Following is the link of the github repository used for git clone in ubuntu:
 ![Screenshot from 2023-08-12 13-14-20](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/37d11677-9821-4d19-b75d-133ae8803816)
 
 **Observing GTKWave Functionality**
+
 ![Screenshot from 2023-08-12 13-17-24](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/cf6e946c-7ff3-4cff-b072-b0d6bb92975e)
 
 * We can observe the waveform after drag and drop all input and output on Time
@@ -393,9 +394,9 @@ Following is the link of the github repository used for git clone in ubuntu:
 </details>
 
 <details>
- <summary> Simulation: Iverilog and GTKWave Part2 </summary>
+ <summary> Simulation: IVerilog and GTKWave Part2 </summary>
 
-*Below is gvim steps image and verilog testbench and code:
+* Below is gvim steps image and verilog testbench and code:
 
 ```
 gvim tb_good_mux.v -o good_mux.v
@@ -411,10 +412,9 @@ gvim tb_good_mux.v -o good_mux.v
   ![Screenshot from 2023-08-12 17-42-50](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/9a8b28fc-17e6-4158-9704-a3c5275aebaa)
 
 
-* There are multiples way to write one the verilog code
-* Testbench instantiates the design by uut(unit under test) or it can also be started by dut(Design under test)\
+* There are multiples ways to write verilog code
 * Note that Testbench doesn't have primary input and primary output
-* Here Initalize input there thye stimulus is given to the system
+* Here Initalize input there the stimulus is given to the system
 * #300 is the delay after which the output will be obtain and its changeable according to our need
 * Command always #75 sel=~sel here the select line will toggle after every 75 sec delay
 * Here,there is no stimulus in tb file; we are dumping vcd file and observing output in GTKWave
@@ -422,18 +422,14 @@ gvim tb_good_mux.v -o good_mux.v
  
 </details>
 
- 
-<details>![Screenshot from 2023-08-09 12-14-32](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/d084e6f9-6ebe-4b45-ae2c-f0fa84e32c88)
-
+<details>
 <summary>Synthesis of Yosys</summary>
- </details>
 
- <details>
- * Overview Of Yosys:
+ **Overview Of Yosys:**
  
-The Netlist here is the representation of Design by using Standard Cells in .lib file.
-How to Verify the Synthesis?
-Solution: We run the Netlist and Testbench in iVerilog and get output .vcd file and the generated output must be same as that observed in RTL Simulation.
+* The Netlist here is the representation of Design by using Standard Cells in .lib file.
+* How to Verify the Synthesis?
+* Solution: We run the Netlist and Testbench in iVerilog and get output .vcd file and the generated output must be same as that observed in RTL Simulation.
 And also,the Testbench is same as that of RTL Design Testbench.
 
 * Lab1: Logic Synthesis:
