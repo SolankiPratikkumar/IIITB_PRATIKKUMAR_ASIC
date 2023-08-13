@@ -523,14 +523,66 @@ And also, the Testbench is the same used here as that of RTL Design Testbench.
 </details>
 
 <details>
-<summary>Introduction to  Yosys</summary>
+<summary>Yosys1 good mux part1</summary>
 
+**Invoke the Yosys:**
+* Following code is been written for getting graphical version of Logic 
+* Firstly open terminals from verilog files in sky130RTLDesignAndSynthesisWorkshop and follow the code:
 
+```
+# ls
+# yosys
+yosys> read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+yosys> read_verilog good mux.v
+yosys> synth -top good mux
+yosys> abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+yosys> show
+```
 
+* Here abc_liberty .. command convert RTL file to gate & which gate it has to link here is of good mux.v
+* ABC Result into Input signal: 3 & output signal: 1
+* yosys>show  command will allow us to see graphical version of logic which is realize
+  
+* The screenshot synthesis of the above code can be observe below:
+  
+  ![1 Screenshot from 2023-08-13 15-35-29](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/583f5e64-686b-45bd-8b9f-94ec2326f167)
+
+![2 Screenshot from 2023-08-13 16-56-46](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/85761ef9-f945-4210-8e15-94431728e00d)
+
+![3 Screenshot from 2023-08-13 16-57-01](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/fd9df2fb-c470-4b51-9194-479963fdcc92)
+
+ ![4 Screenshot from 2023-08-13 17-04-35](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/74256570-4177-4738-8e2d-bf833512ac7a)
  
+![5 Screenshot from 2023-08-13 17-14-05](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/c7e88283-bde2-4a1e-a2e2-cd48086f0fa1)
+
+ ![6 Screenshot from 2023-08-13 17-13-37](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/9203cb29-c3ed-427b-90b7-26e6c6e6ed6b)
+
 </details>
 
 
+
+<details>
+<summary>Yosys1 good mux part2</summary>
+
+* The synthesis graphical waveform is shown below:
+
+  ![7 Screenshot from 2023-08-13 17-14-45](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/ad183dab-9df6-4aad-b944-5ce9b75f4a1d)
+
+* It's simple 2x1 mux as seen in the figure
+
+
+* The Graph obtain in Kunal sir waveform is as follow:
+
+![Screenshot from 2023-08-13 18-12-41](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/5756aaac-ba3d-4c0d-b69f-b755ae9fa7d1)
+
+* The Understanding of the logical circuit is given below:
+
+  ![WhatsApp Image 2023-08-13 at 6 25 42 PM](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/6d3f6af3-3f80-47c9-8d52-32622b0a7f48)
+
+* Hence, 2x1 good mux is been synthesized using Yosys
+
+ </details>
+ 
 <details>
  <summary>Summary</summary>
 
