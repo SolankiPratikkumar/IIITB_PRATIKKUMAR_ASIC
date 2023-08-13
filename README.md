@@ -473,19 +473,27 @@ And also, the Testbench is the same used here as that of RTL Design Testbench.
 ![Screenshot from 2023-08-13 11-29-13](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/f73685a9-1af8-4f96-8a19-ef06559ccb73)
 
 * Combinational delay in logic path determines the maximum speed of operation of digital logic circuits
-* Tclk > Ta+ Tcomb + Tb
-* TcqA: propagation delay of Flop A
+* Tclk > Tcq_A+ Tcomb + Tsetup_B
+* Tcq_A: propagation delay of Flop A
 * Tcombi: propogation delay of Combinational circuit
-* Tsetup_B: before thge clock arrive at Flop B, the time duration to avail the data earlier to input of Flop_B
-* The Tclk must be such that data from DFF A to DFF B reachesin one clock cycle
-* So, we need Cell that  work fast to make Tclk small
-*  fmax =1/Tclk min
-*  So,the clock Time must be less as possible to make fmax high
+* Tsetup_B: before the clock arrive at Flop B, the time duration to avail the data earlier to input of Flop_B
+* The Tclk must be such that data from DFF A to DFF B reaches in one clock cycle
+* fclk max =1/Tclk min
+* So, the clock Time must be less as possible to make fmax high; we need Cell that work fast to make Tclk small as possible
 
 * Then, Are Faster cells Sufficient?
 
-
 </details>
+
+
+<details>
+<summary>Introduction to  Logic Synthesis Part2</summary>
+
+
+
+
+
+
 
 <details>
  <summary>Summary</summary>
