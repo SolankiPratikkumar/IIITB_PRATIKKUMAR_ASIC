@@ -432,7 +432,7 @@ gvim tb_good_mux.v -o good_mux.v
 
  **Overview Of Yosys Synthesizer:**
 * Tool used for converting RTL to Netlist AND Yosys is the synthesizer used here
-* NOTE: The Netlist is the representation of this design in the form of Standard Cells present in .lib file
+* **NOTE:** The Netlist is the representation of this design in the form of Standard Cells present in .lib file
 
 **Yosys Synthesizer:**
 ![Screenshot from 2023-08-12 21-39-39](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/c9b89be4-01e8-4156-8dee-c5615b8eb4a4)
@@ -506,16 +506,14 @@ And also, the Testbench is the same used here as that of RTL Design Testbench.
 * To charge/discharge the capacitance fast, we need transistors capable of sourcing more currentthat is Wide TRANSISTOR
 * Wider Transistor gives Low Delay consequently leads to more Area, more Current and more Power
 * Narrow Transistor gives More Delay consequently leads to less Area, less Current and less Power
-**NOTE**
-*Faster cell do not come free, they come at penalty of more Area and more Power
+* **NOTE:** Faster cell do not come free, they come at penalty of more Area and more Power
 
 **Selection of Cells:**
 
 * We need to guide the Synthesizer to select the flovour of cells that is optimum for the implementation of logic circuit
 * More use of faster cells: make bad circuits in terms of Area and Power and also HOLD TIme Violation
 * MOre use of slower cells: make sluggish circuit which may not meet the performance
-**NOTE**
-* The guidance offered to the Synthesizer to pick correct set of cells is called as "Constraints"
+* **NOTE:** The guidance offered to the Synthesizer to pick correct set of cells is called as "Constraints"
 
 **Synthesis(Illustration):**
 
