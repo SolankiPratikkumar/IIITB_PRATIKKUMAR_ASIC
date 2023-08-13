@@ -480,7 +480,6 @@ And also, the Testbench is the same used here as that of RTL Design Testbench.
 * The Tclk must be such that data from DFF A to DFF B reaches in one clock cycle
 * fclk max =1/Tclk min
 * So, the clock Time must be less as possible to make fmax high; we need Cell that work fast to make Tclk small as possible
-
 * Then, Are Faster cells Sufficient?
 
 </details>
@@ -489,10 +488,49 @@ And also, the Testbench is the same used here as that of RTL Design Testbench.
 <details>
 <summary>Introduction to  Logic Synthesis Part2</summary>
 
+**Why we need slow cells?**
+
+![Screenshot from 2023-08-13 12-37-43](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/cc19a38e-f162-408f-a5e7-34a1def76de3)
+
+* In the clock waveform, Flip flop B must capture the clock after one cycle completion of clock A or it must capture after a minimum delay after clock of A starts,for reliable collection of data at the input of DFF_B, which can be understood by waveform above
+* Here, we want clock to work fast but it should not be ultrafast otherwise data will be missed at DFF_B
+* So, the system must be optimally Fast
+* To ensure that there are no "HOLD" issue at DFF_B, we need cells that work slowly!!!
+* Hence,we need cells that work fast to meet the required performance and we also need cells that work slow to meet HOLD
+* This collection is formed by .lib
+
+**Faster Cells vs Slower Cells**
+
+* Load in digital circuits is capacitance
+* Faster the charging/discharging of capacitance then there is lesser cell delay
+* To charge/discharge the capacitance fast, we need transistors capable of sourcing more currentthat is Wide TRANSISTOR
+* Wider Transistor gives Low Delay consequently leads to more Area, more Current and more Power
+* Narrow Transistor gives More Delay consequently leads to less Area, less Current and less Power
+**NOTE**
+*Faster cell do not come free, they come at penalty of more Area and more Power
+
+**Selection of Cells:**
+
+* We need to guide the Synthesizer to select the flovour of cells that is optimum for the implementation of logic circuit
+* More use of faster cells: make bad circuits in terms of Area and Power and also HOLD TIme Violation
+* MOre use of slower cells: make sluggish circuit which may not meet the performance
+**NOTE**
+* The guidance offered to the Synthesizer to pick correct set of cells is called as "Constraints"
+
+**Synthesis(Illustration):**
+
+![Screenshot from 2023-08-13 12-28-50](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/198065bb-a632-4c8a-9d59-af34d48a22c6)
+* The circuit on the right is created from RTL using the Gates available in the .lib and given out as Netlist
+
+</details>
+
+<details>
+<summary>Introduction to  Yosys</summary>
 
 
 
-
+ 
+</details>
 
 
 <details>
