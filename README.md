@@ -503,7 +503,7 @@ And also, the Testbench is the same used here as that of RTL Design Testbench.
 
 * Load in digital circuits is capacitance
 * Faster the charging/discharging of capacitance then there is lesser cell delay
-* To charge/discharge the capacitance fast, we need transistors capable of sourcing more currentthat is Wide TRANSISTOR
+* To charge/discharge the capacitance fast, we need transistors capable of sourcing more currentthat is Wide Transistor
 * Wider Transistor gives Low Delay consequently leads to more Area, more Current and more Power
 * Narrow Transistor gives More Delay consequently leads to less Area, less Current and less Power
 * **NOTE:** Faster cell do not come free, they come at penalty of more Area and more Power
@@ -512,7 +512,7 @@ And also, the Testbench is the same used here as that of RTL Design Testbench.
 
 * We need to guide the Synthesizer to select the flovour of cells that is optimum for the implementation of logic circuit
 * More use of faster cells: make bad circuits in terms of Area and Power and also HOLD TIme Violation
-* MOre use of slower cells: make sluggish circuit which may not meet the performance
+* More use of slower cells: make sluggish circuit which may not meet the performance
 * **NOTE:** The guidance offered to the Synthesizer to pick correct set of cells is called as "Constraints"
 
 **Synthesis(Illustration):**
