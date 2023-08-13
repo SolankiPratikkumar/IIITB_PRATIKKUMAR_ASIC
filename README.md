@@ -463,17 +463,26 @@ And also, the Testbench is the same used here as that of RTL Design Testbench.
 * Example:
 *  2 Input NAND with slow NAND, Medium NAND, Fast NAND
 *  3 Input NAND with slow NAND, Medium NAND, Fast NAND
-* While we can execute any Boolean Expression as NAND and NOR gate  also available.
+* While we can execute any Boolean Expression by NAND and NOR Universal gate that are also available.
 
-* Why different Flavours of GATE?
-Combinational delay in logic path determines the maximum speed of operation of digital logic circuits
-Tclk > Ta+ Tcomb + Tb
-So we need Cell that  work fast to make Tcomb small
-Hence, fmax =1/Tclk min
-So,the clock clk Time must be less as possible to make Fmax high.
+![Screenshot from 2023-08-13 11-47-38](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/d4da883b-268a-4058-a3b7-47d3c149ff51)
 
 
-* Then Is Faster cells are Sufficient?
+**Why different Flavours of GATE**
+
+![Screenshot from 2023-08-13 11-29-13](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/f73685a9-1af8-4f96-8a19-ef06559ccb73)
+
+* Combinational delay in logic path determines the maximum speed of operation of digital logic circuits
+* Tclk > Ta+ Tcomb + Tb
+* TcqA: propagation delay of Flop A
+* Tcombi: propogation delay of Combinational circuit
+* Tsetup_B: before thge clock arrive at Flop B, the time duration to avail the data earlier to input of Flop_B
+* The Tclk must be such that data from DFF A to DFF B reachesin one clock cycle
+* So, we need Cell that  work fast to make Tclk small
+*  fmax =1/Tclk min
+*  So,the clock Time must be less as possible to make fmax high
+
+* Then, Are Faster cells Sufficient?
 
 
 </details>
