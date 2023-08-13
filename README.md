@@ -447,17 +447,23 @@ And also, the Testbench is the same used here as that of RTL Design Testbench.
 
 
 <details>
-<summary>Introduction to  Logic Synthesis</summary>
+<summary>Introduction to  Logic Synthesis Part1</summary>
 
+**Logic Synthesis:**
 
+* RTL To GATE level translation is called Synthesis 
+* The design is converted into gates and the connection is made between the gates
+* This is given out as a file called netlist
 
-* Lab1: Logic Synthesis:
-RTL To GATE level is called Synthesis
 ![Screenshot from 2023-08-09 17-51-26](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/795ca21c-a5bb-4dcc-82bd-78a4d85d150b)
 
-* What is .lib?
-Its the collection of logical modules and it include AND ,OR,and many other standard cells with different flavour in their speed operation and Different inputs terminal like slow AND, Medium AND, Fast AND.
-While we can execute any Boolean Expression as NAND and NOR gate are also available.
+**What is .lib**
+* It's the collection of logical modules or standard cells
+* It includes AND, OR, NOT many other standard cells with a different flavor in their speed operation and Different inputs terminal
+* Example:
+*  2 Input NAND with slow NAND, Medium NAND, Fast NAND
+*  3 Input NAND with slow NAND, Medium NAND, Fast NAND
+* While we can execute any Boolean Expression as NAND and NOR gate  also available.
 
 * Why different Flavours of GATE?
 Combinational delay in logic path determines the maximum speed of operation of digital logic circuits
