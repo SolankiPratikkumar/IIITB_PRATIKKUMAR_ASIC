@@ -728,19 +728,19 @@ yosys> !gvim multiple_modules_hier.v
   
 ![Screenshot from 2023-08-14 17-39-25](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/126f2b7b-8323-42e1-bfe6-ef118be9c878)
 
-* The generated the Netlist of above design is as follow:
+* The generated the Netlist of above design is as follows:
   
 ![Screenshot from 2023-08-14 18-03-43](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/abe87e33-25a9-4f43-91fa-efb0f7e068c2)
 ![Screenshot from 2023-08-14 18-04-10](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/149eb479-d2c0-4546-bfd1-90fd0957088d)
 
-* By analysis of Netlist it is concluded below:
-
-![WhatsApp Image 2023-08-14 at 5 48 25 PM](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/f413383c-7d56-493f-8b9b-3745cf087242)
+* Here, Firstly u1 and u2 Sub Module are generated and Instantiated both modules
+* And u1 Sub Module is a AND gate; u2 Sub Module is OR gate but U2 is generated as Bubbled NAND= OR but not as NOR+NOT
+* Because NOR+NOT results in stacked PMOS which is BAD; the reason behind this is the poor Mobility of PMOS & to improve it requires wide cells to get good logical effort
 
 </details>
-
 <details>
 <summary>Hier Synthesis Flat synthesis part2</summary>
+
 
  
 </details>
