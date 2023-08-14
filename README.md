@@ -533,8 +533,8 @@ And also, the Testbench is the same used here as that of RTL Design Testbench.
 # ls
 # yosys
 yosys> read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
-yosys> read_verilog good mux.v
-yosys> synth -top good mux
+yosys> read_verilog good_mux.v
+yosys> synth -top good_mux
 yosys> abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 yosys> show
 ```
@@ -582,11 +582,43 @@ yosys> show
 * Hence, 2x1 good mux is been synthesized using Yosys
 
  </details>
+
+
+ 
+<details>
+<summary>Yosys1 good mux part3</summary>
+	
+**How to write a Netlist:**
+
+* Continuation to above Lab code in ubuntu
+* Commands are as follows:
+  
+```
+yosys> write_verilog -noattr good_mux_netlist.v
+yosys> !gvim good_mux_netlist.v
+```
+* We obtain here simplified Netlist over here as shown below:
+  
+  ![Screenshot from 2023-08-14 10-30-04](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/e16d5f95-565d-45cd-8a3e-07bdb64aad9e)
+
+* Here, the wire is i0 is assign with _0_ and i1 assign by _1_ similarly for sel line as _2_
+* A1 is instantiated by _1_ ; similarly  S is instantiated by _2_
+* Output is obtained by X(_3_)
+
+* The Kunal sir Netlist is shown below:
+
+  ![Screenshot from 2023-08-14 10-44-45](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/d151cdc6-976f-4a30-ab46-a95b45e8439f)
+
+* Here, the select line is assigned _2_ which is wire _2_ in module; and instantiated in nand2.1 by .B(_2_) and also instantiated by 021ai-0 by .A1(_2_)
+* Similarly i0 is assigned as _0_ and instantiated by variable in (_0_); and same goes for i1
+  
+ </details>
+
  
 <details>
  <summary>Summary</summary>
 
-This section shows how I simulated and synthesized a good mux using iverilog. iverilog generates from the RTL design and its testbench a value changing dump file (vcd). gtkwave is the tool used to plot the simulation results of the design. 
+* This section shows how we simulated and synthesized a good mux using iVerilog. GTKWave is the tool used to plot the simulation results of any design. And Understand briefly about Yosys and Logic Synthesis; also how we can deal with different types of gates. Finally synthesized good mux with the Yosys tool with a simulation circuit and its Netlist.
 
 </details>
 
@@ -595,4 +627,32 @@ This section shows how I simulated and synthesized a good mux using iverilog. iv
 
 </details>
 
+
+
+## DAY 2
+
+
+<details>
+
+<summary>DAY-2</summary>
+<br>
+
+	
+<details>
+<summary>Introduction to timing.libs:</summary>
+
+<details>
+<summary>Introduction to Dot Lib Part1</summary>
+
+* Open Terminal in Verilog files and type the following commands to view the gvim file:
+```
+ $ gvim ../lib/sky130_fd_dc_hd__tt_025C_1v80.lib
+open vim  and type there  :syn off
+```
+
+*
+</details>
+
+
+</details>
 
