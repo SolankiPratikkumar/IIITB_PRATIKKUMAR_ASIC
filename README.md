@@ -475,11 +475,11 @@ And also, the Testbench is the same used here as that of RTL Design Testbench.
 * Combinational delay in logic path determines the maximum speed of operation of digital logic circuits
 * Tclk > Tcq_A+ Tcomb + Tsetup_B
 * Tcq_A: propagation delay of Flop A
-* Tcombi: propogation delay of Combinational circuit
-* Tsetup_B: before the clock arrive at Flop B, the time duration to avail the data earlier to input of Flop_B
+* Tcombi: propagation delay of Combinational circuit
+* Tsetup_B: before the clock arrives at Flop B, the time duration to avail the data earlier to input of Flop_B
 * The Tclk must be such that data from DFF A to DFF B reaches in one clock cycle
 * fclk max =1/Tclk min
-* So, the clock Time must be less as possible to make fmax high; we need Cell that work fast to make Tclk small as possible
+* So, the clock Time must be less as possible to make fmax high; we need Cell that works fast to make Tclk small as possible
 * Then, Are Faster cells Sufficient?
 
 </details>
@@ -671,8 +671,8 @@ open vim  and type there  :syn off
    
   ![Screenshot from 2023-08-14 14-40-44](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/ef3e360d-2178-4211-8aef-b3a92a9346d6)
 
-* In gvim type below command for detail info of standard cell like Power, Delay Timing, etc
-* a2110 : 2-input AND into first input of 4-input OR
+* In gvim type the below command for detailed info on standard cells like Power, Delay Timing, etc
+* a2110 : 2-input AND into the first input of 4-input OR
 ```
  :sp ../my_lib/verilog_model/sky130_fd_sc_hd_a2110.behavioral.v
 ```
@@ -694,14 +694,56 @@ open vim  and type there  :syn off
 
 ![Screenshot from 2023-08-14 15-54-49](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/4225546a-100f-4899-a35b-b1cf310a4040)
 
-* Following things can be observe from the above comparison:
+* Following things can be observed from the above comparison:
 
   ![WhatsApp Image 2023-08-14 at 4 05 16 PM](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/12bf89cb-2ba1-4974-b943-0c549547bd71)
+
 
   
 </details>
 
 </details>
 
+<details>
+<summary>Hierarchical vs Flat Synthesis</summary>
+	
+<details>
+<summary>Hier Synthesis Flat synthesis part1</summary>
+
+![WhatsApp Image 2023-08-14 at 5 25 03 PM (1)](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/16fcaf9c-2c4e-4fef-9ed2-e44ef26b05db)
+
+**Steps followed to synthesize multiple modules:**
+```
+$ gvim multiple_modules.v
+$ yosys
+yosys> read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+yosys> read_verilog good_mux.v
+yosys> synth -top good_mux
+yosys> abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+yosys> show multiple_modules
+yosys> write_verilog -noattr multiple_modules_hier.v
+yosys> !gvim multiple_modules_hier.v
+```
+* The output synthesis is as follows:
+  
+![Screenshot from 2023-08-14 17-39-25](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/126f2b7b-8323-42e1-bfe6-ef118be9c878)
+
+* The generated the Netlist of above design is as follow:
+  
+![Screenshot from 2023-08-14 18-03-43](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/abe87e33-25a9-4f43-91fa-efb0f7e068c2)
+![Screenshot from 2023-08-14 18-04-10](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/149eb479-d2c0-4546-bfd1-90fd0957088d)
+
+* By analysis of Netlist it is concluded below:
+
+![WhatsApp Image 2023-08-14 at 5 48 25 PM](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/f413383c-7d56-493f-8b9b-3745cf087242)
+
+</details>
+
+<details>
+<summary>Hier Synthesis Flat synthesis part2</summary>
+
+ 
+</details>
+</details>
 </details>
 
