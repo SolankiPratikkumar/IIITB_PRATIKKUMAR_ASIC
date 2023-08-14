@@ -664,10 +664,42 @@ open vim  and type there  :syn off
 <details>
 <summary>Introduction to Dot Lib Part2</summary>
 
+**Units in VIM File:**
 
- 
+* Units of Time, Voltage, Power, Current, Capacitance 
+* Operating conditions tells what is tt typical process then 025c temperature and 1v80 voltage
+   
+  ![Screenshot from 2023-08-14 14-40-44](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/ef3e360d-2178-4211-8aef-b3a92a9346d6)
+
+* In gvim type below command for detail info of standard cell like Power, Delay Timing, etc
+* a2110 : 2-input AND into first input of 4-input OR
+```
+ :sp ../my_lib/verilog_model/sky130_fd_sc_hd_a2110.behavioral.v
+```
+ ![Screenshot from 2023-08-14 15-11-46](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/fa056b04-6f66-4c0e-8617-abfe8279091d)
+
 </details>
 
+
+<details>
+<summary>Introduction to Dot Lib Part3</summary>
+
+**Comparing 2 input 3 AND Gates:**
+
+* Vim command used here is as follow to search for AND gate
+  
+```
+:sp ../my_lib/verilog_model/sky130_fd_sc_hd__and2.behavioral.v
+```
+
+![Screenshot from 2023-08-14 15-54-49](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/4225546a-100f-4899-a35b-b1cf310a4040)
+
+* Following things can be observe from the above comparison:
+
+  ![WhatsApp Image 2023-08-14 at 4 05 16 PM](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/12bf89cb-2ba1-4974-b943-0c549547bd71)
+
+  
+</details>
 
 </details>
 
