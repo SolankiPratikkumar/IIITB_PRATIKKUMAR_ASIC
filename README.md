@@ -649,10 +649,27 @@ yosys> !gvim good_mux_netlist.v
  $ gvim ../lib/sky130_fd_dc_hd__tt_025C_1v80.lib
 open vim  and type there  :syn off
 ```
+![Screenshot from 2023-08-14 11-40-41](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/3ba25cf5-2b35-482a-8ee3-197dac1fa56b)
 
-*
+* Here in gvim,  library (sky130_fd_sc_hd__tt_025C_1v80) has a meaning attached to it
+* There are three parameters very important over here is P-Process, V- Voltage, T- Temperature
+* Process variation due to fabrication like every time building 100% accurate design as that of previous is not possible
+* There would be a change in voltage across the globe
+* And Semiconductor is very sensitive to changes in Temperature
+* The CD Player is selling in  Switzerland, Dubai, India there will be a lot of change in Temperature across each place and it should operate completely fine across all places
+* Hence, a change in any of 3 parameters of P V T silicon design must work perfectly same at all
+  
 </details>
 
+<details>
+<summary>Introduction to Dot Lib Part2</summary>
+
+
+ 
+</details>
+
+
+</details>
 
 </details>
 
