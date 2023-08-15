@@ -1058,7 +1058,6 @@ yosys> show
 
 ![Screenshot from 2023-08-16 01-47-46](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/2a73eb7c-bcaa-4356-88f9-04fccbd66527)
 
-</details>
 
 **dff_const2**
 
