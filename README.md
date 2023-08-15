@@ -786,6 +786,23 @@ yosys> show
 <details>
 <summary>Various Flop Coding style and Simulation</summary>
 
+**Why to use Flop:**
+
+![1aflopWhatsApp Image 2023-08-15 at 5 23 49 PM](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/53967184-e01d-423a-9f30-b84a0f8eb5d1)
+
+![1b WhatsApp Image 2023-08-15 at 5 23 50 PM](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/f7791b70-a7b8-4052-8ade-ce68808c73bb)
+
+**Different Types of Flop Synthesis:**
+
+![Screenshot from 2023-08-15 17-16-14](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/401de78c-b73c-4135-be97-2aef6de099bd)
+
+
+![2aWhatsApp Image 2023-08-15 at 5 23 50 PM](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/944a2e19-a8de-49ec-b157-26806f42682a)
+
+![2bWhatsApp Image 2023-08-15 at 5 23 50 PM](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/07700076-5034-4264-92dc-bad3d04b20af)
+
+
+
 
 
 
