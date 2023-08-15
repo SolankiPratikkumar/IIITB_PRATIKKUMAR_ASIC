@@ -848,7 +848,7 @@ $ gtkwave ./tb_dff_syncres.vcd
 * Steps for synthesis of ASynchronous Reset D FlipFlop which is dff_asyncres.v in Yosys
 
   ```
-  $ yosys
+  $yosys
    yosys> read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
    yosys> read_verilog dff_asyncres.v
    yosys> synth -top dff_asyncres
@@ -862,7 +862,7 @@ $ gtkwave ./tb_dff_syncres.vcd
 * Steps for synthesis of ASynchronous Set D FlipFlop which is dff_async_set.v in Yosys
 
   ```
-  $ yosys
+  $yosys
    yosys> read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
    yosys> read_verilog dff_async_set.v
    yosys> synth -top dff_async_set
@@ -876,7 +876,7 @@ $ gtkwave ./tb_dff_syncres.vcd
  * Steps for synthesis of Synchronous Reset D FlipFlop which is dff_syncres.v in Yosys
 
   ```
-  $ yosys
+  $yosys
    yosys> read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
    yosys> read_verilog dff_syncres.v
    yosys> synth -top dff_syncres
@@ -914,7 +914,22 @@ yosys> !gvim mul2_net.v
 
 **Interesting Optimisation Part2**
 
+![2lbWhatsApp Image 2023-08-15 at 10 14 38 PM](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/dd341eee-c55f-40b2-a666-d040d63fa7b0)
+
 ```
+$yosys
+yosys> read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+yosys> read_verilog mult_8.v
+yosys> synth -top mult8
+yosys> show
+yosys> write_verilog -noattr mult8_net.v
+yosys> !gvim mult8_net.v
+```
+
+![Screenshot from 2023-08-15 22-43-38](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/f7be9db8-41c5-4df0-917d-1e4272f9fe0f)
+
+![Screenshot from 2023-08-15 22-45-00](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/4578affa-5d78-463b-a733-6228a588916c)
+
 
 
 
