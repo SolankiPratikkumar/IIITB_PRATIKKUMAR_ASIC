@@ -781,7 +781,7 @@ yosys> show
 ![Screenshot from 2023-08-15 16-01-59](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/9d025b56-ce82-4c47-8415-4e8067d8bf6d)
 
 </details>
-
+</details>
 
 <details>
 <summary>Various Flop Coding style and Simulation</summary>
