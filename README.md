@@ -1245,6 +1245,18 @@ yosys> show
 
 </details>
 
+
+## DAY 4
+<details>
+<summary>DAY-4</summary>
+<br>
+	
+<details>
+<summary>GLS, Blocking vs NonBlocking & Synthesis Simulation Mismatch</summary>
+
+ 
+ </details>
+</details>
 <details>
     <summary>REFERENCES</summary>
 
