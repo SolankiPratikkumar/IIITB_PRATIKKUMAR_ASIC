@@ -961,17 +961,289 @@ yosys> !gvim mult8_net.v
 
 * Performance of circuit is increased to 250MHz with Slack and Delay balancing
 
+</details>
   
 <details>
 <summary> Combination Logic Optimisation</summary>
 
-* Following steps has been executed for output synthesis:
-  
+* Following steps has been executed for output synthesis of optcheck_1.v
+
+```
+$yosys
+yosys> read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+yosys> read_verilog opt_check.v
+yosys> synth -top opt_check
+yosys> opt_clean -purge
+yosys> abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+yosys> show
+```
+
   ![Screenshot from 2023-08-16 00-38-42](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/bf9dff37-357f-480e-a04b-7829b8fb43ab)
 
+* Following steps has been executed for output synthesis of optcheck_2.v
+  
+```
+$yosys
+yosys> read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+yosys> read_verilog opt_check2.v
+yosys> synth -top opt_check2
+yosys> opt_clean -purge
+yosys> abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+yosys> show
+```
+
+![Screenshot from 2023-08-16 00-55-29](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/7eaa514e-bfaf-44f0-9d5d-324a9d87a051)
+
+* Following steps has been executed for output synthesis of optcheck_3.v
+
+```
+$yosys
+yosys> read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+yosys> read_verilog opt_check3.v
+yosys> synth -top opt_check3
+yosys> opt_clean -purge
+yosys> abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+yosys> show
+```
+
+![Screenshot from 2023-08-16 01-01-26](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/55f71b37-8db0-4b39-915e-b5fc66775567)
+
+* Following steps has been executed for output synthesis of optcheck_4.v
+
+```
+$yosys
+yosys> read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+yosys> read_verilog opt_check4.v
+yosys> synth -top opt_check4
+yosys> opt_clean -purge
+yosys> abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+yosys> show
+```
+
+![Screenshot from 2023-08-16 01-04-58](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/4fc56872-6cff-4d14-8471-a8d3d7bfebbe)
+
+
+</details>
+
+<details>
+<summary> Sequential Logic Optimisation</summary>
+
+
+**dff_const1**
+
+* Iverilog and GTKWave Simulation:
+
+* Steps to follow in Verilog Files Terminal:
+```
+iverilog dff_const1.v tb_dff_const1.v
+./a.out
+gtkwave tb_dff_const1.vdc
+```
+
+  ![Screenshot from 2023-08-16 01-30-28](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/9ccfb601-94b4-4af3-a68f-9ca09c899f51)
+
+* Yosys Synthesis:
+  
+* Steps to follow in Verilog Files Terminal:
+
+```
+$yosys
+yosys> read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+yosys> read_verilog dff_const1.v
+yosys> synth -top dff_const1
+yosys> dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+yosys> abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+yosys> show
+```
+
+![Screenshot from 2023-08-16 01-47-46](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/2a73eb7c-bcaa-4356-88f9-04fccbd66527)
+
+</details>
+
+**dff_const2**
+
+* Iverilog and GTKWave Simulation:
+
+* Steps to follow in Verilog Files Terminal:
+  
+```
+iverilog dff_const2.v tb_dff_const2.v
+./a.out
+gtkwave tb_dff_const2.vdc
+```
+
+![Screenshot from 2023-08-16 02-24-37](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/cb39dd6a-087c-4257-a888-bbd94a051a5a)
+
+  
+* Yosys Synthesis:
+
+* Steps to follow in Verilog Files Terminal
+
+```
+$yosys
+yosys> read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+yosys> read_verilog dff_const2.v
+yosys> synth -top dff_const2
+yosys> dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+yosys> abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+yosys> show
+``` 
+
+![Screenshot from 2023-08-16 02-30-43](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/d6e0f9a2-40d6-417a-82e4-1227e9166d0c)
+
+
+**dff_const3**
+
+* Iverilog and GTKWave Simulation:
+
+* Steps to follow in Verilog Files Terminal:
+  
+```
+iverilog dff_const3.v tb_dff_const3.v
+./a.out
+gtkwave tb_dff_const3.vdc
+```
+
+![Screenshot from 2023-08-16 02-24-37](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/cb39dd6a-087c-4257-a888-bbd94a051a5a)
+
+  
+* Yosys Synthesis:
+
+* Steps to follow in Verilog Files Terminal
+
+```
+$yosys
+yosys> read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+yosys> read_verilog dff_const3.v
+yosys> synth -top dff_const3
+yosys> dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+yosys> abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+yosys> show
+``` 
+
+![Screenshot from 2023-08-16 02-36-03](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/9018b9a9-3d2b-4470-9e0a-5b17d847536a)
 
 
 
+**dff_const4**
+
+* Iverilog and GTKWave Simulation:
+
+* Steps to follow in Verilog Files Terminal:
+  
+```
+iverilog dff_const4.v tb_dff_const4.v
+./a.out
+gtkwave tb_dff_const4.vdc
+```
+
+![Screenshot from 2023-08-16 02-38-59](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/681864bc-f048-4d2e-af4c-1f85bcdd7db8)
+
+
+  
+* Yosys Synthesis:
+
+* Steps to follow in Verilog Files Terminal
+
+```
+$yosys
+yosys> read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+yosys> read_verilog dff_const4.v
+yosys> synth -top dff_const4
+yosys> dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+yosys> abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+yosys> show
+``` 
+
+![Screenshot from 2023-08-16 02-41-30](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/e5ebab2a-4a0f-4072-b499-5e894d5b3b60)
+
+
+**dff_const5**
+
+* Iverilog and GTKWave Simulation:
+
+* Steps to follow in Verilog Files Terminal:
+  
+```
+iverilog dff_const5.v tb_dff_const5.v
+./a.out
+gtkwave tb_dff_const5.vdc
+```
+
+![Screenshot from 2023-08-16 02-43-48](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/fb1db17e-4b23-4913-a5b5-99558b34ff16)
+
+  
+* Yosys Synthesis:
+
+* Steps to follow in Verilog Files Terminal
+
+```
+$yosys
+yosys> read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+yosys> read_verilog dff_const5.v
+yosys> synth -top dff_const5
+yosys> dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+yosys> abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+yosys> show
+``` 
+
+![Screenshot from 2023-08-16 02-46-40](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/9950d2d2-9607-482b-b9d3-744b352fd4bc)
+
+![Screenshot from 2023-08-16 02-46-55](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/2be0ff31-aae6-4fd2-aca5-a3a0791fb64f)
+
+**counter_opt**
+
+* Iverilog and GTKWave Simulation:
+
+* Steps to follow in Verilog Files Terminal:
+  
+```
+iverilog counter_opt.v tb_counter_opt.v
+./a.out
+gtkwave tb_counter_opt.vdc
+```
+
+![Screenshot from 2023-08-16 02-43-48](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/fb1db17e-4b23-4913-a5b5-99558b34ff16)
+
+  
+* Yosys Synthesis:
+
+* Steps to follow in Verilog Files Terminal
+
+```
+$yosys
+yosys> read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+yosys> read_verilog counter_opt.v
+yosys> synth -top counter_opt
+yosys> dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+yosys> abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+yosys> show
+``` 
+
+![Screenshot from 2023-08-16 02-55-17](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/4ad2e89a-b65b-496a-b7d4-b1d9695fff16)
+
+![Screenshot from 2023-08-16 02-55-37](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/13eb23a6-8dec-4acb-81c4-eadf2b22001f)
+
+
+**counter_opt2**
+  
+* Yosys Synthesis:
+
+* Steps to follow in Verilog Files Terminal
+
+```
+$yosys
+yosys> read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+yosys> read_verilog counter_opt2.v
+yosys> synth -top counter_opt2
+yosys> dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+yosys> abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+yosys> show
+``` 
+
+![Screenshot from 2023-08-16 03-05-07](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/c2330975-aa20-4a0e-ad58-aad8cd3e7ce1)
+
+</details>
 
 <details>
     <summary>REFERENCES</summary>
@@ -990,6 +1262,7 @@ yosys> !gvim mult8_net.v
 
 (7) https://github.com/The-OpenROAD-Project/OpenLane/
 
+(8) https://www.vsdiat.com/
 </details>
 
  
