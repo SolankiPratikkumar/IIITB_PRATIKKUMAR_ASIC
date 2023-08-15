@@ -277,25 +277,6 @@ make test
 OPENLANE installed
 </details>
     
-<details>
-    <summary>REFERENCES</summary>
-
-(1) https://yosyshq.net/yosys/
-
-(2) https://steveicarus.github.io/iverilog/
-
-(3) https://gtkwave.sourceforge.net/
-
-(4) https://ngspice.sourceforge.io/
-
-(5) https://github.com/The-OpenROAD-Project/OpenSTA/
-
-(6) http://opencircuitdesign.com/magic/
-
-(7) https://github.com/The-OpenROAD-Project/OpenLane/
-
-</details>
-
 </details>
 </details>
 </details>
@@ -930,10 +911,88 @@ yosys> !gvim mult8_net.v
 
 ![Screenshot from 2023-08-15 22-45-00](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/4578affa-5d78-463b-a733-6228a588916c)
 
-
+<details>
+<summary>Summary</summary>
+</details>
 
 
 </details>
 </details>
+
+
+## DAY 3
+<details>
+<summary>DAY-3</summary>
+<br>
+
+<details>
+<summary>Introduction to Optimisation</summary>
+
+**Combinational Logic Optimisation:**
+
+![3a WhatsApp Image 2023-08-16 at 12 12 58 AM](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/75cdf6b4-5981-449d-89a5-9440ed37141a)
+
+**With MOS Transistor:**
+
+![3cWhatsApp Image 2023-08-16 at 12 14 14 AM](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/74afc925-e28e-4037-bbe6-289b71b3ce95)
+
+
+**Boolean Logic Optimisation:**
+
+![3bWhatsApp Image 2023-08-16 at 12 13 44 AM](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/b4d5b435-3bc3-40e9-9ca5-0967baeb47e5)
+
+**Sequential Logic Optimisation:**
+
+* Sequential Constant:
+
+  ![3dWhatsApp Image 2023-08-16 at 12 14 45 AM](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/acd5ab4a-0bbc-41bc-bf10-439c01722af3)
+
+* Sequential Non-Constant:
+
+![3eWhatsApp Image 2023-08-16 at 12 15 47 AM](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/d8e556b7-f806-41b3-851c-c223e4e34680)
+
+**State Optimisation and Cloning**
+
+![3fWhatsApp Image 2023-08-16 at 12 16 23 AM](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/87fa84fa-bc42-425f-a18e-5e62acee10cb)
+
+**Retiming:**
+
+![3gWhatsApp Image 2023-08-16 at 12 16 52 AM](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/72da6a13-73fe-4970-90ae-f417ffefca23)
+
+* Performance of circuit is increased to 250MHz with Slack and Delay balancing
+
+  
+<details>
+<summary> Combination Logic Optimisation</summary>
+
+* Following steps has been executed for output synthesis:
+  
+  ![Screenshot from 2023-08-16 00-38-42](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/bf9dff37-357f-480e-a04b-7829b8fb43ab)
+
+
+
+
+
+<details>
+    <summary>REFERENCES</summary>
+
+(1) https://yosyshq.net/yosys/
+
+(2) https://steveicarus.github.io/iverilog/
+
+(3) https://gtkwave.sourceforge.net/
+
+(4) https://ngspice.sourceforge.io/
+
+(5) https://github.com/The-OpenROAD-Project/OpenSTA/
+
+(6) http://opencircuitdesign.com/magic/
+
+(7) https://github.com/The-OpenROAD-Project/OpenLane/
+
 </details>
 
+ 
+</details>
+</details>
+</details>
