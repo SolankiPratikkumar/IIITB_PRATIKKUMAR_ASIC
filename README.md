@@ -1243,7 +1243,7 @@ yosys> show
 ![Screenshot from 2023-08-16 03-05-07](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/c2330975-aa20-4a0e-ad58-aad8cd3e7ce1)
 
 </details>
-
+ </details>
 
 ## DAY 4
 <details>
@@ -1252,6 +1252,18 @@ yosys> show
 	
 <details>
 <summary>GLS, Blocking vs NonBlocking & Synthesis Simulation Mismatch</summary>
+
+ 
+ </details>
+</details>
+
+## DAY 5
+<details>
+<summary>DAY-5</summary>
+<br>
+	
+<details>
+<summary>IF Case, FOR Loops and FOR Generates</summary>
 
  
  </details>
