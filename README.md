@@ -717,8 +717,8 @@ open vim  and type there  :syn off
 $ gvim multiple_modules.v
 $ yosys
 yosys> read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
-yosys> read_verilog good_mux.v
-yosys> synth -top good_mux
+yosys> read_verilog multiple_modules.v
+yosys> synth -top multiple_modules
 yosys> abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 yosys> show multiple_modules
 yosys> write_verilog -noattr multiple_modules_hier.v
@@ -740,6 +740,53 @@ yosys> !gvim multiple_modules_hier.v
 </details>
 <details>
 <summary>Hier Synthesis Flat synthesis part2</summary>
+	
+**Step followed for Flat Synthesis:**
+
+```
+$ yosys
+yosys> read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+yosys> read_verilog multiple_modules.v
+yosys> synth -top multiple_modules
+yosys> abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+yosys> write_verilog -noattr multiple_modules_hier.v
+yosys> !gvim multiple_modules_hier.v
+yosys> flatten
+yosys> write_verilog -noattr multiple_modules_flat.v
+yosys> !gvim multiple_modules_flat.v
+inside Netlist type for other hier module
+:vsp multiple_modules_hier.v
+yosys> show
+yosys> read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+yosys> synth -top sub_module1
+yosys> abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+yosys> show
+```
+
+* Here, the flatten command remove the submodule and make the direct connection in the Netlist
+* 2nd Netlist we directly see the instantiation of AND gate and OR gate we don't see u1 and u2 submodule anymore
+* By using show Firstly we see here flatten multiple module layout
+* And secondly time using show command we synthesize submodule1,so we see submodule1 last time
+
+**Comparing both Netlist:**
+
+![Screenshot from 2023-08-15 15-58-18](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/9bf9bdaf-2ead-4452-bf07-4938812f942b)
+
+**Viewing Synthesis of flatten multiple module**
+
+![Screenshot from 2023-08-15 16-12-19](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/abdf111d-b109-46dc-9ac2-e6871e87fdb2)
+
+**Viewing Synthesis of submodule1**
+
+![Screenshot from 2023-08-15 16-01-59](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/9d025b56-ce82-4c47-8415-4e8067d8bf6d)
+
+</details>
+
+
+<details>
+<summary>Various Flop Coding style and Simulation</summary>
+
+
 
 
  
