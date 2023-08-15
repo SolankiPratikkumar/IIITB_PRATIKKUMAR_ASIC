@@ -801,12 +801,123 @@ yosys> show
 
 ![2bWhatsApp Image 2023-08-15 at 5 23 50 PM](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/07700076-5034-4264-92dc-bad3d04b20af)
 
+**Waveform Analysis by IVerilog and GTKWave**
+
+* Steps for synthesize of  Asynchronous reset D FlipFlop which is dff_asyncres.v
+
+```
+$ iverilog dff_asyncres.v tb_dff_asyncres.v
+$ ./a.out
+$ gtkwave tb_dff_asyncres.vcd
+```
+
+![Screenshot from 2023-08-15 18-47-13](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/e82466e9-8955-4930-9031-2b6b4eb6fdf7)
+
+![Screenshot from 2023-08-15 18-46-41](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/52facee6-685e-447e-a9ed-dfb2137634dd)
+
+
+* Steps for synthesis of Asynchronous Set D FlipFlop which is dff_async_set.v
+
+```
+$ iverilog dff_async_set.v tb_dff_async_set.v
+$ ./a.out
+$ gtkwave ./tb_dff_async_set.vcd
+ ```
+
+
+![Screenshot from 2023-08-15 18-52-49](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/cc375ef4-88ae-411c-8594-b2c014ad93f6)
+
+
+![Screenshot from 2023-08-15 18-52-16](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/869a713f-3f12-4fba-b49f-cc19fded9852)
+
+
+* Steps for synthesis of Synchronous Reset D FlipFlop which is dff_syncres.v in GTKWave
+
+```
+$ iverilog dff_syncres.v tb_dff_syncres.v
+$ ./a.out
+$ gtkwave ./tb_dff_syncres.vcd
+```
+
+![Screenshot from 2023-08-15 18-54-44](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/3b341256-c6b3-451c-bae8-7c842c6c8d70)
+
+![Screenshot from 2023-08-15 18-56-34](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/a2ae5e75-1ffa-477a-bae2-0973b938659f)
+
+**Layout of D FlipFlop Synthesis by Yosys**
+
+* Steps for synthesis of ASynchronous Reset D FlipFlop which is dff_asyncres.v in Yosys
+
+  ```
+  $ yosys
+   yosys> read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+   yosys> read_verilog dff_asyncres.v
+   yosys> synth -top dff_asyncres
+   yosys> dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+   yosys> abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+   yosys> show
+  ```
+
+  ![Screenshot from 2023-08-15 19-32-35](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/40e63612-3cb7-44fe-95de-f27e8dab1f6f)
+
+* Steps for synthesis of ASynchronous Set D FlipFlop which is dff_async_set.v in Yosys
+
+  ```
+  $ yosys
+   yosys> read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+   yosys> read_verilog dff_async_set.v
+   yosys> synth -top dff_async_set
+   yosys> dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+   yosys> abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+   yosys> show
+  ```
+
+![Screenshot from 2023-08-15 19-48-40](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/a2e177d0-2a13-4a24-8985-f8ddd46a5855)
+
+ * Steps for synthesis of Synchronous Reset D FlipFlop which is dff_syncres.v in Yosys
+
+  ```
+  $ yosys
+   yosys> read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+   yosys> read_verilog dff_syncres.v
+   yosys> synth -top dff_syncres
+   yosys> dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+   yosys> abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+   yosys> show
+  ```
+  
+  ![Screenshot from 2023-08-15 19-53-13](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/7f868ff3-a2ca-433b-b4ea-4648ec648a4f)
+
+
+**Interesting Optimisation Part1**
+
+![2laWhatsApp Image 2023-08-15 at 10 13 19 PM](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/1f7ad944-1836-451b-be99-eccce06ecd05)
+
+```
+$yosys
+yosys> read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+yosys> read_verilog mult_2.v
+yosys> synth -top mul2
+yosys> show
+yosys> write_verilog -noattr mul2_net.v
+yosys> !gvim mul2_net.v
+```
+
+
+![Screenshot from 2023-08-15 22-20-00](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/64701c9c-840f-4ef0-92b5-bc5bfecb17f7)
+
+![Screenshot from 2023-08-15 21-33-53](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/4c0e7bfd-5f3f-464f-89af-f94d49be0241)
+
+![Screenshot from 2023-08-15 21-39-27](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/ad8d5a93-8f36-40d9-bac7-8f432f58700b)
+
+![Screenshot from 2023-08-15 22-24-40](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/29ace6e2-b850-49e6-a305-a90c9463b063)
+
+
+**Interesting Optimisation Part2**
+
+```
 
 
 
-
-
- 
 </details>
 </details>
 </details>
