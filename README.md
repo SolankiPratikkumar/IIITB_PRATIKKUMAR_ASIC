@@ -966,6 +966,10 @@ yosys> !gvim mult8_net.v
 <details>
 <summary> Combination Logic Optimisation</summary>
 
+
+<details>
+<summary>optcheck_1</summary>
+	
 * Following steps has been executed for output synthesis of optcheck_1.v
 
 ```
@@ -978,8 +982,14 @@ yosys> abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 yosys> show
 ```
 
+
   ![Screenshot from 2023-08-16 00-38-42](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/bf9dff37-357f-480e-a04b-7829b8fb43ab)
 
+</details>
+
+<details>
+<summary>optcheck_2</summary>
+	
 * Following steps has been executed for output synthesis of optcheck_2.v
   
 ```
@@ -994,6 +1004,11 @@ yosys> show
 
 ![Screenshot from 2023-08-16 00-55-29](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/7eaa514e-bfaf-44f0-9d5d-324a9d87a051)
 
+</details>
+
+<details>
+<summary>optcheck_3</summary>
+			   
 * Following steps has been executed for output synthesis of optcheck_3.v
 
 ```
@@ -1008,6 +1023,11 @@ yosys> show
 
 ![Screenshot from 2023-08-16 01-01-26](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/55f71b37-8db0-4b39-915e-b5fc66775567)
 
+</details>
+
+<details>
+<summary>optcheck_4</summary>
+	
 * Following steps has been executed for output synthesis of optcheck_4.v
 
 ```
@@ -1022,14 +1042,14 @@ yosys> show
 
 ![Screenshot from 2023-08-16 01-04-58](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/4fc56872-6cff-4d14-8471-a8d3d7bfebbe)
 
-
+</details>
 </details>
 
 <details>
 <summary> Sequential Logic Optimisation</summary>
-
-
-**dff_const1**
+	
+<details>
+<summary>dff_const1</summary>
 
 * Iverilog and GTKWave Simulation:
 
@@ -1058,8 +1078,11 @@ yosys> show
 
 ![Screenshot from 2023-08-16 01-47-46](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/2a73eb7c-bcaa-4356-88f9-04fccbd66527)
 
+</details>
 
-**dff_const2**
+
+<details>
+<summary>dff_const2</summary>
 
 * Iverilog and GTKWave Simulation:
 
@@ -1090,8 +1113,12 @@ yosys> show
 
 ![Screenshot from 2023-08-16 02-30-43](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/d6e0f9a2-40d6-417a-82e4-1227e9166d0c)
 
+</details>
 
-**dff_const3**
+
+<details>
+<summary>dff_const3</summary>
+
 
 * Iverilog and GTKWave Simulation:
 
@@ -1122,9 +1149,12 @@ yosys> show
 
 ![Screenshot from 2023-08-16 02-36-03](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/9018b9a9-3d2b-4470-9e0a-5b17d847536a)
 
+</details>
 
 
-**dff_const4**
+<details>
+<summary>dff_const4</summary>
+
 
 * Iverilog and GTKWave Simulation:
 
@@ -1156,8 +1186,11 @@ yosys> show
 
 ![Screenshot from 2023-08-16 02-41-30](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/e5ebab2a-4a0f-4072-b499-5e894d5b3b60)
 
+</details>
 
-**dff_const5**
+<details>
+<summary>dff_const5</summary>
+
 
 * Iverilog and GTKWave Simulation:
 
@@ -1190,7 +1223,10 @@ yosys> show
 
 ![Screenshot from 2023-08-16 02-46-55](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/2be0ff31-aae6-4fd2-aca5-a3a0791fb64f)
 
-**counter_opt**
+</details>
+
+<details>
+<summary>counter_opt</summary>
 
 * Iverilog and GTKWave Simulation:
 
@@ -1223,8 +1259,11 @@ yosys> show
 
 ![Screenshot from 2023-08-16 02-55-37](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/13eb23a6-8dec-4acb-81c4-eadf2b22001f)
 
+</details>
 
-**counter_opt2**
+<details>
+<summary>counter_opt2</summary>
+
   
 * Yosys Synthesis:
 
@@ -1243,7 +1282,8 @@ yosys> show
 ![Screenshot from 2023-08-16 03-05-07](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/c2330975-aa20-4a0e-ad58-aad8cd3e7ce1)
 
 </details>
- </details>
+</details>
+</details>
 
 ## DAY 4
 <details>
@@ -1253,8 +1293,43 @@ yosys> show
 <details>
 <summary>GLS, Blocking vs NonBlocking & Synthesis Simulation Mismatch</summary>
 
- 
- </details>
+ <details>
+<summary>GLS Concept and Flow Using Iverilog</summary>
+
+![Screenshot from 2023-08-16 10-39-22](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/61c47866-2ee2-4d5e-94f7-053bc846cffc)
+
+![Screenshot from 2023-08-16 10-40-38](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/13638fa8-14d6-4112-905d-38aeed46257a)
+
+</details>
+
+<details>
+<summary>Synthesis-Simulation Mismatch</summary>
+
+![Screenshot from 2023-08-16 10-58-03](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/f6bbadba-113e-4bb8-897b-105d023c5f82)
+
+
+
+</details>
+
+<details>
+<summary>Blocking and NonBlocking and Caveats</summary>
+
+ ![Screenshot from 2023-08-16 10-59-52](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/761c5a6a-eb09-4486-8804-3515cf044776)
+
+![Screenshot from 2023-08-16 11-22-54](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/dbc06a6b-5f2c-480a-8147-eceb3c448e72)
+
+</details>
+
+<details>
+<summary>Caveats with Blocking Statements</summary>
+
+![Screenshot from 2023-08-16 11-22-41](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/7606c994-8509-4ab3-9204-b70b4703688f)
+
+![Screenshot from 2023-08-16 11-22-18](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/cb6dd33a-98e4-4a21-b4e9-3d488e5bf152)
+
+
+</details>
+</details>
 </details>
 
 ## DAY 5
