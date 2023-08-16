@@ -1688,8 +1688,45 @@ yosys> show
 
 ![Screenshot from 2023-08-16 21-54-54](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/823a6b59-6b73-40f3-8021-88017fab3084)
 
+<details>
+<summary>For loop and for generate</summary>
+
+**For Loop:**
+
+* Procedural 'for' loops are runtime evaluated as often as necessary when the procedural block is activated. They can be fully dynamic.
+* They must have appeared in a procedural block - thus have more limited use.
+* It is used in the "always" block. It is used for evaluating expressions multiple times.
+* Syntax is as follows:
+  
+```
+for (<initiaization>, <condition>, <update>)begin
+ \\ expression to be evaluated
+end
+```
+
+**For generate:**
+
+* Generate loops are evaluated at compile / elaboration time. NOT at runtime.
+* So the limits of the loop must be fully "known" at elaboration time.
+* We are just about unlimited as to what can go inside a generate loop.
+* It is used outside the "always" block. It is used for instantiating hardware multiple times.
+* Syntax is as follows:
+```
+genvar k;
+generate 
+    for (k = 0; k < 4; k++) begin
+       \\ statements to be executed
+       end
+   end
+endgenerate
+```
 
 </details>
+
+<details>
+<summary>Labs on For loop and For generate</summary>
+
+
 
 </details>
 
