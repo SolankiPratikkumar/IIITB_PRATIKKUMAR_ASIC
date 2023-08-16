@@ -1565,9 +1565,6 @@ yosys> show
 </details>
 </details>
 </details>
-</details>
-</details>
-</details>
 
 ## REFERENCES
 <details>
