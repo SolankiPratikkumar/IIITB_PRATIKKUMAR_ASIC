@@ -1564,6 +1564,253 @@ yosys> show
 
 </details>
 </details>
+<details>
+<summary>Lab Incomplete IF Case</summary>
+
+**Example1: incomp_if**
+
+* Steps to execute iverilog and GTKWave Simulation are mentioned below:
+
+```
+  $iverilog incomp_if.v  tb_incomp_if.v 
+  $./a.out
+  $gtkwave incomp_if.vcd
+```
+
+![Screenshot from 2023-08-16 20-44-38](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/1f3b32ae-6d7e-4549-8303-c20063eb5202)
+
+* Steps for Synthesis in Yosys:
+
+```  
+$yosys
+yosys> read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+yosys> read_verilog incomp_if.v 
+yosys> synth -top incomp_if
+yosys> abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+yosys> write_verilog -noattr incomp_if_net.v
+yosys> show
+```
+
+![Screenshot from 2023-08-16 20-48-31](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/721d7dcd-0d5a-416d-a8f2-34efc720aa85)
+
+
+**Example2:  incomp_if2**
+
+* Steps to execute iverilog and GTKWave Simulation are mentioned below:
+
+```
+  $iverilog incomp_if2.v  tb_incomp_if2.v 
+  $./a.out
+  $gtkwave incomp_if2.vcd
+```
+
+![Screenshot from 2023-08-16 20-55-09](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/675fc26e-38bc-402e-b9f9-92e89b1b04a1)
+
+
+* Steps for Synthesis in Yosys:
+
+```
+$yosys
+yosys> read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+yosys> read_verilog incomp_if2.v 
+yosys> synth -top incomp_if2
+yosys> abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+yosys> write_verilog -noattr incomp_if2_net.v
+yosys> show
+```
+
+![Screenshot from 2023-08-16 20-57-14](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/be7ef686-b758-4a7e-942e-9d54411cdf25)
+
+
+</details>
+</details>
+
+
+<details>
+<summary>Lab Incomplete IF Case</summary>
+
+**Example1: incomp_if**
+
+* Steps to execute iverilog and GTKWave Simulation are mentioned below:
+
+```
+  $iverilog incomp_if.v  tb_incomp_if.v 
+  $./a.out
+  $gtkwave incomp_if.vcd
+```
+
+![Screenshot from 2023-08-16 20-44-38](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/1f3b32ae-6d7e-4549-8303-c20063eb5202)
+
+* Steps for Synthesis in Yosys:
+
+```  
+$yosys
+yosys> read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+yosys> read_verilog incomp_if.v 
+yosys> synth -top incomp_if
+yosys> abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+yosys> write_verilog -noattr incomp_if_net.v
+yosys> show
+```
+
+![Screenshot from 2023-08-16 20-48-31](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/721d7dcd-0d5a-416d-a8f2-34efc720aa85)
+
+
+**Example2:  incomp_if2**
+
+* Steps to execute iverilog and GTKWave Simulation are mentioned below:
+
+```
+  $iverilog incomp_if2.v  tb_incomp_if2.v 
+  $./a.out
+  $gtkwave incomp_if2.vcd
+```
+
+![Screenshot from 2023-08-16 20-55-09](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/675fc26e-38bc-402e-b9f9-92e89b1b04a1)
+
+
+* Steps for Synthesis in Yosys:
+
+```
+$yosys
+yosys> read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+yosys> read_verilog incomp_if2.v 
+yosys> synth -top incomp_if2
+yosys> abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+yosys> write_verilog -noattr incomp_if2_net.v
+yosys> show
+```
+
+![Screenshot from 2023-08-16 20-57-14](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/be7ef686-b758-4a7e-942e-9d54411cdf25)
+
+
+</details>
+</details>
+
+
+<details>
+<summary>Lab on Incomplete overlapping Case</summary>
+
+
+**Example1: incomp_case**
+
+* Steps to execute iverilog and GTKWave Simulation are mentioned below:
+
+```
+  $iverilog incomp_case.v  tb_incomp_case.v 
+  $./a.out
+  $gtkwave incomp_case.vcd
+```
+![Screenshot from 2023-08-16 21-16-13](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/85bbdf69-f617-409e-96f1-02e8747c02c4)
+
+
+* Steps for Synthesis in Yosys:
+
+```  
+$yosys
+yosys> read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+yosys> read_verilog incomp_case.v 
+yosys> synth -top incomp_case
+yosys> abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+yosys> write_verilog -noattr incomp_case_net.v
+yosys> show
+```
+
+![Screenshot from 2023-08-16 21-18-10](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/6f85781a-844d-4974-a9bb-e2e0520d1dbd)
+
+
+![Screenshot from 2023-08-16 21-18-36](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/f795eba4-ab56-4b7f-aa02-0b8556bb3826)
+
+
+**Example2: comp_case**
+
+* Steps to execute iverilog and GTKWave Simulation are mentioned below:
+
+```
+  $iverilog comp_case.v  tb_comp_case.v 
+  $./a.out
+  $gtkwave comp_case.vcd
+```
+
+![Screenshot from 2023-08-16 21-27-52](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/a64ce227-d94b-4ace-ba1a-49e90508d3dc)
+
+
+* Steps for Synthesis in Yosys:
+
+```  
+$yosys
+yosys> read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+yosys> read_verilog comp_case.v 
+yosys> synth -top comp_case
+yosys> abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+yosys> write_verilog -noattr comp_case_net.v
+yosys> show
+```
+
+![Screenshot from 2023-08-16 21-29-20](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/1bbbd582-04ce-4c87-87a7-6540251cd9ec)
+
+
+![Screenshot from 2023-08-16 21-29-57](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/a5026b7f-2aac-4e69-a462-cbe7f45715a5)
+
+
+**Example3: partial_case_assign**
+
+* Steps to execute iverilog and GTKWave Simulation are mentioned below:
+
+```
+  $iverilog partial_case_assign.v  tb_partial_case_assign.v 
+  $./a.out
+  $gtkwave partial_case_assign.vcd
+```
+![gtkwave0773282-771ffa67-f694-409d-9bbe-c25037372d6d](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/9d0cf927-1cba-4f90-b9ab-1d86fd1f3eac)
+
+* Steps for Synthesis in Yosys:
+
+```  
+$yosys
+yosys> read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+yosys> read_verilog partial_case_assign.v 
+yosys> synth -top partial_case_assign
+yosys> abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+yosys> write_verilog -noattr partial_case_assign_net.v
+yosys> show
+```
+
+![Screenshot from 2023-08-16 21-43-03](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/b13d0913-6866-4475-8fd9-fc114f44b182)
+
+![Screenshot from 2023-08-16 21-43-29](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/693207d9-4e25-4904-beb2-ec90892e3ea5)
+
+
+**Example4: bad_case**
+
+* Steps to execute iverilog and GTKWave Simulation are mentioned below:
+
+```
+  $iverilog bad_case.v  tb_bad_case.v 
+  $./a.out
+  $gtkwave bad_case.vcd
+```
+![Screenshot from 2023-08-16 21-52-55](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/f240a338-b306-479b-a9f0-902d74232f85)
+
+
+* Steps for Synthesis in Yosys:
+
+```  
+$yosys
+yosys> read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+yosys> read_verilog bad_case.v 
+yosys> synth -top bad_case
+yosys> abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+yosys> write_verilog -noattr bad_case_net.v
+yosys> show
+```
+
+![Screenshot from 2023-08-16 21-54-16](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/b350d8fd-0000-4714-aadd-d035402864ab)
+
+![Screenshot from 2023-08-16 21-54-54](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/823a6b59-6b73-40f3-8021-88017fab3084)
+
+</details>
+</details>
 </details>
 
 ## REFERENCES
