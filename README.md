@@ -1429,10 +1429,65 @@ $ gtkwave tb_bad_mux.vcd
 
   
 </details>
- 
+
+<details>
+<summary>Mismatch in Blocking Statement</summary>
+
+* Following command used to see Verilog code of blocking_caveat.v :
+  
+```
+$ gvim ternary_operator_mux.v -o bad_mux.v -o good_mux.v
+```
+
+![Screenshot from 2023-08-16 15-32-41](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/6d0b97d9-af73-4432-b79e-42f3fbf88878)
+
+
+**Blocking_caveat Simulation and Synthesis in Iverilog, GTKWave, Yosys, GLS:**
+
+* Steps to execute iverilog and GTKWave Simulation are mentioned below:
+
+```
+  $iverilog blocking_caveat.v tb_blocking_caveat.v
+  $./a.out
+  $gtkwave blocking_caveat.vcd
+```
+
+![Screenshot from 2023-08-16 15-36-10](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/d3a629ee-3983-495a-89c0-d486d50940a3)
+
+
+* Steps for synthesis in Yosys:
+
+```
+$yosys
+yosys> read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+yosys> read_verilog blocking_caveat.v
+yosys> synth -top blocking_caveat
+yosys> abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+yosys> write_verilog -noattr blocking_caveat_net.v
+yosys> show
+```
+
+![Screenshot from 2023-08-16 15-53-28](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/cd92339e-1c46-4ea1-bc52-81ad3ef6e7e5)
+
+* Below are Command to simulate in GLS:
+
+```
+$ iverilog ../my_lib/verilog_model/primitives.v ../my_lib/verilog_model/sky130_fd_sc_hd.v blocking_caveat_net.v tb_blocking_caveat.v
+$./a.out
+$ gtkwave tb_blocking_caveat.vcd
+```
+
+![Screenshot from 2023-08-16 15-58-31](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/153c5b89-0073-4b7d-8dcb-6acd9363aecf)
+
+**Analysis of Mismatch in GLS Waveform:**
+
+![Screenshot from 2023-08-16 15-02-39](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/29a562ba-b154-47dc-a300-5550e556f1c4)
+
 </details>
 </details>
 </details>
+</details>
+
 
 ## DAY 5
 <details>
@@ -1442,10 +1497,10 @@ $ gtkwave tb_bad_mux.vcd
 <details>
 <summary>IF Case, FOR Loops and FOR Generates</summary>
 
- 
- </details>
 </details>
-<details>
+</details>
+</details>
+</details>
     <summary>REFERENCES</summary>
 
 (1) https://yosyshq.net/yosys/
