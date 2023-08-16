@@ -1500,8 +1500,6 @@ $ gtkwave tb_blocking_caveat.vcd
  
 </details>
 </details>
-<details>
-<summary>IF Case, FOR Loops and FOR Generates</summary>
 </details>
 </details>
 </details>
