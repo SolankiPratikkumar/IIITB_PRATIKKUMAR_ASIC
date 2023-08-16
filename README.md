@@ -911,10 +911,6 @@ yosys> !gvim mult8_net.v
 
 ![Screenshot from 2023-08-15 22-45-00](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/4578affa-5d78-463b-a733-6228a588916c)
 
-<details>
-<summary>Summary</summary>
-</details>
-
 
 </details>
 </details>
@@ -1486,7 +1482,7 @@ $ gtkwave tb_blocking_caveat.vcd
 </details>
 </details>
 </details>
-</details>
+
 
 
 ## DAY 5
