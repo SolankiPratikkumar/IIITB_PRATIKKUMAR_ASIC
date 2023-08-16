@@ -1504,6 +1504,7 @@ $ gtkwave tb_blocking_caveat.vcd
 
 </details>
 
+
 <details>
 <summary>Lab Incomplete IF Case</summary>
 
@@ -1687,12 +1688,11 @@ yosys> show
 
 ![Screenshot from 2023-08-16 21-54-54](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/823a6b59-6b73-40f3-8021-88017fab3084)
 
+
 </details>
 
 </details>
-</details>
-</details>
-</details>
+
 </details>
 </details>
 
