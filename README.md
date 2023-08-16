@@ -1925,7 +1925,6 @@ $ gtkwave tb_demux_generate.vcd
 (9) https://github.com/kunalg123/sky130RTLDesignAndSynthesisWorkshop.git
 
 </details>
-
  
 </details>
 </details>
