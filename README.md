@@ -1493,11 +1493,75 @@ $ gtkwave tb_blocking_caveat.vcd
 <details>
 <summary>IF Case Construct</summary>
 
+
+![5a](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/c544102c-9ac4-4da1-80c9-2666c57cc278)
+
+![5b](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/62316e67-1d4f-4dbd-bf31-def65f425343)
+
+![5c](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/ae916c7f-a146-41b3-874a-716463dc4f2f)
+
+![5d](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/db0587f5-76d7-4ffa-b0ee-9e02b8108980)
+
+</details>
+
 <details>
-<summary>IF Case Construct Part1</summary>
+<summary>Lab Incomplete IF Case</summary>
+
+**Example1: incomp_if**
+
+* Steps to execute iverilog and GTKWave Simulation are mentioned below:
+
+```
+  $iverilog incomp_if.v  tb_incomp_if.v 
+  $./a.out
+  $gtkwave incomp_if.vcd
+```
+
+![Screenshot from 2023-08-16 20-44-38](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/1f3b32ae-6d7e-4549-8303-c20063eb5202)
+
+* Steps for Synthesis in Yosys:
+
+```  
+$yosys
+yosys> read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+yosys> read_verilog incomp_if.v 
+yosys> synth -top incomp_if
+yosys> abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+yosys> write_verilog -noattr incomp_if_net.v
+yosys> show
+```
+
+![Screenshot from 2023-08-16 20-48-31](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/721d7dcd-0d5a-416d-a8f2-34efc720aa85)
 
 
- 
+**Example2:  incomp_if2**
+
+* Steps to execute iverilog and GTKWave Simulation are mentioned below:
+
+```
+  $iverilog incomp_if2.v  tb_incomp_if2.v 
+  $./a.out
+  $gtkwave incomp_if2.vcd
+```
+
+![Screenshot from 2023-08-16 20-55-09](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/675fc26e-38bc-402e-b9f9-92e89b1b04a1)
+
+
+* Steps for Synthesis in Yosys:
+
+```
+$yosys
+yosys> read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+yosys> read_verilog incomp_if2.v 
+yosys> synth -top incomp_if2
+yosys> abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+yosys> write_verilog -noattr incomp_if2_net.v
+yosys> show
+```
+
+![Screenshot from 2023-08-16 20-57-14](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/be7ef686-b758-4a7e-942e-9d54411cdf25)
+
+
 </details>
 </details>
 </details>
