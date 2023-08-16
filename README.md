@@ -1319,7 +1319,7 @@ yosys> show
 ![Screenshot from 2023-08-16 11-22-54](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/dbc06a6b-5f2c-480a-8147-eceb3c448e72)
 
 </details>
-
+</details>
 <details>
 <summary>Caveats with Blocking Statements</summary>
 
@@ -1327,7 +1327,109 @@ yosys> show
 
 ![Screenshot from 2023-08-16 11-22-18](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/cb6dd33a-98e4-4a21-b4e9-3d488e5bf152)
 
+</details>
 
+<details>
+<summary>LABS on GLS, Blocking vs NonBlocking & Synthesis Simulation Mismatch</summary>
+
+ <details>
+<summary>Labs on GLS Synthesis-Simulation Mismatch Part1</summary>
+
+* Following command used to see Verilog code of  ternary_operator_mux, bad_mux, good_mux:
+  
+```
+$ gvim ternary_operator_mux.v -o bad_mux.v -o good_mux.v
+```
+
+![Screenshot from 2023-08-16 12-27-01](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/6831eca7-2bb7-4d27-a5f1-891f3a380224)
+
+**Ternary Operator Mux Simulation and Synthesis in Iverilog, GTKWave, Yosys, GLS:**
+
+* Steps to execute iverilog and GTKWave Simulation are mentioned below:
+
+```
+  $iverilog ternary_operator_mux.v tb_ternary_operator_mux.v
+  $./a.out
+  $gtkwave tb_ternary_operator_mux.vcd
+```
+
+![Screenshot from 2023-08-16 12-37-33](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/346e32a9-36c2-4777-9e58-ece0d788a4c9)
+
+* Steps for synthesis in Yosys:
+
+```
+$yosys
+yosys> read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+yosys> read_verilog ternary_operator_mux.v
+yosys> synth -top ternary_operator_mux
+yosys> abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+yosys> write_verilog -noattr ternary_operator_mux_net.v
+yosys> show
+```
+
+![Screenshot from 2023-08-16 12-46-42](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/11774223-153d-41bb-8c07-d12553085767)
+
+* Below are Command to simulate in GLS:
+
+```
+$ iverilog ../my_lib/verilog_model/primitives.v ../my_lib/verilog_model/sky130_fd_sc_hd.v ternary_operator_mux_net.v tb_ternary_operator_mux.v
+$./a.out
+$ gtkwave tb_ternary_operator_mux.vcd
+```
+
+![Screenshot from 2023-08-16 13-06-55](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/4b561be5-9d7c-4d23-beb9-4584dd1003d8)
+  
+</details>
+
+<details>
+<summary>Labs on GLS Synthesis-Simulation Mismatch Part2</summary>
+
+**Bad Mux Simulation and Synthesis in Iverilog, GTKWave, Yosys, GLS:**
+
+* Steps to execute iverilog and GTKWave Simulation are mentioned below:
+
+```
+  $iverilog bad_mux.v tb_bad_mux.v
+  $./a.out
+  $gtkwave tb_bad_mux.vcd
+```
+
+![Screenshot from 2023-08-16 13-19-06](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/639f9ac1-048b-4b1f-a883-43b067ddd0d0)
+
+
+* Steps for synthesis in Yosys:
+
+```
+$yosys
+yosys> read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+yosys> read_verilog bad_mux.v
+yosys> synth -top bad_mux
+yosys> abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+yosys> write_verilog -noattr bad_mux_net.v
+yosys> show
+```
+
+![Screenshot from 2023-08-16 13-21-36](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/e2e2911c-37eb-4ac9-8b46-7588614ce530)
+
+
+* Below are Command to simulate in GLS:
+
+```
+$ iverilog ../my_lib/verilog_model/primitives.v ../my_lib/verilog_model/sky130_fd_sc_hd.v bad_mux_net.v tb_bad_mux.v
+$./a.out
+$ gtkwave tb_bad_mux.vcd
+```
+![Screenshot from 2023-08-16 13-26-32](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/6e37e35b-d646-437f-935e-04699571b492)
+
+
+**Analysis of Mismatch in GLS Waveform:**
+
+![Screenshot from 2023-08-16 12-16-53](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/c3aec598-a1c4-499c-8160-d98e7565d0e3)
+
+
+  
+</details>
+ 
 </details>
 </details>
 </details>
