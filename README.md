@@ -1491,12 +1491,24 @@ $ gtkwave tb_blocking_caveat.vcd
 <br>
 	
 <details>
-<summary>IF Case, FOR Loops and FOR Generates</summary>
+<summary>IF Case Construct</summary>
 
+<details>
+<summary>IF Case Construct Part1</summary>
+
+
+ 
+</details>
+</details>
+<details>
+<summary>IF Case, FOR Loops and FOR Generates</summary>
 </details>
 </details>
 </details>
 </details>
+
+## REFERENCES
+<details>
     <summary>REFERENCES</summary>
 
 (1) https://yosyshq.net/yosys/
