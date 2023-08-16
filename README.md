@@ -1688,8 +1688,10 @@ yosys> show
 
 ![Screenshot from 2023-08-16 21-54-54](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/823a6b59-6b73-40f3-8021-88017fab3084)
 
+</details>
+
 <details>
-<summary>For loop and for generate</summary>
+<summary>For loop and For generate</summary>
 
 **For Loop:**
 
@@ -1724,13 +1726,180 @@ endgenerate
 </details>
 
 <details>
-<summary>Labs on For loop and For generate</summary>
+<summary>Labs on 'For Loop and For Generate'</summary>
+
+**Example1: mux_generate**
+
+* We will here Write Verilog code, Simulation on GTKWave, Synthesis on Yosys, as well we will do a Simulation on GLS:
+  
+* Verilog Code of mux_generate.v
+  
+```
+gvim mux_generate.v
+```
+
+![Screenshot from 2023-08-17 00-27-48](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/b3a1fc05-2426-431f-8045-fa06a80ec499)
 
 
+* Steps to execute iverilog and GTKWave Simulation are mentioned below:
+
+```
+  $iverilog mux_generate.v tb_mux_generate.v
+  $./a.out
+  $gtkwave mux_generate.vcd
+```
+
+![Screenshot from 2023-08-17 00-31-04](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/1d5d8bef-64e4-4c55-ad24-dffcad69f499)
+
+
+
+* Steps for synthesis in Yosys:
+
+```
+$yosys
+yosys> read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+yosys> read_verilog mux_generate.v
+yosys> synth -top mux_generate
+yosys> abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+yosys> write_verilog -noattr mux_generate_net.v
+yosys> show
+```
+
+![Screenshot from 2023-08-17 00-33-15](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/c54ef5c5-07ef-4c3b-8dc6-cd539bcc12dd)
+
+![Screenshot from 2023-08-17 00-33-42](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/3994f53e-8c3a-482c-b3c6-95432d77fefc)
+
+* Below are Command to simulate in GLS:
+
+```
+$ iverilog ../my_lib/verilog_model/primitives.v ../my_lib/verilog_model/sky130_fd_sc_hd.v mux_generate_net.v tb_mux_generate.v
+$./a.out
+$ gtkwave tb_mux_generate.vcd
+```
+![Screenshot from 2023-08-17 00-37-45](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/6120bab8-c7c6-47bf-af9b-4ea2edc49a58)
+
+
+**Example2: demux_case**
+
+* We will here Write Verilog code, Simulation on GTKWave, Synthesis on Yosys, as well we will do a Simulation on GLS:
+  
+* Verilog Code of demux_case.v
+  
+```
+gvim demux_case.v -o tb_demux_case.v
+```
+
+![Screenshot from 2023-08-17 00-47-58](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/ce889511-1061-4e44-b754-31eeb5808e46)
+
+
+
+* Steps to execute iverilog and GTKWave Simulation are mentioned below:
+
+```
+  $iverilog demux_case.v tb_demux_case.v
+  $./a.out
+  $gtkwave demux_case.vcd
+```
+
+![Screenshot from 2023-08-17 00-52-01](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/35d3ec5b-039c-4e58-84ce-8d03e0ada5dc)
+
+
+* Steps for synthesis in Yosys:
+
+```
+$yosys
+yosys> read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+yosys> read_verilog demux_case.v
+yosys> synth -top demux_case
+yosys> abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+yosys> write_verilog -noattr demux_case_net.v
+yosys> show
+```
+
+![Screenshot from 2023-08-17 00-55-41](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/98328efe-0913-4d92-bb11-9f2e16d431e9)
+
+![Screenshot from 2023-08-17 00-56-11](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/22026aba-e938-4d03-9ecf-4c2d1af3f520)
+
+
+* Below are Command to simulate in GLS:
+
+```
+$ iverilog ../my_lib/verilog_model/primitives.v ../my_lib/verilog_model/sky130_fd_sc_hd.v demux_case_net.v tb_demux_case.v
+$./a.out
+$ gtkwave tb_demux_case.vcd
+```
+![Screenshot from 2023-08-17 00-58-15](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/21da462b-26cd-443c-b5ca-853d5282ce9b)
+
+
+**Example3: demux_generate**
+
+* We will here Write Verilog code, Simulation on GTKWave, Synthesis on Yosys, as well we will do a Simulation on GLS:
+  
+* Verilog Code of demux_generate.v
+  
+```
+gvim demux_generate.v -o tb_demux_generate.v
+```
+
+![Screenshot from 2023-08-17 01-02-09](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/2ef8e19d-58cd-4ed6-9b00-b5fb6b29eedd)
+
+
+* Steps to execute iverilog and GTKWave Simulation are mentioned below:
+
+```
+  $iverilog demux_generate.v tb_demux_generate.v
+  $./a.out
+  $gtkwave demux_generate.vcd
+```
+
+![Screenshot from 2023-08-17 01-04-24](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/f12c6541-8fde-4254-83d4-c800c5194272)
+
+
+* Steps for synthesis in Yosys:
+
+```
+$yosys
+yosys> read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+yosys> read_verilog demux_generate.v
+yosys> synth -top demux_generate
+yosys> abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+yosys> write_verilog -noattr demux_generate_net.v
+yosys> show
+```
+
+![Screenshot from 2023-08-17 01-06-01](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/9e1f35a7-b446-407c-b3c2-1157aab891f0)
+
+![Screenshot from 2023-08-17 01-07-20](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/2f773edb-4b60-48ec-8a73-28b7b15f0db5)
+
+
+* Below are Command to simulate in GLS:
+
+```
+$ iverilog ../my_lib/verilog_model/primitives.v ../my_lib/verilog_model/sky130_fd_sc_hd.v demux_generate_net.v tb_demux_generate.v
+$./a.out
+$ gtkwave tb_demux_generate.vcd
+```
+
+![Screenshot from 2023-08-17 01-10-53](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/73bae9a9-9ba0-422e-9d92-c5f5d9da9a99)
 
 </details>
-
 </details>
+
+## ACKNOWLEDGEMENT
+<details>
+    <summary>ACKNOWLEDGEMENT</summary>
+
+* Kunal Ghosh, VSD Corp. Pvt. Ltd.
+* Nanditha Rao, Professor, IIITB
+* Madhav Rao, Professor, IIITB
+* Manikandan,Professor,IIITB
+* Mariam Rakka
+* Skywater Foundry
+* Chatgpt
+* Pruthvi Parate Collegue, IIITB
+* Alwin Shaju Collegue, IIITB
+* Shivangi Collegue, IIITB 
+
 </details>
 
 ## REFERENCES
@@ -1752,6 +1921,9 @@ endgenerate
 (7) https://github.com/The-OpenROAD-Project/OpenLane/
 
 (8) https://www.vsdiat.com/
+
+(9) https://github.com/kunalg123/sky130RTLDesignAndSynthesisWorkshop.git
+
 </details>
 
  
