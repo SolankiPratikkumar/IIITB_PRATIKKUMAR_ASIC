@@ -64,9 +64,47 @@
 ![r1bWhatsApp Image 2023-08-20 at 4 12 28 PM](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/40076075-fee3-48a4-8566-1d4dd014563a)
 
  </details>
- 
+  </details>
+
  <details>
-  <summary>Detailed Discription of Course</summary>
+  <summary>Labwork for RISC-V Software Toolchain</summary>
+ <details>
+  <summary>C-Program to compute sum 1 to n</summary>
+
+* Commands used in Ubuntu to call the text editor for C-program are:
+```
+$ cd
+$ gedit sum1ton.c
+//write the C-program in editor and save
+$ gcc sum1ton.c
+$ ./a.out
+```
+
+* The C- Program of sum 1 to n is as follows:
+
+```
+#include<stdio.h>
+int main ()
+{ 
+int i,sum=0,n=50;
+for(i=0;i<=n;i++)
+ {
+  sum+=i;
+ }
+ printf("sum of number from 1 to %d is %d\n",n,sum);
+ return 0;
+}
+```
+
+![Screenshot from 2023-08-20 17-19-05](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/de168949-8a89-45d6-bfcb-aa9129599490)
+
+
+ </details>
+
+ <details>
+  <summary>C-Program to compute sum 1 to n</summary>
+
+  </details>
  </details>
 </details>
 </details>
