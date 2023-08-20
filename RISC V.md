@@ -1,11 +1,80 @@
 [](url) Physical Design of ASICs PART2 
 
 
+## Quick links:
+
+
+[DAY 1](#day-1)
+
+[DAY 2](#day-2)
+
+[DAY 3](#day-3)
+
+[DAY 4](#day-4)
+
+[DAY 5](#day-5)
+
+
+
+[REFERENCES](#References)
+
+
 ## DAY 1
 <details>
 <summary>DAY-1</summary>
 <br>
+ <details>
+ <summary>RISC-V Installation Steps</summary>
 
+* Below are the steps and commands to install RISC-V toolchain
+
+```
+git clone https://github.com/kunalg123/riscv_workshop_collaterals.git
+cd riscv_workshop_collaterals
+chmod 755 run.sh
+./run.sh
+```
+Once the cloning is done and if there is not any error then set the PATH variable in .bashrc file using below commands
+ 
+```
+gedit .bashrc
+export PATH="/home/user/riscv_toolchain/riscv64-unknown-elf-gcc-8.3.0-2019.08.0-x86_64-linux-ubuntu14/bin:$PATH" #Instead of user replace it with your user name
+```
+* Now try the "riscv64-unknown-elf-gcc" command and if there is any error shown below is how to debug: If you are getting the error about "iverilog" then use the below commands
+
+```
+sudo apt-get install libboost-regex-dev
+git clone https://github.com/steveicarus/iverilog.git
+cd iverilog/
+git checkout --track -b v10-branch origin/v10-branch
+git pull 
+chmod 777 autoconf.sh 
+./autoconf.sh 
+./configure 
+make
+sudo make install
+```
+
+* If you are getting the error about "riscv-pk" then use the below commands
+
+```
+sudo apt-get install libboost-regex-dev
+git clone https://github.com/riscv/riscv-pk.git
+cd riscv-pk/
+mkdir build
+cd build/
+../configure --prefix=$pwd/riscv_toolchain/riscv64-unknown-elf-gcc-8.3.0-2019.08.0-x86_64-linux-ubuntu14 --host=riscv64-unknown-elf
+make
+sudo make install
+```
+If there is an error showing that "Spike-command is not found" when running the spike, Try running the run.sh again, it will be resolved.
+Don't forget to add PATH in .bashrc and source the .bashrc file
+
+Acknowledgement: Bhargav D V, Pruthvi Parate, Alwin Shaju, Emil Jayanth Lal, Kanish R, Divyam Satle: Colleagues(IIIT-B)
+
+ </details>
+
+ 
  <details>
  <summary>Introduction to RISC-V Basic Keywords</summary>
 
@@ -99,10 +168,21 @@ for(i=0;i<=n;i++)
 ![Screenshot from 2023-08-20 17-19-05](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/de168949-8a89-45d6-bfcb-aa9129599490)
 
 
+
  </details>
 
  <details>
-  <summary>C-Program to compute sum 1 to n</summary>
+  <summary>RISCV GCC compile And Disassemble</summary>
+
+  ```
+
+ sqwdq
+```
+
+
+![Screenshot from 2023-08-20 20-37-10](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/1871dbe3-2333-436c-ae3e-c0b7fd01cab8)
+
+
 
   </details>
  </details>
