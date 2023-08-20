@@ -172,19 +172,69 @@ for(i=0;i<=n;i++)
  </details>
 
  <details>
-  <summary>RISCV GCC compile And Disassemble</summary>
+  <summary>RISCV GCC Compile And Disassemble</summary>
 
-  ```
-
- sqwdq
+```
+$ cat sum1ton.c
+$ riscv64-unknown-elf-gcc -o1 -mabi=lp64 -march=rv64i -o sum1ton.o sum1ton.c
+$ ls -ltr sum1ton.o
+$ riscv64-unknown-elf-objdump -d sum1ton.o 
+$ riscv64-unknown-elf-objdump -d sum1ton.o | less
+/..press enter
+$ riscv64-unknown-elf-gcc -Ofast -mabi=lp64 -march=rv64i -o sum1ton.o sum1ton.c
 ```
 
 
 ![Screenshot from 2023-08-20 20-37-10](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/1871dbe3-2333-436c-ae3e-c0b7fd01cab8)
 
+* We can find total number of instruction by subtracting next instruction and 1st hex instruction of existing divide to 4
+* Total Number of instruction= (101c0-10184)/4 = 15 instruction
 
+</details>
+
+ <details>
+  <summary>Spike Simulation and Debug</summary>
+
+```
+$ riscv64-unknown-elf-gcc -Ofast -mabi=lp64 -march=rv64i -o sum1ton.o sum1ton.c
+$ gcc sum1ton.c
+$ ./a.out
+$ riscv64-unknown-elf-gcc -Ofast -mabi=lp64 -march=rv64i -o sum1ton.o sum1ton.c
+$ riscv64-unknown-elf-objdump -d sum1ton.o | less
+$ spike -d pk sum1ton.o
+:until pc 0 to 100b0
+: reg 0 a2
+//(press enter)
+:reg 0 a1
+//(press enter)
+```
+
+* go on multiple manual spike instruction writing
+  
+  ![Screenshot from 2023-08-21 01-11-02](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/bced2476-aaa8-44af-b5ee-2a47bf2d71f9)
+
+
+* We can observe below the register details:
+
+![Screenshot from 2023-08-21 00-27-47](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/34a68f81-d296-490c-ac74-61b5346a0466)
+
+![Screenshot from 2023-08-21 00-34-58](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/d33bbf75-f5a6-42b4-ae90-2262e7ab4165)
 
   </details>
  </details>
+   </details>  
+     </details>
+
+     
+ ## DAY 2
+<details>
+<summary>DAY-2</summary>
+<br>
+ <details>
+ <summary>Introduction to ABI and Basic Verification Flow</summary>
+
+<details>
+ <summary>Introduction to Application Binary Interface</summary>
+
 </details>
 </details>
