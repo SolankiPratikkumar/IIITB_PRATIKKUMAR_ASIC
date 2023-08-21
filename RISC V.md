@@ -344,19 +344,41 @@ long long int max = (int) (pow(2,63) -1);
 long long int min = (int) (pow(2,63) * -1);
 printf("highest number represented by long long int is %lld\n", max);
 printf("lowest number represented by long long int is %lld\n", min);
+return 0;
 }
-```
-
-* Command to get output debugged using spike of unsigned number:
 
 ```
-$ gedit unsignedHighest.c
-$ gcc unsignedHighest.c
+
+* Commands for running signedHighest program in Ubuntu are as follows:
+
+```
+$ gedit signedHighest.c
+$ gcc signedHighest.c
 $ ./a.out
 
-$ riscv64-unknown-elf-gcc -Ofast -mabi=lp64 -march=rv64i -o unsignedHighest.o unsignedHighest.c
-$ spike pk unsignedHighest.o
+$ riscv64-unknown-elf-gcc -Ofast -mabi=lp64 -march=rv64i -o signedHighest.o signedHighest.c
+$ spike pk signedHighest.o
 ```
+
+
+* Here we don't get required result as here we have used (int), by which overflow condition arrives. now for fixing this we will use long long int instead of int
+
+```
+include <stdio.h>
+#include <math.h>
+int main() {
+long long int max = (long long int) (pow(2,63) -1);
+long long int min = (long long int) (pow(2,63) * -1);
+printf("highest number represented by long long int is %lld\n", max);
+printf("lowest number represented by long long int is %lld\n", min);
+return 0;
+```
+
+* Others data types extension can used as below :
+
+![Screenshot from 2023-08-21 11-17-25](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/07a59ddf-1c63-4ec1-a675-81643fae40da)
+
+
   </details>
  </details>
    </details>  
@@ -368,12 +390,115 @@ $ spike pk unsignedHighest.o
 <summary>DAY-2</summary>
 <br>
  <details>
- <summary>Introduction to ABI and Basic Verification Flow</summary>
+ <summary>Application Binary Interface(ABI)</summary>
 
 <details>
- <summary>Introduction to Application Binary Interface</summary>
- 
-* ddqdw
- 
+ <summary>Introduction to Application Binary Interface(ABI)</summary>
+
+
+**What is ABI**
+
+* ABI stands for "Application Binary Interface." It is a set of rules and conventions that dictate how different software components interact at the binary level.
+* In simpler terms, ABI defines how programs running on the same or different architectures can communicate with each other.
+  
+* ABI encompasses various aspects of low-level programming and software development, including:
+
+* Data Representation: How data types are represented in memory or storage, including integers, floating-point numbers, structures, and more.
+
+* Function Calling Convention: How functions are invoked and how their parameters and return values are passed between different parts of a program. This includes details about registers, stack usage, and parameter passing order.
+
+* Memory Layout: How memory is organized, including the stack, heap, and data segments, and how variables are allocated and accessed.
+
+* Exception Handling: How exceptions and errors are handled by the system, including mechanisms for raising, catching, and propagating exceptions.
+
+* System Calls: How higher-level programming languages interact with the operating system's services and resources, often involving system calls or function calls to kernel routines.
+
+* Register Usage: Which registers are used for specific purposes, how they are saved/restored during function calls, and how they might be preserved across different components of a program.
+
+* ABI is crucial for interoperability between different programming languages, libraries, and operating systems. It ensures that compiled code from different sources can work seamlessly together, as long as they adhere to the same ABI.
+  
+* Different architectures and platforms might have their own ABIs due to differences in hardware, system architectures, and operating systems.
+
+
+![Screenshot from 2023-08-21 11-17-25](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/8fd13e4c-8741-4794-bbee-d8c6d8606e6b)
+
+* Above is the clear example of how are the command of ABI looks:
+
+![Screenshot from 2023-08-21 15-07-47](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/2d66c5ad-77ff-4d18-9fef-8050d81726e6)
+
+* ABI is an system call interface which is used to run application program on Hardware
+   
+![Screenshot from 2023-08-21 15-09-26](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/902edcc4-b3fd-4b3d-a7da-25042384c19b)
+
+* ABI has 32 bit register for RV32 and 64 register for RV64, why it is so can be understaood in upcoming class
+
+</details>
+
+<details>
+ <summary>Memory Allocation for Double Words</summary>
+
+ ![Screenshot from 2023-08-21 15-35-44](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/572389ee-b2cb-4383-bb59-8d8981949413)
+
+* The lower Byte is m[0] is LSB while the upper Byte is m[8]
+  
+![Screenshot from 2023-08-21 15-37-11](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/e5bf66fc-23bf-4cd8-98c0-80972e7c8cb5)
+
+
+* Here we have 64 bit register but we have 32 bit wide register available for storage of our 64 bit instruction. So 1st we divide 64 bits into eight 8 bit and store it into a paricular memory location.
+* Hence , In the context of RISC-V, a "word" typically refers to a 32-bit value, and a "byte" is 8 bits. The splitting of a 64-bit number into bytes and words is straightforward
+
+* A 64-bit number consists of 8 bytes (64 bits / 8 bits per byte). A 64-bit number consists of 2 words (64 bits / 32 bits per word).
+
+* Each byte or word of the 64-bit number can be accessed and manipulated independently.
+
+* Keep in mind that RISC-V provides specific instructions for working with 64-bit data, including arithmetic, load/store, and conversion operations. These instructions handle the splitting and management of 64-bit data in a 32-bit architecture like RISC-V.
+
+* It uses different registers(32 in number) which are each of width XLEN = 32 bit for RV32 (~XLEN = 64 for RV64) . On a higher level of abstraction these registers are accessed by their respective ABI names.
+  
+  </details>
+  
+  <details>
+ <summary>Load, Add and Store Instructions with Examples</summary>
+
+![Screenshot from 2023-08-21 15-51-06](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/8d284e08-78f9-4c1a-98b1-3dc958c7671b)
+
+* Here ld is used for double word; and all the numbers 16 and all are converted to binary inside register
+
+![Screenshot from 2023-08-21 16-03-25](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/99f9107f-a296-4292-948d-70cdc0295f04)
+
+*Above command is used to adding into previous operation
+
+![Screenshot from 2023-08-21 16-02-57](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/e4d67fd4-c359-4b7a-a64d-ff7fc69e299f)
+
+* Above sd command is used for storing back to different memory address
+* And all the above instruction are called as Base Integer Instruction RV64I
+  
+ </details>
+  
+  <details>
+ <summary>Conclusion and Reason behind of 32bit RV64</summary>
+   
+![Screenshot from 2023-08-21 16-16-25](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/91aad6a6-20ef-454e-9a1a-03774e2d0df6)
+
+* There are different type of Instructions are classified as I-Type by Immediate type MSB in that register, the R-type register on basis of more blocks of r block in register here and  S-type register on the basis of 2 immediate block in register
+  
+* Reason for 32 bit register: Here is there are always 5 bits to represent each register block hence 2^5= 32bit register and the total register starts from 0 to (2^5-1)
+  
+![Screenshot from 2023-08-21 16-17-54](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/03b35e80-cc8a-43f6-8513-935e937871d8)
+
+* Different Register with their ABI name and their usage are mentioned in above image which will be used in upcoming labs
+
+  </details>
+</details>
+
+ <details>
+ <summary>Labs works ABI function calls</summary>
+
+<details>
+ <summary>Study new ALgorithm for sum 1 to N using ASM</summary>
+
+* 
+  
+  </details>
 </details>
 </details>
