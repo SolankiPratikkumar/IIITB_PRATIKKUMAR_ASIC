@@ -220,6 +220,143 @@ $ spike -d pk sum1ton.o
 
 ![Screenshot from 2023-08-21 00-34-58](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/d33bbf75-f5a6-42b4-ae90-2262e7ab4165)
 
+</details>
+</details>
+
+ <details>
+  <summary>Integer Number Representation</summary>
+
+ <details>
+  <summary>64bit Number System for Unsigned Number</summary>
+
+* Human can understand Decimal while computer understand Binary
+* So, we are trying to understand this type of Implementation for RISC V
+  
+  ![Screenshot from 2023-08-21 10-11-04](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/a8b5bbde-c9f9-41d1-ba71-228f08219b85)
+
+  * So, the important part to note here is 64bits =8 bytes= 2 words= 1doublewords
+
+![Screenshot from 2023-08-21 10-13-06](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/18efe934-0e92-49dd-bcba-5ffc1e8e2197)
+
+  
+![Screenshot from 2023-08-21 10-15-40](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/79a2a928-f798-4b55-98aa-91cdbb2a0a2c)
+
+* From the above image we can understand the total number of Decimal Equivalent for 0 to all bits is 1's
+
+![Screenshot from 2023-08-21 10-17-56](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/538391d9-ead3-47d6-99f8-53cabca94710)
+
+* From above we can understand the total number of patterns for 64bits Unsigned Number= 0 to (2^64-1)
+
+  </details>
+  
+   <details>
+  <summary>64bit Number System for Signed Number</summary>
+  
+![Screenshot from 2023-08-21 10-43-14](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/e79472b4-0ade-408a-a596-b5b92ab29d71)
+
+* The Signed number can be identified by MSB as '1'
+  
+[Screenshot from 2023-08-21 10-45-27](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/c5c468d5-f72c-4d5f-acf7-f382d46720d3)
+
+* We can observe how the binary-to-decimal conversion takes place for signed bits where -2^63 is the final multiplied
+  
+![Screenshot from 2023-08-21 10-48-37](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/67aba151-0a86-4a93-b18e-ddabde93389f)
+
+* So, the important note here is the final 3 decimal 808 in signed -2^63 where there is 807dec in unsigned which is (2^63-1)
+  
+![Screenshot from 2023-08-21 10-50-13](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/2a89b213-2e65-4010-bba5-cd094f616159)
+
+* These 4 Points are Important to note  which are mentioned above
+* Instruction that runs on it is Base Instructions RV641
+
+  
+  </details>
+  
+   <details>
+  <summary>Labs on Unsigned Number and Signed Number</summary>
+
+**Code for Unsigned Number**
+
+* C-program on highest unsigned number is given below:
+  
+```
+#include <stdio.h>
+#include <math.h>
+int main()
+{
+unsigned long long int max = (unsigned long long int) (pow(2,64) -1);
+printf("highest number represented by unsigned long long int is %llu\n", max);
+return 0;
+}
+```
+
+* Command to get output debugged using spike of unsigned number:
+
+```
+$ gedit unsignedHighest.c
+$ gcc unsignedHighest.c
+$ ./a.out
+
+$ riscv64-unknown-elf-gcc -Ofast -mabi=lp64 -march=rv64i -o unsignedHighest.o unsignedHighest.c
+$ spike pk unsignedHighest.o
+```
+
+![Screenshot from 2023-08-21 12-09-47](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/caafc9e0-1abf-4c4f-9c8a-79aeac7dcc5f)
+
+* Using the same C-program and checking for her power 2^127 we get the unsignedHighest same Highest Number
+  
+```
+#include <stdio.h>
+#include <math.h>
+int main()
+{
+unsigned long long int max = (unsigned long long int) (pow(2,127) -1);
+printf("highest number represented by unsigned long long int is %llu\n", max);
+return 0;
+}
+```
+
+* Now changing the power as 2^10 to get an unsigned number in decimal:
+  
+```
+#include <stdio.h>
+#include <math.h>
+int main()
+{
+unsigned long long int max = (unsigned long long int) (pow(2,10) -1);
+printf("highest number represented by unsigned long long int is %llu\n", max);
+return 0;
+}
+```
+
+![Screenshot from 2023-08-21 12-19-06](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/7c26f9bb-c8e3-41ff-9d77-37ba802f3b18)
+
+**Code for Signed Number**
+
+ C-program on highest Signed number is given below:
+  
+```
+#include <stdio.h>
+#include <math.h>
+int main()
+{
+long long int max = (int) (pow(2,63) -1);
+long long int min = (int) (pow(2,63) * -1);
+printf("highest number represented by long long int is %lld\n", max);
+printf("lowest number represented by long long int is %lld\n", min);
+}
+```
+
+* Command to get output debugged using spike of unsigned number:
+
+```
+$ gedit unsignedHighest.c
+$ gcc unsignedHighest.c
+$ ./a.out
+
+$ riscv64-unknown-elf-gcc -Ofast -mabi=lp64 -march=rv64i -o unsignedHighest.o unsignedHighest.c
+$ spike pk unsignedHighest.o
+```
   </details>
  </details>
    </details>  
@@ -235,6 +372,8 @@ $ spike -d pk sum1ton.o
 
 <details>
  <summary>Introduction to Application Binary Interface</summary>
-
+ 
+* ddqdw
+ 
 </details>
 </details>
