@@ -497,10 +497,93 @@ return 0;
  <summary>Labs works ABI function calls</summary>
 
 <details>
- <summary>Study new Algorithm for sum 1 to N using ASM</summary>
+ <summary>Study New Algorithm for sum 1 to N using ASM</summary>
 
-* 
+![Screenshot from 2023-08-21 18-03-51](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/d6e6267c-0193-4cba-b7c3-f5adc8b8d4a0)
+
+* You can use register a0 to a7 in ASM
+* Other types of Flowchart can also be used here for execution of same program
+
+</details>
+
+<details>
+ <summary>Simulate new C program with Function Call</summary>
+
+* C program from sum of number from 1 to n:
+ 
+```
+#include<stdio.h>
+extern int load(int x,int y);
+int main(){
+
+	int result=0;
+	int count =9;
+	result=load(0x0,count+1);
+	printf("sum of number from 1 to %d is %d\n",count,result);
+
+}
+```
+
+* Code of load file:
+
+```
+.section .text
+.global load
+.type load,@function
+
+load:
+	add a4, a0, zero
+	add a2, a0, a1
+	add a3, a0, zero
+loop:	add a4, a3, a4
+	addi a3, a3, 1
+	blt a3, a2, loop
+	add a0, a4,zero
+	ret
+```
+
+![Screenshot from 2023-08-21 18-42-40](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/9dd4ac8d-660f-4bfd-be9d-34bcbcea1f41)
+
+
+![Screenshot from 2023-08-21 18-38-12](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/4fc5f597-d942-4b13-8c41-1921bc93ddb6)
+
+</details>
+
+<details>
+ <summary>Basic Verification Flow</summary>
+
+ ![Screenshot from 2023-08-21 19-56-18](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/1626fa79-3416-4028-831d-6e7f30b1a638)
+
+ ![Screenshot from 2023-08-21 19-56-56](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/5dd15c57-f6f4-4fc9-a88e-01fedf4dbd9d)
+
+ ![Screenshot from 2023-08-21 19-57-20](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/875a36bd-6a79-46c8-993e-a25f7cf9d7f5)
+
+ ![Screenshot from 2023-08-21 19-59-38](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/9f0b6e01-fbe7-4118-8815-9c862be5266a)
+
+ ![Screenshot from 2023-08-21 20-00-03](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/2b238491-cdf3-4b89-a6a7-7517c7f54a1a)
+
+ ![Screenshot from 2023-08-21 20-00-27](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/ad2ad9f9-0dee-448b-8940-ec87b8e11fef)
+
+* Below are all the code run in colleteral / lab folder and generated above output images:
   
-  </details>
+ ![Screenshot from 2023-08-21 20-00-49](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/e96f40ab-3d8c-4233-9b4c-81abc542caed)
+
+</details>
+
+
+
+ ## DAY 3
+<details>
+<summary>DAY-3</summary>
+<br>
+ <details>
+ <summary>Ap</summary>
+
+<details>
+ <summary>I Interface</summary>
+
+
+</details>
+</details>
 </details>
 </details>
