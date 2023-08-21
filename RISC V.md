@@ -486,16 +486,18 @@ return 0;
   
 ![Screenshot from 2023-08-21 16-17-54](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/03b35e80-cc8a-43f6-8513-935e937871d8)
 
-* Different Register with their ABI name and their usage are mentioned in above image which will be used in upcoming labs
+* Different Register with their ABI name and their usage are mentioned in above image which will be used in upcoming labs.
 
-  </details>
 </details>
+</details>
+
+
 
  <details>
  <summary>Labs works ABI function calls</summary>
 
 <details>
- <summary>Study new ALgorithm for sum 1 to N using ASM</summary>
+ <summary>Study new Algorithm for sum 1 to N using ASM</summary>
 
 * 
   
