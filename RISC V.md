@@ -756,7 +756,7 @@ AND Gate: Outputs are true if all inputs are true. OR Gate: Outputs true if at l
 **Lab Cycle Calculator with Validity:**
 
 * Pipeline Structure:
-* 
+
 ![pm](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/c498c2db-c4cd-42ff-8f1e-56bc55ab2c2b)
 
 
@@ -992,6 +992,7 @@ AND Gate: Outputs are true if all inputs are true. OR Gate: Outputs true if at l
 * Control flow hazards occur when the execution of instructions is affected by changes in the program's control flow, such as branches or jumps. These hazards can lead to incorrect instruction execution and can slow down the pipeline.
   
 * There are three main types of control flow hazards:
+  
 * Branch Hazards: These occur when a pipeline encounters a branch instruction that changes the program counter (PC) before the previous instructions have completed their execution. This can lead to wasted work if the pipeline has already started executing instructions following the branch that will not be needed.
   
 * Control Hazards: Control hazards refer to situations where the pipeline has to stall or insert "bubble" stages in order to resolve the branch instruction. This happens when the outcome of a branch is not yet known, and subsequent instructions that depend on the branch outcome cannot proceed until the branch is resolved.
@@ -999,7 +1000,7 @@ AND Gate: Outputs are true if all inputs are true. OR Gate: Outputs true if at l
 * Jump Hazards: Similar to branch hazards, jump hazards occur when a jump instruction changes the program counter before instructions following the jump have completed. This can also lead to wasted work and inefficient pipeline utilization.
 
 * Read-After-Write (RAW) Hazards:
-Read-after-write hazards occur when an instruction depends on the result of a previous instruction that writes to a register or memory location. These hazards can lead to incorrect results if not handled properly. There are three possible scenarios in RAW hazards:
+Read-after-write hazards occur when an instruction depends on the result of a previous instruction that writes to a register or memory location. These hazards can lead to incorrect results if not handled properly.
 
 * True Dependency (RAW): An instruction depends on the result of a previous instruction that writes to the same location. For example, if instruction B reads a value produced by instruction A, and instruction A has not yet completed execution, a hazard exists.
 
@@ -1015,7 +1016,7 @@ Read-after-write hazards occur when an instruction depends on the result of a pr
 
   ![image-2](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/d6f899d8-c6b7-432e-8973-59ff5c1ee2f0)
 
-**Lab 3 Cycle Valid Signal** 
+**Lab to 3 Cycle Valid Signal** 
 
 The implementation output is:
 
@@ -1026,7 +1027,7 @@ The implementation output is:
  <details>
  <summary>Solutions to Pipeline Hazards</summary>
 
-**Lab- Register File Bypass**
+**Lab to Register File Bypass**
 
 * Pipeline structure:
   
@@ -1040,7 +1041,7 @@ The implementation output is:
 
 ![D5B 261848345-d15c47be-6335-4db8-9689-429d927a1ca5](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/3aa71a46-e837-48aa-9f68-256542b3bb30)
 
-**Lab - BRANCHES**
+**Lab to BRANCHES**
 
 * Pipeline structure:
 
@@ -1050,7 +1051,7 @@ The implementation output is:
   
 ![p4 261848718-6f4a4895-03ea-47fd-8a19-ae23269ec885](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/86aa0ae2-2381-4917-9f53-990a69c9ae0d)
 
-**Lab - ALU**
+**Lab to ALU**
 
 ![p5 261849691-96477a58-80a0-43d8-9716-11be0385e3e9](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/c7fdaa40-9fd9-4e2d-b327-bc8323da791e)
 
