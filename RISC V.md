@@ -1,24 +1,6 @@
 [](url) Physical Design of ASICs PART2 
 
 
-## Quick links:
-
-
-[DAY 1](#day-1)
-
-[DAY 2](#day-2)
-
-[DAY 3](#day-3)
-
-[DAY 4](#day-4)
-
-[DAY 5](#day-5)
-
-
-
-[REFERENCES](#References)
-
-
 ## DAY 1
 <details>
 <summary>DAY-1</summary>
@@ -842,7 +824,22 @@ AND Gate: Outputs are true if all inputs are true. OR Gate: Outputs true if at l
 <details>
  <summary>Fetch and Decode</summary>
 	
-* The implementation plan of RISC-V CPU Core:
+**L1 - Implementation Plan and Lab for PC**
+
+ * Pipeline structure
+
+![L1262119772-30fc43ad-fd1d-4065-b113-72b537a5659f](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/e275c95d-5aa1-4e60-a0a2-884a5f748314)
+
+
+![26L1B2089499-79905e9b-cb1e-447f-ba69-000124897741](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/8c4438a6-5a34-46b7-9029-fe109396e5f1)
+
+* Makerchip Implementation:
+
+![L1C262089513-1809b4c3-40e5-40a4-94ab-790d4d914fec](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/8650006d-f780-4dd3-9119-8df130638191)
+
+
+
+**L2 - Lab for instruction fetch logic**
 
  * Pipeline structure (part 1):
 	
@@ -857,6 +854,173 @@ AND Gate: Outputs are true if all inputs are true. OR Gate: Outputs true if at l
 ![Screenshot from 2023-08-22 21-42-20](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/478593c9-a791-4a98-a8fc-abd475359161)
 
 
+**L3 - Lab for RV instruction types Decode Logic**
+
+* Pipeline structure:
+  
+![L4a261862793-58ec9bda-6754-4337-8a77-ded3442cd3de](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/8e085b02-eec8-4b4d-a538-62922f106856)
+
+* Makerchip output:
+  
+![L4a261862793-58ec9bda-6754-4337-8a77-ded3442cd3de](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/a5d1917e-ede9-42d9-8783-2a99e9c91528)
+
+**L4 - Instruction immediate Decode**
+
+![L4aa261863215-e040c77e-3bf8-452a-916e-c42f3b38b780](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/14391136-61d8-4c84-b078-60bd4a3a9f03)
+
+* Makerchip output:
+  
+![L4bb 261863229-48fdc48e-5d2c-448d-b2ab-811f9c035ed6](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/980cbc39-bc18-43b2-b6d8-fd03e666164b)
+
+**L5 - Instruction Decode**
+
+![L45261863364-520d2924-cfda-4ddd-9779-ffa88619f976](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/3d8f5e7d-7b25-47e6-a10f-1fc7bae31f08)
+
+* Makerchip output:
+ 
+![L45B261863387-6b08bebf-3938-41ec-84ed-2bec32cae7e4](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/805ae28e-23b7-4a89-b9e2-22b1a2a76f3c)
+
+**L6 - Instruction Field Decode**
+
+![L46 261863610-3aa09860-ea31-4f94-a6d7-cb30dd9405dc](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/7efff408-affe-42c5-87cd-f8999dd3975a)
+
+* Makerchip output:
+  
+![L46B 261863629-41305a3a-ba44-4a58-912f-e286f6f58cc6](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/49a6eea1-886c-46d8-842a-08852d53c65e)
+
+**L7 - Instruction Decode_2**
+
+![261863655-61a5ae40-8803-4fb4-b45f-dbc0316f05bf](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/6807090a-2d4e-4ba0-85f2-c3228be43187)
+
+
+* Makerchip output:
+
+![L7b 261863677-c268a250-e8fc-4cde-828e-3ed13f646ad8](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/9900a0bb-034c-4f30-af56-8d0836adc549)
+
+</details>
+
+<details>
+ <summary>RISC-V Control Logic</summary>
+
+**L1 : Register File Read**
+
+* Pipeline structure:
+  
+![l4 a261865078-bb6d8153-9b7b-444c-bc76-f9c1b30cf097](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/d2b900a4-d114-4d2b-aa46-4825b52875ca)
+
+
+* Makerchip Implementation:
+
+![l4b 261865102-0f770030-b163-4665-a201-3dea20163d35](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/bff227f3-9ba0-425b-97e9-a3b39cefeae2)
+
+
+**L2: Register file Read -2**
+
+* Pipeline structure:
+  
+![ls1 262119908-6d5282fb-1da5-47c3-b557-72c0189743a3](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/f93efdd1-2724-4716-959a-14ef4825a59e)
+
+
+* Makerchip Implementation:
+  
+![ls2 262130943-267fffcb-4a75-4be4-bd0b-4c7bffd9d9d2](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/9fa607e6-f25e-4e1c-be43-328dcb810470)
+
+**L3 : Arithmetic and Logic unit(ALU)**
+
+* Pipeline structure:
+
+![L4p261865159-354573dc-fdf5-4300-b207-7444128fd37c](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/c7851734-cb18-494d-9497-061783e7017a)
+
+* Makerchip Implementation:
+
+![L4q261865233-7fd0d43c-9e3a-48fb-a621-de17d6f76488](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/4301701a-f20d-46d1-ad67-60646302d636)
+
+**L4 : Register File Write**
+
+* Pipeline structure:
+  
+![4ls261865442-d2412f07-ffe3-43c1-b607-77d1a5929932](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/e61553bf-05eb-45f3-9d12-cad2d42c20e8)
+
+* Makerchip Implementation
+
+  ![4lt 261865510-23d81210-e835-4b26-a47b-5d1c4702b424](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/9d65ce27-3f54-4014-85fc-bf7d0c35e87c)
+
+**L5 : Concept of array and Register file details**
+
+* Pipeline structure:
+
+![lp1 262119943-424d6240-c7c5-4332-801d-0d4348e27387](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/8820ff85-bd23-4e18-9531-97fd47b0b8ab)
+
+* Makerchip Implementation
+
+![lp2 262130969-126ca197-6f8e-457e-8a93-bc395b3b744e](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/0ac29389-8fe2-4876-b3d0-94eee147c0a2)
+
+**L6 :Completing Branch Instructions Implementations**
+
+* Pipeline structure:
+  
+![Screenshot from 2023-08-23 01-08-43](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/52908f63-1fcd-4693-bde7-d4f79e76ab86)
+
+* Makerchip Implementation:
+
+![4LTR 262130980-2845cc10-0808-4351-bca8-03d80daabfda](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/10eedfc2-90e9-4d56-bd58-1149b45594eb)
+
+**L7 - Lab to create simple Testbench**
+
+* Pipeline structure:
+  
+![mb262119979-e4b9243d-dfda-4cd4-b898-02ee75d4cb96](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/39a00439-7abf-48cd-93cd-416c00792909)
+
+* Makerchip Implementation:
+
+![mba 26230986-1820b072-7fe8-4cef-9399-57d09542b0d3](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/384956e6-9582-454f-803f-7add3a36d144)
+
+ 
+</details>
+</details>
+
+## DAY-5
+<details>
+ <summary>DAY-5</summary>
+
+ <details>
+ <summary>Validity</summary>
+	 
+</details>
+</details>
+
+
+## ACKNOWLEDGEMENT
+<details>
+ <summary>ACKNOWLEDGEMENT</summary>
+
+* Kunal Ghosh, VSD Corp. Pvt. Ltd.
+* Chatgpt
+* Kanish R,Colleague,IIIT B
+* Pruthvi Parate,Colleague,IIIT B
+* Emil Jayanth Lal,Colleague,IIIT B
+* Bhargav Dv,Colleague,IIIT B
+* Geetima Kachari,Assistant professor
+* Shivani Shah,IIIT B Senior
+* Bala Dhinesh,Engineer,Testorrent
+* Steve Hoover,Redwood Eda
+
+</details>
+
+## REFERENCES 
+<details>
+ <summary>REFERENCES</summary>
+
+* https://www.vsdiat.com
+* https://en.wikipedia.org/wiki/Toolchain
+* https://en.wikipedia.org/wiki/GNU_toolchain
+* https://github.com/riscv/riscv-gnu-toolchain
+* https://steveicarus.github.io/iverilog/
+* https://github.com/kunalg123/
+* https://github.com/stevehoover/RISC-V_MYTH_Workshop 
+* https://redwoodeda.com
+
+</details>
 </details>
 </details>
 </details>
