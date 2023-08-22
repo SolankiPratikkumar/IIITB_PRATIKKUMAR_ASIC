@@ -723,7 +723,7 @@ AND Gate: Outputs are true if all inputs are true. OR Gate: Outputs true if at l
 
 ![pipeline structure261845315-e2fe6720-f561-430a-a39d-2c3441bf5643](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/5170347e-3fe8-4367-8455-d2e88aa9229f)
 
-* Makerchip Implementation:
+* Makerchip Logic Implementation:
   
 ![pll](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/80c07b93-14bc-4a77-8ebc-23ca17b57f88)
 
@@ -733,10 +733,130 @@ AND Gate: Outputs are true if all inputs are true. OR Gate: Outputs true if at l
   
 ![pl2](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/0886bcb6-fab0-44bb-844a-ae013b6f3166)
 
-* Makerchip implementation:
+* Makerchip Logic implementation:
 
  ![pli2 261848114-31e4f643-894e-4370-9830-92b6524fb300](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/6db87d26-69d5-4bf9-9912-8fb902f677ed)
+
+
  
+</details>
+
+
+<details>
+ <summary>Validity</summary>
+
+* Validity is another feature in TL verilog which is asserted if a particular transactions in a pipeline is valid or true. A new scope, called “when” scope is introduced for this and it is denoted as ?$valid. This new scope has many advantages - easier design, cleaner debug, better error checking and automated clock gating.
+  
+* Validity provides :
+
+(1) Automated Clock gating
+(2) Easier debug
+(3) Better error checking
+(4) Cleaner design 
+
+**Implementation of Pythagoran's Theorem with Validity:**
+
+![L261848454-f85062ab-35aa-4644-8a52-7d44750ab5d4](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/0b622844-3ef2-42ee-90b1-3a137c40e7fa)
+
+* Clock Gating is a power-saving property.
+
+**Lab Distance Accumulator with Pythagoran's Theorem:**
+
+* Pipeline structure:
+  
+ ![p261852154-217a0e1a-55f7-41a6-aa47-4f42e9182609](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/c48ee947-b4b2-4b78-a2a4-fc6035e0d2fb)
+
+* Makerchip Implementation of Distance Accumulator of Pythagoran's Theorem:
+
+  ![pi261852159-d8dd50fb-1f93-4d7c-8768-5c7a5eb52c78](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/07312989-f1a9-46c0-ac0d-791181d8d200)
+
+
+**Lab Cycle Calculator with Validity:**
+
+* Pipeline Structure:
+* 
+![pm](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/c498c2db-c4cd-42ff-8f1e-56bc55ab2c2b)
+
+
+* Makerchip Implementation:
+  
+![pmo261852343-40f04672-543d-4705-b340-3ff00b774c1f](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/44ccbea9-d19d-4fc0-91a7-4a212eb8ebe3)
+
+
+**Lab Calculator with Single Value Memory:**
+
+![po261852971-e1a3acc0-4388-43fc-862b-dd197cad6617](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/3d0fde0d-0424-4301-abd5-acb2dd1dccda)
+
+</details>
+
+<details>
+ <summary>Wrap Up</summary>
+
+ **Lab:Conway Game of Life**
+
+ ![cw261852668-48b9a59c-d329-4e8b-9a73-956806ae8b0e](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/c68320ac-28b3-475a-8ada-1a60c7b66053)
+
+
+**Pythagoran's theorem**
+
+* Pipeline structure:
+  
+![cli261852745-635ab276-17c3-4c28-a1fe-fb74380cfd96](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/79fb15f2-a852-443a-870b-5aeb8c2d6f4b)
+
+* Makerchip Implementation:
+
+![clii 261852671-72343c4b-d972-40ab-bf0d-6dfe32a09857](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/640f419c-d6eb-4d0e-9a81-d0ac717a8e09)
+
+</details>
+</details>
+</details>
+
+
+## DAY 4
+<details>
+<summary>DAY-4</summary>
+<br>
+ <details>
+ <summary>Basic RISC-V CPU Micro-Architecture</summary>
+
+**Introduction to Simple RISC-V Micro-Architecture**
+
+![MC 261853432-c4589d82-eecb-4ed3-875a-40441e20ab5d](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/4d173557-ad88-4b0c-87df-75e46b9a37a3)
+
+* A single-cycle microarchitecture for a RISC-V CPU is a simple and straightforward design in which each instruction is executed within a single clock cycle. While this approach is easy to understand, it has limitations in terms of performance and efficiency. Let's break down the key components of a single-cycle RISC-V CPU's microarchitecture:
+
+(1) Instruction Fetch (IF): This stage is responsible for fetching the next instruction from memory. The program counter (PC) is used to determine the address of the next instruction to fetch. The fetched instruction is then passed to the next stage.
+
+(2) Instruction Decode (ID): In this stage, the fetched instruction is decoded to determine the operation it represents and the operands it requires. Register values are read from the register file if needed.
+
+(3) Execution (EX): This stage performs the actual computation or operation specified by the instruction. For arithmetic and logical operations, this stage performs the required calculations. For memory access instructions, the memory address may be calculated here.
+
+(4) Memory Access (MEM): In this stage, memory access operations such as load and store instructions are performed. If a load instruction is being executed, the data is read from memory. If a store instruction is being executed, the data is written to memory.
+
+(5) Write-Back (WB): The final result of the instruction is written back to the appropriate register in this stage. This stage completes the execution of the instruction.
+
+* Note that these are the fundamental stages of a classic five-stage pipeline. Some processors may have additional stages, or they may combine certain stages for improved performance. Additionally, some high-performance CPUs might use techniques like out-of-order execution to increase instruction-level parallelism, which can complicate the pipeline structure.
+
+</details>
+
+<details>
+ <summary>Fetch and Decode</summary>
+	
+* The implementation plan of RISC-V CPU Core:
+
+ * Pipeline structure (part 1):
+	
+![4aa261861824-d4f837f2-82b2-4253-b818-b336518e1476](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/97c848d9-e4c4-4e87-8847-5cf4d3ebacd7)
+
+* Pipeline structure (part 2):
+
+![4ab 261861853-3700e20f-e543-4c19-9d35-2c25b1d67bfe](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/46563c65-9b82-42fd-95d7-66b9e5729f66)
+
+* Makerchip Implementation:
+  
+![Screenshot from 2023-08-22 21-42-20](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/478593c9-a791-4a98-a8fc-abd475359161)
+
+
 </details>
 </details>
 </details>
