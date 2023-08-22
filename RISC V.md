@@ -941,7 +941,7 @@ AND Gate: Outputs are true if all inputs are true. OR Gate: Outputs true if at l
   
 ![4ls261865442-d2412f07-ffe3-43c1-b607-77d1a5929932](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/e61553bf-05eb-45f3-9d12-cad2d42c20e8)
 
-* Makerchip Implementation
+* Makerchip Output:
 
   ![4lt 261865510-23d81210-e835-4b26-a47b-5d1c4702b424](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/9d65ce27-3f54-4014-85fc-bf7d0c35e87c)
 
