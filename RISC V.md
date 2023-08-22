@@ -1,4 +1,4 @@
-[](url) Physical Design of ASICs PART2 
+[](url) Physical Design of ASICs - RISC V
 
 
 ## DAY 1
@@ -982,13 +982,407 @@ AND Gate: Outputs are true if all inputs are true. OR Gate: Outputs true if at l
 ## DAY-5
 <details>
  <summary>DAY-5</summary>
+	
+ <details>
+ <summary>Complete Pipelined RISCV CPU Micro-Architecture</summary>
+	 
+ <details>
+ <summary>Pipeline Hazards</summary>
+
+* Control flow hazards occur when the execution of instructions is affected by changes in the program's control flow, such as branches or jumps. These hazards can lead to incorrect instruction execution and can slow down the pipeline.
+  
+* There are three main types of control flow hazards:
+* Branch Hazards: These occur when a pipeline encounters a branch instruction that changes the program counter (PC) before the previous instructions have completed their execution. This can lead to wasted work if the pipeline has already started executing instructions following the branch that will not be needed.
+  
+* Control Hazards: Control hazards refer to situations where the pipeline has to stall or insert "bubble" stages in order to resolve the branch instruction. This happens when the outcome of a branch is not yet known, and subsequent instructions that depend on the branch outcome cannot proceed until the branch is resolved.
+
+* Jump Hazards: Similar to branch hazards, jump hazards occur when a jump instruction changes the program counter before instructions following the jump have completed. This can also lead to wasted work and inefficient pipeline utilization.
+
+* Read-After-Write (RAW) Hazards:
+Read-after-write hazards occur when an instruction depends on the result of a previous instruction that writes to a register or memory location. These hazards can lead to incorrect results if not handled properly. There are three possible scenarios in RAW hazards:
+
+* True Dependency (RAW): An instruction depends on the result of a previous instruction that writes to the same location. For example, if instruction B reads a value produced by instruction A, and instruction A has not yet completed execution, a hazard exists.
+
+* Anti-Dependency (WAR): An instruction depends on a value that a subsequent instruction is going to write. For example, if instruction A writes to a register and then instruction B reads from the same register, instruction B might read the wrong value if it's executed before A's write.
+
+* Output Dependency (WAW): Two instructions are trying to write to the same location, and the order of their execution affects the final result. This can lead to incorrect results if not properly managed.
+
+* Below is the load-store diagram shown:
+  
+![d5 262429014-de432e69-b349-4398-912b-53811cd7c4b0](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/1a28eee2-cf32-46f9-981d-fa2e8a297bc7)
+
+* To understand the pipeline look below the waterfall logic diagram:
+
+  ![image-2](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/d6f899d8-c6b7-432e-8973-59ff5c1ee2f0)
+
+**Lab 3 Cycle Valid Signal** 
+
+The implementation output is:
+
+![p1 261847180-4e094372-0f25-4c77-b7c1-906d3b04ee5f](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/8e234d51-3870-4599-95eb-c609ff975877)
+
+</details>
 
  <details>
- <summary>Validity</summary>
-	 
-</details>
+ <summary>Solutions to Pipeline Hazards</summary>
+
+**Lab- Register File Bypass**
+
+* Pipeline structure:
+  
+![D5A261848118-50d9c9b0-05bc-4a5a-976e-c253deddaa59](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/8c653e83-c468-473a-a743-0739c553b480)
+
+
+![Screenshot from 2023-08-22 01-47-01](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/3838aebf-f87b-458e-8475-4a301ab1d5e2)
+
+
+* The implementation output is as shown below:
+
+![D5B 261848345-d15c47be-6335-4db8-9689-429d927a1ca5](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/3aa71a46-e837-48aa-9f68-256542b3bb30)
+
+**Lab - BRANCHES**
+
+* Pipeline structure:
+
+![Screenshot from 2023-08-22 02-07-14](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/be478175-7ce8-4897-8b31-1aa6021c6615)
+
+* The implementation output is as shown below:
+  
+![p4 261848718-6f4a4895-03ea-47fd-8a19-ae23269ec885](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/86aa0ae2-2381-4917-9f53-990a69c9ae0d)
+
+**Lab - ALU**
+
+![p5 261849691-96477a58-80a0-43d8-9716-11be0385e3e9](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/c7fdaa40-9fd9-4e2d-b327-bc8323da791e)
+
 </details>
 
+ <details>
+ <summary>Load/Store Instructions and Completing RISC-V CPU</summary>
+
+**Lab to LOAD:**
+
+* Pipeline structure:
+  
+![Screenshot from 2023-08-22 02-13-30](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/52dc5c72-27d2-4c1d-8f26-abd5c985dae9)
+
+![Screenshot from 2023-08-22 02-13-59](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/5c5251ee-dc1e-481f-8be3-688d9a001966)
+
+
+* The Makerchip output is as shown below:
+
+![p6 261852929-a5bbd00d-df08-4294-bcfe-3f1157b88b0a](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/790e2907-fe09-4ec1-839a-8ea43e6e552d)
+
+
+**Lab to LOAD/STORE:**
+
+* Pipeline structure:
+  
+![pf1 261853239-4106c86c-15c4-4543-8a40-67fa9e28d4bf](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/9d9916a6-bdd6-4318-9f7a-3bdc5caf58c6)
+
+
+* The Makerchip output is as shown below:
+
+![pf261853264-1eded761-772a-46e3-9a80-584da3f4afb5](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/3572cfba-514f-4cce-9ad0-2bc6506ecb3d)
+
+**Lab to JUMPS:**
+
+* Pipeline structure:
+
+![pf1 261853239-4106c86c-15c4-4543-8a40-67fa9e28d4bf](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/51e848fe-3bca-4e27-b6e0-e8df0adcffd4)
+
+
+* The Makerchip output is as shown below:
+
+![pf261853264-1eded761-772a-46e3-9a80-584da3f4afb5](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/7b1eacb2-c226-4773-89ce-642008fd3051)
+
+</details>
+
+<details>
+<summary>RISC-V Core CPU Final</summary>
+
+* The RISC-V final code is shown below:
+
+```
+\m4_TLV_version 1d: tl-x.org
+\SV
+   // This code can be found in: https://github.com/stevehoover/RISC-V_MYTH_Workshop
+   
+   m4_include_lib(['https://raw.githubusercontent.com/Lasya-G/Risc_V/main/risc-v_shell_lib.tlv'])
+
+\SV
+   m4_makerchip_module   // (Expanded in Nav-TLV pane.)
+\TLV
+
+   // /====================\
+   // | Sum 1 to 9 Program |
+   // \====================/
+   //
+   // Program for MYTH Workshop to test RV32I
+   // Add 1,2,3,...,9 (in that order).
+   //
+   // Regs:
+   //  r10 (a0): In: 0, Out: final sum
+   //  r12 (a2): 10
+   //  r13 (a3): 1..10
+   //  r14 (a4): Sum
+   //
+   // External to function:
+   m4_asm(ADD, r10, r0, r0)             // Initialize r10 (a0) to 0.
+   // Function:
+   m4_asm(ADD, r14, r10, r0)            // Initialize sum register a4 with 0x0
+   m4_asm(ADDI, r12, r10, 1010)         // Store count of 10 in register a2.
+   m4_asm(ADD, r13, r10, r0)            // Initialize intermediate sum register a3 with 0
+   // Loop:
+   m4_asm(ADD, r14, r13, r14)           // Incremental addition
+   m4_asm(ADDI, r13, r13, 1)            // Increment intermediate register by 1
+   m4_asm(BLT, r13, r12, 1111111111000) // If a3 is less than a2, branch to label named <loop>
+   m4_asm(ADD, r10, r14, r0)            // Store final result to register a0 so that it can be read by main program
+   m4_asm(SW, r0, r10, 10000)           // Store the final result value to byte address 16
+   m4_asm(LW, r15, r0, 10000)           // Load the final result value from adress 16 to x17
+   
+   // Optional:
+   // m4_asm(JAL, r7, 00000000000000000000) // Done. Jump to itself (infinite loop). (Up to 20-bit signed immediate plus implicit 0 bit (unlike JALR) provides byte address; last immediate bit should also be 0)
+   m4_define_hier(['M4_IMEM'], M4_NUM_INSTRS)
+
+
+   |cpu
+      @0
+         $reset = *reset;
+         
+         //MODIFIED NEXT PC LOGIC FOR INCLUDING BRANCH INSTRCUTIONS
+         $pc[31:0] = >>1$reset ? 32'b0 :
+                     >>3$valid_taken_branch ? >>3$br_target_pc :
+                     >>3$valid_load ? >>3$inc_pc :
+                     >>3$valid_jump && >>3$is_jal ? >>3$br_target_pc :
+                     >>3$valid_jump && >>3$is_jalr ? >>3$jalr_target_pc :
+                     >>1$inc_pc ;
+         //START LOGIC TO PROVIDE FIRST VALID LOGIC
+         //$start = (>>1$reset && $reset == 0) ? 1'b1 : 1'b0;
+         //$valid = $reset ? 1'b0 :
+                  //$start ? 1'b1 : >>3$valid;
+     
+      @1  
+         //INSTRUCTION FETCH
+         $inc_pc[31:0] = $pc + 32'd4;
+         
+         $imem_rd_en = !$reset;
+         $imem_rd_addr[M4_IMEM_INDEX_CNT-1:0] = $pc[M4_IMEM_INDEX_CNT+1:2];
+         
+         $instr[31:0] = $imem_rd_data[31:0];
+         
+         //INSTRUCTION TYPES DECODE        
+         
+         $is_u_instr = $instr[6:2] ==? 5'b0x101;
+         
+         $is_s_instr = $instr[6:2] ==? 5'b0100x;
+         
+         $is_r_instr = $instr[6:2] ==? 5'b011x0 ||
+                       $instr[6:2] ==? 5'b01011 ||
+                       $instr[6:2] ==? 5'b10100;
+         
+         $is_j_instr = $instr[6:2] ==? 5'b11011;
+         
+         $is_i_instr = $instr[6:2] ==? 5'b0000x ||
+                       $instr[6:2] ==? 5'b001x0 ||
+                       $instr[6:2] ==? 5'b11001;
+         
+         $is_b_instr = $instr[6:2] ==? 5'b11000;
+         
+         //INSTRUCTION IMMEDIATE DECODE
+         $imm[31:0] = $is_i_instr ? {{21{$instr[31]}}, $instr[30:20]} :
+                      $is_s_instr ? {{21{$instr[31]}}, $instr[30:25], $instr[11:7]} :
+                      $is_b_instr ? {{20{$instr[31]}}, $instr[7], $instr[30:25], $instr[11:8], 1'b0} :
+                      $is_u_instr ? {$instr[31:12], 12'b0} :
+                      $is_j_instr ? {{12{$instr[31]}}, $instr[19:12], $instr[20], $instr[30:21], 1'b0} :
+                                                            32'b0;
+         //INSTRUCTION DECODE
+         $opcode[6:0] = $instr[6:0];
+         
+         
+         //INSTRUCTION FIELD DECODE
+         $rs2_valid = $is_r_instr || $is_s_instr || $is_b_instr;
+         ?$rs2_valid
+            $rs2[4:0] = $instr[24:20];
+           
+         $rs1_valid = $is_r_instr  || $is_s_instr || $is_b_instr || $is_i_instr;
+         ?$rs1_valid
+            $rs1[4:0] = $instr[19:15];
+         
+         $funct3_valid = $is_r_instr  || $is_s_instr || $is_b_instr || $is_i_instr;
+         ?$funct3_valid
+            $funct3[2:0] = $instr[14:12];
+           
+         $funct7_valid = $is_r_instr ;
+         ?$funct7_valid
+            $funct7[6:0] = $instr[31:25];
+           
+         $rd_valid = $is_r_instr  || $is_u_instr || $is_j_instr || $is_i_instr;
+         ?$rd_valid
+            $rd[4:0] = $instr[11:7];
+         
+         
+      @2
+         //INSTRUCTION DECODE
+         $dec_bits[10:0] = {$funct7[5],$funct3,$opcode};
+         $is_beq = $dec_bits ==? 11'bx_000_1100011;
+         $is_bne = $dec_bits ==? 11'bx_001_1100011;
+         $is_blt = $dec_bits ==? 11'bx_100_1100011;
+         $is_bge = $dec_bits ==? 11'bx_101_1100011;
+         $is_bltu = $dec_bits ==? 11'bx_110_1100011;
+         $is_bgeu = $dec_bits ==? 11'bx_111_1100011;
+         $is_addi = $dec_bits ==? 11'bx_000_0010011;
+         $is_add = $dec_bits ==? 11'b0_000_0110011;
+         $is_lui = $dec_bits ==? 11'bx_xxx_0110111;
+         $is_auipc = $dec_bits ==? 11'bx_xxx_0010111;
+         $is_jal = $dec_bits ==? 11'bx_xxx_1101111;
+         $is_jalr = $dec_bits ==? 11'bx_000_1100111;
+         $is_load = $opcode == 7'b0000011;
+         $is_sb = $dec_bits ==? 11'bx_000_0100011;
+         $is_sh = $dec_bits ==? 11'bx_001_0100011;
+         $is_sw = $dec_bits ==? 11'bx_010_0100011;
+         $is_slti = $dec_bits ==? 11'bx_010_0010011;
+         $is_sltiu = $dec_bits ==? 11'bx_011_0100011;
+         $is_xori = $dec_bits ==? 11'bx_100_0100011;
+         $is_ori = $dec_bits ==? 11'bx_110_0100011;
+         $is_andi = $dec_bits ==? 11'bx_111_0100011;
+         $is_slli = $dec_bits ==? 11'b0_001_0100011;
+         $is_srli = $dec_bits ==? 11'b0_101_0100011;
+         $is_srai = $dec_bits ==? 11'b1_101_0100011;
+         $is_sub = $dec_bits ==? 11'b1_000_0110011;
+         $is_sll = $dec_bits ==? 11'b0_001_0110011;
+         $is_slt = $dec_bits ==? 11'b0_010_0110011;
+         $is_sltu = $dec_bits ==? 11'b0_011_0110011;
+         $is_xor = $dec_bits ==? 11'b0_100_0110011;
+         $is_srl = $dec_bits ==? 11'b0_101_0110011;
+         $is_sra = $dec_bits ==? 11'b1_101_0110011;
+         $is_or = $dec_bits ==? 11'b0_110_0110011;
+         $is_and = $dec_bits ==? 11'b0_111_0110011;
+         
+         $jalr_target_pc[31:0] = $src1_value +$imm ;
+      @3
+         $is_jump = $is_jal || $is_jalr ;   
+         `BOGUS_USE($is_beq $is_bne $is_blt $is_bge $is_bltu $is_bgeu $is_addi $is_add
+                    $is_lui $is_auipc $is_jal $is_jalr $is_load $is_sb $is_sh $is_sw $is_slti
+                    $is_sltiu $is_xori $is_ori $is_andi $is_slli $is_srli $is_srai $is_sub $is_sll
+                    $is_slt $is_sltu $is_xor $is_srl $is_sra $is_or $is_and)
+         
+      @2  
+         //REGISTER FILE READ
+         //$rf_wr_en = 1'b0;
+         //$rf_wr_index[4:0] = 5'b0;
+         //$rf_wr_data[31:0] = 32'b0;
+         $rf_rd_en1 = $rs1_valid;
+         $rf_rd_index1[4:0] = $rs1;
+         $rf_rd_en2 = $rs2_valid;
+         $rf_rd_index2[4:0] = $rs2;
+         
+         $src1_value[31:0] = >>1$rf_wr_en && (>>1$rf_wr_index == $rf_rd_index1) ? >>1$result : $rf_rd_data1;
+         $src2_value[31:0] = >>1$rf_wr_en && (>>1$rf_wr_index == $rf_rd_index2) ? >>1$result : $rf_rd_data2;
+         $br_target_pc[31:0] = $pc +$imm;
+         
+      @3  
+         //ARITHMETIC AND LOGIC UNIT (ALU)
+         
+         $sltu_rslt[31:0] = $src1_value < $src2_value;
+         $sltiu_rslt[31:0] = $src1_value < $imm;
+         $result[31:0] = $is_addi ? $src1_value + $imm :
+                         $is_add ? $src1_value + $src2_value :
+                         $is_andi ? $src1_value & $imm :
+                         $is_ori ? $src1_value | $imm :
+                         $is_xori ? $src1_value ^ $imm :
+                         $is_slli ? $src1_value << $imm[5:0] :
+                         ($is_addi || $is_load || $is_s_instr) ? $src1_value + $imm :
+                         $is_srli ? $src1_value >> $imm[5:0] :
+                         $is_and ? $src1_value & $src2_value :
+                         $is_or ? $src1_value | $src2_value :
+                         $is_xor ? $src1_value ^ $src2_value :
+                         $is_sub ? $src1_value - $src2_value :
+                         $is_sll ? $src1_value << $src2_value[4:0] :
+                         $is_srl ? $src1_value >> $src2_value[4:0] :
+                         $is_sltu ? $sltu_rslt :
+                         $is_sltiu ? $sltiu_rslt :
+                         $is_lui ? {$imm[31:12],12'b0} :
+                         $is_auipc ? $pc + $imm :
+                         $is_jal ? $pc + 4 :
+                         $is_jalr ? $pc + 4 :
+                         $is_srai ? { {32{$src1_value[31]}},$src1_value} >> $imm[4:0] :
+                         $is_slt ? ($src1_value[31] == $src2_value[31]) ? $sltu_rslt : {31'b0,$src1_value[31]} :
+                         $is_slti ? ($src1_value[31] == $imm[31]) ? $sltiu_rslt : {31'b0,$src1_value[31]} :
+                         $is_sra ? { {32{$src1_value[31]}},$src1_value} >> $src2_value[4:0] :
+                         32'bx;
+         
+         
+         //REGISTER FILE WRITE
+         $rf_wr_en = ($rd_valid && $rd != 5'b0 && $valid) || >>2$valid_load;
+         $rf_wr_index[4:0] = >>2$valid_load ? >>2$rd : $rd;
+         $rf_wr_data[31:0] = >>2$valid_load ? >>2$ld_data : $result;
+         
+         
+         //BRANCH INSTRUCTIONS 1
+         $taken_branch = $is_beq ? ($src1_value == $src2_value):
+                         $is_bne ? ($src1_value != $src2_value):
+                         $is_blt ? (($src1_value < $src2_value) ^ ($src1_value[31] != $src2_value[31])):
+                         $is_bge ? (($src1_value >= $src2_value) ^ ($src1_value[31] != $src2_value[31])):
+                         $is_bltu ? ($src1_value < $src2_value):
+                         $is_bgeu ? ($src1_value >= $src2_value):
+                         1'b0;
+          //CYCLE VALID INSTRUCTIONS
+         $valid = !(>>1$valid_taken_branch || >>2$valid_taken_branch ||
+                    >>1$valid_load || >>2$valid_load) ;
+         
+         $valid_load = $valid && $is_load ;
+         //$valid = !(>>1$valid_taken_branch || >>2$valid_taken_branch);
+         $valid_taken_branch = $valid && $taken_branch;
+         $valid_jump = $is_jump && $valid ;
+         `BOGUS_USE($taken_branch)
+      @4
+         //MINI 1-R/W MEMORY
+         $dmem_wr_en = $is_s_instr && $valid ;
+         $dmem_addr[3:0] = $result[5:2] ;
+         $dmem_wr_data[31:0] = $src2_value ;
+         $dmem_rd_en = $is_load ;
+         
+      @5
+         //LOAD DATA
+         $ld_data[31:0] = $dmem_rd_data ;   
+         
+         
+         
+
+      // Note: Because of the magic we are using for visualisation, if visualisation is enabled below,
+      //       be sure to avoid having unassigned signals (which you might be using for random inputs)
+      //       other than those specifically expected in the labs. You'll get strange errors for these.
+
+   
+   // Assert these to end simulation (before Makerchip cycle limit).
+   //*passed = *cyc_cnt > 40;
+   *passed = |cpu/xreg[15]>>5$value == (1+2+3+4+5+6+7+8+9) ;
+   *failed = 1'b0;
+   
+   // Macro instantiations for:
+   //  o instruction memory
+   //  o register file
+   //  o data memory
+   //  o CPU visualization
+   |cpu
+      m4+imem(@1)    // Args: (read stage)
+      m4+rf(@2, @3)  // Args: (read stage, write stage) - if equal, no register bypass is required
+      m4+dmem(@4)    // Args: (read/write stage)
+   
+   m4+viz(@4)    // For visualisation, argument should be at least equal to the last stage of CPU logic
+   //@4 would work for all lab
+\SV
+   endmodule
+```
+
+* The Makerchip output is as shown below:
+  
+![final](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/6e9537e6-78f2-48fd-b54b-7bf5fea99c59)
+
+
+</details>
+</details>
+</details>
 
 ## ACKNOWLEDGEMENT
 <details>
@@ -1012,12 +1406,13 @@ AND Gate: Outputs are true if all inputs are true. OR Gate: Outputs true if at l
  <summary>REFERENCES</summary>
 
 * https://www.vsdiat.com
-* https://en.wikipedia.org/wiki/Toolchain
-* https://en.wikipedia.org/wiki/GNU_toolchain
+* https://github.com/kunalg123/riscv_workshop_collaterals
+* https://github.com/RISCV-MYTH-WORKSHOP/RISC-V-CPU-Core-using-TL-Verilog.git
 * https://github.com/riscv/riscv-gnu-toolchain
 * https://steveicarus.github.io/iverilog/
 * https://github.com/kunalg123/
-* https://github.com/stevehoover/RISC-V_MYTH_Workshop 
+* https://github.com/stevehoover/RISC-V_MYTH_Workshop
+* https://makerchip.com/sandbox/
 * https://redwoodeda.com
 
 </details>
