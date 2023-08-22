@@ -569,7 +569,9 @@ loop:	add a4, a3, a4
  ![Screenshot from 2023-08-21 20-00-49](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/e96f40ab-3d8c-4233-9b4c-81abc542caed)
 
 </details>
-
+</details>
+</details>
+</details>
 
 
  ## DAY 3
@@ -584,12 +586,157 @@ loop:	add a4, a3, a4
 
 ![drd](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/aa84b1bf-c1b7-4c81-8bff-285dda08fe36)
  
-AND Gate: Outputs true if all inputs are true. OR Gate: Outputs true if at least one input is true. NOT Gate: Outputs the opposite (complement) of the input. XOR Gate: Outputs true if the number of true inputs is odd. NAND Gate: Outputs false only if all inputs are true. NOR Gate: Outputs true only if all inputs are false. XNOR Gate: Outputs true if the number of true inputs is even.
+AND Gate: Outputs are true if all inputs are true. OR Gate: Outputs true if at least one input is true. NOT Gate: Outputs the opposite (complement) of the input. XOR Gate: Outputs true if the number of true inputs is odd. NAND Gate: Outputs false only if all inputs are true. NOR Gate: Outputs true only if all inputs are false. XNOR Gate: Outputs true if the number of true inputs is even.
+
+** Verilog expression for different Logic Gates:**
 
 ![Screenshot from 2023-08-22 11-59-02](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/83ac359c-e606-42d0-90d4-af7871a0b0a0)
 
-* We can observe verilog expression for different Logic Gate
+**Combinational Circuits:**
 
+![Screenshot from 2023-08-22 16-34-48](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/8531818d-ef90-4bc2-b6ce-1ec074c4cece)
+
+**Chaining Ternary Operation on MUX**
+
+  ![Screenshot from 2023-08-22 16-34-24](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/f75cb4c2-cdb3-4417-9683-46f027746904)
+  
+
+**Makerchip**
+
+* Makerchip is an online platform that provides an integrated development environment (IDE) for designing, simulating, and testing digital circuits and systems. It's particularly focused on hardware description languages (HDLs) like Verilog and SystemVerilog.
+
+</details>
+
+<details>
+ <summary>Labs on Digital Logic Combinational Circuits Using  Makerchip</summary>
+ 
+**NOT Gate**
+
+![NOT Screenshot from 2023-08-22 18-08-06](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/ad3970b1-c774-4131-9a7b-7f78e5abcd39)
+
+
+**AND Gate**
+
+![AND Screenshot from 2023-08-22 18-07-19](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/3af229a6-8d2d-40a6-9ec0-fdd0c248b727)
+
+
+**OR Gate**
+
+![OR Screenshot from 2023-08-22 18-08-35](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/8ff6b434-c08a-4108-85a1-d320e0317a83)
+
+
+**XOR Gate**
+![XOR Screenshot from 2023-08-22 18-08-56](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/df9198d5-c509-4b2d-ba59-271bf391fde7)
+
+
+**Vector**
+![Vector Screenshot from 2023-08-22 18-09-33](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/647d6adc-319c-4ffd-9da5-081afee003af)
+
+
+**MUX**
+
+![MUX Screenshot from 2023-08-22 18-09-51](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/1e6f7ce7-2ab8-4fe8-b085-1abcd66a77b2)
+
+![MUX 2Screenshot from 2023-08-22 18-10-55](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/d693b1aa-095e-4bde-a235-6fc10497a6be)
+
+
+**Combinational Calculator**
+
+![Screenshot from 2023-08-22 18-40-38](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/2598f3e8-a931-4b9c-8149-5e7b1080cf67)
+
+
+![CombinationalScreenshot from 2023-08-22 18-11-19](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/41e62812-dfbc-40ed-ae04-1c0b0431571f)
+
+</details>
+
+<details>
+ <summary>Sequential Circuits Using Makerchip</summary>
+
+ ## Sequential Circuits:
+
+* Sequential circuits have memory elements that retain information between clock cycles or input changes, allowing them to perform tasks like counting, storing previous states, and enabling more complex operations like data storage and manipulation. Examples of sequential circuits include shift registers, counters, and memory units like flip-flop-based storage elements.
+
+![26Seq1841244-fbd8d615-c13f-4b97-8a10-b6a5609bec77](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/0b18763b-86bb-476c-a35d-2ba8bee7c4df)
+
+**Fibbonacci Series on Makerchip**
+
+![fibbo261841400-ce6ca185-dfd7-46ce-8053-c7c7be4cdf3f](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/416a77dd-6fc1-4771-885b-802653640553)
+
+**Counter on Makerchip**
+
+![counter261841567-c41b769d-c443-4d48-ab7d-cf7b72195b2a](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/edbe0728-2127-457a-bed9-ad7537d8ea3e)
+
+**Sequential Calculator on Makerchip**
+
+![calculation261841622-29f9ed75-575f-4f23-9bb4-31a2c250b607](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/51c6d140-ae82-4b92-8b1b-ec0611a3e62d)
+
+ 
+</details>
+
+
+<details>
+ <summary>Pipeline Logic</summary>
+	
+* Pipeline logic refers to the systematic arrangement of processes or tasks in a sequential manner, where the output of one process becomes the input for the next process. 
+* This approach is commonly used in various fields, including software development, data analysis, manufacturing, and more.
+* Pipelines are efficient because they enable automation, parallel processing, and modularity in complex
+   
+* Now let's implement Pythagoras's theorem and compute it on hardware
+
+![phy 261843647-53ab4774-0a09-4f00-8209-bc213e82321b](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/c01e9070-95bb-4f67-9826-92f67733ecb0)
+
+
+* Let us compute Pythagoras's theorem over 3 cycles In Makerchip
+
+* Cycle 1: Squaring on the sides a and b; Cycle 2: Adding the squared values of a and b; Cycle3: Finding the square root value of the sum
+  
+**Makerchip Implementation of Pythagoras's Theorem:**
+
+![pythagorus 261843881-91afe442-6246-46fc-9415-cd30002a4c5a](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/6bac34d7-90db-415e-bd44-2b2a57168717)
+
+
+* Code reduction is the most useful property of the TL-Verilog when compared to System Verilog.
+
+* The Retiming property in TL-Verilog is very easy and safe to implement whereas in SystemVerilog, it is very bug-prone.
+
+* The pipelining also allows us to run the clock at a high frequency. Regardless of the way we structure our logic, we will be able to produce a new set of inputs on every clock edge. As a result, we get high throughput for our circuit.
+
+**TL Verilog Syntax:**
+
+![tl 261844564-2986c5d0-905d-47cf-b1a8-d1adb1dc9ecf](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/7b34e0a3-28a4-4194-ab81-78be1b205d97)
+
+**Fibbonaaci Series in Pipeline:**
+
+![fibbo pipeline261845116-054b5cb7-123f-4637-8548-aaa17907e8c8](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/91434cd6-e026-4f6a-a8e8-c065d207704a)
+
+**Implementation of Pipeline through TL-Verilog:**
+
+![TL Pipeline fibbo261845214-4590d788-e40c-44e2-a972-937840b3ccf1](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/74e38833-10f4-4463-b335-e981baabe208)
+
+* we can observe errors in the Pipeline:
+
+![error pipeline fibbo261845252-4f8bdec4-025e-4220-aa3b-414d2a447152](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/4d0c12a7-7ffe-4925-afaa-929216fe63af)
+
+**Lab 1: Counter and Calculator in Pipeline** 
+
+* Pipeline structure:
+
+![pipeline structure261845315-e2fe6720-f561-430a-a39d-2c3441bf5643](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/5170347e-3fe8-4367-8455-d2e88aa9229f)
+
+* Makerchip Implementation:
+  
+![pll](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/80c07b93-14bc-4a77-8ebc-23ca17b57f88)
+
+**Lab2 : Cycle Calculator:**
+
+* Pipeline structure:
+  
+![pl2](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/0886bcb6-fab0-44bb-844a-ae013b6f3166)
+
+* Makerchip implementation:
+
+ ![pli2 261848114-31e4f643-894e-4370-9830-92b6524fb300](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/6db87d26-69d5-4bf9-9912-8fb902f677ed)
+ 
 </details>
 </details>
 </details>
