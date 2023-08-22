@@ -199,7 +199,7 @@ $ riscv64-unknown-elf-gcc -Ofast -mabi=lp64 -march=rv64i -o sum1ton.o sum1ton.c
 $ riscv64-unknown-elf-gcc -Ofast -mabi=lp64 -march=rv64i -o sum1ton.o sum1ton.c
 $ gcc sum1ton.c
 $ ./a.out
-$ riscv64-unknown-elf-gcc -Ofast -mabi=lp64 -march=rv64i -o sum1ton.o sum1ton.c
+$ rReiscv64-unknown-elf-gcc -Ofast -mabi=lp64 -march=rv64i -o sum1ton.o sum1ton.c
 $ riscv64-unknown-elf-objdump -d sum1ton.o | less
 $ spike -d pk sum1ton.o
 :until pc 0 to 100b0
@@ -577,11 +577,18 @@ loop:	add a4, a3, a4
 <summary>DAY-3</summary>
 <br>
  <details>
- <summary>Ap</summary>
+ <summary>Digital Logic with TL-verilog and Makerchip</summary>
 
 <details>
- <summary>I Interface</summary>
+ <summary>Combinational Logic with TL-verilog and Makerchip</summary>
 
+![drd](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/aa84b1bf-c1b7-4c81-8bff-285dda08fe36)
+ 
+AND Gate: Outputs true if all inputs are true. OR Gate: Outputs true if at least one input is true. NOT Gate: Outputs the opposite (complement) of the input. XOR Gate: Outputs true if the number of true inputs is odd. NAND Gate: Outputs false only if all inputs are true. NOR Gate: Outputs true only if all inputs are false. XNOR Gate: Outputs true if the number of true inputs is even.
+
+![Screenshot from 2023-08-22 11-59-02](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/83ac359c-e606-42d0-90d4-af7871a0b0a0)
+
+* We can observe verilog expression for different Logic Gate
 
 </details>
 </details>
