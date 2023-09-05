@@ -259,6 +259,10 @@ $ spike -d pk sum1ton.o
 
 **Code for Unsigned Number**
 
+* Unsigned numbers lack a sign and can only express the magnitude of a number. Consequently, the representation of unsigned binary numbers exclusively encompasses positive numbers.
+* In unsigned binary numbers, there is no sign bit, meaning that an N-bit binary number represents only its magnitude. Zero (0) is also considered an unsigned number.
+* Each number in unsigned number representation possesses only a single, unique binary equivalent form, making it an unambiguous representation technique. The range of unsigned binary numbers extends from 0 to ((2^n)-1)
+  
 * C-program on highest unsigned number is given below:
   
 ```
@@ -315,6 +319,10 @@ return 0;
 
 **Code for Signed Number**
 
+* In general, signed numbers are often represented using the 2's complement representation. To obtain the 2's complement of a number, you invert each bit of the given number and then add 1 to the least significant bit (LSB).
+* Consequently, positive numbers are typically represented in their simple binary form, while negative numbers are represented in 2's complement form, with an extra bit used for sign representation. When the sign bit's value is 0, the number is positive and can be directly expressed in straightforward binary form.
+* However, if the sign bit's value is 1, the number is negative, and you should use the 2's complement of the given binary number.
+* Notably, in this representation, the value zero (0) has only one unique representation, which is always positive. The range of numbers in 2's complement form spans from -(2^(n-1)) to ((2^(n-1))-1)
  C-program on highest Signed number is given below:
   
 ```
