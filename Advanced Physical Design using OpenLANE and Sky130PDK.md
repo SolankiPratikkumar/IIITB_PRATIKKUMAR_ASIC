@@ -59,7 +59,7 @@
 </details>
 
  <details>
-  <summary>From App to Hardware</summary>
+  <summary>L3_From Software Application to Hardware</summary>
 
 * The Flow of the RISC-V is explained in the below image:
    
