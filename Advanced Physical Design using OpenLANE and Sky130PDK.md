@@ -85,10 +85,111 @@
   <details>
   <summary>SK2_SOC Design and OpenLANE</summary>
  <details>
-  <summary>L1_Introduction to all components of Open source digital ASIC Design </summary>
-*
+  <summary>L1_Introduction to all components of Open source Digital ASIC Design </summary>
+  
+
+* ASIC consists of main components like RTL IPs, EDA Tools, PDK Data as shown in below image:
+![Screenshot from 2023-09-10 21-37-47](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/37da65cc-1014-4d96-8821-8e5d5885e91f)
+
+* Here we are starting to see Pure Play FABs and Fabless design companies.
+* PDK = the interface between the FAB and the Designers
+      = Process Design Kit
+* Google made an agreement with Skywater Technology and then release an opensource PPDK to masses which was FOSS 130nm Production PDK
+* 130nm Technology PDK has 6% distribution of pure-play integrated circuit foundry sales in 2019 by feature sizes
+* Below image shows us all the main components of RTL IPS, EDA Tools, PDK Data respectively
+  
+![Screenshot from 2023-09-10 21-47-23](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/22ecff72-8a65-45b2-ad11-c812e9bec802)
+
+* And collection of files are used to model a fabrication process for the EDA tools used to design and IC
+* Process Design Rules, Device Models, DIgital Standard Cell Libraries,etc as seen in the below image
+![Screenshot from 2023-09-10 21-51-46](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/0e42da6c-f518-4419-b125-eed080977982)
+
+(Question) Is 130nm Technology Fast?
+* Yes,its Fast Technology
+* The Intel P4EE @3.46GHz runs, which is much fast 
+* OSU team reported 327 MHz post layout clock frequency for a single cycle RV32i CPU
+* A Pipeline version can achieve > 1GHz clock!
+
+* The ASICs design methodology is implemented through flow:
+* ASIC Flow Onjective: RTL to GDS II
+* Also called Automated PnR and/or Physical Implemetation
+
+</details>
+
+<details>
+ <summary>L2_Simplified RTL to GDS II Flow</summary>
+
+* The Flowchart of the Entire Flow is summarise below in image: 
+![Screenshot from 2023-09-10 23-14-15](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/0c237708-7cf2-4059-aa51-8e2018b72500)
+
+
+* STEP 1:  Synthesis
+  
+* Convert RTL to a circuit out of components from the standard cell library(SCL)
+* Standard cells have regular layout
+* Each cells comes with different views/models utilize by different EDA views of Libraries
+  * Electrical HDL & Spice
+  * Layout(Abstract & Layout)
+
+![Screenshot from 2023-09-10 23-21-53](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/b95836c8-e631-4aaa-a4a0-4a6371d9df58)
+
+* STEP 2: Floor Planning and Power Planning
+  
+* The objective overhere is to plan silicon area & create robust power distribution of the circuits
+* Chip Floor Planning: Partition the chip die between different system building blocks & place the input/output Pads
+* Macro Floor Planning: Dimensions, pin location, row definition
+* Power Planning: Connected by multiple power straps,power rings, power pads of Vdd and Vss
+* Below is the image of Chip Floor Planning and Designs are also shown there:
+     
+![Screenshot from 2023-09-10 23-21-32](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/d433e6a8-ef7c-4f12-a19a-9cfcc0cf2140)
+
+* STEP 3: Placement
+
+* Place the cells on the floorplan rows,aligned with the sites
+* Usually placement done in two Steps: Global Placement and Detailed Placement
+* In Global Placement decide optimal position for the old cell; such position are not certainly legal so cell may overlay or go for a toss
+* In Detailed Placement the position obtain is minimally altered to be legal
+  
+* STEP 4: Clock Tree Synthesis(CLock Routing)
+
+* Create a clock distributed network
+* To deliver the clock to all sequential element flipflop
+* With minimum clock Skew
+* And in a good shape as Tree(H,X,etc)
+  
+![Screenshot from 2023-09-11 00-46-42](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/4630998a-eb62-4033-99cd-53da13c0a514)
+
+* STEP 5: Routing of Signal
+
+* Metal nets are connected self together
+* Implement the interconnect using the available metal layer as defined by PDKs
+* The Sky130PDK defines routing layers,the lowest layer is directly connected and its a Titanium metal layer while the Interconnects are Aluminium layer
+* Metal tracks form a routing grid
+* Routing grid is huge
+* Divide and Conquer
+   * Global Routing: Generates routing guides
+   * Detailed Routing: Uses the routing guides to implement the actual wiring
+     
+![Screenshot from 2023-09-11 00-48-25](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/18ebe876-93c4-4161-8c6e-c64be226e5e7)
+
+
+* STEP 6: Sign Off
+
+* Physical Verification
+   * Design Rules Checking(DRC): Make sure that final layout owns all design rules
+   * Layout vs Schematics(LVS): Final layout matches the GATE Layout netlist that is started
+
+* Timing Verification
+  * Static Timing Analysis(STA): To make sure all timing constraints are meet and circuits will run at designated clock frequency
+  
+</details>
+
+<details>
+ <summary>L3_Simplified RTL to GDS II Flow</summary>
+
+
   
  </details>
  </details>
  </details>
-  </details>
+ </details>
