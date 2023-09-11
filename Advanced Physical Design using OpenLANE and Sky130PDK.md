@@ -272,6 +272,8 @@ Step 7: Sign Off
 
 </details>
  </details>
+ </details>
+
  
   <details>
   <summary>SK3_Get Familiar to Open Source EDA Tools</summary>
