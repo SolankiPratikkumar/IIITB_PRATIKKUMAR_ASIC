@@ -2,9 +2,6 @@
 
 
 ## DAY 1
-<details>
-<summary>DAY-1</summary>
-<br>
  <details>
  <summary>Inception of Open Source EDA, OpenLANE and Sky130PDK</summary>
  <details>
@@ -188,8 +185,7 @@
  <summary>L3_Simplified RTL to GDS II Flow</summary>
 
 
-  
- </details>
+
  </details>
  </details>
  </details>
