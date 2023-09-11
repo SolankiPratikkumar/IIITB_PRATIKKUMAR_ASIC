@@ -270,7 +270,6 @@ Step 7: Sign Off
     * By using Magic for Design Rules Checking(DRC) and Spice Extraction from Layout
     * Magic and Netgen are used for LVS
 
-</details>
  </details>
  </details>
 
