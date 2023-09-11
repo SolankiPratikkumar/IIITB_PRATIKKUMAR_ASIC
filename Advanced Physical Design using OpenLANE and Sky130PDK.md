@@ -142,14 +142,14 @@
 
 * STEP 3: Placement
 
-* Place the cells on the floorplan rows,aligned with the sites
-* Usually placement done in two Steps: Global Placement and Detailed Placement
-* In Global Placement decide optimal position for the old cell; such position are not certainly legal so cell may overlay or go for a toss
-* In Detailed Placement the position obtain is minimally altered to be legal
+* Place the cells on the floorplan rows, aligned with the sites
+* Usually placement is done in two Steps: Global Placement and Detailed Placement
+* In Global Placement decide the optimal position for the old cell; such positions are not certainly legal so the cell may overlay or go for a toss
+* In Detailed Placement the position obtained is minimally altered to be legal
   
 * STEP 4: Clock Tree Synthesis(CLock Routing)
 
-* Create a clock distributed network
+* Create a clock-distributed network
 * To deliver the clock to all sequential element flipflop
 * With minimum clock Skew
 * And in a good shape as Tree(H,X,etc)
@@ -160,9 +160,9 @@
 
 * Metal nets are connected self together
 * Implement the interconnect using the available metal layer as defined by PDKs
-* The Sky130PDK defines routing layers,the lowest layer is directly connected and its a Titanium metal layer while the Interconnects are Aluminium layer
+* The Sky130PDK defines routing layers, the lowest layer is directly connected and it's a Titanium metal layer while the Interconnects are an Aluminium layer
 * Metal tracks form a routing grid
-* Routing grid is huge
+* The routing grid is huge
 * Divide and Conquer
    * Global Routing: Generates routing guides
    * Detailed Routing: Uses the routing guides to implement the actual wiring
@@ -173,19 +173,110 @@
 * STEP 6: Sign Off
 
 * Physical Verification
-   * Design Rules Checking(DRC): Make sure that final layout owns all design rules
+   * Design Rules Checking(DRC): Make sure that the final layout owns all design rules
    * Layout vs Schematics(LVS): Final layout matches the GATE Layout netlist that is started
 
 * Timing Verification
-  * Static Timing Analysis(STA): To make sure all timing constraints are meet and circuits will run at designated clock frequency
+  * Static Timing Analysis(STA): To make sure all timing constraints are met and circuits will run at a designated clock frequency
   
 </details>
 
 <details>
- <summary>L3_Simplified RTL to GDS II Flow</summary>
+ <summary>L3_Introduction to OpenLANE and Strive Chipset</summary>
 
+**OpenLANE**
 
+* Started as an open source flow for a True Open Source Tape out Experiment
+* Strive is a family of open-everything SOCS like Open PDKs, Open EDA, Open RTL
 
+**Main Goal of OpenLANE**
+
+* Produce a clean GDS II with no human intervention (no-human-in-loop)
+  * Clean means:
+   * No LVS Violation
+   * No DRC Violation
+   * No Timing Violation still it is a work in progress
+* Tuned for SkyWater130 Open PDK
+* Containerized that its instruction is built & run natively will follow
+* Can be used to harden Macros and Chips design
+* Two modes of Operation:
+ * Autonomous: Push pattern wait for some time base GDS Tool
+ * Interactive: Run command and steps one by one
+* Design Space Exploration finds the best set of flow configuration
+* Large number of Design Examples; there were 43 designs with their best configuration available and still increasing
+
+![Screenshot from 2023-09-11 15-01-04](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/eeb80cf1-cc3d-4f24-8bd3-84f3dc787ede)
+  
+ </details>
+  
+<details>
+ <summary>L4_Introduction to OpenLANE detailed ASIC Design Flow</summary> 
+
+* Flow Diagram of OpenLANE ASIC Flow is shown below:
+
+![Screenshot from 2023-09-11 15-11-34](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/5e330038-60fe-4c30-a0db-ab35ab1caed8)
+
+* OpenLANE is based on several OpenLANE projects like below
+* OpenROAD, Magic VLSI Layout Tool, KLayout, Fault, Yosys, Fault, QFlow, ABC
+
+Step 1: Flow starts with Design RTL to RTL Synthesis using tools of Yosys+ABC
+* RTL to the Logic circuit can be optimised and used by ABC script for further use
+
+Step 2: STA uses OpenSTA Tool
+* Here Synthesis Exploration shows "Delay vs. Area" affected by different explore strategy
+* Here Design Exploration is used to find the best configuration for a particular design
+* Design Exploration utility is also used for Regression Testing(CI)
+* OpenLANE design already runs these 70 designs to compare the result to the best-known ones
+
+Step 3: Design for Test(DFT) uses the Fault tool for the Testing phase; The functionality and image are shown below and 
+
+![Screenshot from 2023-09-11 16-31-45](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/c39252d7-c213-44fd-b520-7dba86749497)
+
+Step 4: Physical Implementation 
+* This step is also called as PnR (Place & Route)
+* All done by the OpenROAD app
+* Floor/Power Planning
+* End Decoupling Capacitors and Tap Cell Insertion
+* Placement are two types Global and Detailed
+* Post placement Optimization
+* Clock Tree Synthesis(CTS)
+* Routing is also done in two ways Global and Detailed
+
+Step 5: Logic Equivalent Checking (LEC) uses Yosys tool
+* Here, we compare the Netlist resulting from optimisation done during Physical Implementation
+* Every time the netlist is modified and verification must be performed
+   * CTS modifies the netlist
+   * Post placement optimisation modifies the netlist
+* LEC is used to formally confirm that the function did not change after modifying the netlist
+
+Step 6: Dealing with Antenna Rules Violation 
+
+* Its described below image with the definition,
+
+![Screenshot from 2023-09-11 21-01-32](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/068d8ee9-1cc0-4f49-8df2-c77be86a5e26)
+
+* There are two solutions for this violation issue
+  * Firstly, Bridging attaches a higher layer intermediary
+  * Secondly, Add an Antenna diode cell to leak away charges
+
+* With OpenLANE we create a Fake Antenna Diode  and if netlist creates an issue then we change by original antenna diode as shown below:
+![Screenshot from 2023-09-11 21-04-08](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/3114e73a-dd8b-48c3-bb82-2c730cd5f264)
+
+Step 7: Sign Off
+* It involves the following process
+* RC Extraction
+* STA(Open STA)
+* Physical Verification DRC and LVS 
+    * By using Magic for Design Rules Checking(DRC) and Spice Extraction from Layout
+    * Magic and Netgen are used for LVS
+
+</details>
+
+  <details>
+  <summary>SK3_Get Familiar to Open Source EDA Tools</summary>
+ <details>
+  <summary>L1_OpenLANE Directiry structure in detail</summary>
+      
  </details>
  </details>
  </details>
