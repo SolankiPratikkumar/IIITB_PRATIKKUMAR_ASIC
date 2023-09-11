@@ -271,7 +271,8 @@ Step 7: Sign Off
     * Magic and Netgen are used for LVS
 
 </details>
-
+ </details>
+ 
   <details>
   <summary>SK3_Get Familiar to Open Source EDA Tools</summary>
  <details>
