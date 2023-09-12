@@ -278,7 +278,19 @@ Step 7: Sign Off
   <summary>SK3_Get Familiar to Open Source EDA Tools</summary>
  <details>
   <summary>L1_OpenLANE Directiry structure in detail</summary>
-      
+
+</details>
+ </details>
+ </details>
+ 
+ ## DAY 2
+ <details>
+ <summary>Good Floorplan vs Bad Floorplan and Library Cell</summary>
+ <details>
+  <summary>SK1_Chip Floorplaning Consideration</summary>  
+  
+  **Utilization Factor and Aspect Ratio**
+  
  </details>
  </details>
  </details>
