@@ -272,15 +272,6 @@ Step 7: Sign Off
 
  </details>
  </details>
-
- 
-  <details>
-  <summary>SK3_Get Familiar to Open Source EDA Tools</summary>
- <details>
-  <summary>L1_OpenLANE Directiry structure in detail</summary>
-
-</details>
- </details>
  </details>
  
  ## DAY 2
