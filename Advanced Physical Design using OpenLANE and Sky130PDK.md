@@ -291,6 +291,8 @@ Step 7: Sign Off
   
   **Utilization Factor and Aspect Ratio**
   
+  *
+  
  </details>
  </details>
  </details>
