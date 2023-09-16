@@ -1,9 +1,8 @@
 [](url) Physical Design of ASICs - Advanced Physical Design using OpenLANE
 
 
-## DAY 1
- <details>
- <summary>Inception of Open Source EDA, OpenLANE and Sky130PDK</summary>
+## DAY 1: Inception of Open Source EDA, OpenLANE and Sky130PDK
+
  <details>
   <summary>How to Talk to Computer</summary>
   
@@ -345,9 +344,8 @@ sudo docker run hello-world
  </details>
  </details>
  
- ## DAY 2
- <details>
- <summary>Good Floorplan vs Bad Floorplan and Library Cell</summary>
+ ## DAY 2: Good Floorplan vs Bad Floorplan and Library Cell
+
  <details>
   <summary>Chip Floorplaning Consideration</summary>  
   
@@ -620,4 +618,4 @@ magic -T /home/parallels/OpenLane/vsdstdcelldesign/libs/sky130A.tech lef read tm
   
  </details>
  </details>
- </details>
+
