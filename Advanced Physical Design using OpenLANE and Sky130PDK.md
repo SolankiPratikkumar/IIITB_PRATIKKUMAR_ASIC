@@ -327,7 +327,9 @@ sudo docker run hello-world
 
 ![Screenshot from 2023-09-16 21-52-37](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/c5f56af3-84fa-4171-9c74-d41e0d6d649a)
 
-![Screenshot from 2023-09-16 22-44-12](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/53cc5335-6be7-423a-935a-bac5f5130f5)  
+![Screenshot from 2023-09-16 22-44-12](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/da9df512-45aa-4421-a717-c6f15a2d0f83)
+
+
 * Below is dff_synthesis report:
 ![266792079-c4d04351-021f-4c56-9327-c88d52a8cd8f](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/ec38cdee-a0c4-4ab4-8547-8cd6b87f10ed)
 
@@ -362,6 +364,7 @@ sudo docker run hello-world
 ![Screenshot from 2023-09-16 16-31-42](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/0f3a0d1f-2679-4abf-831f-f7ad6da9c939)
 
 * We can observe the netlist connection and all standard cell and flipflops are taken as 1*1 sq unit as shown below
+  
 ![Screenshot from 2023-09-16 16-34-13](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/6745e69c-2425-40dc-b2f2-b63df8774f2f)
 
 * Below image we observe that the complete netlist is with dimension 4 sq unit and the core dimension is 4*2 sq unit hence by Utilisation formula as mention it will be 0.5 or 50% and the aspect ratio as per formula will be also 0.5 as per fromula mention image.
@@ -594,8 +597,9 @@ magic -T /home/parallels/OpenLane/vsdstdcelldesign/libs/sky130A.tech lef read tm
 
 * slew_high_fall_thr : Its generally taken as a point in the falling wavform, the point is at rising edge generally at 20% value from the final point of the waveform, also it can also be considered as 80% from initial point of the waveform.
 
-![2bb_266782248-24922247-a8b7-42c7-8f19-3315f8be5f8b](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/715e0393-d660-490c-ae72-5d9cb5384404)
-  
+![2bb_266782248-24922247-a8b7-42c7-8f19-3315f8be5f8b](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/258822ac-0913-46f1-b2b7-82f28fb5b081)
+
+
 * in_rise_thr : It is generally taken the 50% value point in the input rise waveform.
 
 * in_fall_thr : It is generally taken the 50% value point in the input fall waveform.
@@ -605,8 +609,8 @@ magic -T /home/parallels/OpenLane/vsdstdcelldesign/libs/sky130A.tech lef read tm
 * out_fall_thr :  It is generally taken the 50% value point in the output fall waveform
 
 * The above concept is shown in below image:
-  
-[2bc_266782346-7794cd40-f580-4443-ab91-134d111c4fdf](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/a74870c6-5b5c-4841-881e-7f989e287195)
+
+![2bc_266782346-7794cd40-f580-4443-ab91-134d111c4fdf](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/a0a7cad0-58de-48d1-a665-709347127aab)
 
 
 * **Propagation Delay** refers to the time interval between when the input, in the process of transitioning, reaches 50% of its ultimate value, and the moment the output also achieves 50% of its final value. Inadequate selection of threshold values can result in negative delay values. Even with appropriate threshold choices, variations in slew rate can sometimes cause the delay to be either positive or negative.
