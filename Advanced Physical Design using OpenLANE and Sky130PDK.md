@@ -846,8 +846,8 @@ ext2spice cthresh 0 rthresh 0 - extracts parasatic capcitances also since these 
 
 
 </details>
-   </details>
-## Day_4 Pre Layout timing analysis and importance of good clock tree
+
+## Day 4: Pre Layout timing analysis and importance of good clock tree
  <details>
   <summary>Timing modelling using delay tables</summary>  
    </details>
