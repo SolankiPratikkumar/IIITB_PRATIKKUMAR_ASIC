@@ -5,9 +5,9 @@
  <details>
  <summary>Inception of Open Source EDA, OpenLANE and Sky130PDK</summary>
  <details>
-  <summary>SK1_How to Talk to Computer</summary>
- <details>
-  <summary>L1_Introduction to QFN-48 Package, Chip, Pad, Core, Die, IPs</summary>
+  <summary>How to Talk to Computer</summary>
+  
+# Introduction to QFN-48 Package, Chip, Pad, Core, Die, IPs
 
 * The Arduino or any other board block structure looks as below
  ![Screenshot from 2023-09-09 12-12-10](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/15592065-db6f-48ca-9107-c93d7b5f153d)
@@ -22,10 +22,7 @@
 
 ![Screenshot from 2023-09-09 12-24-06](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/69a59fac-f04a-4a43-8ec8-752b4d09e309)
 
- </details>
-
-  <details>
-  <summary>L2_Introduction to RISC-V</summary>
+ **Introduction to RISC-V**
    
    * C-Program is run by the compile to assembly language of RISC V and that makes Hardware Layout operation (qflow); that Hardware can be RISC-V
 
@@ -52,11 +49,8 @@
 * Is supported by various language compilers (e.g., GNU Compiler Collection and Linux operating system)
 * Offers a range of hardware support from microcontrollers to systems on module, systems on chip and field programmable gate arrays
 * Accelerates the design-to-market timeline through collaboration and open-source IP reuse
-  
-</details>
 
- <details>
-  <summary>L3_From Software Application to Hardware</summary>
+# From Software Applications to Hardware
 
 * The Flow of the RISC-V is explained in the below image:
    
@@ -77,12 +71,11 @@
 ![r1aWhatsApp Image 2023-08-20 at 4 11 34 PM](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/50799b6e-38b9-437b-a360-963def94357e)
 
  </details>
- </details>
  
   <details>
-  <summary>SK2_SOC Design and OpenLANE</summary>
- <details>
-  <summary>L1_Introduction to all components of Open source Digital ASIC Design </summary>
+  <summary>SOC Design and OpenLANE</summary>
+   
+# Introduction to all components of Open source Digital ASIC Design
   
 
 * ASIC consists of main components like RTL IPs, EDA Tools, PDK Data as shown in below image:
@@ -111,10 +104,7 @@
 * ASIC Flow Onjective: RTL to GDS II
 * Also called Automated PnR and/or Physical Implemetation
 
-</details>
-
-<details>
- <summary>L2_Simplified RTL to GDS II Flow</summary>
+**Simplified RTL to GDS II Flow**
 
 * The Flowchart of the Entire Flow is summarise below in image: 
 ![Screenshot from 2023-09-10 23-14-15](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/0c237708-7cf2-4059-aa51-8e2018b72500)
@@ -179,10 +169,7 @@
 * Timing Verification
   * Static Timing Analysis(STA): To make sure all timing constraints are met and circuits will run at a designated clock frequency
   
-</details>
-
-<details>
- <summary>L3_Introduction to OpenLANE and Strive Chipset</summary>
+# Introduction to OpenLANE and Strive Chipset
 
 **OpenLANE**
 
@@ -207,10 +194,7 @@
 
 ![Screenshot from 2023-09-11 15-01-04](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/eeb80cf1-cc3d-4f24-8bd3-84f3dc787ede)
   
- </details>
-  
-<details>
- <summary>L4_Introduction to OpenLANE detailed ASIC Design Flow</summary> 
+# Introduction to OpenLANE detailed ASIC Design Flow
 
 * Flow Diagram of OpenLANE ASIC Flow is shown below:
 
@@ -271,6 +255,70 @@ Step 7: Sign Off
     * Magic and Netgen are used for LVS
 
  </details>
+
+  <details>
+  <summary>Get Familiar to open source EDA Tools</summary>  
+  
+
+**Required Installation** 
+```
+sudo apt-get update
+sudo apt-get install \
+   ca-certificates \
+   curl \
+   gnupg \
+   lsb-release
+
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt install -y build-essential python3 python3-venv python3-pip make git
+```
+
+**Docker Installation**
+
+```
+# Remove old installations
+sudo apt-get remove docker docker-engine docker.io containerd runc
+# Installation of requirements
+sudo apt-get update
+sudo apt-get install \
+   ca-certificates \
+   curl \
+   gnupg \
+   lsb-release
+# Add the keyrings of docker
+sudo mkdir -p /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+# Add the package repository
+echo \
+   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+# Update the package repository
+sudo apt-get update
+
+# Install Docker
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+
+# Check for installation
+sudo docker run hello-world
+```
+
+**Installing OpenLANE**
+```
+git clone https://github.com/The-OpenROAD-Project/OpenLane
+cd OpenLane
+make
+make test
+```
+
+**Check for installation**
+```
+sudo docker run hello-world
+```
+
+* Below are Images of the OpenLANE tool Installed:
+  
+
  </details>
  </details>
  
@@ -278,11 +326,20 @@ Step 7: Sign Off
  <details>
  <summary>Good Floorplan vs Bad Floorplan and Library Cell</summary>
  <details>
-  <summary>SK1_Chip Floorplaning Consideration</summary>  
+  <summary>Chip Floorplaning Consideration</summary>  
   
-  **Utilization Factor and Aspect Ratio**
-  
-  *
+# Utilization Factor and Aspect Ratio
+
+* Here we are creating a netlist using 1 AND gate,1 OR gate,2 FlipFlop and all the logic gates for physical design are considered as square dimension same as Flipflop as shown in below image
+
+![Screenshot from 2023-09-16 16-31-42](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/0f3a0d1f-2679-4abf-831f-f7ad6da9c939)
+
+* We can observe the netlist connection and all standard cell and flipflops are taken as 1*1 sq unit as shown below
+![Screenshot from 2023-09-16 16-34-13](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/6745e69c-2425-40dc-b2f2-b63df8774f2f)
+
+* Below image we observe that the complete netlist is with dimension 4 sq unit and the core dimension is 4*2 sq unit hence by Utilisation formula as mention it will be 0.5 or 50% and the aspect ratio as per formula will be also 0.5 as per fromula mention image.
+* If the total dimension area of netlist is equal area of core then Utilisation factor and Aspect Ratio equals 1 which means core is square
+![Screenshot from 2023-09-16 16-44-28](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/03d73c1c-e816-40e0-80fb-ba299cf6dc88)
   
  </details>
  </details>
