@@ -756,7 +756,7 @@ magic -T /home/parallels/OpenLane/vsdstdcelldesign/libs/sky130A.tech lef read tm
 ![3A266819668-f5ebf20c-53c3-4c3c-b5a1-5b45e8bf685d](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/5c373d10-1915-43eb-951e-036380c166ff)
 
    </details>
-
+   </details>
  <details>
   <summary>Inception of CMOS fabrication Process</summary>
   
@@ -835,7 +835,7 @@ create spice file using .ext file to be used with our ngspice tool - the command
 ext2spice cthresh 0 rthresh 0 - extracts parasatic capcitances also since these are actual layers - nothing is created in the folder ext2spice - a file sky130_inv.spice has been created.
 
 </details>
-
+   </details>
  <details>
   <summary>SKY130 Tech File Labs</summary>  
   
@@ -843,5 +843,12 @@ ext2spice cthresh 0 rthresh 0 - extracts parasatic capcitances also since these 
   
 * In this we edit the .spice file making the connection as required in the circuit. The file is customised in accordance to the model file available in the sky130PDK.
 * The edited .spice file is shown below
+
+
+</details>
+   </details>
+## Day_4 Pre Layout timing analysis and importance of good clock tree
+ <details>
+  <summary>Timing modelling using delay tables</summary>  
    </details>
    </details>
