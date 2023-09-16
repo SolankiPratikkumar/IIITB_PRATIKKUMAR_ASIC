@@ -317,8 +317,31 @@ sudo docker run hello-world
 ```
 
 * Below are Images of the OpenLANE tool Installed:
-  
+```
+//open OpenLane directory and type below command
+~/OpenLane$ make mount
+/openlane$ ./flow.tcl -interactive
+% package require openlane 0.9
+% prep -design picorv32a
+% run_synthesis
+```
 
+![Screenshot from 2023-09-16 21-52-37](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/c5f56af3-84fa-4171-9c74-d41e0d6d649a)
+
+![Screenshot from 2023-09-16 22-44-12](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/53cc5335-6be7-423a-935a-bac5f5130f5)  
+* Below is dff_synthesis report:
+![266792079-c4d04351-021f-4c56-9327-c88d52a8cd8f](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/ec38cdee-a0c4-4ab4-8547-8cd6b87f10ed)
+
+![266792086-ac2cc982-f792-4251-9b1b-b337f8bdba4b](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/1ddbaba6-48c0-43a4-90d9-42bcf57f5b31)
+
+![265791982-686d8a71-a016-4b77-83b2-2b3625f4cf91](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/8d4a495a-eac3-432b-9283-683d302bead0)
+
+* Below is synthesis_pre report:
+![265792337-f73e82ad-a3bd-4a95-aa71-8542b4f47ebd](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/7af25fb0-d7c2-4a2c-af28-3a0d069c8d61)
+
+**Flops ratio:**
+* The flop ratio is defined as the ratio of the number of flops to the total number of cells
+* Here flop ratio is 1596/10104 = 0.1579 (i.e: 15.8%) [From the synthesis statistics]
  </details>
  </details>
  
@@ -353,9 +376,9 @@ sudo docker run hello-world
 
 # Concept of Pre- Placed Cell
 
-* Pre-Placed cells- There are few IP's/blocks have user defined locations, and hence placed in chip before automated placement and routing and are called preplaced cells.
-* Pre-placed cells (or pre-placed blocks) in ASIC (Application-Specific Integrated Circuit) design refer to predefined and fixed blocks of logic or circuitry that are manually placed in specific locations on the semiconductor chip's layout before the automated placement and routing process.These cells are placed manually by the chip designer or through automated tools. Since these IP's are placed before automated Placement and Routing, these are reffered to as Pre-placed cells.
 
+* Pre-placed cells (or pre-placed blocks) in ASIC (Application-Specific Integrated Circuit) design refer to predefined and fixed blocks of logic or circuitry that are manually placed in specific locations on the semiconductor chip's layout before the automated placement and routing process.These cells are placed manually by the chip designer or through automated tools. Since these IP's are placed before automated Placement and Routing, these are reffered to as Pre-placed cells.
+* Pre-Placed cells- There are few IP's/blocks have user defined locations, and hence placed in chip before automated placement and routing and are called preplaced cells.
 
 ![Screenshot from 2023-09-16 18-22-00](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/3d35eedc-f41e-4677-b166-87df1c6406a9)
 
@@ -386,6 +409,209 @@ voltage to drop significantly before reaching the logic circuits.Their role is t
 ![267385070-8d8c13a0-78ab-4664-b9f3-d5a945aa7cb9](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/85d8bcc7-10b7-4bc1-826f-f090cf6a2775)
 
 
+* To run the picorv32a floorplan in OpenLane:
+```
+run_floorplan
+```
+![Screenshot from 2023-09-16 23-19-41](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/3bfad5d8-483a-4569-90d2-181630736acd)
+
+* Post the floorplan run, a .def file will have been created within the results/floorplan directory.
+* We may review floorplan files by checking the floorplan.tcl.
+* The system defaults will have been overriden by switches set in conifg.tcl and further overriden by switches set in sky130A_sky130_fd_sc_hd_config.tcl.
+
+To view the floorplan, Magic is invoked after moving to the results/floorplan directory:
+
+
+
+* Post the floorplan run, a .def file will have been created within the results/floorplan directory. We may review floorplan files by checking the floorplan.tcl. The system defaults will have been overriden by switches set in conifg.tcl and further overriden by switches set in sky130A_sky130_fd_sc_hd_config.tcl.
+
+* To view the floorplan, Magic is invoked after moving to the results/floorplan directory:
+![Screenshot from 2023-09-16 23-24-01](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/2ae6c2a1-aa17-40f6-8e8e-8beb055ef97e)
+
+```
+magic -T /home/parallels/OpenLane/vsdstdcelldesign/libs/sky130A.tech lef read tmp/merged.nom.lef def read results/floorplan/picorv32a.def &
+```
+
+<img width="904" alt="266801182-87c3c1e9-eb75-4365-932f-9865b3ef6ffd" src="https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/33b79e85-a977-48e0-ae6a-3160f8ad1c60">
+
+
+* One can zoom into Magic layout by selecting an area with left and right mouse click followed by pressing "z" key.
+
+* Various components can be identified by using the what command in tkcon window after making a selection on the component.
+
+* Zooming in also provides a view of decaps present in picorv32a chip.
+
+* The standard cell can be found at the bottom left corner.
+
+* You can clearly see I/O pins, Decap cells and Tap cells. Tap cells are placed in a zig zag manner or you can say diagonally
+
+</details>
+ </details>
+
+ <details>
+  <summary>Library Binding and Placement</summary>  
+
+* Library consists of cells, shapes & sizes of cells, various flavours of the same cell, timing/delay information.
+* The netlist or the circuit is made using the component available in library, where each element is represented as a box.
+
+![266786781-4887d41c-a227-47df-b30a-c92b8a800019](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/e09f7272-2f3a-45ae-bbea-cc1ee9b115d1)
+
+ * Initially, the netlist is bound to physical cells in the design process. While practice exercises may involve predefined shapes for logical gates like OR, AND, etc., in real-world scenarios, we define physical dimensions using shapes like rectangles or squares, specifying width and height.
+ * This data is typically provided in libraries (libs) and layout exchange format (LEF) files. These dimensions and other relevant information are used to place the cells in the design by proper initialization.
+
+![266786781-4887d41c-a227-47df-b30a-c92b8a800019](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/747c1481-ca5d-482e-a30f-95b97bede7c7)
+
+# Optimize Placement
+
+* Placement is the process of placing the cells in the core area of the chip as shown below
+
+![266786781-4887d41c-a227-47df-b30a-c92b8a800019](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/747c1481-ca5d-482e-a30f-95b97bede7c7)
+
+* The next step in the OpenLANE ASIC flow is placement. The synthesized netlist is to be placed on the floorplan. Placement is perfomed in 2 stages:
+* 1.Global Placement: It finds optimal position for all cells which may not be legal and cells may overlap. Optimization is done through reduction of half parameter wire length.
+* 2.Detailed Placement: It alters the position of cells post global placement so as to legalise them
+![2b266786848-e40e5c6c-a71d-454e-8cba-4b24530cc44b](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/eba5dcd4-9218-4383-a6e5-8b556c386932)
+
+* Optimization is stage where we estimate the lenght and capictance, based on that we add buffers. Ideally, Optimization is done for better timing
+
+![Screenshot from 2023-09-16 23-50-58](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/aa4ccb5f-7d53-42c7-8065-2c2a4192ac9b)
+
+ # Netlist Binding and initial place design
+
+* Library characterization is the procedure of thoroughly analyzing and characterizing electronic components and fundamental elements like logic gates, flip-flops, and related building blocks. 
+* The aim is to create accurate models that precisely represent the behavior of these components under a range of conditions and scenarios.
+* Through library characterization, vital information is obtained regarding how these components respond to diverse inputs, account for delays, manage power consumption, and exhibit various other operational characteristics.
+* Library modeling encompasses the creation of mathematical or algorithmic representations that accurately describe the behavior and characteristics of electronic components.
+* These models serve as the foundation for Electronic Design Automation (EDA) tools to simulate, analyze, and optimize digital circuits during the design phase.
+* By utilizing these models, designers can efficiently evaluate the performance, power consumption, timing, and other critical aspects of the circuit design, aiding in the development of optimal and functional electronic systems
+  
+![2c 6824418-98fc611c-0d59-47cb-8869-ef3fca4c9500](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/d2f8ec3c-107d-4121-9b85-0c4a19e1f528)
+
+* Logic synthesis stands as a pivotal phase in digital integrated circuit (IC) design, acting as a central process in translating a high-level hardware description into a gate-level representation that can be physically fabricated in silicon.
+
+* The Floorplan is a critical step in physical design, wielding substantial influence over the quality of chip or design implementation. An effective floorplan can streamline the implementation process (including placement, clock tree synthesis, routing, and timing closure). Conversely, a poor floorplan can lead to an array of design issues, such as congestion, timing problems, noise, IR (current), and routing complications. A suboptimal floorplan can escalate area, power usage, affect reliability and the IC's lifespan, ultimately increasing the overall IC cost due to extended closure efforts and the need for additional low voltage threshold switches (LVTS) or ultra-low voltage threshold switches (ULVTS).
+
+* Placement involves determining the positions of circuit devices on a die's surface. It is a critical stage in the VLSI design flow, impacting routability, performance, heat distribution, and to a lesser extent, power consumption of a design.
+
+* Clock Tree Synthesis (CTS) is a technique used to evenly distribute the clock among all sequential parts of a VLSI design, aiming to minimize skew and delay.
+
+* Routing in VLSI entails physically establishing connections between signal pins using metal layers. Following Clock Tree Synthesis (CTS) and optimization, the routing step defines precise pathways for interconnecting standard cells, macros, and I/O pins.
+
+* Optimizing placement involves utilizing estimated wire length and capacitance to achieve an efficient layout.
+
+* Repeaters, essential components in the core area, are introduced to maintain signal integrity. The arrangement and placement of repeaters within the core play a crucial role, as illustrated in the provided image.
+
+![2c6817886-5a2f396e-9ac9-4fb4-b407-14480a4b468e](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/ff9e5503-132f-4c7b-8517-b4791aa01a91)
+
+* Below is the image when we ran Placement command in OpenLane
+![Screenshot from 2023-09-16 23-50-58](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/706457b3-fe32-430d-b4d6-4e1e80b4bc1f)
+
+**Congestion aware Placement**
+* Post placement, the design can be viewed on magic within results/placement directory:
+```
+magic -T /home/parallels/OpenLane/vsdstdcelldesign/libs/sky130A.tech lef read tmp/merged.nom.lef def read results/floorplan/picorv32a.def &
+```
+
+![266819534-98701b8a-a575-4553-a661-15e2af78884d](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/782c21bf-cb26-4ee3-b890-c24a8a2e3ca0)
+
+**Note:** Power distribution network generation is usually a part of the floorplan step. However, in the openLANE flow, floorplan does not generate PDN. It is created after post CTS. The steps are - floorplan, placement, CTS, Post CTS and then PDN
+
+**Need for libraries and characterization** 
+
+* As we know that, logic gates or logic cells are a shared element in every stage of the design process, encompassing logic synthesis, routing, and STA (Static Timing Analysis).
+* To enable the tools to comprehend these gates and their timing, it's imperative to conduct a thorough characterization of these cells
+
+# Cell Design and Characterization Flow
+
+* Below is the representation of cell design flow
+  
+![266851161-481e207c-bff3-44dc-a1da-e9b060c0b096](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/843fb9a0-3d6c-491a-b438-1a843a3dbd4a)
+
+* The design flow for cells, also recognized as the standard cell design flow, involves the process of crafting and refining standard cell libraries essential for digital integrated circuit design. These libraries constitute foundational elements like logic gates and flip-flops, crucial for the creation of intricate digital circuits.
+
+* Initiation involves specifying the standard cell library's requirements and specifications, encompassing factors like technology node, voltage levels, speed requisites, and power constraints.
+
+* Following this, the appropriate architecture and topology for the standard cells are selected, entailing decisions on the logical functions each cell will undertake, alongside determining the number of input and output pins.
+
+* Subsequently, schematic designs for each standard cell are created, delineating the logical function using gates and interconnections. Specialized tools like schematic capture software are employed for this stage.
+
+* After the schematic design, the cells are simulated to ascertain compliance with stipulated functionality and timing requisites. This phase may encompass functional simulation, static timing analysis (STA), and power analysis.
+
+* Physical layouts for the cells are then generated based on the schematic designs, entailing specifications of dimensions, transistor placements, and metal layer routing.
+
+* Crucial checks such as Design Rule Check (DRC) and Layout vs. Schematic (LVS) are performed to ensure adherence to manufacturing rules and coherence with the schematic.
+
+* Next, parasitic components, including resistances and capacitances, are extracted from the layout, significantly influencing timing and power characteristics. The cells are thoroughly characterized by evaluating their performance under various conditions, such as varying input vectors and operating voltages.
+
+* A detailed timing analysis follows to determine critical parameters like propagation delay, setup time, hold time, and clock-to-Q delay for flip-flops.
+
+* The standard cell library is ultimately validated by integrating it into a test chip or designing test cases, ensuring alignment with performance and functionality requirements.
+  
+![266851584-58dabbee-bdc0-4259-8af8-577835d7803d](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/b32359d4-3868-4eff-bce6-9dfcea894a5a)
+
+![2aa266a851870-e750f943-c0c8-4117-bfb2-6e9ad56c68c5](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/0ebb5c99-fa9a-4d08-ba37-61d88e2cffb8)
+
+* Stick diagram of the layout representation is shown below:
+  
+![2bb266852695-7d81050a-6039-4fed-bea9-1a094ac6dcf6](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/6eb2b0d2-8874-46ed-aeb0-053e219c87b6)
+
+# Standard Cell Characterization Flow
+
+* A typical standard cell characterization flow that is followed in the industry includes the following steps:
+
+1. Read in the models and tech files
+2. Read extracted spice Netlist
+3. Recognise behavior of the cells
+4. Read the subcircuits
+5. Attach power sources
+6. Apply stimulus to characterization setup
+7. Provide neccesary output capacitance loads
+8. Provide neccesary simulation commands
+
+* Now,all these 8 steps are fed in together as a configuration file to a characterization software called GUNA. This software generates timing, noise, power models. These .libs are classified as Timing characterization, power characterization and noise characterization
+
+![242526685-87348350-fa25-4ef8-99f4-1cdddf070f10](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/31f0760b-24ca-46e9-aa7f-c66b214e8942)
+
+![266853817-34bb2182-24c1-40b7-b06b-faccf1959727](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/383e0f2f-b9fe-4f0a-b3e6-7730f389aba8)
+
+![266853809-bef80248-0189-495b-9579-f1bbb9444096](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/24de945b-887b-4f78-8808-bc9009475c66)
+
+# General Timing Characterisation Parameters
+
+* The can understoodthis Parameter by taking a circuit as a reference
+  
+![2ba 266782039-b9f3b27d-3cd0-48d4-bbc5-848b18c63045](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/a96da9ac-8c14-458a-baaf-67d854723080)
+
+* slew_low_rise_thr : Its generally taken as a point in the rising wavform, the point is at rising edge generally at 20% value from the initial point.
+
+* slew_high_rise_thr : Its generally taken as a point in the rising wavform, the point is at rising edge generally at 20% value from the final point of the waveform, also it can also be considered as 80% from initial point of the waveform.
+
+* slew_low_fall_thr : Its generally taken as a point in the falling wavform, the point is at rising edge generally at 20% value from the initial point.
+
+* slew_high_fall_thr : Its generally taken as a point in the falling wavform, the point is at rising edge generally at 20% value from the final point of the waveform, also it can also be considered as 80% from initial point of the waveform.
+
+![2bb_266782248-24922247-a8b7-42c7-8f19-3315f8be5f8b](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/715e0393-d660-490c-ae72-5d9cb5384404)
+  
+* in_rise_thr : It is generally taken the 50% value point in the input rise waveform.
+
+* in_fall_thr : It is generally taken the 50% value point in the input fall waveform.
+
+* out_rise_thr : It is generally taken the 50% value point in the output rise waveform.
+
+* out_fall_thr :  It is generally taken the 50% value point in the output fall waveform
+
+* The above concept is shown in below image:
+  
+[2bc_266782346-7794cd40-f580-4443-ab91-134d111c4fdf](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/a74870c6-5b5c-4841-881e-7f989e287195)
+
+
+* **Propagation Delay** refers to the time interval between when the input, in the process of transitioning, reaches 50% of its ultimate value, and the moment the output also achieves 50% of its final value. Inadequate selection of threshold values can result in negative delay values. Even with appropriate threshold choices, variations in slew rate can sometimes cause the delay to be either positive or negative.
+* Propagation delay = time(out_thr) - time(in_thr)
+
+* Transition Time is the time it takes the signal to move between states is the transition time , where the time is measured between 10% and 90% or 20% to 80% of the signal levels.
+* Rise transition time = time(slew_high_rise_thr) - time (slew_low_rise_thr)
+* Low transition time = time(slew_high_fall_thr) - time (slew_low_fall_thr)
+  
  </details>
  </details>
  </details>
