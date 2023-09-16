@@ -330,6 +330,12 @@ sudo docker run hello-world
   
 # Utilization Factor and Aspect Ratio
 
+* Core: The term "core width" generally pertains to the physical dimensions or size of the central processing unit (CPU) or processor core within a microchip. Typically quantified in nanometers (nm) or micrometers (µm), it is denoted as, for instance, a "14nm core" or a "7nm core," representing the transistor feature size within the core. Conversely, the "core height" isn't typically expressed in a similar manner to the width. Instead, the core's dimensions are usually communicated in relation to its overall area, calculated by multiplying its width and height.
+
+* Die: The term "die width" typically denotes the physical measurement of the semiconductor wafer after all the individual integrated circuits (ICs) have been constructed on it, just prior to their separation. The widths of dies can vary considerably based on the particular manufacturing process and the design of the chips being manufactured, ranging from a few millimeters to several centimeters or even more.
+
+* Comparable to the core, discussions about the "die height" are infrequent. Instead, the size of the die is commonly conveyed in relation to its area, which is calculated by multiplying its width and height.
+ 
 * Here we are creating a netlist using 1 AND gate,1 OR gate,2 FlipFlop and all the logic gates for physical design are considered as square dimension same as Flipflop as shown in below image
 
 ![Screenshot from 2023-09-16 16-31-42](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/0f3a0d1f-2679-4abf-831f-f7ad6da9c939)
@@ -339,9 +345,47 @@ sudo docker run hello-world
 
 * Below image we observe that the complete netlist is with dimension 4 sq unit and the core dimension is 4*2 sq unit hence by Utilisation formula as mention it will be 0.5 or 50% and the aspect ratio as per formula will be also 0.5 as per fromula mention image.
 * If the total dimension area of netlist is equal area of core then Utilisation factor and Aspect Ratio equals 1 which means core is square in shape
+  
+* Utlisation Factor == Total area occupied by the netlist / Total area of the core.
+* Aspect ratio = Height of core / Width of core
+
 ![Screenshot from 2023-09-16 16-44-28](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/03d73c1c-e816-40e0-80fb-ba299cf6dc88)
 
-# 
+# Concept of Pre- Placed Cell
+
+* Pre-Placed cells- There are few IP's/blocks have user defined locations, and hence placed in chip before automated placement and routing and are called preplaced cells.
+* Pre-placed cells (or pre-placed blocks) in ASIC (Application-Specific Integrated Circuit) design refer to predefined and fixed blocks of logic or circuitry that are manually placed in specific locations on the semiconductor chip's layout before the automated placement and routing process.These cells are placed manually by the chip designer or through automated tools. Since these IP's are placed before automated Placement and Routing, these are reffered to as Pre-placed cells.
+
+
+![Screenshot from 2023-09-16 18-22-00](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/3d35eedc-f41e-4677-b166-87df1c6406a9)
+
+![Screenshot from 2023-09-16 18-26-07](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/3b11a626-c2a5-4d8f-aae2-7d41c3517254)
+
+  
+# Decoupling Capacitor
+
+* Decoupling capacitors play a vital role in electronic circuit design by ensuring a steady power supply, filtering out unwanted noise, and enhancing the overall performance and reliability of electronic systems, especially in digital and mixed-signal applications. It's crucial to carefully choose, position, and size decoupling capacitors to maximize their efficiency in noise reduction and voltage stability, thus optimizing circuit functionality.
+
+* Pre-placed cells must then be surrounded with decoupling capacitors (decaps). The resistances and capacitances associated with long wire lengths can cause the power supply
+voltage to drop significantly before reaching the logic circuits.Their role is to decouple the circuit from power supply by supplying the necessary amount of current to the circuit. They pervent crosstalk and enable local communication.
+
+![266765647-8eaf2eea-3251-4869-bd19-09346d7c9f12](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/1ce2773b-fa92-488f-9f63-5bb93080a136)
+
+# Power Placement
+
+* Suppose there are numerous macros on a chip, and when the output switches from '1' to '0,' the excess charge is dissipated into the ground line, resulting in a visible ground bump. Likewise, when it switches from '0' to '1,' there is a voltage drop observed in the power supply. To address this issue, implementing multiple supply lines for both VDD and ground can be a potential solution, as illustrated below:
+![267383508-c4702946-dc09-4e1d-b727-87cb66dc3295](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/3e27ae61-02a2-4ad4-bc17-8df6ae3c8315)
+
+# Pin Placement
+
+* The netlist outlines the interconnections among logic gates within a chip. The intermediate area between the core and die is allocated for the placement of pins. The connectivity details, expressed in either VHDL or Verilog, guide the positioning of I/O pads for different pins. Specifically, the input, output, and clock pins are strategically placed to minimize routing complexity and optimize for reduced delay
+  
+![267384870-6defb5df-c7ce-4112-be5f-c90029002da8](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/e70c9f71-7646-4ab1-8311-964825f07820)
+
+* The Clock port are bigger than the normal I/O pins because of it's continuous use and larger area offers less resistance. 
+![267385070-8d8c13a0-78ab-4664-b9f3-d5a945aa7cb9](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/85d8bcc7-10b7-4bc1-826f-f090cf6a2775)
+
+
  </details>
  </details>
  </details>
