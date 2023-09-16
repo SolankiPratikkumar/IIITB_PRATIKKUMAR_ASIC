@@ -521,7 +521,10 @@ magic -T /home/parallels/OpenLane/vsdstdcelldesign/libs/sky130A.tech lef read tm
 * As we know that, logic gates or logic cells are a shared element in every stage of the design process, encompassing logic synthesis, routing, and STA (Static Timing Analysis).
 * To enable the tools to comprehend these gates and their timing, it's imperative to conduct a thorough characterization of these cells
 
-# Cell Design and Characterization Flow
+</details>
+
+ <details>
+  <summary>Cell Design and Characterization Flow</summary> 
 
 * Below is the representation of cell design flow
   
@@ -576,7 +579,10 @@ magic -T /home/parallels/OpenLane/vsdstdcelldesign/libs/sky130A.tech lef read tm
 
 ![266853809-bef80248-0189-495b-9579-f1bbb9444096](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/24de945b-887b-4f78-8808-bc9009475c66)
 
-# General Timing Characterisation Parameters
+</details>
+
+ <details>
+  <summary>General Timing Characterisation Parameters</summary> 
 
 * The can understoodthis Parameter by taking a circuit as a reference
   
