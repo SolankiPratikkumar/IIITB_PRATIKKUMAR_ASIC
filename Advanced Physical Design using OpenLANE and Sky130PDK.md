@@ -338,9 +338,10 @@ sudo docker run hello-world
 ![Screenshot from 2023-09-16 16-34-13](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/6745e69c-2425-40dc-b2f2-b63df8774f2f)
 
 * Below image we observe that the complete netlist is with dimension 4 sq unit and the core dimension is 4*2 sq unit hence by Utilisation formula as mention it will be 0.5 or 50% and the aspect ratio as per formula will be also 0.5 as per fromula mention image.
-* If the total dimension area of netlist is equal area of core then Utilisation factor and Aspect Ratio equals 1 which means core is square
+* If the total dimension area of netlist is equal area of core then Utilisation factor and Aspect Ratio equals 1 which means core is square in shape
 ![Screenshot from 2023-09-16 16-44-28](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/03d73c1c-e816-40e0-80fb-ba299cf6dc88)
-  
+
+# 
  </details>
  </details>
  </details>
