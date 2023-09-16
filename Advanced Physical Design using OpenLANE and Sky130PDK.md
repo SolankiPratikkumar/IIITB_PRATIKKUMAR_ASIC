@@ -618,4 +618,12 @@ magic -T /home/parallels/OpenLane/vsdstdcelldesign/libs/sky130A.tech lef read tm
   
  </details>
  </details>
+ 
+ ## DAY 3: Design Library Cell Using Magic Layout and NGSpice Characterization
 
+ <details>
+  <summary>Labs for CMOS Inverter NGSpice Simulations</summary>  
+
+
+   </details>
+   </details>
