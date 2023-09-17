@@ -4,7 +4,7 @@
 
 ## Table of Contents
 **1. Day 1**
--  [How to Talk to Computer] (#how-to-talk-to-computers)
+-  [How to Talk to Computer](#how-to-talk-to-computers)
 - [Introduction to RISCV ](#introduction-to-RISCV--)
 -    [From Software Applications to Hardware](#from-software-applications-to-hardware--)
 -    [SoC Design and OpenLANE](#soc-design-and-openlane)
