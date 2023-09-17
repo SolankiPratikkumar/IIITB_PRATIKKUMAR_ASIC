@@ -1259,7 +1259,7 @@ cp my_base.sdc /home/parallels/OpenLane/designs/picorv32a/src/
  </details>
    </details>
 
-## Day 5: Final Ssteps for RTL2GDS using TritonRoute and OpenSTA
+## Day 5: Final Steps for RTL2GDS using TritonRoute and OpenSTA
  <details>
   <summary>Routing and Design Rule Check(DRC)</summary>  
 
