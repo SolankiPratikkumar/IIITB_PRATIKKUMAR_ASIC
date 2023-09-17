@@ -329,7 +329,6 @@ sudo docker run hello-world
 
 ![Screenshot from 2023-09-16 22-44-12](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/da9df512-45aa-4421-a717-c6f15a2d0f83)
 
-
 * Below is dff_synthesis report:
 ![266792079-c4d04351-021f-4c56-9327-c88d52a8cd8f](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/ec38cdee-a0c4-4ab4-8547-8cd6b87f10ed)
 
@@ -355,11 +354,11 @@ sudo docker run hello-world
 
 * Core: The term "core width" generally pertains to the physical dimensions or size of the central processing unit (CPU) or processor core within a microchip. Typically quantified in nanometers (nm) or micrometers (µm), it is denoted as, for instance, a "14nm core" or a "7nm core," representing the transistor feature size within the core. Conversely, the "core height" isn't typically expressed in a similar manner to the width. Instead, the core's dimensions are usually communicated in relation to its overall area, calculated by multiplying its width and height.
 
-* Die: The term "die width" typically denotes the physical measurement of the semiconductor wafer after all the individual integrated circuits (ICs) have been constructed on it, just prior to their separation. The widths of dies can vary considerably based on the particular manufacturing process and the design of the chips being manufactured, ranging from a few millimeters to several centimeters or even more.
+* Die: The term "die width" typically denotes the physical measurement of the semiconductor wafer after all the individual integrated circuits (ICs) have been constructed on it, just prior to their separation. The widths of dies can vary considerably based on the particular manufacturing process and the design of the chips being manufactured, ranging from a few millimeters to several centimetres or even more.
 
 * Comparable to the core, discussions about the "die height" are infrequent. Instead, the size of the die is commonly conveyed in relation to its area, which is calculated by multiplying its width and height.
  
-* Here we are creating a netlist using 1 AND gate,1 OR gate,2 FlipFlop and all the logic gates for physical design are considered as square dimension same as Flipflop as shown in below image
+* Here we are creating a netlist using 1 AND gate,1 OR gate,2 FlipFlop and all the logic gates for physical design are considered as square dimensions same as Flipflop as shown in below image
 
 ![Screenshot from 2023-09-16 16-31-42](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/0f3a0d1f-2679-4abf-831f-f7ad6da9c939)
 
@@ -367,7 +366,7 @@ sudo docker run hello-world
   
 ![Screenshot from 2023-09-16 16-34-13](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/6745e69c-2425-40dc-b2f2-b63df8774f2f)
 
-* Below image we observe that the complete netlist is with dimension 4 sq unit and the core dimension is 4*2 sq unit hence by Utilisation formula as mention it will be 0.5 or 50% and the aspect ratio as per formula will be also 0.5 as per fromula mention image.
+* Below image we observe that the complete netlist is with dimension 4 sq unit and the core dimension is 4*2 sq unit hence by the Utilisation formula as mention it will be 0.5 or 50% and the aspect ratio as per formula will be also 0.5 as per fromula mention image.
 * If the total dimension area of netlist is equal area of core then Utilisation factor and Aspect Ratio equals 1 which means core is square in shape
   
 * Utlisation Factor == Total area occupied by the netlist / Total area of the core.
@@ -375,7 +374,7 @@ sudo docker run hello-world
 
 ![Screenshot from 2023-09-16 16-44-28](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/03d73c1c-e816-40e0-80fb-ba299cf6dc88)
 
-## Concept of Pre- Placed Cell
+## Concept of Pre-Placed Cell
 
 
 * Pre-placed cells (or pre-placed blocks) in ASIC (Application-Specific Integrated Circuit) design refer to predefined and fixed blocks of logic or circuitry that are manually placed in specific locations on the semiconductor chip's layout before the automated placement and routing process.These cells are placed manually by the chip designer or through automated tools. Since these IP's are placed before automated Placement and Routing, these are reffered to as Pre-placed cells.
@@ -391,7 +390,7 @@ sudo docker run hello-world
 * Decoupling capacitors play a vital role in electronic circuit design by ensuring a steady power supply, filtering out unwanted noise, and enhancing the overall performance and reliability of electronic systems, especially in digital and mixed-signal applications. It's crucial to carefully choose, position, and size decoupling capacitors to maximize their efficiency in noise reduction and voltage stability, thus optimizing circuit functionality.
 
 * Pre-placed cells must then be surrounded with decoupling capacitors (decaps). The resistances and capacitances associated with long wire lengths can cause the power supply
-voltage to drop significantly before reaching the logic circuits.Their role is to decouple the circuit from power supply by supplying the necessary amount of current to the circuit. They pervent crosstalk and enable local communication.
+voltage to drop significantly before reaching the logic circuits. Their role is to decouple the circuit from power supply by supplying the necessary amount of current to the circuit. They prevent crosstalk and enable local communication.
 
 ![266765647-8eaf2eea-3251-4869-bd19-09346d7c9f12](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/1ce2773b-fa92-488f-9f63-5bb93080a136)
 
@@ -565,14 +564,14 @@ magic -T /home/parallels/OpenLane/vsdstdcelldesign/libs/sky130A.tech lef read tm
 
 1. Read in the models and tech files
 2. Read extracted spice Netlist
-3. Recognise behavior of the cells
+3. Recognise the behavior of the cells
 4. Read the subcircuits
 5. Attach power sources
 6. Apply stimulus to characterization setup
-7. Provide neccesary output capacitance loads
-8. Provide neccesary simulation commands
+7. Provide necessary output capacitance loads
+8. Provide necessary simulation commands
 
-* Now,all these 8 steps are fed in together as a configuration file to a characterization software called GUNA. This software generates timing, noise, power models. These .libs are classified as Timing characterization, power characterization and noise characterization
+* Now, all these 8 steps are fed in together as a configuration file to a characterization software called GUNA. This software generates timing, noise, and power models. These .libs are classified as Timing characterization, power characterization and noise characterization
 
 ![242526685-87348350-fa25-4ef8-99f4-1cdddf070f10](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/31f0760b-24ca-46e9-aa7f-c66b214e8942)
 
@@ -589,13 +588,13 @@ magic -T /home/parallels/OpenLane/vsdstdcelldesign/libs/sky130A.tech lef read tm
   
 ![2ba 266782039-b9f3b27d-3cd0-48d4-bbc5-848b18c63045](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/a96da9ac-8c14-458a-baaf-67d854723080)
 
-* slew_low_rise_thr : Its generally taken as a point in the rising wavform, the point is at rising edge generally at 20% value from the initial point.
+* slew_low_rise_thr : Its generally taken as a point in the rising waveform, the point is at the rising edge generally at 20% value from the initial point.
 
-* slew_high_rise_thr : Its generally taken as a point in the rising wavform, the point is at rising edge generally at 20% value from the final point of the waveform, also it can also be considered as 80% from initial point of the waveform.
+* slew_high_rise_thr : Its generally taken as a point in the rising waveform, the point is at the rising edge generally at 20% value from the final point of the waveform, it can also be considered as 80% from initial point of the waveform.
 
-* slew_low_fall_thr : Its generally taken as a point in the falling wavform, the point is at rising edge generally at 20% value from the initial point.
+* slew_low_fall_thr : Its generally taken as a point in the falling waveform, the point is at the rising edge generally at 20% value from the initial point.
 
-* slew_high_fall_thr : Its generally taken as a point in the falling wavform, the point is at rising edge generally at 20% value from the final point of the waveform, also it can also be considered as 80% from initial point of the waveform.
+* slew_high_fall_thr : Its generally taken as a point in the falling waveform, the point is at the rising edge generally at 20% value from the final point of the waveform, it can also be considered as 80% from initial point of the waveform.
 
 ![2bb_266782248-24922247-a8b7-42c7-8f19-3315f8be5f8b](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/258822ac-0913-46f1-b2b7-82f28fb5b081)
 
@@ -748,7 +747,7 @@ magic -T /home/parallels/OpenLane/vsdstdcelldesign/libs/sky130A.tech lef read tm
 * First, clone the required mag files and spicemodels of inverter,pmos and nmos sky130. The command to clone files from github link is:
 ``git clone https://github.com/nickson-jose/vsdstdcelldesign.git``
 * Once we run this command, it will create vsdstdcelldesign folder in openlane directory.
-* Inorder to open the mag file and run magic go to the directory
+* In order to open the mag file and run magic go to the directory
 * For layout we run magic command
 ``magic -T sky130A.tech sky130_inv.mag &``
 * After running Magic command we get the layout of the inverter in the Magic window
@@ -776,7 +775,7 @@ magic -T /home/parallels/OpenLane/vsdstdcelldesign/libs/sky130A.tech lef read tm
 
 * Local Interconnect Formation: Thin screen oxide is removed through etching in an HF solution. Titanium deposition through sputtering is initiated. Heat treatment results in chemical reactions, producing low-resistant titanium silicon dioxide for interconnect contacts and titanium nitride for top-level connections, enabling local communication.
 
-* Higher Level Metal Formation: Achieving suitable metal interconnects involves addressing non-planar surface topography. Chemical Mechanical Polishing (CMP) is employed by doping silicon oxide with Boron or Phosphorus to achieve surface planarization. TiN and blanket Tungsten layers are deposited and subjected to CMP. An aluminum (Al) layer is added and subjected to photolithography and CMP. This constitutes the first level of interconnects, with additional interconnect layers added to reach higher-level metal layers.
+* Higher Level Metal Formation: Achieving suitable metal interconnects involves addressing non-planar surface topography. Chemical Mechanical Polishing (CMP) is employed by doping silicon oxide with Boron or Phosphorus to achieve surface planarization. TiN and blanket Tungsten layers are deposited and subjected to CMP. An aluminium (Al) layer is added and subjected to photolithography and CMP. This constitutes the first level of interconnects, with additional interconnect layers added to reach higher-level metal layers.
 
 ![266960128-11e88b98-aaa3-4077-b46b-abff9b3f38c3](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/6fe3466b-4f3e-4520-bf25-ebb789b64166)
 
@@ -786,7 +785,7 @@ magic -T /home/parallels/OpenLane/vsdstdcelldesign/libs/sky130A.tech lef read tm
   
 ![3b268265887-2fe79a8e-8560-408f-9eba-e2da7131f424](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/8cd94767-4f9d-4a07-9baf-cedfdbbd410e)
 
-* First, clone the required mag files and spicemodels of inverter,pmos and nmos sky130. The command to clone files from github link is:
+* First, clone the required mag files and spice models of inverter,pmos and nmos sky130. The command to clone files from github link is:
 ``
 git clone https://github.com/nickson-jose/vsdstdcelldesign.git
 ``
@@ -800,7 +799,7 @@ magic -T sky130A.tech sky130_inv.mag &
 
 ## SKY130 Basic Layer layout and LEF using inverter
 
-* When inspecting the layout, we can observe the specific layers necessary for constructing a CMOS inverter. The inverter consists of a PMOS and NMOS transistor connected in tandem.
+* When inspecting the layout, we can observe the specific layers necessary for constructing a CMOS inverter. The inverter consists of a PMOS and NMOS transistor connected together.
 
 * The gates of both the PMOS and NMOS transistors are interconnected and directed to the input, denoted as 'A'.
 * The NMOS source is linked to the ground, represented as 'VGND'.
@@ -899,7 +898,7 @@ ngspice sky130_inv.spice
 
 ![Screenshot from 2023-09-17 15-09-15](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/c86c64b4-d0e6-4e72-b2e5-b5307a30b9dc)
 
-* We can zoom the graph and obtain in new plot also we can get plot value in terminal by just clicking the graph point as shown in above image
+* We can zoom the graph and obtain in new plot also we can get plot value in terminal by just clicking the graph point as shown in the above image
   
 * By observing the plot we can conclude,
 * Here, there are four timing parameters used for characterizing the inverter standard cell:
@@ -915,9 +914,9 @@ Under this section, we will go over
 * In-depth overview of Magic's DRC engine
 * Introduction to Google/Skywater DRC rules
 * Lab : Warm-up exercise : Fixing a simple rule error
-* Lab : Main exercie : Fixing or create a complex error
+* Lab : Main exercise is Fixing or create a complex error
   
-**Introdution to Magic and Skywater PDK**
+**Introduction to Magic and Skywater PDK**
 
 For running the DRC we need to have an understanding of the technology node we are working on. For this one can refer the following
 
@@ -961,7 +960,7 @@ magic -d XR met3.mag
   
 ![Screenshot from 2023-09-17 15-33-07](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/9a52bbd7-dc1d-4861-8de3-4e727e04324d)
 
-* We use following commands to see metal cut as shown.
+* We use the following commands to see metal cut as shown.
 ```
 cif see VIA2
 ```
@@ -977,7 +976,7 @@ cif see VIA2
 ![Screenshot from 2023-09-17 15-56-44](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/a8e7dfc9-e455-44a3-befe-269c223d8066)
 
 
-* We find that distance between regular polysilicon & poly resistor should be 22um but it is showing 17um and still no errors . We should go to sky130A.tech file and modify as follows to detect this error.
+* We find that the distance between regular polysilicon & poly resistor should be 22um but it is showing 17um and still no errors . We should go to sky130A.tech file and modify as follows to detect this error.
 
 ![266859841-0d199111-ded8-4193-a024-544227ab142c](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/d11dfb0d-3e65-4b9d-a812-a53c2d508a8c)
 
@@ -1045,10 +1044,10 @@ drc check
 
 **Grid into Track info** 
 
-* Track :A path or a line on which metal layers are drawn for routing. Track is used to define the height of the standard cell.
-* To implement our own stdcell, few guidelines must be followed
+* Track:A path or a line on which metal layers are drawn for routing. Track is used to define the height of the standard cell.
+* To implement our own standard cell, few guidelines must be followed
 * I/O ports must lie on the intersection on Horizontal and vertical tracks
-* Width and Height of standard cell are odd mutliples of Horizontal track pitch and Vertical track pitch
+* Width and Height of standard cell are odd multiples of Horizontal track pitch and Vertical track pitch
 * This information is defined in tracks.info
 ```
 li1 X 0.23 0.46 
@@ -1152,7 +1151,7 @@ if { [file exists $filename] == 1} {
 }
 ```
 
-* To integrate standard cell in openlane flow after make mount , perform following commands:
+* To integrate standard cell in OpenLane flow after make mount , perform following commands:
 ```
 prep -design picorv32a -tag RUN_2023.09.09_20.37.18 -overwrite 
 set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
@@ -1277,3 +1276,19 @@ cp my_base.sdc /home/parallels/OpenLane/designs/picorv32a/src/
 
  </details>
    </details>   
+
+## Acknowledgement
+
+* Kunal Ghosh, VSD Corp. Pvt. Ltd.
+* Pruthvi Parate, Colleague,IIIT B
+* Alwin Shaju,Colleague,IIIT B
+* Divyam Satle, Colleague,IIIT B
+* Chatgpt
+
+## References
+
+* https://www.vsdiat.com
+* https://github.com/The-OpenROAD-Project/OpenLane
+* https://github.com/nickson-jose/vsdstdcelldesign
+* http://opencircuitdesign.com/magic/
+* https://github.com/google/skywater-pdk
