@@ -510,6 +510,7 @@ magic -T /home/parallels/OpenLane/vsdstdcelldesign/libs/sky130A.tech lef read tm
 ![Screenshot from 2023-09-16 23-50-58](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/706457b3-fe32-430d-b4d6-4e1e80b4bc1f)
 
 **Congestion aware Placement**
+
 * Post placement, the design can be viewed on magic within results/placement directory:
 ```
 magic -T /home/parallels/OpenLane/vsdstdcelldesign/libs/sky130A.tech lef read tmp/merged.nom.lef def read results/floorplan/picorv32a.def &
@@ -567,7 +568,7 @@ magic -T /home/parallels/OpenLane/vsdstdcelldesign/libs/sky130A.tech lef read tm
 
 1. Read in the models and tech files
 2. Read extracted spice Netlist
-3. Recognise the behavior of the cells
+3. Recognise the behaviour of the cells
 4. Read the subcircuits
 5. Attach power sources
 6. Apply stimulus to characterization setup
@@ -1300,8 +1301,6 @@ run_cts
 
 ![268460626-334fd5f3-db94-4484-a822-eb73d9ec0b73](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/c3fda4d9-3232-41ba-bf1b-78688828b633)
 
-* After CTS run, my slack values are setup:12.97,Hold:0.23
-* Here my values are not violating
 * Since, the clock is propagated, from this stage, we do timing analysis with real clocks. From now post cts analysis is performed by Openroad within the OpenLane flow
 * We use the following command to execute CTS within OpenLane:
 ```
