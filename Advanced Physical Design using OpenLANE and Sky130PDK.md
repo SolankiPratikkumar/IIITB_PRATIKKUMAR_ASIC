@@ -1037,6 +1037,44 @@ drc check
  <details>
   <summary>Timing Modelling Using Delay Tables</summary>  
 
+## Standard Cell LEF generation
+
+* When performing placement, we don't need the entire Magic (MAG) information. Only essential details such as the PR boundary, I/O ports, and power and ground rails of the cell are required.
+* This crucial information is outlined in the LEF (Library Exchange Format) file.
+* The primary goal is to extract the necessary LEF information from the Magic file and integrate it into our design flow for seamless incorporation into the layout.
+
+**Grid into Track info** 
+
+* Track :A path or a line on which metal layers are drawn for routing. Track is used to define the height of the standard cell.
+* To implement our own stdcell, few guidelines must be followed
+* I/O ports must lie on the intersection on Horizontal and vertical tracks
+* Width and Height of standard cell are odd mutliples of Horizontal track pitch and Vertical track pitch
+* This information is defined in tracks.info
+```
+li1 X 0.23 0.46 
+li1 Y 0.17 0.34
+```
+![266860789-660cc8a6-ea06-4d2f-af65-d03e73789b86](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/d50985c8-9da5-49df-b341-45e3c54a6046)
+
+* To ensure that ports lie on the intersection point, the grid spacing in Magic (tkcon) must be changed to the li1 X and li1 Y values. After providing the command, we have following:
+```
+grid 0.46um 0.34um 0.23um 0.17um
+```
+* Before Conversion representation:
   
+![266975000-b6ecccfe-6031-451c-a14a-2144ca3bd6db](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/a4fef3c9-1a0c-4282-974d-b91aea5a5e3c)
+
+* After Conversion representation:
+  
+![266974996-0c2794f2-1d4e-494a-ade5-edbf54899dbb](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/a17e87c3-61f2-4106-8a1c-8da0a711a026)
+
+**Lab steps to convert magic layout to standard cell LEF**
+* Port defining in the magic, as shown in below image, the steps involved in defining the port:
+
+![266978432-bf0874fe-c853-438e-b9ae-02af19967bab](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/454ab374-b6e8-4c05-8603-42fcf11b8700)
+
+## Create Port Definition:
+
+
    </details>
    </details>
