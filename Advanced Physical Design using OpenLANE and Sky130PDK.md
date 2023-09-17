@@ -1302,7 +1302,6 @@ run_cts
 
 * After CTS run, my slack values are setup:12.97,Hold:0.23
 * Here my values are not violating
-  
 * Since, the clock is propagated, from this stage, we do timing analysis with real clocks. From now post cts analysis is performed by Openroad within the OpenLane flow
 * We use the following command to execute CTS within OpenLane:
 ```
@@ -1318,9 +1317,7 @@ read_sdc /home/parallels/OpenLane/designs/picorv32a/src/my_base.sdc
 set_propagated_clock (all_clocks)
 report_checks -path_delay min_max -format full_clock_expanded -digits 4
 ```
-
-![268460626-334fd5f3-db94-4484-a822-eb73d9ec0b73](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/39b7e67d-5fc8-40cc-bb65-91dcd71b4e55)
-
+![l268460756-8f40f6de-4c0c-401d-986a-48969ab38278 (1)](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/d76e1b3f-dc8c-46d0-a5cf-9518c614495a)
 
 * Running picorv32a command in OpenLane image is below:
 ```
