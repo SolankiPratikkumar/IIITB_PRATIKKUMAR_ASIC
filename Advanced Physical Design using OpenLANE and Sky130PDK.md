@@ -1297,10 +1297,11 @@ cp my_base.sdc /home/parallels/OpenLane/designs/picorv32a/src/
 ```
 run_cts
 ```
+
 * After CTS run, my slack values are setup:12.97,Hold:0.23
 * Here my both values are not voilating
-
-Since, clock is propagated, from this stage, we do timing analysis with real clocks. From now post cts analysis is performed by operoad within the openlane flow
+  
+Since, clock is propagated, from this stage, we do timing analysis with real clocks. From now post cts analysis is performed by openroad within the openlane flow
 * We use the following command to execute CTS within OpenLane:
 ```
 openroad
@@ -1317,6 +1318,13 @@ report_checks -path_delay min_max -format full_clock_expanded -digits 4
 ```
 ![4l268441695-f3ad4837-c02f-40b4-9d88-f9b2d1846cb2](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/d9faf8c4-4f07-44f9-9c94-9a9fcc32a24b)
 
+* Running picorv32a command in OpenLane image is below:
+```
+run_cts
+```  
+![Screenshot from 2023-09-17 22-25-02](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/a66df7bd-69c4-454a-8ca0-fa9a983b313c)
+
+  
  </details>
    </details>
 
@@ -1368,6 +1376,7 @@ report_checks -path_delay min_max -format full_clock_expanded -digits 4
 prep -design picorv32a -tag Run 12.07.10.11
 gen_pdn
 ```
+![Screenshot from 2023-09-17 22-31-16](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/b2219e4a-28cc-4291-9269-164362b00071)
 
 ![5b268378589-d4308ba0-8ba9-4b2c-9e45-25f4f0c07b31](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/85d3d7d5-2606-4699-8e18-2e3dbdd381a3)
 
@@ -1459,8 +1468,7 @@ expand
   
 ## OpenLANE Interactive Flow:
 ```
-cd Desktop/work/tools/openlane_working_dir/OpenLane/ 
-
+cd /home/solanki-pratikkumar/OpenLane
 ./flow.tcl -interactive
 package require openlane 0.9
 prep -design picorv32a
@@ -1470,6 +1478,9 @@ detailed_placement
 run_cts
 run_routing
 ```
+![Screenshot from 2023-09-17 22-32-16](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/515633ca-f79e-4b7c-8315-340059aea739)
+
+![Screenshot from 2023-09-17 22-33-02](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/09059e03-99a8-4e57-823d-f55565f32bc4)
 
  </details>
    </details>   
