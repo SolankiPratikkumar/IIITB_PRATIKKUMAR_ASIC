@@ -1392,7 +1392,7 @@ gen_pdn
 
 ## Key Features of TritonRoute
 
-* Initial Detailed Routing: TritonRoute commences the intricate detailed routing process, laying the initial groundwork for subsequent routing steps.
+* Initial Detailed Routing: TritonRoute commences the intricately detailed routing process, laying the initial groundwork for subsequent routing steps.
 * Adherence to Pre-Processed Route Guides: TritonRoute prioritizes strict adherence to pre-processed route guides, involving several key actions:
   * Analysis of Initial Route Guides: TritonRoute scrutinizes the directions specified in the preferred route guides. In cases where non-directional routing guides are detected, they are divided into unit widths.
   * Guide Splitting: When non-directional routing guides are encountered, TritonRoute segments them into unit widths to facilitate the routing process.
@@ -1415,7 +1415,59 @@ Output : Detailed routing solution with optimized wire length and via count
 Constraints : Route guide honoring, connectivity constraints and design rules.
 ```
 * The space where the detailed route takes place has been defined. Now TritonRoute handles the connectivity in two ways.
-* 
+* Access Point (AP): An Access Point (AP) refers to a specific point on the metal of the route guide, positioned on the grid. It serves the purpose of connecting to various components such as lower-layer segments, pins, IO ports, or upper-layer segments.
+* Access Point Cluster (APC): An Access Point Cluster (APC) encompasses all the Access Points (APs) derived from the same lower-layer segment, pin, IO port, or upper-layer guide. It represents a union or grouping of these access points, providing a collective entity for efficient routing.
+* TritonRoute run for routing,make sure the CURRENT_DEF is set to pdn.def
+* Start routing by using
+```
+run_routing
+```
+* The options for routing can be set in the config.tcl file. The optimisations in routing can also be done by specifying the routing strategy to use different versions of the TritonRoute Engine. There is a trade-off between the optimised route and the runtime for routing.
+* For the default setting picorv32a takes approximately 30 minutes according to the current version of TritonRoute.
+* Here drc violation is zero:
+
+![5g268378251-b77dda43-8564-4a47-89c9-853f35c7878e](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/2619d8a7-b35e-4a29-8519-200ae8b9d0ab)
+
+
+## Layout in Magic tool post Routing:
+
+* The design can be viewed on magic within the results/routing directory. Run the following command in that directory:
+```
+magic -T /home/parallels/OpenLane/vsdstdcelldesign/libs/sky130A.tech lef read tmp/merged.nom.lef def read results/routing/picorv32a.def &
+```
+![5e268383481-cdc9252e-4e65-4319-bcbc-ef1dec3a87f3](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/42c3930f-19d2-4be4-b4f9-6814eaa6fa75)
+
+## Identifying Custom Made SKY130_vsdinv
+* In tkcon type the following command to check whether sky130_vsdinv exist or not
+```
+getcell sky130_vsdinv
+what
+expand
+```
+![5f268466018-a14cf4e4-c4f7-401f-8d8e-975943492557](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/f69e3a25-87bd-415e-b17e-fec2e6651908)
+
+## Slack Report Post Routing:
+![265P8386394-efd5e673-af98-45b8-a833-9bfb81d198b1](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/cbd5939d-6df1-4e76-ada8-85a342b16643)
+
+## Post-synthesis Flip Flop to Standard Cell Ratio:
+![5Q268467051-59abe810-16eb-4bad-8067-18adc7c47fc6](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/00d9d4aa-450f-44c8-85e6-66c480405ecd)
+
+* The Flip-Flop to standard cell Ratio = 1613/18508 = 0.0871
+  
+## OpenLANE Interactive Flow:
+```
+cd Desktop/work/tools/openlane_working_dir/OpenLane/ 
+
+./flow.tcl -interactive
+package require openlane 0.9
+prep -design picorv32a
+run_synthesis
+run_floorplan
+detailed_placement
+run_cts
+run_routing
+```
+
  </details>
    </details>   
 
