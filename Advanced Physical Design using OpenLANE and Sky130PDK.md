@@ -1,5 +1,63 @@
 [](url) Physical Design of ASICs - Advanced Physical Design using OpenLANE
 
+# Advanced_Physical_Design_Using_OpenLANE
+
+## Table of Contents
+**1. Day 1**
+-  [How to Talk to Computer ](#how-to-talk-to-computers)
+- [Introduction to RISCV ](#introduction-to-RISCV--)
+-    [From Software Applications to Hardware](#from-software-applications-to-hardware--)
+-    [SoC Design and OpenLANE](#soc-design-and-openlane)
+-    [OpenLANE Installation](#openlane-installation-)
+
+**2. Day 2**
+- [Good and Bad Floorplanning , Placement and library cells](#day-2--good-and-bad-floorplanning--placement-and-library-cells)
+- [Chip floorplanning consideration](#chip-floorplanning-consideration)
+- [preplaced cells](#preplaced-cells)
+- [decoupling capacitor](#decoupling-capacitor)
+- [floorplan using openlane](#floorplan-using-openlane)
+- [Initial Place Design](#initial-place-design)
+- [Run placement in openlane](#run-placement-in-openlane)
+- [Cell Design Flow](#cell-design-flow)
+- [Characterization Flow](#characterization-flow)
+- [Timing characterization](#timing-characterization)
+
+**3. Day 3**
+- [ Design Library Cell using magic and ngspice](#day-3--design-library-cell-using-magic-and-ngspice)
+- [Inverter](#inverter)
+- [CMOS Fabrication Process](#cmos-fabrication-process)
+- [VSDST cell design lab](#vsdstdcelldesign-lab)
+- [Magic DRC](#magic-drc)
+- [Fix poly.9 error in sky.tech file](#fix-poly9-error-in-skytech-file)
+- [Implement poly resistor spacing](#implement-poly-resistor-spacing)
+- [Challenge exercise to describe DRC error](#challenge-exercise-to-describe-drc-error)
+- [Lab challenge to find missing or incorrect rules (creating magic DRC rule)](#lab-challenge-to-find-missing-or-incorrect-rules-creating-magic-drc-rule)
+
+**4. Day 4**  
+
+ **Pre-Layout timing analysis and importance of good clock tree**  
+ - [Convert grid info to track info](#convert-grid-info-to-track-info)
+ - [Incorporating Custom Cells into OpenLANE Flow](#incorporating-custom-cells-into-openlane-flow)
+ - [Introduction to Delay tables](#introduction-to-delay-tables)
+ - [Custom Standard Cell Integration in the OpenLane Flow](#custom-standard-cell-integration-in-the-openlane-flow)
+ - [Setup & Hold time](#setup--hold-time)
+ - [Clock Jitter:](#clock-jitter)
+ - [Clock Tree Synthesis](#clock-tree-synthesis)
+ - [Crosstalk and clock net shielding](#crosstalk-and-clock-net-shielding)
+ - [Lab Using TritonCTS](#lab-using-tritoncts)
+
+**5. Day 5**  
+
+**Final steps for RTL2GDS**	
+- [Maze Routing and Lee's algorithm](#maze-routing-and-lees-algorithm)
+- [Design Rule Check](#design-rule-check)
+- [Power Distribution Network and routing](#power-distribution-network-and-routing)
+- [Routing](#routing)
+- [TritonRoute Features](#tritonroute-features)
+
+- [References](#references)
+- [Acknowledgement](#acknowledgement)
+ 
 
 ## DAY 1: Inception of Open Source EDA, OpenLANE and Sky130PDK
 
