@@ -1254,7 +1254,30 @@ cp my_base.sdc /home/parallels/OpenLane/designs/picorv32a/src/
    
 <details>
 <summary>Clock Tree Synthesis TritonCTS and Signal Integrity</summary>  
-	
+
+## Clock Tree Synthesis
+* The primary objective of constructing a clock tree is to ensure that the clock input effectively reaches all elements in a design without any significant clock skew. A commonly employed method for achieving this is the H-tree structure in Clock Tree Synthesis (CTS).
+* When attempting to reduce slack in a prior run, you may have observed modifications in the netlist due to cell replacement techniques before initiating the CTS process using a tool like TritonCTS.
+* In Clock Tree Synthesis, the aims include minimizing the routing resources for the clock signal and reducing the area occupied by clock repeaters. Simultaneously, it's essential to maintain acceptable levels of clock skew, clock latency, clock transition time, pulse width, and duty cycle for all sequential elements within the design.
+* Additionally, the goal is to ensure the clock power remains within specified limits. Clock skew, a critical parameter, pertains to the variance in clock arrival times between different registers within the design
+* Clock Tree Synthesis (CTS) encompasses several methods, each suited for specific design requirements and constraints. Here are various approaches to CTS:
+* Balanced Tree CTS: Clock signals are distributed in a balanced manner, resembling a binary tree. The aim is to ensure nearly equal path lengths to all clock sinks (flip-flops), minimizing clock skew. While relatively simple to implement and analyze, it may not be the most power-efficient solution.
+
+H-tree CTS:
+Utilizes a hierarchical tree structure resembling the letter "H." Effective for distributing clock signals across large chip areas, reducing clock skew, and optimizing power consumption.
+
+Star CTS:
+Clock signal is distributed from a single central point (star-like) to all flip-flops. Simplifies clock distribution and minimizes clock skew but may require more buffers near the source.
+
+
+* Below is an example of a Bad Tree
+
+![4M268228489-ec506293-59a4-4a69-a7e9-8876d0cf79d1](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/e75da380-488a-44ea-a645-99a0ec05129d)
+
+## Cross Talk & Cross Net Shielding
+* Crosstalk noise represents an undesirable disturbance on the clock network induced by adjacent aggressive nets. This interference can either delay or accelerate the clock signal, or even introduce unwanted transitions referred to as glitches.
+*  To preserve the signal integrity of the clock, physical designers shield the clock wires by utilizing a power net. Additionally, they may implement Non-Default Rules (NDR) to route the clock signal while leaving an empty track beside the clock route.
+*  This strategic routing minimizes the impact of noise on the clock network. The primary role of the clock signal is to manage and synchronize triggering events in a synchronous design. Therefore, ensuring signal integrity is crucial in meeting the functional specifications of the design.
  </details>
    </details>
 
