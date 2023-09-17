@@ -1030,7 +1030,9 @@ drc check
 
 ![Screenshot from 2023-09-17 15-51-35](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/1f74d4ff-c523-43c0-8900-27f124c2c8de)
 
-
+   </details>
+   </details>
+   
 ## Day 4: Pre Layout Timing Analysis and Importance of Good Clock Tree
  <details>
   <summary>Timing Modelling Using Delay Tables</summary>  
