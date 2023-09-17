@@ -1407,7 +1407,15 @@ gen_pdn
 <img width="1290" alt="5e268355662-b8d2a78d-abb2-411d-a609-afc486ca808e" src="https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/94a9e05b-e9d7-4573-9ac1-cebd313eb488">
 
 * Works on MILP(Mixed Integer linear programming) based panel routing scheme with Intra-layer parallel and Inter-layer sequential routing framework
-  
+
+## TritonRoute Problem Statement
+```
+Inputs : LEF, DEF, Preprocessed route guides
+Output : Detailed routing solution with optimized wire length and via count
+Constraints : Route guide honoring, connectivity constraints and design rules.
+```
+* The space where the detailed route takes place has been defined. Now TritonRoute handles the connectivity in two ways.
+* 
  </details>
    </details>   
 
