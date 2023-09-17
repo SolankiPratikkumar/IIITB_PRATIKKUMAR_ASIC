@@ -1488,9 +1488,9 @@ run_routing
 
 ## Acknowledgement
 
-* Kunal Ghosh, VSD Corp. Pvt. Ltd.
+* Prof. Kunal Ghosh, VSD Corp. Pvt. Ltd.
 * Pruthvi Parate, Colleague,IIIT B
-* Alwin Shaju,Colleague,IIIT B
+* Alwin Shaju, Colleague,IIIT B
 * Divyam Satle, Colleague,IIIT B
 * Chatgpt
 
