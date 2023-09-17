@@ -849,14 +849,189 @@ create spice file using .ext file to be used with our ngspice tool - the command
   
 ## Create Final SPICE Deck
   
-* In this we edit the .spice file making the connection as required in the circuit. The file is customised in accordance to the model file available in the sky130PDK.
-* The edited .spice file is shown below
+* Under this section, we will go over how to infer the spice deck file and how to run the transient analysis using NGspice. Once the simulation is done, we will characterise the simulation plot.
+
+**Spice Deck** 
+
+* The design is scaled to 0.01u
+* The NMOS and PMOS are defined as
+  * cell_name drain_node gate_node source_node model_file_name
+```
+M1000 Y A VGND VGND nshort_model.0 w=35 l=23
+M1001 Y A VPWR VPWR pshort_model.0 w=37 l=23
+```
+* Here,we will include the model files for NMOS and PMOS from the libs directory
+```
+.include ./libs/nshort.lib
+ .include ./libs/pshort.lib
+```
+* Now, we set up the connections to the nodes with ground, Vdd and input pulses.
+  * VGND to VSS 0V
+  * Supply voltage VPWR to GND.
+  * Sweeping a pulse input.
+* So, the set the transient analysis code is as below
+
+```
+VDD VPWR 0 3.3V
+VSS VGND 0 0V
+Va A VGND PULSE(0V 3.3V 0 0.1ns 0.1ns 2ns 4ns)
+.tran 1n 20n
+.control
+run
+.endc
+.end
+```
+* Final Spice Deck for simulation is as below:
+  
+![268432458-572ba693-3394-4c69-aa60-0623757747ff](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/90b0e309-0235-4e19-8e6f-94ffcf064c9c)
+
+**NGSpice Simulation and Characterization**  
+
+* we would run this code for simulation:
+```
+ngspice sky130_inv.spice
+```
+
+![Screenshot from 2023-09-17 14-53-14](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/c13cdf7e-0b96-402e-9334-eb201383f081)
+
+* The plot of output vs time can be shown below:
+![Screenshot from 2023-09-17 14-55-50](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/fbdf7978-1ee1-486b-bb37-14b95780ec5b)
+
+![Screenshot from 2023-09-17 15-09-15](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/c86c64b4-d0e6-4e72-b2e5-b5307a30b9dc)
+
+* We can zoom the graph and obtain in new plot also we can get plot value in terminal by just clicking the graph point as shown in above image
+  
+* By observing the plot we can conclude,
+* Here, there are four timing parameters used for characterizing the inverter standard cell:
+  * Rise transition - Time taken for the output to rise from 20% to 80% of max value = 2.240 - 2.143 = 0.067ns
+  * Fall Transition - Time taken for the output to fall from 80% to 20% of max value = 4.0921 - 4.049 = 0.0431ns
+  * Cell Rise delay - Difference in time(50% output rise) to time(50% input fall) = 2.17333 - 2.13 = 0.0433ns
+  * Cell Fall delay - Difference in time(50% output fall) to time(50% input rise) = 4.076 - 4.0501 = 0.0259ns
+
+**DRC Challenges**
+
+Under this section, we will go over
+
+* In-depth overview of Magic's DRC engine
+* Introduction to Google/Skywater DRC rules
+* Lab : Warm-up exercise : Fixing a simple rule error
+* Lab : Main exercie : Fixing or create a complex error
+  
+**Introdution to Magic and Skywater PDK**
+
+For running the DRC we need to have an understanding of the technology node we are working on. For this one can refer the following
+
+* Magic link 
+```
+http://opencircuitdesign.com/magic/
+```
+
+![266835049-56354c85-f2f1-4dd8-a305-567ad241c664](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/0d4715d7-e35c-4a87-a155-0e4a9b509ed1)
+
+* Github Repo for Skywater PDK 
+```
+https://github.com/google/skywater-pdk
+```
+
+* To use the lab contents below is the command:
+```
+ wget http://opencircuitdesign.com/open_pdks/archive/drc_tests.tgz
+```
+* To extract the .tgz use below command: 
+```
+tar xfz drc_tests.tgz 
+```
+* Now,in that extracted folder there are files like this :
+![266835282-a1f1c8b8-82ef-4a51-ae2d-5930579cd82c](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/2ce5ab8f-a736-42f5-bfff-4845c06ccb9e)
+
+* Now,open the terminal to open the file give below commands:
+```
+magic -d XR met3.mag
+```
+
+* Below is the periphery rules for m3: (which can be found on https://skywaterpdk.readthedocs.io/en/main/rules/periphery.html#m3)
+
+![266835873-7d65c0c6-8bef-450e-8420-810376d593e4](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/6e04ca8b-f91c-4644-a1e0-adfa962217f5)
+
+* Representation is shown below:
+
+![Screenshot from 2023-09-17 15-37-26](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/683cdc28-cb26-402a-87fc-00cc9e4c9a8e)
+
+* Representation of m1 is shown below:
+  
+![Screenshot from 2023-09-17 15-33-07](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/9a52bbd7-dc1d-4861-8de3-4e727e04324d)
+
+* We use following commands to see metal cut as shown.
+```
+cif see VIA2
+```
+
+![266858772-748bb43a-88a8-42ef-861a-a52242efa105](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/86343faa-8f3d-4fd9-b415-1ee670e1eae1)
+
+## Load SKY130 tech rules for DRC Challenges
+
+* First load the poly file by load poly.mag on tkcon window.
+* Finding the error by mouse cursor and find the box area, Poly.9 is violated due to spacing between polyres and poly.
+
+![266858976-6800d982-37a6-4bd7-9764-b5b80dba8d90](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/5c5b560c-fe23-4fb2-85bf-e76e76e33107)
+
+* We find that distance between regular polysilicon & poly resistor should be 22um but it is showing 17um and still no errors . We should go to sky130A.tech file and modify as follows to detect this error.
+
+![266859841-0d199111-ded8-4193-a024-544227ab142c](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/d11dfb0d-3e65-4b9d-a812-a53c2d508a8c)
+
+* In the line
+```
+spacing npres *nsd 480 touching_illegal \
+	"poly.resistor spacing to N-tap < %d (poly.9)"
+```
+change to
+```
+spacing npres allpolynonres 480 touching_illegal \
+	"poly.resistor spacing to N-tap < %d (poly.9)"
+```
+* Now it should be like this :
+![266837095-29b5038f-2a70-432b-b15a-5dfff7f2daf5](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/95c92908-0db6-4a28-8438-4361f5db768e)
+
+* Also, update the other
+```
+spacing xhrpoly,uhrpoly,xpc alldiff 480 touching_illegal \
+
+	"xhrpoly/uhrpoly resistor spacing to diffusion < %d (poly.9)"
+```
+modify it to
+```
+spacing xhrpoly,uhrpoly,xpc allpolynonres 480 touching_illegal \
+
+	"xhrpoly/uhrpoly resistor spacing to diffusion < %d (poly.9)"
+```
+* Now it should be like this :
+![266837203-eed19458-b52a-4cac-8a58-cf9a0d2a92b6](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/5fda5caa-e6e9-4131-a6b2-ca2e93c4459c)
+
+* Below is the modified final layout:
+
+![266858976-6800d982-37a6-4bd7-9764-b5b80dba8d90](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/130c9e2e-5d25-411b-87dc-be9399c7412a)
+
+**Implementation of poly resistor Spacing**
+
+* Copy the three resistors by selecting (Edit > select area) and then press 'c' on keyboard.
+* You can move the copied resistors by pressing 'm' key and arrow key.
+
+* Now create n diffusion and p diffusion by creating box and selecting the ndiff and pdiff from the sidebar(by clicking the middle button of the mouse).
+
+* Then modify the sky130A.tech file by just modifying the ``*nsd to alldiff``
+Now type below command in magic's terminal and all the rules will correctly identify :
+```
+drc check
+```
+* Below is the representation:  
+
+![Screenshot from 2023-09-17 15-51-35](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/1f74d4ff-c523-43c0-8900-27f124c2c8de)
 
 
-</details>
-
-## Day 4: Pre Layout timing analysis and importance of good clock tree
+## Day 4: Pre Layout Timing Analysis and Importance of Good Clock Tree
  <details>
-  <summary>Timing modelling using delay tables</summary>  
+  <summary>Timing Modelling Using Delay Tables</summary>  
+
+  
    </details>
    </details>
