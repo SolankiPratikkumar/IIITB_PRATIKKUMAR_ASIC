@@ -1314,17 +1314,6 @@ report_checks -path_delay min_max -format full_clock_expanded -digits 4
 ```
 ![4l268441695-f3ad4837-c02f-40b4-9d88-f9b2d1846cb2](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/d9faf8c4-4f07-44f9-9c94-9a9fcc32a24b)
 
-## Test:
-
-Type following in openlane
-```
-echo $::env(CTS_CLK_BUFFER_LIST)
-set $::env(CTS_CLK_BUFFER_LIST) [lreplace $::env(CTS_CLK_BUFFER_LIST) 0 0]
-echo $::env(CTS_CLK_BUFFER_LIST)
-After changing the files, load the placement stage def file and run cts again. Now, again run OpenROAD and create another db and everything else is same. Report after post_cts is
-```
-* Observe: Setup slack - 2.2379 , Hold slack - 0.1869
-
  </details>
    </details>
 
