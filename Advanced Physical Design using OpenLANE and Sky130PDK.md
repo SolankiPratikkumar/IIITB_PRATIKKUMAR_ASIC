@@ -1075,6 +1075,181 @@ grid 0.46um 0.34um 0.23um 0.17um
 
 ## Create Port Definition:
 
+* However, it's important to define specific attributes and descriptions for the pins associated with a cell. In the context of LEF files, a cell that encompasses ports is scripted as a macro cell, where these ports are formally designated as the PINs of the macro.
+
+* To articulate a port, the process entails utilizing the Magic console, and the steps are as follows:
+* Open the Magic Layout window and load the relevant .mag file for the particular design, such as an inverter.
+* Navigate to "Edit" and select "Text," initiating a dialogue box for further editing.
+* Upon encountering I/O labels, pressing "S" twice swiftly captures the string name and size automatically.
+* Confirm that the "Port enable" checkbox is marked to signify this as a port. Additionally, ensure the "Default" checkbox remains unchecked, enabling customization of port characteristics. This is illustrated in the provided figure.
+
+![266978432-bf0874fe-c853-438e-b9ae-02af19967bab](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/454ab374-b6e8-4c05-8603-42fcf11b8700)
+
+* In the depicted figure, the number displayed in the text area adjacent to the "enable" checkbox signifies the sequence in which the ports will be documented in the LEF file. The numbering begins at 0 for the first port.
+
+* Regarding power and ground layers, their definitions can either be similar or distinct from the signal layer. In this scenario, connectivity for ground and power is established utilizing the metal1 layer.
+
+## Set Port Class and Port use Attributes for Layout
+
+* After defining ports, the next step is setting port class and port use attributes.
+
+* Select port A in Magic:
+```
+port class input
+port use signal
+```
+* Select Y area
+```
+port class output
+port use signal
+```
+* Select VPWR area
+```
+port class inout
+port use power
+```
+* Now, select Select VGND area
+```
+port class inout
+port use ground
+```
+
+## Custom cell naming and lef extraction.
+* Name the custom cell through tkcon window as sky130_vsdinv.mag.
+* We generate lef file by command:
+```
+lef write
+```
+* This generates sky130_vsdinv.lef file.
+![Screenshot from 2023-09-17 17-33-16](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/b24fba6d-3a98-4dae-a699-deb0e4669802)
+
+## Steps to include custom cell in ASIC design
+
+* We have created a custom standard cell in previous steps of an inverter. Copy lef file, sky130_fd_sc_hd_typical.lib, sky130_fd_sc_hd_slow.lib & sky130_fd_sc_hd_fast.lib to src folder of picorv32a from libs folder vsdstdcelldesign. Then modify the config.tcl as follows.
+
+```
+
+# Design
+set ::env(DESIGN_NAME) "picorv32a"
+
+set ::env(VERILOG_FILES) "$::env(DESIGN_DIR)/src/picorv32a.v"
+
+set ::env(CLOCK_PORT) "clk"
+set ::env(CLOCK_NET) $::env(CLOCK_PORT)
+
+set ::env(GLB_RESIZER_TIMING_OPTIMIZATIONS) {1}
+
+set ::env(LIB_SYNTH) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__typical.lib"
+set ::env(LIB_SLOWEST) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__slow.lib"
+set ::env(LIB_FASTEST) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__fast.lib"
+set ::env(LIB_TYPICAL) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__typical.lib"
+
+set ::env(EXTRA_LEFS) [glob $::env(OPENLANE_ROOT)/designs/$::env(DESIGN_NAME)/src/*.lef]
+
+set filename $::env(DESIGN_DIR)/$::env(PDK)_$::env(STD_CELL_LIBRARY)_config.tcl
+if { [file exists $filename] == 1} {
+	source $filename
+}
+```
+
+* To integrate standard cell in openlane flow after make mount , perform following commands:
+```
+prep -design picorv32a -tag RUN_2023.09.09_20.37.18 -overwrite 
+set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+add_lefs -src $lefs
+run_synthesis
+```
+* Synthesis Report :
+![4a266902322-2b9b8757-17cc-41f5-b6a8-52a5285698f5](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/4c942f71-928f-4d35-91c7-1720dcd862c3)
+
+* STA Report:
+![4b266902327-e63e74da-2c40-47e7-90d0-0c17f61758e7](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/8cb4c887-da33-408d-adaa-959eb4e5fe7b)
+
+## Delay Tables
+
+* Delay is a critical parameter with significant implications for the behaviour of cells in a design. It essentially governs various aspects of timing within the circuit.
+* When dealing with cells of different sizes and threshold voltages, a delay model table, often referred to as a timing table, is established. This table is fundamental for understanding how the delay of a cell depends on input transitions and output loads.
+* Consider two scenarios: one where a cell (let's call it X1) is positioned at the end of a long wire and another where the same cell is at the end of a short wire. In the first scenario, the delay of the cell is impacted by the less favourable transition due to the resistance and capacitance effects along the lengthy wire.
+* Conversely, the delay is less affected in the second scenario because the wire's characteristics are more favourable. Despite the cells being identical, their delays change based on input transitions and the output loads they encounter.
+* VLSI engineers have recognized specific constraints when inserting buffers to maintain signal integrity. They've observed that each buffer level should keep consistent sizing, but their delays can vary depending on the loads they drive. To address this, they introduced the concept of "delay tables."
+* These tables are essentially two-dimensional arrays containing values for input slew and load capacitance, associated with different buffer sizes. These tables serve as timing models for the design.
+* When algorithms work with these delay tables, they utilize the provided input slew and load capacitance values to calculate corresponding delay values for the buffers.
+* In situations where precise delay data isn't available, the algorithm employs interpolation techniques to determine the nearest available data points and extrapolates from them to estimate the required delay values.
+
+<img width="1281" alt="4c266907930-7f23c990-215b-4fd3-a581-448967c046ae" src="https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/0dea61c7-d464-42a1-a206-1a32910b637e">
+
+**OpenLane Steps with Custom Standard Cell**
+
+* We performed the synthesis and found that it has positive slack and met timing constraints.
+* During Floorplan,504 endcaps, and 6731 tapcells got placed. The design has 275 original rows
+* Now  run_placement
+* After placement, we check for legality & To check the layout invoke magic from the results/placement directory:
+```
+magic -T /home/parallels/OpenLane/vsdstdcelldesign/libs/sky130A.tech lef read tmp/merged.nom.lef def read results/floorplan/picorv32a.def &
+```
+![4D266914101-4344be1e-881b-492e-910f-e3a27b052eda](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/7044ab51-2463-4106-bb42-a9e00270ad32)
+
+
+   </details>
+   </details>
+   
+<details>
+  <summary>Post-Synthesis Timing Analysis Using OpenSTA</summary>  
+
+## Setup and Hold Time 
+
+* This is where the concepts of SETUP and HOLD time come into play.
+* SETUP time is defined as the minimum duration before the active edge of the clock during which the data must remain stable for proper latching. Any deviation from this timing requirement can result in incorrect data being captured, a scenario known as a setup violation.
+![4E268226239-2df7daed-20a6-4329-b377-ea3af416ff81](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/d89c131a-521f-4f0c-be70-c7b8eac8def0)
+
+
+* HOLD time is defined as the minimum duration after the active edge of the clock during which the data must remain stable. Violation of this timing requirement can lead to incorrect data being captured, referred to as a hold violation. It's important to note that both setup and hold times are measured specifically with respect to the active clock edge.
+![4F268226594-53d2547a-206b-4228-b215-0c3b6aeea644](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/b4c7c391-5d5f-4e3a-907e-8d25c5e81473)
+
+## Clock Jitter 
+
+* Clock jitter can arise due to various factors within the clock generator circuitry, environmental noise, power supply fluctuations, and interference from neighbouring circuitry. In the process of timing closure specification, the design margin accounts for jitter as a significant factor.
+* Period jitter is the discrepancy between a clock signal's cycle time and the ideal period observed over a substantial number of randomly selected cycles, often around 10,000 cycles. This deviation in the clock period can be represented as an average value (RMS value) across these cycles or as the difference between the maximum and minimum deviations within the selected cycle group (peak-to-peak period jitter).
+* Cycle-to-cycle jitter (C2C) is defined as the difference between two consecutive clock cycles within a random selection of clock cycles, typically again around 10,000 cycles. This is usually expressed as the peak value within the randomly selected group, providing insight into the high-frequency jitter.
+* In the frequency domain, the phenomenon being measured is referred to as phase noise. Phase noise represents rapid, fleeting, and random phase variations in the waveform. These variations can be converted into jitter values, which are crucial considerations in digital design.
+
+![4G268441195-65b0b057-5260-454b-805b-4da1e332be88](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/ca2481e8-d2da-4d20-8047-b662affdd59b)
+
+**Causes of Clock Jitter**
+
+* Clock jitter, characterized by timing uncertainties in a clock signal, can be influenced by various factors:
+
+* Noise: Electronic circuits can introduce noise into the system, causing fluctuations in the clock signal. Sources of noise include power supply fluctuations and electromagnetic interference, both of which can contribute to jitter.
+
+* Component Variations: Variations in electronic component characteristics, such as resistors, capacitors, and transistors, can introduce discrepancies in the clock signal, leading to jitter.
+
+* Temperature Fluctuations: Changes in temperature can affect the behavior of electronic components, causing variations in clock timings and contributing to clock jitter.
+
+* Phase-Locked Loops (PLLs): Phase-Locked Loops (PLLs) are commonly utilized for generating stable clock signals. However, improper design or configuration of PLLs can introduce jitter into the clock signal, impacting timing precision.
+
+* Clock Distribution: Clock signals travel through various paths such as PCB traces or cables during distribution. These paths may introduce delays, reflections, or other irregularities in the clock signal, resulting in jitter.
+
+* Addressing and mitigating these sources of jitter is crucial in maintaining timing accuracy and reliability in electronic circuits and systems.
+
+* Timing analysis is carried out outside the openLANE flow using OpenSTA tool. For this,`` pre_sta.conf `` is required to carry out the STA analysis. Invoke OpenSTA outside the OpenLANE flow as follows:
+```
+sta pre_sta.conf
+```
+sdc file for OpenSTA is modified like this:
+
+base.sdc is located in vsdstdcelldesigns/extras directory. So, I copied it into our design folder using
+```
+cp my_base.sdc /home/parallels/OpenLane/designs/picorv32a/src/
+```
+
+* While I didn't encounter any violations, I have practical experience in timing analysis using OpenSTA.
+* During the placement stage, the clock is presumed to be ideal since it propagates only once the clock tree synthesis (CTS) is performed. Consequently, only setup slack is considered before CTS, assuming an ideal clock in the placement stage.
+* In timing analysis, "setup time" refers to the minimum duration required for the data to stabilize before the active edge of the clock to ensure accurate capture.
+* "Setup slack" is computed as the difference between the data required time and the actual data arrival time.
+* The clock is generated from a Phase-Locked Loop (PLL) that includes built-in circuits and logic cells. Clock generation can exhibit variations depending on the circuit, collectively referred to as clock uncertainty. Clock uncertainty encompasses parameters like skew, jitter, and margin.
+* "Clock Jitter" is defined as the deviation of a clock edge from its original position, representing a form of uncertainty in the timing of the clock signal.
+* From the timing report, we can improve slack by upsizing the cells i.e., by replacing the cells with high drive strength and we can see significant changes in the slack.
+
 
    </details>
    </details>
