@@ -966,14 +966,16 @@ magic -d XR met3.mag
 cif see VIA2
 ```
 
-![266858772-748bb43a-88a8-42ef-861a-a52242efa105](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/86343faa-8f3d-4fd9-b415-1ee670e1eae1)
+![Screenshot from 2023-09-17 15-55-59](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/ccd545d9-c4f3-4571-919b-9073630b5ff8)
+
 
 ## Load SKY130 tech rules for DRC Challenges
 
 * First load the poly file by load poly.mag on tkcon window.
 * Finding the error by mouse cursor and find the box area, Poly.9 is violated due to spacing between polyres and poly.
 
-![266858976-6800d982-37a6-4bd7-9764-b5b80dba8d90](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/5c5b560c-fe23-4fb2-85bf-e76e76e33107)
+![Screenshot from 2023-09-17 15-56-44](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/a8e7dfc9-e455-44a3-befe-269c223d8066)
+
 
 * We find that distance between regular polysilicon & poly resistor should be 22um but it is showing 17um and still no errors . We should go to sky130A.tech file and modify as follows to detect this error.
 
@@ -1009,7 +1011,8 @@ spacing xhrpoly,uhrpoly,xpc allpolynonres 480 touching_illegal \
 
 * Below is the modified final layout:
 
-![266858976-6800d982-37a6-4bd7-9764-b5b80dba8d90](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/130c9e2e-5d25-411b-87dc-be9399c7412a)
+![Screenshot from 2023-09-17 15-57-35](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/2134a808-c5d8-4896-840d-173d36760266)
+
 
 **Implementation of poly resistor Spacing**
 
