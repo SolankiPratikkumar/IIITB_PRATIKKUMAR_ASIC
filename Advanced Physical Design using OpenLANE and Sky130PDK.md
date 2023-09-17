@@ -330,6 +330,7 @@ sudo docker run hello-world
 ![Screenshot from 2023-09-16 22-44-12](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/da9df512-45aa-4421-a717-c6f15a2d0f83)
 
 * Below is dff_synthesis report:
+  
 ![266792079-c4d04351-021f-4c56-9327-c88d52a8cd8f](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/ec38cdee-a0c4-4ab4-8547-8cd6b87f10ed)
 
 ![266792086-ac2cc982-f792-4251-9b1b-b337f8bdba4b](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/1ddbaba6-48c0-43a4-90d9-42bcf57f5b31)
@@ -337,9 +338,11 @@ sudo docker run hello-world
 ![265791982-686d8a71-a016-4b77-83b2-2b3625f4cf91](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/8d4a495a-eac3-432b-9283-683d302bead0)
 
 * Below is synthesis_pre report:
+  
 ![265792337-f73e82ad-a3bd-4a95-aa71-8542b4f47ebd](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/7af25fb0-d7c2-4a2c-af28-3a0d069c8d61)
 
-**Flops ratio:**
+* **Flops ratio:**
+
 * The flop ratio is defined as the ratio of the number of flops to the total number of cells
 * Here flop ratio is 1596/10104 = 0.1579 (i.e: 15.8%) [From the synthesis statistics]
  </details>
