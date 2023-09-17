@@ -1,63 +1,5 @@
 [](url) Physical Design of ASICs - Advanced Physical Design using OpenLANE
 
-# Advanced_Physical_Design_Using_OpenLANE
-
-## Table of Contents
-**1. Day 1**
--  [How to Talk to Computer](#how-to-talk-to-computers)
-- [Introduction to RISCV ](#introduction-to-RISCV--)
--    [From Software Applications to Hardware](#from-software-applications-to-hardware--)
--    [SoC Design and OpenLANE](#soc-design-and-openlane)
--    [OpenLANE Installation](#openlane-installation-)
-
-**2. Day 2**
-- [Good and Bad Floorplanning , Placement and library cells](#day-2--good-and-bad-floorplanning--placement-and-library-cells)
-- [Chip floorplanning consideration](#chip-floorplanning-consideration)
-- [preplaced cells](#preplaced-cells)
-- [decoupling capacitor](#decoupling-capacitor)
-- [floorplan using openlane](#floorplan-using-openlane)
-- [Initial Place Design](#initial-place-design)
-- [Run placement in openlane](#run-placement-in-openlane)
-- [Cell Design Flow](#cell-design-flow)
-- [Characterization Flow](#characterization-flow)
-- [Timing characterization](#timing-characterization)
-
-**3. Day 3**
-- [ Design Library Cell using magic and ngspice](#day-3--design-library-cell-using-magic-and-ngspice)
-- [Inverter](#inverter)
-- [CMOS Fabrication Process](#cmos-fabrication-process)
-- [VSDST cell design lab](#vsdstdcelldesign-lab)
-- [Magic DRC](#magic-drc)
-- [Fix poly.9 error in sky.tech file](#fix-poly9-error-in-skytech-file)
-- [Implement poly resistor spacing](#implement-poly-resistor-spacing)
-- [Challenge exercise to describe DRC error](#challenge-exercise-to-describe-drc-error)
-- [Lab challenge to find missing or incorrect rules (creating magic DRC rule)](#lab-challenge-to-find-missing-or-incorrect-rules-creating-magic-drc-rule)
-
-**4. Day 4**  
-
- **Pre-Layout timing analysis and importance of good clock tree**  
- - [Convert grid info to track info](#convert-grid-info-to-track-info)
- - [Incorporating Custom Cells into OpenLANE Flow](#incorporating-custom-cells-into-openlane-flow)
- - [Introduction to Delay tables](#introduction-to-delay-tables)
- - [Custom Standard Cell Integration in the OpenLane Flow](#custom-standard-cell-integration-in-the-openlane-flow)
- - [Setup & Hold time](#setup--hold-time)
- - [Clock Jitter:](#clock-jitter)
- - [Clock Tree Synthesis](#clock-tree-synthesis)
- - [Crosstalk and clock net shielding](#crosstalk-and-clock-net-shielding)
- - [Lab Using TritonCTS](#lab-using-tritoncts)
-
-**5. Day 5**  
-
-**Final steps for RTL2GDS**	
-- [Maze Routing and Lee's algorithm](#maze-routing-and-lees-algorithm)
-- [Design Rule Check](#design-rule-check)
-- [Power Distribution Network and routing](#power-distribution-network-and-routing)
-- [Routing](#routing)
-- [TritonRoute Features](#tritonroute-features)
-
-- [References](#references)
-- [Acknowledgement](#acknowledgement)
- 
 
 ## DAY 1: Inception of Open Source EDA, OpenLANE and Sky130PDK
 
@@ -836,6 +778,8 @@ magic -T /home/parallels/OpenLane/vsdstdcelldesign/libs/sky130A.tech lef read tm
 
 * Higher Level Metal Formation: Achieving suitable metal interconnects involves addressing non-planar surface topography. Chemical Mechanical Polishing (CMP) is employed by doping silicon oxide with Boron or Phosphorus to achieve surface planarization. TiN and blanket Tungsten layers are deposited and subjected to CMP. An aluminum (Al) layer is added and subjected to photolithography and CMP. This constitutes the first level of interconnects, with additional interconnect layers added to reach higher-level metal layers.
 
+![266960128-11e88b98-aaa3-4077-b46b-abff9b3f38c3](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/6fe3466b-4f3e-4520-bf25-ebb789b64166)
+
 * Addition of Dielectric Layer: Finally, a dielectric layer, typically Si3N4, is applied to protect the chip.
 
 * This intricate process leads to the creation of advanced integrated circuits with multiple layers of interconnects, playing a vital role in modern electronic devices.
@@ -854,7 +798,7 @@ magic -T sky130A.tech sky130_inv.mag &
 
 ![Screenshot from 2023-09-17 02-12-15](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/325be9f4-40a9-45e9-8413-1795d8ab4efd)
 
-## SKY130 basic layer layout and LEF using inverter
+## SKY130 Basic Layer layout and LEF using inverter
 
 * When inspecting the layout, we can observe the specific layers necessary for constructing a CMOS inverter. The inverter consists of a PMOS and NMOS transistor connected in tandem.
 
@@ -865,16 +809,20 @@ magic -T sky130A.tech sky130_inv.mag &
 * Within the Skywater130 technology, the initial layer is the local interconnect layer, referred to as 'locali'. * * Above this layer, we have metal 1, identifiable by its purple color, and above that is metal 2, characterized by a pink color.
 * To explore connections between various segments, position the cursor over the area of interest and press 'S' once. The tkson window will display the corresponding component name, providing valuable insights into the layout
   
-![3b266828682-69b54c77-b195-4ab3-b3f4-b68a75b45a28](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/c54edcb7-0105-4f62-8e2a-3624efcfaec7)
+![Screenshot from 2023-09-17 11-33-40](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/7bc182d0-acab-4fa9-8676-f9cbc26b1439)
+
+  
+![266970714-06f1731a-3266-4c8f-9085-e3c376cf8290](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/a0f2fa2d-457f-49ce-aa05-82d66b7b1942)
 
 
 **Library exchange format(.lef)**
 * The layout of a design is defined in a specific file called LEF.
 * It includes design rules (tech LEF) and abstract information about the cells.
-* Tech LEF - Technology LEF file contains information about the Metal layer, Via Definition and DRCs.
-* Macro LEF - Contains physical information of the cell such as its Size, Pin, their direction.
+  * Tech LEF - Technology LEF file contains information about the Metal layer, Via Definition and DRCs.
+  * Macro LEF - Contains physical information of the cell such as its Size, Pin, their direction.
 
 ## Designing Standard Cell and SPICE extraction in MAGIC
+
 * Following commands were used in the magic command window to generate the spice file.
 ```
 extract all
@@ -886,11 +834,13 @@ ex2spice
 
 * After this, Vdd, GND segments which are in metal 1 layer, their respective contacts and atlast logic gates layout is defined Inorder to know the logical functioning of the inverter, we extract the spice and then we do simulation on the spice. To extract it on spice we open TKCON window, the steps are
 
-* Know the present directory - pwd 
+* Know the present directory - ``pwd ``
 
-* Create an extration file - the command is extract all and sky130_inv.ext files has been created
+* Create an extraction file - the command is`` extract all``and sky130_inv.ext files has been created
 create spice file using .ext file to be used with our ngspice tool - the commands are
-ext2spice cthresh 0 rthresh 0 - extracts parasatic capcitances also since these are actual layers - nothing is created in the folder ext2spice - a file sky130_inv.spice has been created.
+``ext2spice cthresh 0 rthresh 0`` - extracts parasatic capcitances also since these are actual layers - nothing is created in the folder ext2spice - a file`` sky130_inv.spice ``has been created.
+
+![Screenshot from 2023-09-17 11-45-09](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/e2cd1a53-bd70-4ae8-b56a-bbb9bdff7b64)
 
 </details>
    </details>
