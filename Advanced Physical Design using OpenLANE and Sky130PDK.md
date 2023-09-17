@@ -1249,7 +1249,31 @@ cp my_base.sdc /home/parallels/OpenLane/designs/picorv32a/src/
 * The clock is generated from a Phase-Locked Loop (PLL) that includes built-in circuits and logic cells. Clock generation can exhibit variations depending on the circuit, collectively referred to as clock uncertainty. Clock uncertainty encompasses parameters like skew, jitter, and margin.
 * "Clock Jitter" is defined as the deviation of a clock edge from its original position, representing a form of uncertainty in the timing of the clock signal.
 * From the timing report, we can improve slack by upsizing the cells i.e., by replacing the cells with high drive strength and we can see significant changes in the slack.
-
-
+  
    </details>
    </details>
+   
+<details>
+<summary>Clock Tree Synthesis TritonCTS and Signal Integrity</summary>  
+	
+ </details>
+   </details>
+
+## Day 5: Final Ssteps for RTL2GDS using TritonRoute and OpenSTA
+ <details>
+  <summary>Routing and Design Rule Check(DRC)</summary>  
+
+ </details>
+   </details>
+
+ <details>
+  <summary>Power Distribution Network and Routing</summary>
+
+ </details>
+   </details>   
+
+<details>
+  <summary>TritonRoute Feature</summary>
+
+ </details>
+   </details>   
