@@ -1262,13 +1262,11 @@ cp my_base.sdc /home/parallels/OpenLane/designs/picorv32a/src/
 * Additionally, the goal is to ensure the clock power remains within specified limits. Clock skew, a critical parameter, pertains to the variance in clock arrival times between different registers within the design
 * Clock Tree Synthesis (CTS) encompasses several methods, each suited for specific design requirements and constraints. Here are various approaches to CTS:
 * Balanced Tree CTS: Clock signals are distributed in a balanced manner, resembling a binary tree. The aim is to ensure nearly equal path lengths to all clock sinks (flip-flops), minimizing clock skew. While relatively simple to implement and analyze, it may not be the most power-efficient solution.
-
-H-tree CTS:
-Utilizes a hierarchical tree structure resembling the letter "H." Effective for distributing clock signals across large chip areas, reducing clock skew, and optimizing power consumption.
-
-Star CTS:
-Clock signal is distributed from a single central point (star-like) to all flip-flops. Simplifies clock distribution and minimizes clock skew but may require more buffers near the source.
-
+* H-tree CTS: Utilizes a hierarchical tree structure resembling the letter "H." Effective for distributing clock signals across large chip areas, reducing clock skew, and optimizing power consumption.
+* Star CTS: Clock signal is distributed from a single central point (star-like) to all flip-flops. Simplifies clock distribution and minimizes clock skew but may require more buffers near the source.
+* Global-Local CTS: A hybrid approach combining elements of star and tree topologies. Global clock tree distributes the clock signal to major clock domains, while local trees handle further distribution within each domain. Balances global and local optimizations.
+* Mesh CTS: Clock wires are organized in a mesh-like grid pattern, with each flip-flop connected to the nearest available clock wire. Often used in structured designs like memory arrays, striking a balance between simplicity and skew minimization.
+* Adaptive CTS: Dynamic adjustment of the clock tree structure based on timing and congestion constraints in the design. Offers greater flexibility and adaptability in meeting design goals but may be more complex to implement.
 
 * Below is an example of a Bad Tree
 
@@ -1276,8 +1274,57 @@ Clock signal is distributed from a single central point (star-like) to all flip-
 
 ## Cross Talk & Cross Net Shielding
 * Crosstalk noise represents an undesirable disturbance on the clock network induced by adjacent aggressive nets. This interference can either delay or accelerate the clock signal, or even introduce unwanted transitions referred to as glitches.
-*  To preserve the signal integrity of the clock, physical designers shield the clock wires by utilizing a power net. Additionally, they may implement Non-Default Rules (NDR) to route the clock signal while leaving an empty track beside the clock route.
+* Impact: The issue of crosstalk looms large in VLSI design due to the tightly packed components on a chip. Unchecked crosstalk has the potential to cause data corruption, timing breaches, and escalate power usage.
+* Mitigation: VLSI designers utilize an array of methods to address and alleviate crosstalk. These include optimizing layout and routing, employing suitable shielding, enacting effective clock distribution strategies, and utilizing clock gating to curtail dynamic power consumption during logic inactivity.
+* To preserve the signal integrity of the clock, physical designers shield the clock wires by utilizing a power net. Additionally, they may implement Non-Default Rules (NDR) to route the clock signal while leaving an empty track beside the clock route.
 *  This strategic routing minimizes the impact of noise on the clock network. The primary role of the clock signal is to manage and synchronize triggering events in a synchronous design. Therefore, ensuring signal integrity is crucial in meeting the functional specifications of the design.
+
+* In the domain of VLSI circuits, establishing synchronous operation hinges on a well-structured clock distribution network. The primary objective is to facilitate the effective dissemination of clock signals across every sector of the chip while minimizing skew and upholding signal integrity.
+
+* Implementation of Shielding Methods: To uphold the clock network's integrity and mitigate interference risks, VLSI designers frequently implement shielding techniques. These encompass the integration of dedicated clock routing layers, the application of clock tree synthesis algorithms, and strategic buffer insertion—all aimed at enhancing clock distribution efficiency.
+
+* Separation of Clock Domains: VLSI designs commonly encompass multiple clock domains. The strategic use of shielding and precise clock gating is paramount to ensuring that clock signals remain confined within their designated domains. By preventing unwarranted propagation between domains, this measure effectively mitigates metastability issues and maintains synchronization.
+![4g268228943-bdc9c311-15e5-4d70-99b4-c2cf1dd1adbd](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/95e42c95-6597-4815-8892-016002e4ad86)
+
+**Clock Tree Synthesis Lab**
+
+* In this stage clock is propagated and make sure that clock reaches each and every clock pin from clock source with mininimum skew and insertion delay.
+* Inorder to do this, we implement H-tree using mid point strategy. For balancing the skews, we use clock invteres or bufferes in the clock path. Before attempting to run CTS in TritonCTS tool, if the slack was attempted to be reduced in previous run, the netlist may have gotten modified by cell replacement techniques.
+* Therefore, the verilog file needs to be modified using the write_verilog command. Then, the synthesis, floorplan and placement is run again. To run CTS use the below command:
+```
+run_cts
+```
+* After CTS run, my slack values are setup:12.97,Hold:0.23
+* Here my both values are not voilating
+
+Since, clock is propagated, from this stage, we do timing analysis with real clocks. From now post cts analysis is performed by operoad within the openlane flow
+* We use the following command to execute CTS within OpenLane:
+```
+openroad
+read_lef <path of merge.nom.lef>
+read_def <path of def>
+write_db pico_cts.db
+read_db pico_cts.db
+read_verilog /home/parallels/OpenLane/designs/picorv32a/runs/RUN_09-09_11-20/results/synthesis/picorv32a.v
+link_design picorv32a
+read_liberty $::env(LIB_SYNTH_COMPLETE)
+read_sdc /home/parallels/OpenLane/designs/picorv32a/src/my_base.sdc
+set_propagated_clock (all_clocks)
+report_checks -path_delay min_max -format full_clock_expanded -digits 4
+```
+![4l268441695-f3ad4837-c02f-40b4-9d88-f9b2d1846cb2](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/d9faf8c4-4f07-44f9-9c94-9a9fcc32a24b)
+
+## Test:
+
+Type following in openlane
+```
+echo $::env(CTS_CLK_BUFFER_LIST)
+set $::env(CTS_CLK_BUFFER_LIST) [lreplace $::env(CTS_CLK_BUFFER_LIST) 0 0]
+echo $::env(CTS_CLK_BUFFER_LIST)
+After changing the files, load the placement stage def file and run cts again. Now, again run OpenROAD and create another db and everything else is same. Report after post_cts is
+```
+* Observe: Setup slack - 2.2379 , Hold slack - 0.1869
+
  </details>
    </details>
 
