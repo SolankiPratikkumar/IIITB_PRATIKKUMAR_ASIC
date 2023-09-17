@@ -1298,10 +1298,12 @@ cp my_base.sdc /home/parallels/OpenLane/designs/picorv32a/src/
 run_cts
 ```
 
+![268460626-334fd5f3-db94-4484-a822-eb73d9ec0b73](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/c3fda4d9-3232-41ba-bf1b-78688828b633)
+
 * After CTS run, my slack values are setup:12.97,Hold:0.23
-* Here my both values are not voilating
+* Here my values are not violating
   
-Since, clock is propagated, from this stage, we do timing analysis with real clocks. From now post cts analysis is performed by openroad within the openlane flow
+* Since, the clock is propagated, from this stage, we do timing analysis with real clocks. From now post cts analysis is performed by Openroad within the OpenLane flow
 * We use the following command to execute CTS within OpenLane:
 ```
 openroad
@@ -1316,7 +1318,9 @@ read_sdc /home/parallels/OpenLane/designs/picorv32a/src/my_base.sdc
 set_propagated_clock (all_clocks)
 report_checks -path_delay min_max -format full_clock_expanded -digits 4
 ```
-![4l268441695-f3ad4837-c02f-40b4-9d88-f9b2d1846cb2](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/d9faf8c4-4f07-44f9-9c94-9a9fcc32a24b)
+
+![268460626-334fd5f3-db94-4484-a822-eb73d9ec0b73](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/39b7e67d-5fc8-40cc-bb65-91dcd71b4e55)
+
 
 * Running picorv32a command in OpenLane image is below:
 ```
