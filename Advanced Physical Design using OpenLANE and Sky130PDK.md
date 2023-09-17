@@ -1320,6 +1320,37 @@ report_checks -path_delay min_max -format full_clock_expanded -digits 4
 ## Day 5: Final Steps for RTL2GDS using TritonRoute and OpenSTA
  <details>
   <summary>Routing and Design Rule Check(DRC)</summary>  
+	 
+## Maze Routing and Lee's algorithm
+
+* Routing Definition: Routing is the act of establishing a physical link between two pins. Routing algorithms are designed to consider source and target pins, aiming to discover the most efficient path between them, ensuring a valid connection.
+
+* Maze Routing Algorithm: An approach to solve routing challenges is the Maze Routing algorithm, like the Lee algorithm. This technique employs a grid resembling the one used in cell customization for routing. Starting from specified source and target points, the Lee algorithm utilizes this routing grid to find the shortest or most efficient route between them.
+
+* The algorithm applies labels to neighbouring grid cells around the source, incrementing them from 1 until reaching the target (e.g., from 1 to 7). This process may yield various paths, including L-shaped and zigzag-shaped routes. The Lee algorithm emphasizes selecting the optimal path, usually favouring L-shaped routes over zigzags. In the absence of L-shaped paths, it may opt for zigzag routes. This method proves particularly beneficial for global routing tasks.
+
+* However, it's important to acknowledge the limitations of the Lee algorithm. It effectively constructs a maze and labels its cells from the source to the target. While efficient for routing between two pins, it can become time-consuming when dealing with a vast number of pins. There are alternative algorithms designed to address similar routing challenges.
+
+![Screenshot from 2023-09-17 19-50-29](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/67a1ac8c-f3fe-41e0-93b9-867a03264e2b)
+
+## Design Rule Check (DRC)
+
+* DRC Definition: Design Rule Checking (DRC) is a validation process that assesses whether a design conforms to the predetermined process technology regulations specified by the foundry for its fabrication. DRC validation is a crucial step within the physical design workflow, ensuring the design complies with manufacturing prerequisites and mitigates the risk of chip failure. It essentially outlines the chip's quality.
+
+* Various DRCs: DRC encompasses an array of checks, including but not limited to the following:
+
+* Design rules governing physical wires, encompassing aspects like:
+  * Minimum wire width
+  * Minimum wire-to-wire spacing
+  * Minimum wire pitch
+  
+* To address signal short violations, a common strategy involves employing an upper metal layer by placing it over the metal layer in question. The DRC checks related to this strategy typically involve:
+
+* Via rules, including:
+    * Via width
+    * Via spacing
+ 
+![5a268349811-6e06f298-9772-45ca-954d-3ec34b755766](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/1d2e3816-f26a-4387-860f-8be197882bc5)
 
  </details>
    </details>
@@ -1327,12 +1358,56 @@ report_checks -path_delay min_max -format full_clock_expanded -digits 4
  <details>
   <summary>Power Distribution Network and Routing</summary>
 
+* Unlike the general ASIC flow, Power Distribution Network generation is not a part of the floorplan run in OpenLANE. PDN must be generated after CTS and post-CTS STA analyses:
+* We can check whether PDN has been created or not by checking the current def environment variable: ``echo $::env(CURRENT_DEF)``
+
+```
+prep -design picorv32a -tag Run 12.07.10.11
+gen_pdn
+```
+
+![5b268378589-d4308ba0-8ba9-4b2c-9e45-25f4f0c07b31](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/85d3d7d5-2606-4699-8e18-2e3dbdd381a3)
+
+* After initiating the command, a power distribution network is established. This network is built using the design_cts.def file as its input definition.
+* The PDN process involves the creation of power rings, straps, and rails. These components play critical roles in facilitating power flow. Initially, power is drawn from VDD and VSS pads to the power rings.
+* Following this, both horizontal and vertical straps connected to the rings serve as conduits for drawing power from the straps. The rings are interconnected with standard cells, and power is then supplied to the standard cells through the rails.
+* The standard cells are meticulously designed to have heights that are multiples of the vertical tracks, with a track pitch of 2.72. Adhering to these conditions is essential for effectively powering the standard cells.
+* Definitions and specifications for the straps and rails are present in the design. In this specific design, the straps are positioned at metal layers 4 and 5, while the standard cell rails are situated at metal layer 1. Vias are utilized to establish connections across these layers as needed.
+  
+![Screenshot from 2023-09-17 19-55-27](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/83714db0-76cc-421a-86e5-a8d7b7973b3d)
+  
  </details>
    </details>   
 
 <details>
   <summary>TritonRoute Feature</summary>
+	
+## Routing
 
+* In the domain of routing within Electronic Design Automation (EDA) tools, encompassing both OpenLANE and commercial EDA tools, the routing process is highly intricate given the expansive design space. To streamline this complexity, routing is typically segmented into two primary stages: Global Routing and Detailed Routing.
+
+* These stages are managed by two distinct routing engines:
+* Global Routing: At this stage, the routing region is partitioned into rectangular grid cells, forming a coarse 3D routing graph. This task is accomplished by the "FASTE ROUTE" engine.
+* Detailed Routing: In this phase, a finer grid granularity and routing guides are utilized to execute the physical wiring. The "tritonRoute" engine is activated during this stage. "Fast Route" generates initial routing guides, and "Triton Route" then refines the routing using the Global Route information. It employs various strategies and optimizations to determine the most efficient path for connecting the pins.
+
+## Key Features of TritonRoute
+
+* Initial Detailed Routing: TritonRoute commences the intricate detailed routing process, laying the initial groundwork for subsequent routing steps.
+* Adherence to Pre-Processed Route Guides: TritonRoute prioritizes strict adherence to pre-processed route guides, involving several key actions:
+  * Analysis of Initial Route Guides: TritonRoute scrutinizes the directions specified in the preferred route guides. In cases where non-directional routing guides are detected, they are divided into unit widths.
+  * Guide Splitting: When non-directional routing guides are encountered, TritonRoute segments them into unit widths to facilitate the routing process.
+  * Guide Merging: TritonRoute consolidates guides that are orthogonal (touching guides) to the preferred guides, streamlining the routing trajectory.
+  * Guide Bridging: In the presence of guides running parallel to the preferred routing guides, TritonRoute introduces an additional layer to bridge them. This ensures efficient routing within the preprocessed guides.
+  * The procedure assumes that each net has a route guide satisfying inter-guide connectivity. This includes sharing the same metal layer with touching guides or neighbouring metal layers with a nonzero vertically overlapped area (where vias are placed). Additionally, every unconnected terminal, i.e., the pin of a standard cell instance, should have its pin shape overlapped by a routing guide, depicted as a black dot (pin) within a purple box (metal1 layer).
+    
+<img width="1281" alt="5d268355720-b047856c-d799-4d96-bcf9-46ad4e9bba4c" src="https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/c3ea4355-21c9-4145-bef3-c82ffb571e3f">
+
+* We can summarise it, TritonRoute stands as a sophisticated tool that not only initiates the initial detailed routing but also places significant importance on enhancing routing within pre-processed route guides. This is achieved through meticulous actions such as breaking down, merging, and bridging these guides as necessary, ultimately aiming for highly efficient and effective routing outcomes.
+  
+<img width="1290" alt="5e268355662-b8d2a78d-abb2-411d-a609-afc486ca808e" src="https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/94a9e05b-e9d7-4573-9ac1-cebd313eb488">
+
+* Works on MILP(Mixed Integer linear programming) based panel routing scheme with Intra-layer parallel and Inter-layer sequential routing framework
+  
  </details>
    </details>   
 
