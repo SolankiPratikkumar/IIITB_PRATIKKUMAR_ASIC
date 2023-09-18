@@ -761,10 +761,11 @@ magic -T /home/parallels/OpenLane/vsdstdcelldesign/libs/sky130A.tech lef read tm
 ``magic -T sky130A.tech sky130_inv.mag &``
 * After running Magic command we get the layout of the inverter in the Magic window
 
-![3A266819668-f5ebf20c-53c3-4c3c-b5a1-5b45e8bf685d](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/5c373d10-1915-43eb-951e-036380c166ff)
+![Screenshot from 2023-09-18 14-13-05](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/64b7daf5-bca2-4a29-abeb-c99048eaa33e)
 
    </details>
    </details>
+   
  <details>
   <summary>Inception of CMOS fabrication Process</summary>
   
@@ -1504,4 +1505,8 @@ run_routing
 * https://github.com/The-OpenROAD-Project/OpenLane
 * https://github.com/nickson-jose/vsdstdcelldesign
 * http://opencircuitdesign.com/magic/
+* https://github.com/google/skywater-pdk
+* https://www.researchgate.net/
+* https://github.com/Devipriya1921/Physical_Design_Using_OpenLANE_Sky130
+* https://github.com/kunalg123/
 * https://github.com/google/skywater-pdk
