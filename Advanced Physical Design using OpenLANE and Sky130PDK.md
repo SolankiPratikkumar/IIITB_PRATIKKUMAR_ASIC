@@ -1194,10 +1194,12 @@ run_synthesis
 * Now  run_placement
 * After placement, we check for legality & To check the layout invoke magic from the results/placement directory:
 ```
-magic -T /home/parallels/OpenLane/vsdstdcelldesign/libs/sky130A.tech lef read tmp/merged.nom.lef def read results/floorplan/picorv32a.def &
+magic -T sky130A.tech lef read tmp/merged.nom.lef def read picorv32a.def &
 ```
-![4D266914101-4344be1e-881b-492e-910f-e3a27b052eda](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/7044ab51-2463-4106-bb42-a9e00270ad32)
 
+![Screenshot from 2023-09-19 00-52-59](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/4cc33c90-e508-40c4-9833-0703e22fb040)
+
+![Screenshot from 2023-09-19 02-02-21](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/30c5bb90-b71e-4e88-bb67-fe16fa6fdf3f)
 
    </details>
    </details>
@@ -1248,7 +1250,7 @@ sdc file for OpenSTA is modified like this:
 
 base.sdc is located in vsdstdcelldesigns/extras directory. So, I copied it into our design folder using
 ```
-cp my_base.sdc /home/parallels/OpenLane/designs/picorv32a/src/
+cp my_base.sdc /home/OpenLane/designs/picorv32a/src/
 ```
 
 * While I didn't encounter any violations, I have practical experience in timing analysis using OpenSTA.
@@ -1315,10 +1317,10 @@ read_lef <path of merge.nom.lef>
 read_def <path of def>
 write_db pico_cts.db
 read_db pico_cts.db
-read_verilog /home/parallels/OpenLane/designs/picorv32a/runs/RUN_09-09_11-20/results/synthesis/picorv32a.v
+read_verilog /home/OpenLane/designs/picorv32a/runs/RUN_09-09_11-20/results/synthesis/picorv32a.v
 link_design picorv32a
 read_liberty $::env(LIB_SYNTH_COMPLETE)
-read_sdc /home/parallels/OpenLane/designs/picorv32a/src/my_base.sdc
+read_sdc /home/OpenLane/designs/picorv32a/src/my_base.sdc
 set_propagated_clock (all_clocks)
 report_checks -path_delay min_max -format full_clock_expanded -digits 4
 ```
@@ -1451,7 +1453,7 @@ run_routing
 
 * The design can be viewed on magic within the results/routing directory. Run the following command in that directory:
 ```
-magic -T /home/parallels/OpenLane/vsdstdcelldesign/libs/sky130A.tech lef read tmp/merged.nom.lef def read results/routing/picorv32a.def &
+magic -T /home/OpenLane/vsdstdcelldesign/libs/sky130A.tech lef read tmp/merged.nom.lef def read results/routing/picorv32a.def &
 ```
 ![5e268383481-cdc9252e-4e65-4319-bcbc-ef1dec3a87f3](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/42c3930f-19d2-4be4-b4f9-6814eaa6fa75)
 
@@ -1474,7 +1476,7 @@ expand
   
 ## OpenLANE Interactive Flow:
 ```
-cd /home/solanki-pratikkumar/OpenLane
+cd /home/OpenLane
 ./flow.tcl -interactive
 package require openlane 0.9
 prep -design picorv32a
