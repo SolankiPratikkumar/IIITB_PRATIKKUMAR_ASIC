@@ -817,12 +817,12 @@ magic -T sky130A.tech sky130_inv.mag &
 * The drains of both PMOS and NMOS transistors are connected, ultimately leading to the output, labeled as 'Y'.
 * Within the Skywater130 technology, the initial layer is the local interconnect layer, referred to as 'locali'. * * Above this layer, we have metal 1, identifiable by its purple color, and above that is metal 2, characterized by a pink color.
 * To explore connections between various segments, position the cursor over the area of interest and press 'S' once. The tkson window will display the corresponding component name, providing valuable insights into the layout
-  
-![Screenshot from 2023-09-17 11-33-40](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/7bc182d0-acab-4fa9-8676-f9cbc26b1439)
+* For confidentiality of layout companies use Abstact LEF from Layout
+* The Abstract LEF will provide us only the metal contacts of the complete layout
+    
+![Screenshot from 2023-09-18 14-37-03](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/9e77ab19-ea3c-4146-8dc6-82caaa8e645d)
 
-  
-![266970714-06f1731a-3266-4c8f-9085-e3c376cf8290](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/a0f2fa2d-457f-49ce-aa05-82d66b7b1942)
-
+![Screenshot from 2023-09-18 14-34-31](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/aa034870-6cd1-445e-a347-d398b2413cca)
 
 **Library exchange format(.lef)**
 * The layout of a design is defined in a specific file called LEF.
