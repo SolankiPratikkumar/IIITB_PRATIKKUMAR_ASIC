@@ -330,21 +330,21 @@ sudo docker run hello-world
 ![Screenshot from 2023-09-16 22-44-12](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/da9df512-45aa-4421-a717-c6f15a2d0f83)
 
 * Below is dff_synthesis report:
-  
-![266792079-c4d04351-021f-4c56-9327-c88d52a8cd8f](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/ec38cdee-a0c4-4ab4-8547-8cd6b87f10ed)
 
-![266792086-ac2cc982-f792-4251-9b1b-b337f8bdba4b](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/1ddbaba6-48c0-43a4-90d9-42bcf57f5b31)
+![Screenshot from 2023-09-18 11-56-21](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/402643a7-ba2d-49ba-a276-10e8a3a62596)
 
-![265791982-686d8a71-a016-4b77-83b2-2b3625f4cf91](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/8d4a495a-eac3-432b-9283-683d302bead0)
 
 * Below is synthesis_pre report:
   
-![265792337-f73e82ad-a3bd-4a95-aa71-8542b4f47ebd](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/7af25fb0-d7c2-4a2c-af28-3a0d069c8d61)
+![Screenshot from 2023-09-18 11-56-51](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/d56978e2-ea61-46e0-a8c2-7f73ea8684a0)
 
-* **Flops ratio:**
+![Screenshot from 2023-09-18 11-57-01](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/13225f83-175f-4eb8-9592-44a1930ca0c4)
+  
+**Flops ratio:**
 
 * The flop ratio is defined as the ratio of the number of flops to the total number of cells
-* Here flop ratio is 1596/10104 = 0.1579 (i.e: 15.8%) [From the synthesis statistics]
+* Here flop ratio is 1240/8116 = 0.1528 (i.e: 15.3%) [From the synthesis statistics]
+  
  </details>
  </details>
  
@@ -357,7 +357,7 @@ sudo docker run hello-world
 
 * Core: The term "core width" generally pertains to the physical dimensions or size of the central processing unit (CPU) or processor core within a microchip. Typically quantified in nanometers (nm) or micrometers (µm), it is denoted as, for instance, a "14nm core" or a "7nm core," representing the transistor feature size within the core. Conversely, the "core height" isn't typically expressed in a similar manner to the width. Instead, the core's dimensions are usually communicated in relation to its overall area, calculated by multiplying its width and height.
 
-* Die: The term "die width" typically denotes the physical measurement of the semiconductor wafer after all the individual integrated circuits (ICs) have been constructed on it, just prior to their separation. The widths of dies can vary considerably based on the particular manufacturing process and the design of the chips being manufactured, ranging from a few millimeters to several centimetres or even more.
+* Die: The term "die width" typically denotes the physical measurement of the semiconductor wafer after all the individual integrated circuits (ICs) have been constructed on it, just prior to their separation. The widths of dies can vary considerably based on the particular manufacturing process and the design of the chips being manufactured, ranging from a few millimetres to several centimetres or even more.
 
 * Comparable to the core, discussions about the "die height" are infrequent. Instead, the size of the die is commonly conveyed in relation to its area, which is calculated by multiplying its width and height.
  
@@ -379,23 +379,28 @@ sudo docker run hello-world
 
 ## Concept of Pre-Placed Cell
 
-
-* Pre-placed cells (or pre-placed blocks) in ASIC (Application-Specific Integrated Circuit) design refer to predefined and fixed blocks of logic or circuitry that are manually placed in specific locations on the semiconductor chip's layout before the automated placement and routing process.These cells are placed manually by the chip designer or through automated tools. Since these IP's are placed before automated Placement and Routing, these are reffered to as Pre-placed cells.
-* Pre-Placed cells- There are few IP's/blocks have user defined locations, and hence placed in chip before automated placement and routing and are called preplaced cells.
+* Pre-placed cells (or pre-placed blocks) in ASIC (Application-Specific Integrated Circuit) design refer to predefined and fixed blocks of logic or circuitry that are manually placed in specific locations on the semiconductor chip's layout before the automated placement and routing process. These cells are placed manually by the chip designer or through automated tools. Since these IPs are placed before automated Placement and Routing, these are referred to as Pre-placed cells.
+* The arrangement of these IPs in a chip is referred as Floorplanning
+* These IPs/blocks have user-defined locations, and hence are placed in the chip before automated placement and routing and are called pre-placed cells.
+* Automated placement and routing tools place the remaining logical cells in the design onto the chip
+* If this netlist is repeated multiple times in layout and is reused that's why we converted it block
 
 ![Screenshot from 2023-09-16 18-22-00](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/3d35eedc-f41e-4677-b166-87df1c6406a9)
 
-![Screenshot from 2023-09-16 18-26-07](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/3b11a626-c2a5-4d8f-aae2-7d41c3517254)
+![Screenshot from 2023-09-18 12-09-47](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/3e741167-1470-4cb7-9352-7b7baaea77aa)
 
-  
+
 ## Decoupling Capacitor
 
 * Decoupling capacitors play a vital role in electronic circuit design by ensuring a steady power supply, filtering out unwanted noise, and enhancing the overall performance and reliability of electronic systems, especially in digital and mixed-signal applications. It's crucial to carefully choose, position, and size decoupling capacitors to maximize their efficiency in noise reduction and voltage stability, thus optimizing circuit functionality.
 
-* Pre-placed cells must then be surrounded with decoupling capacitors (decaps). The resistances and capacitances associated with long wire lengths can cause the power supply
-voltage to drop significantly before reaching the logic circuits. Their role is to decouple the circuit from power supply by supplying the necessary amount of current to the circuit. They prevent crosstalk and enable local communication.
+* Pre-placed cells must then be surrounded with decoupling capacitors (decaps). The resistances and capacitances associated with long wire lengths can cause the power supply voltage to drop significantly before reaching the logic circuits. Their role is to decouple the circuit from power supply by supplying the necessary amount of current to the circuit. They prevent crosstalk and enable local communication.
 
-![266765647-8eaf2eea-3251-4869-bd19-09346d7c9f12](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/1ce2773b-fa92-488f-9f63-5bb93080a136)
+![Screenshot from 2023-09-18 12-29-35](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/20c68397-3bec-46fa-ae60-23fe4e6c0c0b)
+
+![Screenshot from 2023-09-18 12-31-49](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/5f88a6e3-3aa3-4e29-99f3-fe156ecc8f29)
+
+![Screenshot from 2023-09-18 12-35-30](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/8f7fffd8-4fda-4892-b3ca-3e4d90534936)
 
 ## Power Placement
 
