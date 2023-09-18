@@ -1455,7 +1455,6 @@ run_routing
 ```
 magic -T /home/OpenLane/vsdstdcelldesign/libs/sky130A.tech lef read tmp/merged.nom.lef def read results/routing/picorv32a.def &
 ```
-![5e268383481-cdc9252e-4e65-4319-bcbc-ef1dec3a87f3](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/42c3930f-19d2-4be4-b4f9-6814eaa6fa75)
 
 ## Identifying Custom Made SKY130_vsdinv
 * In tkcon type the following command to check whether sky130_vsdinv exist or not
@@ -1464,13 +1463,6 @@ getcell sky130_vsdinv
 what
 expand
 ```
-![5f268466018-a14cf4e4-c4f7-401f-8d8e-975943492557](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/f69e3a25-87bd-415e-b17e-fec2e6651908)
-
-## Slack Report Post Routing:
-![265P8386394-efd5e673-af98-45b8-a833-9bfb81d198b1](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/cbd5939d-6df1-4e76-ada8-85a342b16643)
-
-## Post-synthesis Flip Flop to Standard Cell Ratio:
-![5Q268467051-59abe810-16eb-4bad-8067-18adc7c47fc6](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/00d9d4aa-450f-44c8-85e6-66c480405ecd)
 
 * The Flip-Flop to standard cell Ratio = 1613/18508 = 0.0871
   
