@@ -1199,8 +1199,9 @@ magic -T sky130A.tech lef read tmp/merged.nom.lef def read picorv32a.def &
 
 ![Screenshot from 2023-09-19 00-52-59](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/4cc33c90-e508-40c4-9833-0703e22fb040)
 
-![Screenshot from 2023-09-19 02-02-21](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/30c5bb90-b71e-4e88-bb67-fe16fa6fdf3f)
+![Screenshot from 2023-09-19 09-19-03](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/870e31d4-153c-4289-bbf3-296b7efd8e4b)
 
+![Screenshot from 2023-09-19 09-19-33](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/0cc3b0ff-8661-4bcf-a6a2-21de0fb6a123)
    </details>
    </details>
    
