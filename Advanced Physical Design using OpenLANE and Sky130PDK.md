@@ -1138,30 +1138,30 @@ lef write
 
 ```
 
-# Design
-set ::env(DESIGN_NAME) "picorv32a"
-
-set ::env(VERILOG_FILES) "$::env(DESIGN_DIR)/src/picorv32a.v"
-
-set ::env(CLOCK_PORT) "clk"
-set ::env(CLOCK_NET) $::env(CLOCK_PORT)
-
-set ::env(GLB_RESIZER_TIMING_OPTIMIZATIONS) {1}
-
-set ::env(LIB_SYNTH) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__typical.lib"
-set ::env(LIB_SLOWEST) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__slow.lib"
-set ::env(LIB_FASTEST) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__fast.lib"
-set ::env(LIB_TYPICAL) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__typical.lib"
-
-set ::env(EXTRA_LEFS) [glob $::env(OPENLANE_ROOT)/designs/$::env(DESIGN_NAME)/src/*.lef]
-
-set filename $::env(DESIGN_DIR)/$::env(PDK)_$::env(STD_CELL_LIBRARY)_config.tcl
-if { [file exists $filename] == 1} {
-	source $filename
+{
+  "DESIGN_NAME": "picorv32",
+  "VERILOG_FILES": "dir::src/picorv32a.v",
+  "CLOCK_PORT": "clk",
+  "CLOCK_NET": "clk",
+  "FP_SIZING": "relative",
+  "GLB_RESIZER_TIMING_OPTIMIZATIONS": true,
+  "LIB_SYNTH" : "dir::src/sky130_fd_sc_hd__typical.lib",
+  "LIB_FASTEST" : "dir::src/sky130_fd_sc_hd__fast.lib",
+  "LIB_SLOWEST" : "dir::src/sky130_fd_sc_hd__slow.lib",
+  "LIB_TYPICAL":"dir::src/sky130_fd_sc_hd__typical.lib",
+  "TEST_EXTERNAL_GLOB":"dir::/src/*",
+  "SYNTH_DRIVING_CELL":"sky130_vsdinv",
+  "pdk::sky130*": {
+    "FP_CORE_UTIL": 35,
+    "CLOCK_PERIOD": 24,
+    "scl::sky130_fd_sc_hd": {
+      "FP_CORE_UTIL": 30
+    }
+  }
 }
 ```
 
-* To integrate standard cell in OpenLane flow after make mount , perform following commands:
+* To integrate standard cell in OpenLane flow after make mount, perform following commands:
 ```
 prep -design picorv32a -tag RUN_2023.09.09_20.37.18 -overwrite 
 set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
