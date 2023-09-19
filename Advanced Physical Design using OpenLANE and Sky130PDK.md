@@ -1245,14 +1245,16 @@ run_synthesis
 
 <img width="1281" alt="4c266907930-7f23c990-215b-4fd3-a581-448967c046ae" src="https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/0dea61c7-d464-42a1-a206-1a32910b637e">
 
+![Screenshot from 2023-09-19 19-46-11](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/59038a83-6176-41c4-84a7-6cbe44b6162a)
+
 **OpenLane Steps with Custom Standard Cell**
 
 * We performed the synthesis and found that it has positive slack and met timing constraints.
-* During Floorplan,504 endcaps, and 6731 tapcells got placed. The design has 275 original rows
 * Now  run_placement
 * After placement, we check for legality & To check the layout invoke magic from the results/placement directory:
+* Copy merged.nom.lef file to result placement directory where .def file had been generated and also copy sky130.tech file from vsdstdcell directory to the same directory of the placement and open the terminal in the placement directory and run below commands:
 ```
-magic -T sky130A.tech lef read tmp/merged.nom.lef def read picorv32a.def &
+magic -T sky130A.tech lef read merged.nom.lef def read picorv32.def &
 ```
 
 ![Screenshot from 2023-09-19 00-52-59](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/4cc33c90-e508-40c4-9833-0703e22fb040)
@@ -1260,6 +1262,7 @@ magic -T sky130A.tech lef read tmp/merged.nom.lef def read picorv32a.def &
 ![Screenshot from 2023-09-19 09-19-03](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/870e31d4-153c-4289-bbf3-296b7efd8e4b)
 
 ![Screenshot from 2023-09-19 09-19-33](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/0cc3b0ff-8661-4bcf-a6a2-21de0fb6a123)
+
    </details>
    </details>
    
