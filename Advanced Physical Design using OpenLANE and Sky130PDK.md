@@ -1510,22 +1510,6 @@ run_routing
 
 ![5g268378251-b77dda43-8564-4a47-89c9-853f35c7878e](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/2619d8a7-b35e-4a29-8519-200ae8b9d0ab)
 
-
-## Layout in Magic tool post Routing:
-
-* The design can be viewed on magic within the results/routing directory. Run the following command in that directory:
-```
-magic -T /home/OpenLane/vsdstdcelldesign/libs/sky130A.tech lef read tmp/merged.nom.lef def read results/routing/picorv32a.def &
-```
-
-## Identifying Custom Made SKY130_vsdinv
-* In tkcon type the following command to check whether sky130_vsdinv exist or not
-```
-getcell sky130_vsdinv
-what
-expand
-```
-
 * The Flip-Flop to standard cell Ratio = 1613/18508 = 0.0871
   
 ## OpenLANE Interactive Flow:
@@ -1540,9 +1524,30 @@ detailed_placement
 run_cts
 run_routing
 ```
-![Screenshot from 2023-09-17 22-32-16](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/515633ca-f79e-4b7c-8315-340059aea739)
 
-![Screenshot from 2023-09-17 22-33-02](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/09059e03-99a8-4e57-823d-f55565f32bc4)
+![Screenshot from 2023-09-20 01-06-23](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/ff119533-5b54-422a-b231-6e5226cf5991)
+
+**Layout in Magic tool post Routing:**
+
+* Copy merged.nom.lef file to result routing directory where .def file had been generated and also copy sky130.tech file from /.volare/sky130A/libs.tech/magic/sky130A.tech directory to the same directory of the routing and open the terminal in the routing directory and run below commands: 
+* The design can be viewed on magic within the results/routing directory. Run the following command in that directory:
+```
+magic -T sky130A.tech lef read merged.nom.lef def read picorv32.def &
+```
+
+**Identifying Custom Made SKY130_vsdinv**
+* In tkcon type the following command to check whether sky130_vsdinv exist or not
+```
+getcell sky130_vsdinv
+what
+expand
+```
+
+![Screenshot from 2023-09-20 01-13-13](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/89ca4e13-e14e-401c-83aa-358028162aaa)
+
+![Screenshot from 2023-09-20 01-15-47](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/2253f0bd-08a3-4ed8-b511-49b85421f143)
+
+![Screenshot from 2023-09-20 01-18-33](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/45a3fed5-5332-4a6c-9de7-5a758b2cb1bd)
 
  </details>
    </details>   
@@ -1553,6 +1558,7 @@ run_routing
 * Pruthvi Parate, Colleague,IIIT B
 * Alwin Shaju, Colleague,IIIT B
 * Divyam Satle, Colleague,IIIT B
+* Shant Rakshit, Colleague,IIIT B
 * Chatgpt
 
 ## References
