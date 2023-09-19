@@ -1257,11 +1257,11 @@ run_synthesis
 magic -T sky130A.tech lef read merged.nom.lef def read picorv32.def &
 ```
 
-![Screenshot from 2023-09-19 00-52-59](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/4cc33c90-e508-40c4-9833-0703e22fb040)
+![Screenshot from 2023-09-20 00-35-27](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/b0388197-c9cb-4e23-9d2b-b2790051753d)
 
-![Screenshot from 2023-09-19 09-19-03](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/870e31d4-153c-4289-bbf3-296b7efd8e4b)
 
-![Screenshot from 2023-09-19 09-19-33](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/0cc3b0ff-8661-4bcf-a6a2-21de0fb6a123)
+![Screenshot from 2023-09-20 00-39-28](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/8a8b5b21-2cb6-4767-ad82-4a32e3ad0bfc)
+
 
    </details>
    </details>
