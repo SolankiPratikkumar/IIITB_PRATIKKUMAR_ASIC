@@ -109,7 +109,7 @@
 ![Screenshot from 2023-09-10 23-14-15](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/0c237708-7cf2-4059-aa51-8e2018b72500)
 
 
-* STEP 1:  Synthesis
+* **STEP 1:  Synthesis**
   
 * Convert RTL to a circuit out of components from the standard cell library(SCL)
 * Standard cells have regular layout
@@ -119,7 +119,7 @@
 
 ![Screenshot from 2023-09-10 23-21-53](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/b95836c8-e631-4aaa-a4a0-4a6371d9df58)
 
-* STEP 2: Floor Planning and Power Planning
+* **STEP 2: Floor Planning and Power Planning**
   
 * The objective overhere is to plan silicon area & create robust power distribution of the circuits
 * Chip Floor Planning: Partition the chip die between different system building blocks & place the input/output Pads
@@ -129,14 +129,14 @@
      
 ![Screenshot from 2023-09-10 23-21-32](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/d433e6a8-ef7c-4f12-a19a-9cfcc0cf2140)
 
-* STEP 3: Placement
+* **STEP 3: Placement**
 
 * Place the cells on the floorplan rows, aligned with the sites
 * Usually placement is done in two Steps: Global Placement and Detailed Placement
 * In Global Placement decide the optimal position for the old cell; such positions are not certainly legal so the cell may overlay or go for a toss
 * In Detailed Placement the position obtained is minimally altered to be legal
   
-* STEP 4: Clock Tree Synthesis(CLock Routing)
+* **STEP 4: Clock Tree Synthesis(CLock Routing)**
 
 * Create a clock-distributed network
 * To deliver the clock to all sequential element flipflop
@@ -145,7 +145,7 @@
   
 ![Screenshot from 2023-09-11 00-46-42](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/4630998a-eb62-4033-99cd-53da13c0a514)
 
-* STEP 5: Routing of Signal
+* **STEP 5: Routing of Signal**
 
 * Metal nets are connected self together
 * Implement the interconnect using the available metal layer as defined by PDKs
@@ -159,7 +159,7 @@
 ![Screenshot from 2023-09-11 00-48-25](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/18ebe876-93c4-4161-8c6e-c64be226e5e7)
 
 
-* STEP 6: Sign Off
+* **STEP 6: Sign Off**
 
 * Physical Verification
    * Design Rules Checking(DRC): Make sure that the final layout owns all design rules
@@ -355,9 +355,10 @@ sudo docker run hello-world
   
 ## Utilization Factor and Aspect Ratio
 
-* Core: The term "core width" generally pertains to the physical dimensions or size of the central processing unit (CPU) or processor core within a microchip. Typically quantified in nanometers (nm) or micrometers (µm), it is denoted as, for instance, a "14nm core" or a "7nm core," representing the transistor feature size within the core. Conversely, the "core height" isn't typically expressed in a similar manner to the width. Instead, the core's dimensions are usually communicated in relation to its overall area, calculated by multiplying its width and height.
+* Core: The term "core width" generally pertains to the physical dimensions or size of the central processing unit (CPU) or processor core within a microchip. Typically quantified in nanometers (nm) or micrometres (µm), it is denoted as, for instance, a "14nm core" or a "7nm core," representing the transistor feature size within the core. Conversely, the "core height" isn't typically expressed in a similar manner to the width. Instead, the core's dimensions are usually communicated in relation to its overall area, calculated by multiplying its width and height.
 
 * Die: The term "die width" typically denotes the physical measurement of the semiconductor wafer after all the individual integrated circuits (ICs) have been constructed on it, just prior to their separation. The widths of dies can vary considerably based on the particular manufacturing process and the design of the chips being manufactured, ranging from a few millimetres to several centimetres or even more.
+  
 
 * Comparable to the core, discussions about the "die height" are infrequent. Instead, the size of the die is commonly conveyed in relation to its area, which is calculated by multiplying its width and height.
  
@@ -369,11 +370,19 @@ sudo docker run hello-world
   
 ![Screenshot from 2023-09-16 16-34-13](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/6745e69c-2425-40dc-b2f2-b63df8774f2f)
 
-* Below image we observe that the complete netlist is with dimension 4 sq unit and the core dimension is 4*2 sq unit hence by the Utilisation formula as mention it will be 0.5 or 50% and the aspect ratio as per formula will be also 0.5 as per fromula mention image.
-* If the total dimension area of netlist is equal area of core then Utilisation factor and Aspect Ratio equals 1 which means core is square in shape
+* Below image we observe that the complete netlist is with dimension 4 sq unit and the core dimension is 4*2 sq unit hence by the Utilisation formula as mentioned it will be 0.5 or 50% and the aspect ratio as per formula will be also 0.5 as per fromula mention image.
+* If the total dimension area of netlist is equal area of core then the Utilisation factor and Aspect Ratio equal 1 which means core is square in shape
   
-* Utlisation Factor == Total area occupied by the netlist / Total area of the core.
-* Aspect ratio = Height of core / Width of core
+```
+Utilisation Factor =  Area occupied by netlist
+                     __________________________
+                         Total area of core
+                         
+
+Aspect Ratio =  Height
+               ________
+                Width
+```
 
 ![Screenshot from 2023-09-16 16-44-28](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/03d73c1c-e816-40e0-80fb-ba299cf6dc88)
 
@@ -429,21 +438,23 @@ run_floorplan
 
 To view the floorplan, Magic is invoked after moving to the results/floorplan directory:
 
-
-
 * Post the floorplan run, a .def file will have been created within the results/floorplan directory. We may review floorplan files by checking the floorplan.tcl. The system defaults will have been overriden by switches set in conifg.tcl and further overriden by switches set in sky130A_sky130_fd_sc_hd_config.tcl.
 
 * To view the floorplan, Magic is invoked after moving to the results/floorplan directory:
-![Screenshot from 2023-09-16 23-24-01](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/2ae6c2a1-aa17-40f6-8e8e-8beb055ef97e)
+* Copy merged.nom.lef file to result floorplan directory where .def file had been generated and also copy sky130.tech file from vsdstdcell directory to the same directory of the floorplan and open the terminal in the floorplan directory and run below commands:
 
 ```
-magic -T /home/parallels/OpenLane/vsdstdcelldesign/libs/sky130A.tech lef read tmp/merged.nom.lef def read results/floorplan/picorv32a.def &
+magic -T sky130A.tech lef read merged.nom.lef def read picorv32.def &
+
 ```
 
-<img width="904" alt="266801182-87c3c1e9-eb75-4365-932f-9865b3ef6ffd" src="https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/33b79e85-a977-48e0-ae6a-3160f8ad1c60">
+![Screenshot from 2023-09-19 18-55-11](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/d04fdd6c-6900-4ec3-b700-35be1b6d6e2d)
 
 
-* One can zoom into Magic layout by selecting an area with left and right mouse click followed by pressing "z" key.
+![Screenshot from 2023-09-19 18-59-45](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/b67af821-096d-40df-a12d-349867837f96)
+
+
+* One can zoom into the Magic layout by selecting an area with left and right mouse clicks followed by pressing "z" key.
 
 * Various components can be identified by using the what command in tkcon window after making a selection on the component.
 
@@ -480,7 +491,7 @@ magic -T /home/parallels/OpenLane/vsdstdcelldesign/libs/sky130A.tech lef read tm
 * 2.Detailed Placement: It alters the position of cells post global placement so as to legalise them
 ![2b266786848-e40e5c6c-a71d-454e-8cba-4b24530cc44b](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/eba5dcd4-9218-4383-a6e5-8b556c386932)
 
-* Optimization is stage where we estimate the lenght and capictance, based on that we add buffers. Ideally, Optimization is done for better timing
+* Optimization is the stage where we estimate the length and capacitance, based on that we add buffers. Ideally, Optimization is done for better timing
 
 ![Screenshot from 2023-09-16 23-50-58](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/aa4ccb5f-7d53-42c7-8065-2c2a4192ac9b)
 
@@ -489,7 +500,7 @@ magic -T /home/parallels/OpenLane/vsdstdcelldesign/libs/sky130A.tech lef read tm
 * Library characterization is the procedure of thoroughly analyzing and characterizing electronic components and fundamental elements like logic gates, flip-flops, and related building blocks. 
 * The aim is to create accurate models that precisely represent the behavior of these components under a range of conditions and scenarios.
 * Through library characterization, vital information is obtained regarding how these components respond to diverse inputs, account for delays, manage power consumption, and exhibit various other operational characteristics.
-* Library modeling encompasses the creation of mathematical or algorithmic representations that accurately describe the behavior and characteristics of electronic components.
+* Library modelling encompasses the creation of mathematical or algorithmic representations that accurately describe the behaviour and characteristics of electronic components.
 * These models serve as the foundation for Electronic Design Automation (EDA) tools to simulate, analyze, and optimize digital circuits during the design phase.
 * By utilizing these models, designers can efficiently evaluate the performance, power consumption, timing, and other critical aspects of the circuit design, aiding in the development of optimal and functional electronic systems
   
@@ -512,20 +523,30 @@ magic -T /home/parallels/OpenLane/vsdstdcelldesign/libs/sky130A.tech lef read tm
 ![2c6817886-5a2f396e-9ac9-4fb4-b407-14480a4b468e](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/ff9e5503-132f-4c7b-8517-b4791aa01a91)
 
 * Below is the image when we ran Placement command in OpenLane
+```
+  run_placement
+```
+
 ![Screenshot from 2023-09-16 23-50-58](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/706457b3-fe32-430d-b4d6-4e1e80b4bc1f)
+
+* The objective of placement is the convergence of overflow value. If overflow value progressively reduces during the placement run it implies that the design will converge and placement will be successful. Post placement, the design can be viewed on magic within results/placement directory:
 
 **Congestion aware Placement**
 
 * Post placement, the design can be viewed on magic within results/placement directory:
+* Copy merged.nom.lef file to result placement directory where .def file had been generated and also copy sky130.tech file from vsdstdcell directory to the same directory of the placement and open the terminal in the placement directory and run below commands:
+  
 ```
-magic -T /home/parallels/OpenLane/vsdstdcelldesign/libs/sky130A.tech lef read tmp/merged.nom.lef def read results/floorplan/picorv32a.def &
+$ magic -T sky130A.tech lef read merged.nom.lef def read picorv32.def &
 ```
+![Screenshot from 2023-09-19 18-50-42](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/85f20898-36cf-4afb-83b3-c2b0e2ffd97f)
 
-![266819534-98701b8a-a575-4553-a661-15e2af78884d](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/782c21bf-cb26-4ee3-b890-c24a8a2e3ca0)
+![Screenshot from 2023-09-19 18-50-12](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/6026120e-7590-45e1-baf7-b63877103da5)
 
-**Note:** Power distribution network generation is usually a part of the floorplan step. However, in the openLANE flow, floorplan does not generate PDN. It is created after post CTS. The steps are - floorplan, placement, CTS, Post CTS and then PDN
 
-**Need for libraries and characterization** 
+**Note:** Power distribution network generation is usually a part of the floorplan step. However, in the openLANE flow, the floorplan does not generate PDN. It is created after post CTS. The steps are - floorplan, placement, CTS, Post CTS and then PDN
+
+**Need for Libraries and Characterization** 
 
 * As we know that, logic gates or logic cells are a shared element in every stage of the design process, encompassing logic synthesis, routing, and STA (Static Timing Analysis).
 * To enable the tools to comprehend these gates and their timing, it's imperative to conduct a thorough characterization of these cells
@@ -642,9 +663,12 @@ magic -T /home/parallels/OpenLane/vsdstdcelldesign/libs/sky130A.tech lef read tm
 * Essentially, it takes an input signal and generates an output signal that represents the logical opposite of the input.
 * When the input is high (logic 1), the output will be low (logic 0), and conversely, when the input is low (logic 0), the output will be high (logic 1)
 * Below image shows the nodes of inverter:
+  
 ![268231402-be2807d2-e912-4beb-bd29-fd137c278f97](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/652327ff-ded7-43e7-a991-741532081f9a)
 
+
 * The spice deck simulation shown below:
+  
 ![268254662-af257b8b-e995-45a0-8abc-e7c19515cc91](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/a86f435c-b714-434c-ad4e-408e07c649cb)
 
 * The cir file is shown below
@@ -741,7 +765,15 @@ magic -T /home/parallels/OpenLane/vsdstdcelldesign/libs/sky130A.tech lef read tm
   
 ![Screenshot from 2023-09-17 01-39-58](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/00b9aa6f-9091-420a-b47f-45ec2e777c3f)
 
-* Here we are representing the switching threshold, including the relationship and calculate between Wp/Lp and xWn/Ln
+**Switching Threshold (Vm)**
+
+* It is the point where out Vin = Vout. To determine, we extend a 45 degree line from the origin.
+* At this point, both the transistors are in the saturation region, means both are turned on and have high chances of current flowing directly from VDD to Ground called Leakage current.
+* At this point, Vgs = Vds and Idsn = -Idsp
+
+![Screenshot from 2023-09-19 19-05-42](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/d01a7858-c069-4e88-96f4-cbc6ee40cb54)
+
+* Here we are representing the switching threshold, including the relationship and calculating between Wp/Lp and xWn/Ln
 
 ![268261711-7f9b0787-45cc-4e45-9edc-28918f2bff76](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/b57fa46d-03fe-415f-87e9-cb80d4a24b7f)
 
@@ -771,29 +803,56 @@ magic -T /home/parallels/OpenLane/vsdstdcelldesign/libs/sky130A.tech lef read tm
   
 * Here's an explanation of the 16-mask CMOS fabrication process:
   
-* Substrate Selection: In the initial stage, the appropriate semiconductor substrate is carefully chosen.
+* **Substrate Selection:**
+ * In the initial stage, the appropriate semiconductor substrate is carefully chosen. Most common substrate is P-type
 
-* Creation of Active Regions: To isolate the active regions for transistors, the process begins with the deposition of SiO2 and Si3N4 layers, followed by photolithography and silicon nitride etching. This process, known as LOCOS (Local Oxidation of Silicon), involves growing oxide in specific regions. Subsequently, Si3N4 is removed using hot phosphoric acid.
+* **Creation of Active Regions:**
+ *  We need to isolate each pocket, achieved by a sequence of steps. Initially, we grow a 40nm Silicon Dioxide layer over the P-type substrate, followed by depositing an 80nm Silicon Nitride layer.
 
-* Formation of N-Well and P-Well: The N-well and P-well regions are created separately. P-well formation involves photolithography and ion implantation of p-type Boron material into the p-substrate. Similarly, N-well is formed using n-type Phosphorus material. High-temperature furnace processes drive-in diffusion to determine well depths, a process known as the tub process.
+ * Next, we apply a 1-micron layer of photoresist. Using Mask1 and Mask2, designed for the pockets, UV lights are applied. This action protects the photoresist beneath the masks, and the rest is chemically etched away. Subsequently, the mask is removed.
 
-* Gate Formation: The gate is a critical terminal in CMOS transistors, controlling threshold voltages for transistor switching. A polysilicon layer is deposited, and photolithography techniques are applied to create NMOS and PMOS gates. Important parameters in gate formation include oxide capacitance and doping concentration.
+ * Proceeding, we remove the excess silicon nitride, leaving only the areas protected by the photoresist. After removing the residual photoresist, we place the assembly in an oxidation furnace. The silicon nitride shields the SiO2 beneath, preventing further growth.
 
-* Lightly Doped Drain (LDD) Formation: LDD is created to mitigate hot electron and short channel effects.
+ * Between the nitride layers, a growth occurs, acting as isolation by obstructing communication between transistor areas. This growth is often referred to as a "bird's beak". Finally, the remaining nitride layer is etched off, completing the process known as LOCOS (Local Oxidation of Silicon).
 
-* Formation of Source & Drain: Thin oxide layers are added to prevent channel effects during ion implantation. N+ and P+ implants are performed using Arsenic implantation and high-temperature annealing.
+* **Formation of N-Well and P-Well:**
+ * The N-well and P-well regions are created separately. P-well formation involves photolithography and ion implantation of p-type Boron material into the p-substrate. Similarly, N-well is formed using n-type Phosphorus material.
+ * High-temperature furnace processes drive-in diffusion to determine well depths, a process known as the tub process.
 
-* Local Interconnect Formation: Thin screen oxide is removed through etching in an HF solution. Titanium deposition through sputtering is initiated. Heat treatment results in chemical reactions, producing low-resistant titanium silicon dioxide for interconnect contacts and titanium nitride for top-level connections, enabling local communication.
+![266957155-84d02f02-ccd2-452e-ae92-da8d84c5438e](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/e1f9572b-38cd-445e-aac9-44a5161a54cd)
 
-* Higher Level Metal Formation: Achieving suitable metal interconnects involves addressing non-planar surface topography. Chemical Mechanical Polishing (CMP) is employed by doping silicon oxide with Boron or Phosphorus to achieve surface planarization. TiN and blanket Tungsten layers are deposited and subjected to CMP. An aluminium (Al) layer is added and subjected to photolithography and CMP. This constitutes the first level of interconnects, with additional interconnect layers added to reach higher-level metal layers.
+* **Gate Formation:**
+  * The gate is a critical terminal in CMOS transistors, controlling threshold voltages for transistor switching.
+  * A polysilicon layer is deposited, and photolithography techniques are applied to create NMOS and PMOS gates.
+  * Important parameters in gate formation include oxide capacitance and doping concentration.
 
-![266960128-11e88b98-aaa3-4077-b46b-abff9b3f38c3](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/6fe3466b-4f3e-4520-bf25-ebb789b64166)
+* **Lightly Doped Drain (LDD) Formation:**
+  * This is done to achieve a doping profile of P+, P-, N for NMOS and N+, N- and P for PMOS.
+  * LDD is created to mitigate hot electron and short channel effects.
+    
+![266960128-11e88b98-aaa3-4077-b46b-abff9b3f38c3](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/3510864b-98dd-48d6-97f1-977f62c2ef54)
 
-* Addition of Dielectric Layer: Finally, a dielectric layer, typically Si3N4, is applied to protect the chip.
+* **Formation of Source & Drain:**
+  * Thin oxide layers are added to prevent channel effects during ion implantation.
+  * N+ and P+ implants are performed using Arsenic implantation and high-temperature annealing.
 
-* This intricate process leads to the creation of advanced integrated circuits with multiple layers of interconnects, playing a vital role in modern electronic devices.
-  
+* **Local Interconnect Formation:**
+  * The removal of the thin screen oxide is accomplished through a precise etching process using an HF solution.
+  * Initiation of titanium deposition is achieved through sputtering, ensuring a uniform and controlled layer of titanium.
+  * A carefully controlled heat treatment induces chemical reactions, yielding two crucial components: low-resistant titanium silicon dioxide for interconnect contacts and titanium nitride for top-level connections. These components facilitate efficient local communication within the structure.
+   
+![266962952-7d491565-933b-43c4-a764-ee8f1945d074](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/fbb62573-f04b-4aac-b6c6-20b16764aad6)
+
+* **Higher Level Metal Formation:**
+  * To achieve optimal metal interconnects, it's essential to manage non-planar surface topography effectively. Chemical Mechanical Polishing (CMP) is a key technique used for this purpose, often involving doping silicon oxide with Boron or Phosphorus to achieve the desired surface planarization.
+  * The process includes depositing TiN and a blanket Tungsten layer, which are then subjected to CMP. An additional aluminum (Al) layer is added and undergoes photolithography and CMP to further refine the surface.
+  * This composite structure represents the initial level of interconnects, and subsequent interconnect layers are added to reach higher-level metal layers, forming a comprehensive interconnect network.
+
 ![3b268265887-2fe79a8e-8560-408f-9eba-e2da7131f424](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/8cd94767-4f9d-4a07-9baf-cedfdbbd410e)
+
+* **Addition of Dielectric Layer:** Finally, a dielectric layer, typically Si3N4, is applied to protect the chip.
+  * This intricate process leads to the creation of advanced integrated circuits with multiple layers of interconnects, playing a vital role in modern electronic devices.
+  
 
 * First, clone the required mag files and spice models of inverter,pmos and nmos sky130. The command to clone files from github link is:
 ``
@@ -974,19 +1033,18 @@ magic -d XR met3.mag
 ```
 cif see VIA2
 ```
-
 ![Screenshot from 2023-09-17 15-55-59](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/ccd545d9-c4f3-4571-919b-9073630b5ff8)
 
 
 ## Load SKY130 tech rules for DRC Challenges
 
 * First load the poly file by load poly.mag on tkcon window.
-* Finding the error by mouse cursor and find the box area, Poly.9 is violated due to spacing between polyres and poly.
+* Finding the error by mouse cursor and finding the box area, Poly.9 is violated due to spacing between polyres and poly.
 
 ![Screenshot from 2023-09-17 15-56-44](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/a8e7dfc9-e455-44a3-befe-269c223d8066)
 
 
-* We find that the distance between regular polysilicon & poly resistor should be 22um but it is showing 17um and still no errors . We should go to sky130A.tech file and modify as follows to detect this error.
+* We find that the distance between regular polysilicon & poly resistor should be 22um but it is showing 17um and still no errors . We should go to sky130A.tech file and modify it as follows to detect this error.
 
 ![266859841-0d199111-ded8-4193-a024-544227ab142c](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/d11dfb0d-3e65-4b9d-a812-a53c2d508a8c)
 
