@@ -69,4 +69,67 @@ int main()
 
 ## Assembly Code
 
+
+objectsense.o:     file format elf32-littleriscv
+
+
+Disassembly of section .text:
+
+00000000 <main>:
+   0:	fe010113          	addi	sp,sp,-32
+   4:	00812e23          	sw	s0,28(sp)
+   8:	02010413          	addi	s0,sp,32
+   c:	009897b7          	lui	a5,0x989
+  10:	68078793          	addi	a5,a5,1664 # 989680 <.L2+0x989624>
+  14:	fef42623          	sw	a5,-20(s0)
+  18:	ffe00793          	li	a5,-2
+  1c:	fef42423          	sw	a5,-24(s0)
+
+00000020 <.L4>:
+  20:	000f0513          	mv	a0,t5
+  24:	00157793          	andi	a5,a0,1
+  28:	fef42223          	sw	a5,-28(s0)
+  2c:	fe442703          	lw	a4,-28(s0)
+  30:	00100793          	li	a5,1
+  34:	02f71463          	bne	a4,a5,5c <.L2>
+  38:	00100793          	li	a5,1
+  3c:	fef42023          	sw	a5,-32(s0)
+  40:	ff200793          	li	a5,-14
+  44:	fef42423          	sw	a5,-24(s0)
+  48:	fe842783          	lw	a5,-24(s0)
+  4c:	00ff7f33          	and	t5,t5,a5
+  50:	00ff6f33          	or	t5,t5,a5
+  54:	fef42023          	sw	a5,-32(s0)
+  58:	fc9ff06f          	j	20 <.L4>
+
+0000005c <.L2>:
+  5c:	fe042023          	sw	zero,-32(s0)
+  60:	ff400793          	li	a5,-12
+  64:	fef42423          	sw	a5,-24(s0)
+  68:	fe842783          	lw	a5,-24(s0)
+  6c:	00ff7f33          	and	t5,t5,a5
+  70:	00ff6f33          	or	t5,t5,a5
+  74:	fef42023          	sw	a5,-32(s0)
+  78:	fa9ff06f          	j	20 <.L4>
+
 ## Unique Instruction
+
+Number of different instructions: 11
+List of unique instructions:
+andi
+bne
+mv
+j
+or
+and
+addi
+li
+lw
+sw
+lui
+
+## REFERENCES
+
+* https://github.com/SakethGajawada/RISCV_GNU
+* https://circuitdigest.com/microcontroller-projects/interfacing-ir-sensor-module-with-arduino
+
