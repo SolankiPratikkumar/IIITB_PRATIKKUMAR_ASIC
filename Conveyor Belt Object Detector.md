@@ -66,12 +66,18 @@ int main()
 
 
 ```
+## Convert C code into Assembly Code:
+
+```
+riscv64-unknown-elf-gcc -Ofast -mabi=lp64 -march=rv64i -o objectsense.o objectsense.c load.S
+riscv64-unknown-elf-objdump -d objectsense.o > objectsense.txt
+```
+
 
 ## Assembly Code
 
 ```
 objectsense.o:     file format elf32-littleriscv
-
 
 Disassembly of section .text:
 
