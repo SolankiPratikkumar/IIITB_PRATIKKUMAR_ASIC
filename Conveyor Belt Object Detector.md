@@ -2,7 +2,7 @@
 # RISC-V CONVEYOR BELT OBJECT DETECTOR
 
 
-## AIM
+## Aim
 
 Our Target in this project is to make a detector that detects objects running on the conveyor belt by IR Proximity Sensor and output is obtained in LED and Buzzer. As automation is increasing this project can be used as an indicator in the Industry Conveyor Belt
 
@@ -131,7 +131,7 @@ Disassembly of section .text:
   78:	fa9ff06f          	j	20 <.L4>
 ```
 
-## Unique Instruction
+## Unique Assembly Instruction
 
 Number of different instructions: 11
 List of unique instructions:
@@ -150,7 +150,7 @@ sw
 lui
 ```
 
-## REFERENCES
+## References
 
 * https://github.com/SakethGajawada/RISCV_GNU
 * https://circuitdigest.com/microcontroller-projects/interfacing-ir-sensor-module-with-arduino
