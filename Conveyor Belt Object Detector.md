@@ -69,7 +69,7 @@ int main()
 
 ## Assembly Code
 
-
+```
 objectsense.o:     file format elf32-littleriscv
 
 
@@ -111,11 +111,14 @@ Disassembly of section .text:
   70:	00ff6f33          	or	t5,t5,a5
   74:	fef42023          	sw	a5,-32(s0)
   78:	fa9ff06f          	j	20 <.L4>
+```
 
 ## Unique Instruction
 
 Number of different instructions: 11
 List of unique instructions:
+
+```
 andi
 bne
 mv
@@ -127,6 +130,7 @@ li
 lw
 sw
 lui
+```
 
 ## REFERENCES
 
