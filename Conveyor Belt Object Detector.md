@@ -65,7 +65,20 @@ int main()
 
 
 ```
-## Convert C code into Assembly Code:
+
+## Testing of Code:
+
+* Run following code to run Testcode:
+  
+```
+gcc test_object.c
+./a.out
+```
+
+![Screenshot from 2023-10-05 22-47-17](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/5b9c2a7a-2cf1-48de-be71-c2a5ccf3f280)
+
+
+## Convert C-Code into Assembly Code:
 
 ```
 riscv64-unknown-elf-gcc -Ofast -mabi=lp64 -march=rv64i -o objectsense.o objectsense.c load.S
