@@ -28,7 +28,6 @@ int main()
 	int speaker;// 1_bit taken
 	int led;// 1_bit taken
 	int buf;// 1_bit taken
-	int clk_freq = 10000000;
 	float space;
 	int dummy=0xFFFFFFFE;
 	unsigned int k;
