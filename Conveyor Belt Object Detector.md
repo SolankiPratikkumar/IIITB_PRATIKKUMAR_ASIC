@@ -30,7 +30,7 @@ int main(){
 	int clk_freq = 10000000;
 	float space;
 	int dummy=0xFFFFFFFE;
-	unsigned int j;
+	unsigned int k;
 	unsigned int time;
 	while(1)
 	{
@@ -40,7 +40,7 @@ int main(){
     	"or x30, x30, %0\n\t"
     	:"=r"(signal)
 		:"r"(dummy));
-		for(j=0;j<10000000;j++);
+		for(k=0;k<10000000;k++);
 			
 		signal = 0;
 		asm(
@@ -48,7 +48,7 @@ int main(){
     	"or x30, x30, %0\n\t"
     	:"=r"(signal)
 		:"r"(dummy));
-		i=0;
+		k=0;
 		
 		asm(
 		"addi x10, x30, 0\n\t"
@@ -56,13 +56,13 @@ int main(){
 			:"=r"(buf));         
 			
 		while(buf!= 1){
-			i++;
+			k++;
 			asm(
 			"addi x10, x30, 0\n\t"
 			"and %0, x10, 2\n\t"
 				:"=r"(buf));
 		}
-		time = i/clk_freq;
+		time = k/clk_freq;
 		space =time*172;
 		
 		speaker = 0;
@@ -119,6 +119,7 @@ int main(){
 	}
 	return 0;
 }
+
 
 ```
 
