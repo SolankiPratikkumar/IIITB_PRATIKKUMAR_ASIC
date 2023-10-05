@@ -22,8 +22,9 @@ Then that signal is passed through the potentiometer to meet the distant object 
 
 ## C-Code
 ```
-int main(){
-	int signal;// 1_bit taken
+int main()
+{
+	int input;// 1_bit taken
 	int speaker;// 1_bit taken
 	int led;// 1_bit taken
 	int buf;// 1_bit taken
@@ -34,89 +35,32 @@ int main(){
 	unsigned int time;
 	while(1)
 	{
-		signal = 1;
-		asm(
-		"and x30, x30, %1\n\t"
-    	"or x30, x30, %0\n\t"
-    	:"=r"(signal)
-		:"r"(dummy));
-		for(k=0;k<10000000;k++);
-			
-		signal = 0;
-		asm(
-		"and x30, x30, %1\n\t"
-    	"or x30, x30, %0\n\t"
-    	:"=r"(signal)
-		:"r"(dummy));
-		k=0;
-		
-		asm(
+
+          asm(
 		"addi x10, x30, 0\n\t"
-		"and %0, x10, 2\n\t"
-			:"=r"(buf));         
+		"and %0, x10, 1\n\t"
+			:"=r"(buf)); 
 			
-		while(buf!= 1){
-			k++;
-			asm(
-			"addi x10, x30, 0\n\t"
-			"and %0, x10, 2\n\t"
-				:"=r"(buf));
+		if(buf==1)
+		{
+		  led = 1;
+		  dummy=0xFFFFFFF2;
+		  asm(
+		      "and x30, x30, %1\n\t"
+		      "or x30, x30, %0\n\t"
+		      :"=r"(led)
+		      :"r"(dummy));
 		}
-		time = k/clk_freq;
-		space =time*172;
-		
-		speaker = 0;
-		dummy=0xFFFFFFF4;
-		asm(
-		"and x30, x30, %1\n\t"
-    	"or x30, x30, %0\n\t"
-    	:"=r"(speaker)
-		:"r"(dummy));
-		
-		led = 0;
-		dummy=0xFFFFFFF8;
-		asm(
-		"and x30, x30, %1\n\t"
-    	"or x30, x30, %0\n\t"
-    	:"=r"(led)
-		:"r"(dummy));
-		
-		
-		if(space<= 0.5 && space >= 0){
-			speaker = 1;
-			dummy=0xFFFFFFF4;
-			asm(
-			"and x30, x30, %1\n\t"
-			"or x30, x30, %0\n\t"
-			:"=r"(speaker)
-			:"r"(dummy));
-			
-			led = 1;
-			dummy=0xFFFFFFF8;
-			asm(
-			"and x30, x30, %1\n\t"
-			"or x30, x30, %0\n\t"
-			:"=r"(led)
-			:"r"(dummy));
+		else
+		{
+		  led = 0;
+		  dummy=0xFFFFFFF4;
+		  asm(
+		      "and x30, x30, %1\n\t"
+		      "or x30, x30, %0\n\t"
+		      :"=r"(led)
+		      :"r"(dummy));
 		}
-		else{
-			speaker = 0;
-			dummy=0xFFFFFFF4;
-			asm(
-			"and x30, x30, %1\n\t"
-			"or x30, x30, %0\n\t"
-			:"=r"(speaker)
-			:"r"(dummy));
-			
-			led = 0;
-			dummy=0xFFFFFFF8;
-			asm(
-			"and x30, x30, %1\n\t"
-			"or x30, x30, %0\n\t"
-			:"=r"(led)
-			:"r"(dummy));
-		}
-	}
 	return 0;
 }
 
