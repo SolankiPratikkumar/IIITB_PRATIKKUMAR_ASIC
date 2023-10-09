@@ -17,7 +17,7 @@ Our Target in this project is to make a detector that detects objects running on
 ## Functionality
 
 In this project as the object is detected either stationary or moving by an Infrared Radiation(IR) and Photoelectric Sensor; 
-The IR LED and the photodiode are linked in a parallel configuration, serving as both a transmitter and receiver. The photodiode is reverse-biased. When an obstacle is in the path of the IR LED, which emits light, the reflected light is captured by the photodiode, acting as a receiver. This reflection causes a reduction in the photodiode's resistance, leading to the generation of a significant number of charge carriers and the creation of an electrical signal.
+The IR LED and the photodiode are linked in a parallel configuration, serving as both a transmitter and receiver. When an obstacle is in the path of the IR LED, which emits light, the reflected light is captured by the photodiode, acting as a receiver. This reflection causes a reduction in the photodiode's resistance, leading to the generation of a significant number of charge carriers and the creation of an electrical signal.
 Then that signal is passed through the potentiometer to meet the distant object up to 500cm and the obtained signal is kept as an input to the RISC-V core which will process the signal and provide output to the Buzzer and LED. So, by this process, we would get the detection of a moving object and our output target will be meet
 
 ## C-Code
@@ -30,21 +30,20 @@ int main()
 	int buf;// 1_bit taken
 	float space;
 	int dummy=0xFFFFFFFE;
-	unsigned int k;
-	unsigned int time;
-	while(1)
+		while(1)
 	{
 
-          asm(
+          asm volatile(
 		"addi x10, x30, 0\n\t"
 		"and %0, x10, 1\n\t"
 			:"=r"(buf)); 
-			
+                        : "r"(temp) ,"r"(mask)
+
 		if(buf==1)
 		{
 		  led = 1;
 		  dummy=0xFFFFFFF2;
-		  asm(
+		  asm volatile(
 		      "and x30, x30, %1\n\t"
 		      "or x30, x30, %0\n\t"
 		      :"=r"(led)
@@ -54,11 +53,12 @@ int main()
 		{
 		  led = 0;
 		  dummy=0xFFFFFFF4;
-		  asm(
+		  asm volatile(
 		      "and x30, x30, %1\n\t"
 		      "or x30, x30, %0\n\t"
 		      :"=r"(led)
-		      :"r"(dummy));
+		      :"r"(dummy))
+                      : "r"(temp) ,"r"(mask) 
 		}
 	return 0;
 }
@@ -68,7 +68,7 @@ int main()
 
 ## Testing of Code:
 
-* Run following code to run Testcode:
+* Run the following code to run Test code:
   
 ```
 gcc test_object.c
@@ -92,7 +92,7 @@ riscv64-unknown-elf-objdump -d objectsense.o > objectsense.txt
 objectsense.o:     file format elf32-littleriscv
 
 Disassembly of section .text:
-
+TestcodeTestcodeTestcodeTestcodeTestcode
 00000000 <main>:
    0:	fe010113          	addi	sp,sp,-32
    4:	00812e23          	sw	s0,28(sp)
