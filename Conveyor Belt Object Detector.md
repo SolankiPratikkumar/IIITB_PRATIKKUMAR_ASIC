@@ -16,28 +16,37 @@ Our Target in this project is to make a detector that detects objects running on
 
 ## Functionality
 
-In this project as the object is detected either stationary or moving by an Infrared Radiation(IR) and Photoelectric Sensor; 
-The IR LED and the photodiode are linked in a parallel configuration, serving as both a transmitter and receiver. When an obstacle is in the path of the IR LED, which emits light, the reflected light is captured by the photodiode, acting as a receiver. This reflection causes a reduction in the photodiode's resistance, leading to the generation of a significant number of charge carriers and the creation of an electrical signal.
-Then that signal is passed through the potentiometer to meet the distant object up to 500cm and the obtained signal is kept as an input to the RISC-V core which will process the signal and provide output to the Buzzer and LED. So, by this process, we would get the detection of a moving object and our output target will be meet
+* In this project,  the object is detected either stationary or moving by an Infrared Radiation(IR) and Photoelectric Sensor. The IR LED and the photodiode are linked in a parallel configuration, serving as both a transmitter and receiver. When an obstacle is in the path of the IR LED, which emits light, the reflected light is captured by the photodiode, acting as a receiver. This reflection causes a reduction in the photodiode's resistance, leading to the generation of a significant number of charge carriers and the creation of an electrical signal.
+* Then that signal is passed through the potentiometer to meet the distant object up to 500cm and the obtained signal is kept as an input to the RISC-V core which will process the signal and provide output to the Buzzer and LED.
+* So, by this process, we would get the detection of a moving object and our output target will be met
 
 ## C-Code
 ```
 int main()
 {
 	int input;// 1_bit taken
-	int speaker;// 1_bit taken
+	int buzzer;// 1_bit taken
 	int led;// 1_bit taken
 	int buf;// 1_bit taken
-	float space;
 	int dummy=0xFFFFFFFE;
 		while(1)
 	{
+          
+		asm volatile(
+	    	"addi x10, x30, 0\n\t"
+		"and %0, x10, 1\n\t"
+		:"=r"(buf)
+	    	:
+	    	:"x30"
+	    	);
 
           asm volatile(
 		"addi x10, x30, 0\n\t"
 		"and %0, x10, 1\n\t"
-			:"=r"(buf)); 
-                        : "r"(temp) ,"r"(mask)
+		:"=r"(buf) 
+		:
+                :"x10");
+
 
 		if(buf==1)
 		{
@@ -46,8 +55,10 @@ int main()
 		  asm volatile(
 		      "and x30, x30, %1\n\t"
 		      "or x30, x30, %0\n\t"
-		      :"=r"(led)
-		      :"r"(dummy));
+                      :
+		      :"r"(led),"r"(dummy)
+		      :"x30"
+		      );
 		}
 		else
 		{
@@ -56,14 +67,38 @@ int main()
 		  asm volatile(
 		      "and x30, x30, %1\n\t"
 		      "or x30, x30, %0\n\t"
-		      :"=r"(led)
-		      :"r"(dummy))
-                      : "r"(temp) ,"r"(mask) 
+                      :
+		      :"r"(led),"r"(dummy)
+		      :"x30"
+		      );
+                    
 		}
-	return 0;
-}
+	
 
 
+                        buzzer = 1;
+			dummy=0xFFFFFFF4;
+			asm volatile(
+			"and x30, x30, %1\n\t"
+			"or x30, x30, %0\n\t"
+			:
+			:"r"(buzzer),"r"(dummy)
+			:"x30"
+			);
+			
+			led = 1;
+			dummy=0xFFFFFFF8;
+			asm volatile(
+			"and x30, x30, %1\n\t"
+			"or x30, x30, %0\n\t"
+			:
+			:"r"(led),"r"(dummy)
+			:"x30"
+			);
+			
+			}
+			
+		}
 ```
 
 ## Testing of Code:
@@ -78,76 +113,80 @@ gcc test_object.c
 ![Screenshot from 2023-10-05 22-47-17](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/5b9c2a7a-2cf1-48de-be71-c2a5ccf3f280)
 
 
-## Convert C-Code into Assembly Code:
-
-```
-riscv64-unknown-elf-gcc -Ofast -mabi=lp64 -march=rv64i -o objectsense.o objectsense.c load.S
-riscv64-unknown-elf-objdump -d objectsense.o > objectsense.txt
-```
-
-
 ## Assembly Code
 
 ```
-objectsense.o:     file format elf32-littleriscv
+
+output.o:     file format elf32-littleriscv
+
 
 Disassembly of section .text:
-TestcodeTestcodeTestcodeTestcodeTestcode
-00000000 <main>:
-   0:	fe010113          	addi	sp,sp,-32
-   4:	00812e23          	sw	s0,28(sp)
-   8:	02010413          	addi	s0,sp,32
-   c:	009897b7          	lui	a5,0x989
-  10:	68078793          	addi	a5,a5,1664 # 989680 <.L2+0x989624>
-  14:	fef42623          	sw	a5,-20(s0)
-  18:	ffe00793          	li	a5,-2
-  1c:	fef42423          	sw	a5,-24(s0)
 
-00000020 <.L4>:
-  20:	000f0513          	mv	a0,t5
-  24:	00157793          	andi	a5,a0,1
-  28:	fef42223          	sw	a5,-28(s0)
-  2c:	fe442703          	lw	a4,-28(s0)
-  30:	00100793          	li	a5,1
-  34:	02f71463          	bne	a4,a5,5c <.L2>
-  38:	00100793          	li	a5,1
-  3c:	fef42023          	sw	a5,-32(s0)
-  40:	ff200793          	li	a5,-14
-  44:	fef42423          	sw	a5,-24(s0)
-  48:	fe842783          	lw	a5,-24(s0)
-  4c:	00ff7f33          	and	t5,t5,a5
-  50:	00ff6f33          	or	t5,t5,a5
-  54:	fef42023          	sw	a5,-32(s0)
-  58:	fc9ff06f          	j	20 <.L4>
-
-0000005c <.L2>:
-  5c:	fe042023          	sw	zero,-32(s0)
-  60:	ff400793          	li	a5,-12
-  64:	fef42423          	sw	a5,-24(s0)
-  68:	fe842783          	lw	a5,-24(s0)
-  6c:	00ff7f33          	and	t5,t5,a5
-  70:	00ff6f33          	or	t5,t5,a5
-  74:	fef42023          	sw	a5,-32(s0)
-  78:	fa9ff06f          	j	20 <.L4>
+00010074 <main>:
+   10074:	fe010113          	add	sp,sp,-32
+   10078:	00812e23          	sw	s0,28(sp)
+   1007c:	02010413          	add	s0,sp,32
+   10080:	ffe00793          	li	a5,-2
+   10084:	fef42623          	sw	a5,-20(s0)
+   10088:	000f0513          	mv	a0,t5
+   1008c:	00157793          	and	a5,a0,1
+   10090:	fef42423          	sw	a5,-24(s0)
+   10094:	000f0513          	mv	a0,t5
+   10098:	00157793          	and	a5,a0,1
+   1009c:	fef42423          	sw	a5,-24(s0)
+   100a0:	fe842703          	lw	a4,-24(s0)
+   100a4:	00100793          	li	a5,1
+   100a8:	02f71463          	bne	a4,a5,100d0 <main+0x5c>
+   100ac:	00100793          	li	a5,1
+   100b0:	fef42223          	sw	a5,-28(s0)
+   100b4:	ff200793          	li	a5,-14
+   100b8:	fef42623          	sw	a5,-20(s0)
+   100bc:	fe442783          	lw	a5,-28(s0)
+   100c0:	fec42703          	lw	a4,-20(s0)
+   100c4:	00ef7f33          	and	t5,t5,a4
+   100c8:	00ff6f33          	or	t5,t5,a5
+   100cc:	0200006f          	j	100ec <main+0x78>
+   100d0:	fe042223          	sw	zero,-28(s0)
+   100d4:	ff400793          	li	a5,-12
+   100d8:	fef42623          	sw	a5,-20(s0)
+   100dc:	fe442783          	lw	a5,-28(s0)
+   100e0:	fec42703          	lw	a4,-20(s0)
+   100e4:	00ef7f33          	and	t5,t5,a4
+   100e8:	00ff6f33          	or	t5,t5,a5
+   100ec:	00100793          	li	a5,1
+   100f0:	fef42023          	sw	a5,-32(s0)
+   100f4:	ff400793          	li	a5,-12
+   100f8:	fef42623          	sw	a5,-20(s0)
+   100fc:	fe042783          	lw	a5,-32(s0)
+   10100:	fec42703          	lw	a4,-20(s0)
+   10104:	00ef7f33          	and	t5,t5,a4
+   10108:	00ff6f33          	or	t5,t5,a5
+   1010c:	00100793          	li	a5,1
+   10110:	fef42223          	sw	a5,-28(s0)
+   10114:	ff800793          	li	a5,-8
+   10118:	fef42623          	sw	a5,-20(s0)
+   1011c:	fe442783          	lw	a5,-28(s0)
+   10120:	fec42703          	lw	a4,-20(s0)
+   10124:	00ef7f33          	and	t5,t5,a4
+   10128:	00ff6f33          	or	t5,t5,a5
+   1012c:	f5dff06f          	j	10088 <main+0x14>
 ```
 
 ## Unique Assembly Instruction
 
-Number of different instructions: 11
+Number of different instructions: 9
 List of unique instructions:
 
 ```
-andi
-bne
 mv
-j
-or
-and
-addi
-li
-lw
 sw
-lui
+add
+or
+lw
+bne
+li
+j
+and
 ```
 
 ## References
