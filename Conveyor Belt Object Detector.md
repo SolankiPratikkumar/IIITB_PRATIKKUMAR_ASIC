@@ -113,84 +113,100 @@ gcc test_object.c
 ![Screenshot from 2023-10-05 22-47-17](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/5b9c2a7a-2cf1-48de-be71-c2a5ccf3f280)
 
 
+## Code for Conversion of C-Code to Assembly Code:
+
+```
+riscv64-unknown-elf-gcc -march=rv32i -mabi=ilp32 -ffreestanding -nostdlib -o out objectsensorproj.c 
+riscv64-unknown-elf-objdump -d -r out > asm.txt
+```
+
 ## Assembly Code
 
 ```
 
-output.o:     file format elf32-littleriscv
+
+out:     file format elf32-littleriscv
 
 
 Disassembly of section .text:
 
-00010074 <main>:
-   10074:	fe010113          	add	sp,sp,-32
-   10078:	00812e23          	sw	s0,28(sp)
-   1007c:	02010413          	add	s0,sp,32
-   10080:	ffe00793          	li	a5,-2
-   10084:	fef42623          	sw	a5,-20(s0)
-   10088:	000f0513          	mv	a0,t5
-   1008c:	00157793          	and	a5,a0,1
-   10090:	fef42423          	sw	a5,-24(s0)
-   10094:	000f0513          	mv	a0,t5
-   10098:	00157793          	and	a5,a0,1
-   1009c:	fef42423          	sw	a5,-24(s0)
-   100a0:	fe842703          	lw	a4,-24(s0)
-   100a4:	00100793          	li	a5,1
-   100a8:	02f71463          	bne	a4,a5,100d0 <main+0x5c>
-   100ac:	00100793          	li	a5,1
-   100b0:	fef42223          	sw	a5,-28(s0)
-   100b4:	ff200793          	li	a5,-14
+00010054 <main>:
+   10054:	fe010113          	addi	sp,sp,-32
+   10058:	00812e23          	sw	s0,28(sp)
+   1005c:	02010413          	addi	s0,sp,32
+   10060:	ffe00793          	li	a5,-2
+   10064:	fef42623          	sw	a5,-20(s0)
+   10068:	000f0513          	mv	a0,t5
+   1006c:	00157793          	andi	a5,a0,1
+   10070:	fef42423          	sw	a5,-24(s0)
+   10074:	000f0513          	mv	a0,t5
+   10078:	00157793          	andi	a5,a0,1
+   1007c:	fef42423          	sw	a5,-24(s0)
+   10080:	fe842703          	lw	a4,-24(s0)
+   10084:	00100793          	li	a5,1
+   10088:	02f71463          	bne	a4,a5,100b0 <main+0x5c>
+   1008c:	00100793          	li	a5,1
+   10090:	fef42223          	sw	a5,-28(s0)
+   10094:	ff200793          	li	a5,-14
+   10098:	fef42623          	sw	a5,-20(s0)
+   1009c:	fe442783          	lw	a5,-28(s0)
+   100a0:	fec42703          	lw	a4,-20(s0)
+   100a4:	00ef7f33          	and	t5,t5,a4
+   100a8:	00ff6f33          	or	t5,t5,a5
+   100ac:	0200006f          	j	100cc <main+0x78>
+   100b0:	fe042223          	sw	zero,-28(s0)
+   100b4:	ff400793          	li	a5,-12
    100b8:	fef42623          	sw	a5,-20(s0)
    100bc:	fe442783          	lw	a5,-28(s0)
    100c0:	fec42703          	lw	a4,-20(s0)
    100c4:	00ef7f33          	and	t5,t5,a4
    100c8:	00ff6f33          	or	t5,t5,a5
-   100cc:	0200006f          	j	100ec <main+0x78>
-   100d0:	fe042223          	sw	zero,-28(s0)
+   100cc:	00100793          	li	a5,1
+   100d0:	fef42023          	sw	a5,-32(s0)
    100d4:	ff400793          	li	a5,-12
    100d8:	fef42623          	sw	a5,-20(s0)
-   100dc:	fe442783          	lw	a5,-28(s0)
+   100dc:	fe042783          	lw	a5,-32(s0)
    100e0:	fec42703          	lw	a4,-20(s0)
    100e4:	00ef7f33          	and	t5,t5,a4
    100e8:	00ff6f33          	or	t5,t5,a5
    100ec:	00100793          	li	a5,1
-   100f0:	fef42023          	sw	a5,-32(s0)
-   100f4:	ff400793          	li	a5,-12
+   100f0:	fef42223          	sw	a5,-28(s0)
+   100f4:	ff800793          	li	a5,-8
    100f8:	fef42623          	sw	a5,-20(s0)
-   100fc:	fe042783          	lw	a5,-32(s0)
+   100fc:	fe442783          	lw	a5,-28(s0)
    10100:	fec42703          	lw	a4,-20(s0)
    10104:	00ef7f33          	and	t5,t5,a4
    10108:	00ff6f33          	or	t5,t5,a5
-   1010c:	00100793          	li	a5,1
-   10110:	fef42223          	sw	a5,-28(s0)
-   10114:	ff800793          	li	a5,-8
-   10118:	fef42623          	sw	a5,-20(s0)
-   1011c:	fe442783          	lw	a5,-28(s0)
-   10120:	fec42703          	lw	a4,-20(s0)
-   10124:	00ef7f33          	and	t5,t5,a4
-   10128:	00ff6f33          	or	t5,t5,a5
-   1012c:	f5dff06f          	j	10088 <main+0x14>
+   1010c:	f5dff06f          	j	10068 <main+0x14>
 ```
 
 ## Unique Assembly Instruction
 
-Number of different instructions: 9
+Number of different instructions: 10
 List of unique instructions:
-
 ```
+addi
+andi
 mv
-sw
-add
-or
-lw
-bne
 li
-j
+or
+sw
 and
+lw
+j
+bne
 ```
 
 ## References
 
 * https://github.com/SakethGajawada/RISCV_GNU
 * https://circuitdigest.com/microcontroller-projects/interfacing-ir-sensor-module-with-arduino
+* https://chat.openai.com/
 
+## Acknowledgement
+
+* Kunal Ghosh, VSD Corp. Pvt. Ltd.
+* Mayank Kabra,iM.Tech
+* Bhargav DV,MS Collegue
+* Pruthvi parate, MS Collegue
+* Divyam Satle,Mtech Collegue
