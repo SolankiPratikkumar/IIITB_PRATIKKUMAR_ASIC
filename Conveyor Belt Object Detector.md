@@ -130,7 +130,7 @@ int main()
 
 ```
 
-## Testing of Code:
+## Testing of Code
 
 * Run the following code to run Test code:
   
@@ -142,7 +142,7 @@ gcc test_object.c
 ![Screenshot from 2023-10-05 22-47-17](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/5b9c2a7a-2cf1-48de-be71-c2a5ccf3f280)
 
 
-## Code for Conversion of C-Code to Assembly Code:
+## Code for Conversion of C-Code to Assembly Code
 
 ```
 riscv64-unknown-elf-gcc -march=rv32i -mabi=ilp32 -ffreestanding -nostdlib -o out objectdetector.c 
@@ -227,14 +227,14 @@ andi
 lw
 li
 ```
-## Spike Working:
+## Spike Working Functionality
 
 * In Spike Simulation Code we have verified the C-code by using 2 iteration
 * Firstly, when the object is not detected then input = 0 then we have printed input_objectdetected=0 by which the program has entered into the "else" loop and at output led=0 and buzzer=0
 * Secondly, when the object is detected than input = 1 then we have printed input_objectdetected=1 by which we entered into "if" loop because input=1 and made the output led = 1 and buzzer=1 and Finally the output was both printed as the object is detected
 
 
-## Spike Simulation Code:
+## Spike Simulation Code
 
 ```
 #include <stdio.h>
@@ -353,7 +353,7 @@ int main()
 riscv64-unknown-elf-gcc -march=rv64i -mabi=lp64 -ffreestanding -o out file.c
 spike pk out
 ```
-## Spike Simulation Output:
+## Spike Simulation Output
 
 ![Screenshot from 2023-10-25 17-23-04](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/e61bdcdd-30f5-421f-a0fd-87a858f11112)
 
