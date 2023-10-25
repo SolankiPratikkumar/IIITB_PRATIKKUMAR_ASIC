@@ -227,6 +227,11 @@ andi
 lw
 li
 ```
+## Spike Working:
+
+* In Spike Simulation Code we have verified the C-code by using 2 iteration
+* Firstly, when the object is not detected then input = 0 then we have printed input_objectdetected=0 by which the program has entered into the "else" loop and at output led=0 and buzzer=0
+* Secondly, when the object is detected than input = 1 then we have printed input_objectdetected=1 by which we entered into "if" loop because input=1 and made the output led = 1 and buzzer=1 and Finally the output was both printed as the object is detected
 
 
 ## Spike Simulation Code:
