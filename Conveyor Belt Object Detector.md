@@ -22,6 +22,8 @@ Our Target in this project is to make a detector that detects objects running on
 
 * Then that signal is passed through the potentiometer to meet the distant object up to 500cm and the obtained signal is kept as an input to the RISC-V core which will process the signal and provide output to the Buzzer and LED.
 * So, by this process, we would get the detection of a moving object and our output target will be met
+  
+![downloadirsensorrrrrr](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/a65b808c-c264-4c35-b55a-f99d602d5d5c)
 
 ## C-Code for Assembly
 ```
