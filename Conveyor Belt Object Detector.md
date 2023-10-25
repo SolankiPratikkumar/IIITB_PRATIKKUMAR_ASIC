@@ -50,23 +50,17 @@ int main()
 		:"=r"(input) 
 		:
                 :"x10");
-                
-                
-                
-           	//debug
-		/*int output;
+                                
+        	int input;
 		asm volatile(
 			"addi x10, x30, 0\n\t"
 			"and %0, x10, 1\n\t"
-			:"=r"(output)
+			:"=r"(input)
 			:
 			:"x10"
 			);  
-		printf("output_objectdetected = %d\n",output);*/
-		//debug
-		
-		
-		
+		printf("input_objectdetected = %d\n",input);*/
+				
 		
 		if(input==1)
 		{
