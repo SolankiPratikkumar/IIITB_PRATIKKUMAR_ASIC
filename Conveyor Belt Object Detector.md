@@ -22,20 +22,24 @@ Our Target in this project is to make a detector that detects objects running on
 
 ## C-Code
 ```
+#include <stdio.h>
 int main()
 {
 	int input;// 1_bit taken
 	int buzzer;// 1_bit taken
 	int led;// 1_bit taken
-	int buf;// 1_bit taken
-	int dummy=0xFFFFFFFE;
+	int mask=0xFFFFFFFE;
+	int i,j;
+	
+	
+	for(i=0;i<10;i++)
 		while(1)
 	{
           
 		asm volatile(
 	    	"addi x10, x30, 0\n\t"
 		"and %0, x10, 1\n\t"
-		:"=r"(buf)
+		:"=r"(input)
 	    	:
 	    	:"x30"
 	    	);
@@ -43,60 +47,79 @@ int main()
           asm volatile(
 		"addi x10, x30, 0\n\t"
 		"and %0, x10, 1\n\t"
-		:"=r"(buf) 
+		:"=r"(input) 
 		:
                 :"x10");
-
-
-		if(buf==1)
+                
+                
+                
+           	//debug
+		/*int output;
+		asm volatile(
+			"addi x10, x30, 0\n\t"
+			"and %0, x10, 1\n\t"
+			:"=r"(output)
+			:
+			:"x10"
+			);  
+		printf("output_objectdetected = %d\n",output);*/
+		//debug
+		
+		
+		
+		
+		if(input==1)
 		{
 		  led = 1;
-		  dummy=0xFFFFFFF2;
+		  mask=0xFFFFFFF2;
 		  asm volatile(
 		      "and x30, x30, %1\n\t"
 		      "or x30, x30, %0\n\t"
                       :
-		      :"r"(led),"r"(dummy)
+		      :"r"(led),"r"(mask)
 		      :"x30"
 		      );
+		  
+	
 		}
 		else
 		{
 		  led = 0;
-		  dummy=0xFFFFFFF4;
+		   mask=0xFFFFFFF4;
 		  asm volatile(
 		      "and x30, x30, %1\n\t"
 		      "or x30, x30, %0\n\t"
                       :
-		      :"r"(led),"r"(dummy)
+		      :"r"(led),"r"(mask)
 		      :"x30"
 		      );
                     
 		}
-	
-
-
+	                                    
                         buzzer = 1;
-			dummy=0xFFFFFFF4;
+			mask=0xFFFFFFF4;
 			asm volatile(
 			"and x30, x30, %1\n\t"
 			"or x30, x30, %0\n\t"
 			:
-			:"r"(buzzer),"r"(dummy)
+			:"r"(buzzer),"r"(mask)
 			:"x30"
 			);
 			
 			led = 1;
-			dummy=0xFFFFFFF8;
+			mask=0xFFFFFFF8;
 			asm volatile(
 			"and x30, x30, %1\n\t"
 			"or x30, x30, %0\n\t"
 			:
-			:"r"(led),"r"(dummy)
+			:"r"(led),"r"(mask)
 			:"x30"
 			);
 			
 			}
+			
+	             printf("led blinked=%d\n",led);
+                     printf("buzzer sounds=%d\n",buzzer);
 			
 		}
 ```
