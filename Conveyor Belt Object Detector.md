@@ -362,6 +362,15 @@ spike pk out
 
 ![Screenshot from 2023-10-25 17-23-04](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/e61bdcdd-30f5-421f-a0fd-87a858f11112)
 
+## Functional Simulation
+
+* Here firstly we have taken input as 0 so the expected output must be 00 at pins 2 and 3 and we can verify that in the waveform led=0 and buzzer=0 for 0 input with write=1 and ID_instruction is running with clk which confirms the running of assembly language
+
+![Screenshot from 2023-10-28 17-17-19](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/e0e0b674-caab-4103-b6de-8dee921593bc)
+
+*  Here secondly we have taken input as 1 so the expected output must be 11 at pins 2 and 3 and we can verify that in the waveform led=1 and buzzer=1 for 1 input with write=1 and ID_instruction is running with clk which confirms the running of assembly language
+  
+![Screenshot from 2023-10-28 17-11-59](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/ebe336df-9e41-41e9-a7e6-6695787c666e)
 
 
 ## References
