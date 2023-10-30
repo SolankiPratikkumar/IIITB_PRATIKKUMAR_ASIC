@@ -357,6 +357,7 @@ int main()
 			
 		}
 
+
 ```
 ## Commands to Get Output of Spike
 ```
@@ -367,7 +368,17 @@ spike pk out
 
 ![Screenshot from 2023-10-25 17-23-04](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/e61bdcdd-30f5-421f-a0fd-87a858f11112)
 
-## Functional Simulation
+
+
+## Functionality Simulation Commands:
+
+```
+iverilog -o test processor.v testbench.v
+./test
+gtkwave waveform.vcd
+```
+
+## Functional Simulation Output:
 
 * Here firstly we have taken input as 0 so the expected output must be 00 at pins 2 and 3 and we can verify that in the waveform led=0 and buzzer=0 for 0 input with write=1 and ID_instruction is running with clk which confirms the running of assembly language
 
