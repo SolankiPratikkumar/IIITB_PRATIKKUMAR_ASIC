@@ -31,8 +31,8 @@ Our Target in this project is to make a detector that detects objects running on
 int main()
 {
 	int input;// 1_bit taken
-	int buzzer;// 1_bit taken
-	int led;// 1_bit taken
+	int buzzer,buzzer_reg;// 1_bit taken
+	int led,led_reg;// 1_bit taken
 	int mask=0xFFFFFFFE;
 	//int i,j;
 	
@@ -73,24 +73,26 @@ int main()
 		{
 		 //printf("entering if loop as input is 1\n");
 		  led = 1;
-		  mask=0xFFFFFFF2;
+		  led_reg = led * 2;
+		  mask=0xFFFFFFFD;
 		  asm volatile(
 		      "and x30, x30, %1\n\t"
 		      "or x30, x30, %0\n\t"
                       :
-		      :"r"(led),"r"(mask)
+		      :"r"(led_reg),"r"(mask)
 		      :"x30"
 		      );
 		  //printf("led = %d\n",led);
 		  
 		                       
                         buzzer = 1;
-			mask=0xFFFFFFF4;
+                        buzzer_reg = buzzer * 4;
+			mask=0xFFFFFFFC;
 			asm volatile(
 			"and x30, x30, %1\n\t"
 			"or x30, x30, %0\n\t"
 			:
-			:"r"(buzzer),"r"(mask)
+			:"r"(buzzer_reg),"r"(mask)
 			:"x30"
 			);
 	        	//	  printf("buzzer = %d\n",buzzer);
@@ -99,12 +101,13 @@ int main()
 		{
 		 //printf("entering else loop as input is 0");
 		  led = 0;
-		   mask=0xFFFFFFF4;
+		  led_reg = led * 2;
+		   mask=0xFFFFFFFD;
 		  asm volatile(
 		      "and x30, x30, %1\n\t"
 		      "or x30, x30, %0\n\t"
                       :
-		      :"r"(led),"r"(mask)
+		      :"r"(led_reg),"r"(mask)
 		      :"x30"
 		      );
 		      
@@ -112,12 +115,13 @@ int main()
                   
                                        
                         buzzer = 0;
-			mask=0xFFFFFFF4;
+                        buzzer_reg = buzzer * 4;
+			mask=0xFFFFFFFC;
 			asm volatile(
 			"and x30, x30, %1\n\t"
 			"or x30, x30, %0\n\t"
 			:
-			:"r"(buzzer),"r"(mask)
+			:"r"(buzzer_reg),"r"(mask)
 			:"x30"
 			); 
 			
@@ -132,6 +136,7 @@ int main()
                    //  printf("buzzer sounds=%d\n",buzzer);
 			
 		}
+
 
 ```
 
