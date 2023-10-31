@@ -252,115 +252,53 @@ slli
 
 ```
 #include <stdio.h>
-int main()
-{
-	int input;// 1_bit taken
-	int buzzer;// 1_bit taken
-	int led;// 1_bit taken
-	int mask=0xFFFFFFFE;
-	int i,j;
-	
-	
-	for(i=0;i<2;i++)
-		
-	{
-          
-		asm volatile(
-	    	"addi x10, x30, 0\n\t"
-		"and %0, x10, 1\n\t"
-		:"=r"(input)
-	    	:
-	    	:"x30"
-	    	);
 
-          asm volatile(
-		"addi x10, x30, 0\n\t"
-		"and %0, x10, 1\n\t"
-		:"=r"(input) 
-		:
-                :"x10");
-                 
-        	
-        	printf("input is %d\n",input);
-		asm volatile(
-			"addi x10, x30, 0\n\t"
-			"and %0, x10, 1\n\t"
-			:"=r"(input)
-			:
-			:"x10"
-			);
-			if(i==1){
-			input=1;}
-			else {
-			input=0;
-			}
-		printf("input_objectdetected = %d\n",input);
-				
-		
-		if(input)
-		{
-		 printf("entering if loop as input is 1\n");
-		  led = 1;
-		  mask=0xFFFFFFFD;
-		  asm volatile(
-		      "and x30, x30, %1\n\t"
-		      "or x30, x30, %0\n\t"
-                      :
-		      :"r"(led),"r"(mask)
-		      :"x30"
-		      );
-		  printf("led = %d\n",led);
-		  
-		                       
-                        buzzer = 1;
-			mask=0xFFFFFFFC;
-			asm volatile(
-			"and x30, x30, %1\n\t"
-			"or x30, x30, %0\n\t"
-			:
-			:"r"(buzzer),"r"(mask)
-			:"x30"
-			);
-	        		  printf("buzzer = %d\n",buzzer);
-		}
-		else
-		{
-		 printf("entering else loop as input is 0");
-		  led = 0;
-		   mask=0xFFFFFFFD;
-		  asm volatile(
-		      "and x30, x30, %1\n\t"
-		      "or x30, x30, %0\n\t"
-                      :
-		      :"r"(led),"r"(mask)
-		      :"x30"
-		      );
-		      
-                  printf("led = %d\n",led); 
-                  
-                                       
-                        buzzer = 0;
-			mask=0xFFFFFFFC;
-			asm volatile(
-			"and x30, x30, %1\n\t"
-			"or x30, x30, %0\n\t"
-			:
-			:"r"(buzzer),"r"(mask)
-			:"x30"
-			); 
-			
-	       printf("buzzer sounds=%d\n",buzzer);
-		}
-	                                    
-                      
-			
-			}
-			
-	             printf("led blinked=%d\n",led);
-                     printf("buzzer sounds=%d\n",buzzer);
-			
-		}
+int main() {
+    int sensor_input;
+    int buzzer;
+    int led;
+    int mask = 0xFFFFFFF0;
+    int input = 0x00000001;
 
+     asm (
+                "or x30, x30, %1\n\t"
+		"andi %0, x30, 1\n\t"
+		: "=r"(sensor_input) 
+		: "r"(input) 
+                :
+                 );
+
+    if (sensor_input == 1) {
+        asm (
+            "or x30, x30, 6\n\t"
+            "andi %0, x30, 4\n\t"
+            "andi %1, x30, 2"
+            : "=r"(buzzer), "=r"(led)
+        );
+    } else {
+        asm (
+            "and x30, x30, %2\n\t"
+            "andi %0,x30, 4\n\t"
+            "andi %1, x30, 2"
+            : "=r"(buzzer), "=r"(led)
+            : "r"(0xFFFFFFF9)
+        );
+    }
+
+    if (buzzer) {
+        printf("input is 1. Buzzer is on. Value of BUZZER is %d\n", buzzer);
+    } else {
+        printf("input is 0. Buzzer is off. Value of BUZZER is %d\n", buzzer);
+    }
+
+    if (led) {
+        printf("input is 1. LED is on. Value of LED is %d\n", led);
+    } else {
+        printf("input is 0. LED is off. Value of LED is %d\n", led);
+    }
+
+    return 0;
+}
 
 ```
 ## Commands to Get Output of Spike
