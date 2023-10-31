@@ -297,7 +297,7 @@ int main()
 		{
 		 printf("entering if loop as input is 1\n");
 		  led = 1;
-		  mask=0xFFFFFFF2;
+		  mask=0xFFFFFFFD;
 		  asm volatile(
 		      "and x30, x30, %1\n\t"
 		      "or x30, x30, %0\n\t"
@@ -309,7 +309,7 @@ int main()
 		  
 		                       
                         buzzer = 1;
-			mask=0xFFFFFFF4;
+			mask=0xFFFFFFFC;
 			asm volatile(
 			"and x30, x30, %1\n\t"
 			"or x30, x30, %0\n\t"
@@ -323,7 +323,7 @@ int main()
 		{
 		 printf("entering else loop as input is 0");
 		  led = 0;
-		   mask=0xFFFFFFF4;
+		   mask=0xFFFFFFFD;
 		  asm volatile(
 		      "and x30, x30, %1\n\t"
 		      "or x30, x30, %0\n\t"
@@ -336,7 +336,7 @@ int main()
                   
                                        
                         buzzer = 0;
-			mask=0xFFFFFFF4;
+			mask=0xFFFFFFFC;
 			asm volatile(
 			"and x30, x30, %1\n\t"
 			"or x30, x30, %0\n\t"
