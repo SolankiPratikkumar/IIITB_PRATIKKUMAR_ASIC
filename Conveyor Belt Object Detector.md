@@ -226,17 +226,21 @@ Disassembly of section .text:
 Number of different instructions: 10
 List of unique instructions:
 ```
-and
-addi
 beqz
+and
 or
-mv
+addi
+li
 sw
 j
+mv
 andi
 lw
-li
+slli
 ```
+
+![Screenshot from 2023-10-31 11-53-59](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/4b3b75f4-0727-465a-9da8-67bf3a46482a)
+
 ## Spike Working Functionality
 
 * In Spike Simulation Code we have verified the C-code by using 2 iteration
