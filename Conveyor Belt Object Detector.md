@@ -289,35 +289,54 @@ dfflibmap -liberty sky130_fd_sc_hd__tt_025C_1v80_256.lib
 abc -liberty sky130_fd_sc_hd__tt_025C_1v80_256.lib
 write_verilog synth_processor.v
 ```
+* Yosys Invoke and .lib file imported and verilog module instantiation:
+  
 ![Screenshot from 2023-11-02 23-21-04](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/c9340e57-bdbd-4f57-a8cc-0859ed57d2c7)
 
+* Top module wrapper synthesis where we see generic cells and sky130 sram 2 cells
+  
 ![Screenshot from 2023-11-02 23-22-15](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/9ad6f8ed-4ace-4d42-9760-da3e716e792c)
 
+* Mapping Flipflops using dfflibmap command in yosys:
+  
 ![Screenshot from 2023-11-02 23-23-15](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/40bb10fc-5777-4a9e-a041-7b53ba69dcb4)
 
+* Mapping standard cells to sky130 cells using ABC command in yosys:
+  
 ![Screenshot from 2023-11-02 23-24-19](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/6b0252c5-bc21-439a-b8f2-fd67e0f68fbb)
 
+*  Executing Verilog synth_test files and Dumping all modules:
+  
 ![Screenshot from 2023-11-02 23-25-20](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/f27ecb72-5f90-4f6c-b095-650a91509d5f)
+
+* Prior to conducting gate-level simulation using the synthesized netlist, certain modifications are implemented in the synthesized netlist file.
+* Before the synthesis stage, we had altered the instantiation names of the SRAM module to align them with the standard cells. sky130_sram_1kbyte_1rw1r_32x256_8_inst and sky130_sram_1kbyte_1rw1r_32x256_8_data, since the module definition is present in that file.
+  
+![Screenshot from 2023-11-03 00-24-58](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/5167042a-59e4-4303-92db-7a4c6247f8b5)
+
+* The sky130_sram_1kbyte_1rw1r_32x256_8.v file, we replace the memory instructions with the processor instructions obtained from the processor.v file
+  
+![Screenshot from 2023-11-02 23-53-51](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/f485cdcf-9c9d-468b-9984-025f330a4bf0)
 
 
 * Command to run Gate Level Simulation:
 ```
 iverilog -o synth_processor.v testbench.v synth_test.v sky130_sram_1kbyte_1rw1r_32x256_8.v sky130_fd_sc_hd.v primitives.v
+
+./syth_test.v
 ```
-![Screenshot from 2023-11-03 00-24-58](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/5167042a-59e4-4303-92db-7a4c6247f8b5)
-
-
-![Screenshot from 2023-11-02 23-53-51](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/f485cdcf-9c9d-468b-9984-025f330a4bf0)
 
 ![Screenshot from 2023-11-02 23-54-16](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/136cc239-08e8-4be1-adb1-da860b0c9b0c)
+
+* GLS Output Waveform Generation:
 
 ![Screenshot from 2023-11-03 00-03-25](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/43e83ba0-e521-4a16-be07-3392fb1f1253)
 
 ![Screenshot from 2023-11-03 00-04-10](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/ef92802b-528f-4ff0-b1da-498a62ce896e)
 
+* Also we can observe the ID_instruction running in synthesis stage
+  
 ![Screenshot from 2023-11-03 00-04-58](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/44b0c928-7e78-4908-a231-880574dcc777)
-
-## Netlist Generation
 
 * We generate the netlist following commands were used
 ```
