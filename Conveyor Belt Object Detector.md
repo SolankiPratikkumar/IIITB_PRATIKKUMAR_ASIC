@@ -319,7 +319,7 @@ iverilog -o synth_processor.v testbench.v synth_test.v sky130_sram_1kbyte_1rw1r_
 
 ## Netlist Generation
 
-** We generate the netlist following commands were used
+* We generate the netlist following commands were used
 ```
 show wrapper
 ```
