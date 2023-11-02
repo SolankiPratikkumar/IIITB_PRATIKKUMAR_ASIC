@@ -230,36 +230,70 @@ gtkwave waveform.vcd
 
 ![Screenshot from 2023-11-01 15-49-54](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/2daf0c9a-8450-44cf-b29a-38218b506d4e)
 
-## Functional Simulation Output:
+## Functional Simulation Output and Instruction Verification:
 
 * We get the output waveform with input toggle at 4000 seconds
 
 ![Screenshot from 2023-11-02 19-02-55](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/4b67d0f1-1da5-4078-b59d-9c7fc990ab7f)
 
 
-* Here firstly we have taken input as 0 so the expected output must be '00' at pins 1 and 2 and we can verify that in the waveform led=0 and buzzer=0 for 0 input with write=1 and ID_instruction is running with clk which confirms the running of assembly language code of 004F7713 which is ori instruction line "10080: 06f6f13  ori  t5,t5,6" which will or the value
-
-![Screenshot from 2023-11-02 20-20-32](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/b8a0379d-e391-4c80-b740-739990e27b2f)
-
-![Screenshot from 2023-11-02 20-20-52](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/7a12c6db-d5af-444f-9f6c-049213d50fef)
-
-*  Here secondly we have taken input as 1 so the expected output must be '11' at pins 2 and 3 and we can verify that in the waveform led=1 and buzzer=1 for 1 input with write=1 and ID_instruction is running with clk which confirms the running of assembly language instruction of "004F7713" with assembly code line of  "100a0:	004f7713  andi  a4,t5,4" which will and the value
+*  Here firstly, we have taken input as 1 so the expected output must be '11' at pins 2 and 3 and we can verify that in the waveform led=1 and buzzer=1 for 1 input with write=1 and ID_instruction is running with clk which confirms the running of assembly language instruction of "004F7713" with assembly code line of  "100a0:	004f7713  andi  a4,t5,4" 
   
 ![Screenshot from 2023-11-02 19-16-37](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/9cbb1527-241c-4efc-918a-a7351979411c)
 
 ![Screenshot from 2023-11-02 19-17-14](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/3a68d41e-4346-47eb-b9ec-6e9a012ae2b5)
 
 
-* Now, the third example shows that input gets low  to 0 but the output stays '11' for some delay and the instruction written over here is "FEF42023" from assembly code of " 100ac: fef42023 sw a5,-32(s0)" which stores the value
+* Here secondly, we have taken input as 0 so the expected output must be '00' at pins 1 and 2 and we can verify that in the waveform led=0 and buzzer=0 for 0 input with write=1 and ID_instruction is running with clk which confirms the running of assembly language code of 004F7713 assembly code line of  "100a0:	004f7713  andi  a4,t5,4" which will and immediate values of 4 and t5 that will be store in a5
+* Here the same loop of code as repeated after 14 times going to zero of the assembly code
+
+![Screenshot from 2023-11-02 21-55-52](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/bfa425e0-45a4-4146-bfab-1edaa601ce19)
+
+![Screenshot from 2023-11-02 22-07-46](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/d9334d96-3bac-4619-ab57-1a903b2390c4)
+
+![Screenshot from 2023-11-02 19-17-14](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/b9f6d4c5-06d9-4daf-bee7-10107535412c)
+
+
+
+* Now, the third example shows that input gets low  to 0 but the output stays '11' for some delay and the instruction written over here is "FEF42023" from assembly code of " 100ac: fef42023 sw a5,-32(s0)" which stores the value -32 value in a5 register 
 ![Screenshot from 2023-11-02 19-32-38](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/ec442482-b922-4267-b41f-4873b77cce0a)
 
 ![Screenshot from 2023-11-02 19-32-59](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/f140fad0-ac71-4de2-bd36-eb7177e4d515)
+
+* Similar example for before dumping "11" in the output which is ori instruction "006F6F13" which in assembly code written as " 10080:	006f6f13    ori	t5,t5,6" 
+![Screenshot from 2023-11-02 20-20-32](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/b8a0379d-e391-4c80-b740-739990e27b2f)
+
+![Screenshot from 2023-11-02 20-20-52](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/7a12c6db-d5af-444f-9f6c-049213d50fef)
+
 
 * Similar, more code is example of assembly instruction "02f71063"  with assembly code running  line  "10078:  02f71063 bne  a4,a5,10098 <main+0x44>"
 
 ![Screenshot from 2023-11-02 20-32-41](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/1754622e-28b8-4de9-ad26-be29517d730a)
 
+## Synthesis and Gate Level Simulation:
 
+* These changes involve commenting out the module definitions for both sky130_sram_2kbyte_1rw1r_32x256_8_data and sky130_sram_2kbyte_1rw1r_32x256_8_inst.
+
+* Furthermore, the previously instantiated SRAM modules are adjusted from sky130_sram_2kbyte_1rw1r_32x256_8_data and sky130_sram_2kbyte_1rw1r_32x256_8_inst to sky130_sram_1kbyte_1rw1r_32x256_8 since the processor doesn't actually require 2k RAM.
+
+* The synthesis process is executed twice, once with writing_inst_done=1 and once with writing_inst_done=0, resulting in two netlists named synth_test.v and synth_processor.v, respectively.
+
+* When writing_inst_done=1, this implies that the UART is bypassed, preventing the .vcd file from consuming excessive storage space (over 20GB). Subsequently, gate-level simulation and verification are performed using the corresponding netlist.
+
+```
+yosys
+read_liberty -lib sky130_fd_sc_hd__tt_025C_1v80_256.lib 
+read_verilog processor.v 
+synth -top wrapper 
+dfflibmap -liberty sky130_fd_sc_hd__tt_025C_1v80_256.lib
+abc -liberty sky130_fd_sc_hd__tt_025C_1v80_256.lib
+write_verilog synth_processor.v
+```
+
+* Command to run Gate Level Simulation:
+```
+iverilog -o test synth_processor_test.v testbench.v sky130_sram_1kbyte_1rw1r_32x256_8.v sky130_fd_sc_hd.v primitives.v
+```
 
 ## References
 
