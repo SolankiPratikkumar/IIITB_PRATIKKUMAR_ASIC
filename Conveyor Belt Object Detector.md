@@ -27,11 +27,13 @@ Our Target in this project is to make a detector that detects objects running on
 
 ## C-Code for Assembly
 ```
+
+
 int main() {
     int sensor_input;
     int buzzer;
     int led;
-    int mask = 0xFFFFFFFD;
+    int mask = 0xFFFFFFF9;
   
 while(1)
 {
@@ -45,13 +47,14 @@ while(1)
 
     if (sensor_input == 1) {
         asm (
-            "or x30, x30, 6\n\t"
+            "ori x30, x30, 6\n\t"
             "andi %0, x30, 4\n\t"
             "andi %1, x30, 2"
             : "=r"(buzzer), "=r"(led)
             : "r"(mask)
         );
-    } else {
+    } 
+    else {
         asm (
             "and x30, x30, %2\n\t"
             "andi %0,x30, 4\n\t"
@@ -64,6 +67,7 @@ while(1)
    } 
     return 0;
 }
+
 
 ```
 
@@ -89,6 +93,7 @@ riscv64-unknown-elf-objdump -d -r out > asm.txt
 ## Assembly Code
 
 ```
+
 out:     file format elf32-littleriscv
 
 
@@ -98,7 +103,7 @@ Disassembly of section .text:
    10054:	fe010113          	addi	sp,sp,-32
    10058:	00812e23          	sw	s0,28(sp)
    1005c:	02010413          	addi	s0,sp,32
-   10060:	ffd00793          	li	a5,-3
+   10060:	ff900793          	li	a5,-7
    10064:	fef42623          	sw	a5,-20(s0)
    10068:	001f7793          	andi	a5,t5,1
    1006c:	fef42423          	sw	a5,-24(s0)
@@ -119,6 +124,7 @@ Disassembly of section .text:
    100a8:	fee42223          	sw	a4,-28(s0)
    100ac:	fef42023          	sw	a5,-32(s0)
    100b0:	fb9ff06f          	j	10068 <main+0x14>
+
 ```
 
 ## Unique Assembly Instruction
@@ -126,15 +132,15 @@ Disassembly of section .text:
 Number of different instructions: 9
 List of unique instructions:
 ```
-lw
+bne
 and
 j
-bne
-addi
 li
+andi
 ori
 sw
-andi
+addi
+lw
 
 ```
 
@@ -241,7 +247,8 @@ gtkwave waveform.vcd
 ## Acknowledgement
 
 * Kunal Ghosh, VSD Corp. Pvt. Ltd.
-* Mayank Kabra,iM.Tech
+* Mayank Kabra, Founder Chipcron Pvt.Ltd
 * Bhargav DV,MS Collegue
 * Pruthvi parate, MS Collegue
 * Divyam Satle, M.Tech Collegue
+* Nitesh Sharma, M.Tech Collegue
