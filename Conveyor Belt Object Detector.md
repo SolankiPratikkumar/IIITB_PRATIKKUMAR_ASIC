@@ -143,8 +143,8 @@ addi
 lw
 
 ```
+![Screenshot from 2023-11-02 18-59-09](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/9ea142dc-037e-4713-a21e-f14c2d4196d4)
 
-![Screenshot from 2023-11-01 15-27-47](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/90f05585-ac3d-47fc-bd34-45a6e8e60dfa)
 
 
 ## Spike Working Functionality
@@ -218,6 +218,9 @@ spike pk out
 
 
 ## Functionality Simulation Commands:
+
+* We will do the functional simulation for the processors that are being created for the assembly program that is being created for my application. The processor.v and the testbench.v is uploaded and those can be seen above.
+
 
 ```
 iverilog -o test processor.v testbench.v
