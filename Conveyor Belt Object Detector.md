@@ -232,13 +232,30 @@ gtkwave waveform.vcd
 
 ## Functional Simulation Output:
 
-* Here firstly we have taken input as 0 so the expected output must be 00 at pins 2 and 3 and we can verify that in the waveform led=0 and buzzer=0 for 0 input with write=1 and ID_instruction is running with clk which confirms the running of assembly language
+* We get the output waveform with input toggle at 4000 seconds
 
-![Screenshot from 2023-10-28 17-17-19](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/e0e0b674-caab-4103-b6de-8dee921593bc)
+![Screenshot from 2023-11-02 19-02-55](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/4b67d0f1-1da5-4078-b59d-9c7fc990ab7f)
 
-*  Here secondly we have taken input as 1 so the expected output must be 11 at pins 2 and 3 and we can verify that in the waveform led=1 and buzzer=1 for 1 input with write=1 and ID_instruction is running with clk which confirms the running of assembly language
+
+* Here firstly we have taken input as 0 so the expected output must be '00' at pins 1 and 2 and we can verify that in the waveform led=0 and buzzer=0 for 0 input with write=1 and ID_instruction is running with clk which confirms the running of assembly language code of 004F7713 which is ori instruction line "10080: 06f6f13  ori  t5,t5,6"
+
+![Screenshot from 2023-11-02 20-20-52](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/7a12c6db-d5af-444f-9f6c-049213d50fef)
+
+![Screenshot from 2023-11-02 20-20-32](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/b8a0379d-e391-4c80-b740-739990e27b2f)
+
+
+*  Here secondly we have taken input as 1 so the expected output must be '11' at pins 2 and 3 and we can verify that in the waveform led=1 and buzzer=1 for 1 input with write=1 and ID_instruction is running with clk which confirms the running of assembly language instruction of "004F7713" with assembly code line of  "100a0:	004f7713  andi  a4,t5,4"
   
-![Screenshot from 2023-10-28 17-11-59](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/ebe336df-9e41-41e9-a7e6-6695787c666e)
+![Screenshot from 2023-11-02 19-16-37](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/9cbb1527-241c-4efc-918a-a7351979411c)
+
+![Screenshot from 2023-11-02 19-17-14](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/3a68d41e-4346-47eb-b9ec-6e9a012ae2b5)
+
+
+* Now, the third example shows that input gets low  to 0 but the output stays '11' for some delay and the instruction written over here is "FEF42023" from assembly code of " 100ac: fef42023 sw a5,-32(s0)"
+
+![Screenshot from 2023-11-02 19-32-38](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/ec442482-b922-4267-b41f-4873b77cce0a)
+
+![Screenshot from 2023-11-02 19-32-59](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/f140fad0-ac71-4de2-bd36-eb7177e4d515)
 
 
 ## References
