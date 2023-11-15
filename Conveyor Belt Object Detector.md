@@ -347,6 +347,18 @@ show wrapper
 
 ![Screenshot from 2023-11-03 00-13-32](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/03f60251-c602-41eb-bcd7-e48d0e3101cf)
 
+
+## PNR
+
+
+![Screenshot from 2023-11-14 16-04-54](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/9f08bb94-2e59-486a-b94e-c88620368ce3)
+![Screenshot from 2023-11-14 16-25-02](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/27203855-7aff-4064-87d4-44ff83e92e06)
+![Screenshot from 2023-11-14 16-05-54](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/b89c29f6-c9c7-4680-b1ba-26766bc7fd40)
+![Screenshot from 2023-11-14 16-05-10](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/81a03d0f-1337-4522-bc51-eba5850ffcaf)
+![Screenshot from 2023-11-15 11-13-42](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/6b16d825-a014-4077-bbc6-e70b0dcf6294)
+![Screenshot from 2023-11-14 20-33-04](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/2f2bdb8a-2a2a-4ed4-acb0-60ac7151046c)
+![Screenshot from 2023-11-14 20-28-33](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/66026a04-b6ac-4225-b7e9-71b5d90a8536)
+
 ## References
 
 * https://github.com/SakethGajawada/RISCV_GNU
