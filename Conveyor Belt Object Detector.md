@@ -338,7 +338,7 @@ iverilog -o synth_processor.v testbench.v synth_test.v sky130_sram_1kbyte_1rw1r_
   
 ![Screenshot from 2023-11-03 00-04-58](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/44b0c928-7e78-4908-a231-880574dcc777)
 
-* We generate the netlist following commands were used
+* We generate the netlist by using following commands 
 ```
 show wrapper
 ```
@@ -348,16 +348,50 @@ show wrapper
 ![Screenshot from 2023-11-03 00-13-32](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/03f60251-c602-41eb-bcd7-e48d0e3101cf)
 
 
-## PNR
+## Physical Design,Place and Route(PNR)
 
+* The Physical Design Place and Route (PNR) flow in ASIC design is a critical process that transforms the synthesized netlist into a physically implementable design on the target chip. Here is a brief description of the PNR flow as Floorplan, Static Timing Analysis (STA), Power Planning, Placement, 
+Clock Tree Synthesis (CTS), Routing
 
-![Screenshot from 2023-11-14 16-04-54](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/9f08bb94-2e59-486a-b94e-c88620368ce3)
-![Screenshot from 2023-11-14 16-25-02](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/27203855-7aff-4064-87d4-44ff83e92e06)
-![Screenshot from 2023-11-14 16-05-54](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/b89c29f6-c9c7-4680-b1ba-26766bc7fd40)
-![Screenshot from 2023-11-14 16-05-10](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/81a03d0f-1337-4522-bc51-eba5850ffcaf)
-![Screenshot from 2023-11-15 11-13-42](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/6b16d825-a014-4077-bbc6-e70b0dcf6294)
-![Screenshot from 2023-11-14 20-33-04](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/2f2bdb8a-2a2a-4ed4-acb0-60ac7151046c)
-![Screenshot from 2023-11-14 20-28-33](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/66026a04-b6ac-4225-b7e9-71b5d90a8536)
+![PD-Flow](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/960ff35b-5c04-46c4-9806-93b842c317dc)
+
+![asic_flow](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/2d9f48f7-c515-49c3-97fb-4f90612865e1)
+
+Below are the stages and the respective tools that are called by Openlane for the functionalities as described:
+
+* Synthesis is generating gate-level netlist using yosys. Performing cell mapping by ABC. Performing pre-layout STA using (OpenSTA)
+* Floorplanning defining the core area for the macro as well as the cell sites and the tracks (init_fp). Placing the macro input and output ports (ioplacer). Generating the power distribution network (pdn)
+* Placement Performing global placement (Replace). Performing detailed placement to legalize the globally placed components (OpenDP)
+* Clock Tree Synthesis (CTS) synthesizing the clock tree using TritonCTS
+* Routing Performing global routing to generate a guide file for the detailed router (FastRoute). Performing detailed routing (TritonRoute)
+* GDSII Generating Streaming out the final GDSII layout file from the routed def file using Magic
+
+## OpenLane
+
+* OpenLane is an RTL to GDSII automated flow that integrates various components such as OpenROAD, Yosys, Magic, Netgen, CVC, SPEF-Extractor, CU-GR, Klayout, and several custom scripts for design exploration and optimization.
+* This comprehensive flow covers the entire spectrum of ASIC implementation, starting from RTL and concluding with GDSII.
+
+## MAGIC
+
+* MAGIC, short for "Mask and Graphics for Integrated Circuits," is an open-source layout tool used in ASIC (Application-Specific Integrated Circuit) design.
+* It provides a graphical environment for editing and verifying the physical layout of integrated circuits. Designers use MAGIC to create and modify the arrangement of components on a chip, ensuring adherence to design rules.
+* It plays a key role in tasks such as layout editing, verification, and parasitic extraction, and is often used in conjunction with other tools in the ASIC design flow.
+* As an open-source tool, MAGIC fosters collaboration and is widely used in both academic and industry settings for custom IC design and digital ASIC design
+
+## Preparing the Design Flow
+
+* Preparing the design and including the lef files: The commands to prepare the design and overwite in a existing run folder the reports and results along with the command to include the lef files is given below:
+```
+sed -i's/max_transition   :0.04/max_transition   :0.75'*/*.lib
+```
+* Perform below to start the interface of OpenLane and run the below commands:
+```
+make mount
+%./flow.tcl -interactive
+% package require openlane 0.9
+% prep -design Object_sensor_PNR
+```
+![Screenshot from 2023-11-17 00-31-14](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/5f7601c1-a00e-40d0-898e-585b21605063)
 
 ## References
 
