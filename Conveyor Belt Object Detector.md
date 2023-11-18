@@ -22,8 +22,24 @@ Our Target in this project is to make a detector that detects objects running on
 
 * Then that signal is passed through the potentiometer to meet the distant object up to 500cm and the obtained signal is kept as an input to the RISC-V core which will process the signal and provide output to the Buzzer and LED.
 * So, by this process, we would get the detection of a moving object and our output target will be met
-  
+
+**Details IR Sensor Module Circuit Diagram**
+
+![How-to-make-IR-Sensor-Module-Circuit-Diagram](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/70e12018-2a69-44f8-ae4b-11d4439fee29)
+
+* When the Photodiode receives reflected infrared light, its resistance significantly decreases, leading to a drop in voltage across the photodiode. This higher voltage is then directed to the Inverting input of the LM393/LM358 IC.
+* Subsequently, the IC compares this voltage with the threshold voltage. In this scenario, the Inverting input voltage surpasses the Non-Inverting input voltage, causing the IC output to be Low. Consequently, the sensor output registers as Low
+* On the other hand, if the Photodiode or IR receiver (IR-RX) fails to detect infrared light, the photodiode's resistance becomes very high. As a result, a lower voltage from the photodiode is supplied to the Inverting input of the IC. The LM393/LM358 IC then compares this voltage with the threshold voltage.
+* In this situation, the Inverting input voltage is less than the Non-Inverting input voltage, leading to a High output from the IC. Hence, the sensor output is recognized as High.
+
 ![downloadirsensorrrrrr](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/a65b808c-c264-4c35-b55a-f99d602d5d5c)
+
+* The IR sensor is equipped with an integrated variable resistor, specifically a 10k preset. This component serves the purpose of configuring the operational range. By turning the preset knob, which is adjustable, the detection distance can be set within an effective range.
+  
+* Clockwise rotation of the preset knob extends the detection range, while counterclockwise rotation reduces it.
+  
+
+![IR-Sensor-Module-Sensitivity-set](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/f7923c27-cb3f-4615-b1c9-81bce4acd238)
 
 ## C-Code for Assembly
 ```
@@ -561,13 +577,13 @@ magic -T /home/solanki-pratikkumar/.volare/volare/sky130/versions/1341f54f5ce0c4
 
 ![Screenshot from 2023-11-18 18-40-04](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/7cc92cc5-6aea-4256-ab70-9a953f746c22)
 
-![Screenshot from 2023-11-18 19-50-40](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/74bd541e-6bac-4418-9f09-92bf99e4db0c)
 
-**Routing_Report**
+**Routing_Report** 
 
 ![Screenshot from 2023-11-18 19-53-05](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/89d882ca-4649-4fc5-b5c6-db9889f40ede)
 
 **Die Area and Nets**
+
 ![Screenshot from 2023-11-14 18-36-00](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/59b66f88-f5c8-43e8-a492-b0817d0e3538)
 
 **Congestion Report and Wirelength**
@@ -588,7 +604,7 @@ magic -T /home/solanki-pratikkumar/.volare/volare/sky130/versions/1341f54f5ce0c4
 
 ## Performance Calculation
 
-* Given a Clock period of 10ns in Json file , setup slack we got after routing is 6.95ns
+* Given a Clock period of 10ns in json file , setup slack we got after routing is 6.95ns
 ```
                               1
 Max Performance =  ------------------------
@@ -598,6 +614,17 @@ Max Performance =  ------------------------
 ```
 Max Performance = 0.3278 Ghz
 ```
+**Antenna_Checks**
+```
+run_magic
+run__magic_spice_export
+run_magic_drc
+run_antenna_check
+```
+
+[Screenshot from 2023-11-14 16-05-54](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/6e213d89-bdef-4d23-80e1-f85b6e7fb2c7)
+
+![Screenshot from 2023-11-14 16-25-02](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/a57dc5ae-bec4-4a1c-82c1-a66f9e619dab)
 
 
 ## References
@@ -605,7 +632,9 @@ Max Performance = 0.3278 Ghz
 * https://github.com/SakethGajawada/RISCV_GNU
 * https://circuitdigest.com/microcontroller-projects/interfacing-ir-sensor-module-with-arduino
 * https://chat.openai.com/
-
+* https://www.elprocus.com/infrared-ir-sensor-circuit-and-working/
+* https://www.electroduino.com/what-is-ir-sensor-module-how-ir-sensor-module-works/
+  
 ## Acknowledgement
 
 * Kunal Ghosh, VSD Corp. Pvt. Ltd.
