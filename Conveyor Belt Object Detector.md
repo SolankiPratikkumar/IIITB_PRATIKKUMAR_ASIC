@@ -415,6 +415,8 @@ make mount
 
 * Over here we have made changes and iterated multiple times the values of  "CLOCK_PERIOD", "PL_TARGET_DENSITY", "FP_CORE_UTIL", "PL_MACRO_CHANNEL" for running all the steps of PNR
   
+* Here in the Openlane we have run all the steps command in one go because we need to do multiple iterations
+  
 ## Synthesis
 
 * In ASIC (Application-Specific Integrated Circuit) design, synthesis is a crucial step that involves the translation of a high-level hardware description of a digital circuit, typically written in a hardware description language (HDL) such as Verilog or VHDL, converted into a gate-level netlist. The netlist represents the logical functionality of the circuit using lower-level components like gates, flip-flops, and other digital elements.
