@@ -103,9 +103,7 @@ Inline Assembly - Reading Sensor Input:
 * Conditional Block:
 The code then checks if sensor_input is equal to 1 using an if statement.
 Inline Assembly - If sensor_input is 1:
-
-If true, another inline assembly block is executed. It performs bitwise OR (ori) and AND (andi) operations on register x30, modifying specific bits and the results are stored in the buzzer and led variables.
-
+ If true, another inline assembly block is executed. It performs bitwise OR (ori) and AND (andi) operations on register x30, modifying specific bits and the results are stored in the buzzer and led variables.
 
 Inline Assembly - If sensor_input is not 1:
 
