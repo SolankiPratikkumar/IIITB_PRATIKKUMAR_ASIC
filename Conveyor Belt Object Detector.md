@@ -393,6 +393,12 @@ make mount
 ```
 ![Screenshot from 2023-11-17 00-31-14](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/5f7601c1-a00e-40d0-898e-585b21605063)
 
+**Changed JSON File**
+
+![Screenshot from 2023-11-18 15-49-37](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/876be501-b353-4bc0-8876-cdf386fa9db0)
+
+* Over here we have made changes and iterated multiple times the values of  "CLOCK_PERIOD", "PL_TARGET_DENSITY", "FP_CORE_UTIL", "PL_MACRO_CHANNEL" for running all the steps of PNR
+  
 ## Synthesis
 
 * In ASIC (Application-Specific Integrated Circuit) design, synthesis is a crucial step that involves the translation of a high-level hardware description of a digital circuit, typically written in a hardware description language (HDL) such as Verilog or VHDL, converted into a gate-level netlist. The netlist represents the logical functionality of the circuit using lower-level components like gates, flip-flops, and other digital elements.
@@ -448,11 +454,12 @@ Note: Usually, the vertical metal layer and horizontal metal layer values will b
 
 * Here, in Floorplan we can analyse the Die area, Core area, Number of Endcap and Tap cells and also the Number of voltage sources added
 
-* Following the completion of the floorplan run, a .def file is generated in the results/floorplan directory. You can inspect floorplan files by examining the floorplan.tcl.
-* To visualize the floorplan, navigate to the results/floorplan directory and execute the following command using Magic:
+* Following the completion of the floorplan run, a .def file is generated in the results/floorplan directory.
+* To visualize the floorplan wrapper, navigate to the  /home/solanki-pratikkumar/OpenLane/designs/Objectsensor_PNR/runs/RUN_2023.11.14_06.47.11/results/floorplan  directory and execute the following command using Magic:
 ```
 $ magic -T /home/solanki-pratikkumar/.volare/volare/sky130/versions/1341f54f5ce0c4955326297f235e4ace1eb6d419/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.nom.lef def read wrapper.def &
 ```
+
 ![Screenshot from 2023-11-18 13-25-15](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/bae102aa-0118-4cc9-9f33-45d235774c37)
 
 ![Screenshot from 2023-11-18 13-24-42](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/1cb212c0-976d-42b6-ba33-8407d92e3690)
@@ -485,7 +492,28 @@ logic, Swapping pins, Deleting buffers, Moving instances, Applying useful skew, 
   
 ![Screenshot from 2023-11-14 16-05-10](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/c9215fb0-576d-4246-a080-98f4570d4bd9)
 
-* 
+
+**Placement_Report**
+
+![Screenshot from 2023-11-18 15-52-43](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/be8d6d5e-efaa-46dd-b6e4-b0116ba9ce54)
+
+![Screenshot from 2023-11-18 15-59-40](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/9b2e359c-5222-495b-bcd9-e3251e366c14)
+
+
+* Finally, run the following command in the latest result directory which was in my case:
+  /home/solanki-pratikkumar/OpenLane/designs/Objectsensor_PNR/runs/RUN_2023.11.14_06.47.11/results/placement
+
+```
+ magic -T /home/solanki-pratikkumar/.volare/volare/sky130/versions/1341f54f5ce0c4955326297f235e4ace1eb6d419/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.nom.lef def read wrapper.def &
+```
+
+![Screenshot from 2023-11-18 15-46-50](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/5e127378-1c6d-4d0c-be1c-899a892c1552)
+
+![Screenshot from 2023-11-18 15-31-09](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/004681d1-87cd-4804-b938-a00410a9b6c4)
+
+![Screenshot from 2023-11-18 15-36-56](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/52ffd654-7490-4e57-804d-84752cfa6261)
+
+
 
 
 ## References
