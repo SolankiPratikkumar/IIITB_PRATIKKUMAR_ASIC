@@ -429,9 +429,9 @@ constraints.
 ```
 FP_CORE_UTIL - floorplan core utilisation; FP_ASPECT_RATIO - floorplan aspect ratio ; FP_CORE_MARGIN - Core to die margin area ; FP_IO_MODE - defines pin configurations (1 = equidistant/0 = not equidistant); FP_CORE_VMETAL - vertical metal layer; FP_CORE_HMETAL - horizontal metal layer
 ```
-Note: Usually, vertical metal layer and horizontal metal layer values will be 1 more than that specified in the file
+Note: Usually, the vertical metal layer and horizontal metal layer values will be 1 more than that specified in the file
   
-* Command used in Openlane for Synthesis is as follows:
+* Command used in Openlane for Floorplan is as follows:
   ```
   run_floorplan
   ```
@@ -476,7 +476,8 @@ $ magic -T /home/solanki-pratikkumar/.volare/volare/sky130/versions/1341f54f5ce0
 * Optimization is the process of iterating through a design such that it meets timing, area, and power specifications.
 * Depending on the stage of the design, optimization can include the following operations: Adding buffers, Resizing gates, Restructuring the netlist, Remapping
 logic, Swapping pins, Deleting buffers, Moving instances, Applying useful skew, Layer optimization, and Track optimization.
-* Command used in Openlane for Synthesis is as follows:
+
+* Command used in Openlane for Placement is as follows:
   ```
   run_placement
   ```
@@ -484,6 +485,7 @@ logic, Swapping pins, Deleting buffers, Moving instances, Applying useful skew, 
   
 ![Screenshot from 2023-11-14 16-05-10](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/c9215fb0-576d-4246-a080-98f4570d4bd9)
 
+* 
 
 
 ## References
