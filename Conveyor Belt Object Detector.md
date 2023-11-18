@@ -513,8 +513,91 @@ logic, Swapping pins, Deleting buffers, Moving instances, Applying useful skew, 
 
 ![Screenshot from 2023-11-18 15-36-56](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/52ffd654-7490-4e57-804d-84752cfa6261)
 
+## Clock Tree Synthesis(CTS):
 
+* Clock Tree Synthesis (CTS) is the process of inserting buffers in the clock path, with the goal of minimizing clock skew and latency to optimize timing distribution across the chip
+* Here's a brief explanation of the Clock Tree Synthesis process in OpenLane: Input Constraints, Hierarchical Clock Tree Construction, Buffer Insertion, Clock Skew Optimization, Clock Routing, Clock Tree Verification, Integration with Overall Design Flow
+*  Command used in Openlane for CTS and PDN is as follows:
+```
+run_cts
+gen_pdn
+```
+![Screenshot from 2023-11-14 16-05-10](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/19828fe8-88eb-4fe5-aeb0-33bc1b7ae2d3)
 
+**CTS_Report**
+
+![Screenshot from 2023-11-18 18-26-58](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/f064a118-6854-4f72-a07d-9badd72387d3)
+
+## Routing 
+
+* The primary goal of routing is to define the paths that signals will take to traverse the chip, connecting various logic elements, memory cells, and other components. Here's a brief explanation of the routing process:
+* Global routing involves determining the approximate paths for interconnections at a high level. It establishes the general routes that signals will follow, considering the overall chip architecture.
+* Detailed routing is the subsequent step where the specific paths for each net are refined. This process considers the detailed placement of components on the chip and selects the physical resources (metal layers) for the interconnections.
+* Routing Resources: Routing utilizes the available routing resources, typically metal layers, on the chip. The choice of metal layers depends on factors such as signal speed, capacitance, and the overall manufacturing process.
+* Obstacle Avoidance: Routing algorithms need to navigate around obstacles like other components, power grids, and clock networks. Algorithms ensure that routes are established while adhering to design rules and constraints.
+* Timing Considerations: Timing considerations play a crucial role in routing. Signals must reach their destinations within specified timing constraints to ensure correct circuit operation. Timing-driven routing is employed to meet these constraints.
+* Power Considerations: Routing also considers power consumption. Power-aware routing aims to minimize the length of critical paths, reducing dynamic power consumption associated with the charging and discharging of capacitances.
+* Signal Integrity: Signal integrity is maintained by avoiding excessive delays, reflections, and crosstalk. Proper routing techniques and metal layers are chosen to prevent signal degradation during transmission.
+* Verification: After routing, the design undergoes verification to ensure that all connections meet design rules, constraints, and performance criteria. This includes checks for timing closure, signal integrity, and manufacturability.
+
+* Command used in Openlane for Routing is as follows:
+  ```
+  run_routing
+  ```
+  
+![Screenshot from 2023-11-14 16-05-54](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/6e213d89-bdef-4d23-80e1-f85b6e7fb2c7)
+
+![Screenshot from 2023-11-14 16-25-02](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/a57dc5ae-bec4-4a1c-82c1-a66f9e619dab)
+
+* Following the completion of the routing run, a .def file is generated in the results/routing directory.
+* To visualize the routing wrapper, navigate to the  /home/solanki-pratikkumar/OpenLane/designs/Objectsensor_PNR/runs/RUN_2023.11.14_06.47.11/results/routing  directory and execute the following command using Magic:
+```
+magic -T /home/solanki-pratikkumar/.volare/volare/sky130/versions/1341f54f5ce0c4955326297f235e4ace1eb6d419/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.nom.lef def read wrapper.def &
+```
+
+![Screenshot from 2023-11-14 20-28-33](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/4b788cd0-a895-4ed1-ad74-3bf99fe191f8)
+
+![Screenshot from 2023-11-18 18-35-00](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/cb9d4f89-9d1f-4340-9615-53fe851cbb42)
+
+![Screenshot from 2023-11-18 18-40-04](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/7cc92cc5-6aea-4256-ab70-9a953f746c22)
+
+![Screenshot from 2023-11-18 19-50-40](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/74bd541e-6bac-4418-9f09-92bf99e4db0c)
+
+**Routing_Report**
+
+![Screenshot from 2023-11-18 19-53-05](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/89d882ca-4649-4fc5-b5c6-db9889f40ede)
+
+**Die Area and Nets**
+![Screenshot from 2023-11-14 18-36-00](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/59b66f88-f5c8-43e8-a492-b0817d0e3538)
+
+**Congestion Report and Wirelength**
+
+![Screenshot from 2023-11-14 18-33-36](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/0a59392a-7f13-419b-bd6f-90df444a5d89)
+
+**Power Report**
+
+![Screenshot from 2023-11-14 18-30-49](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/20ee17a1-566d-4a3c-aac9-b09b9d242f2c)
+
+**Timing Report and Area Report**
+
+![Screenshot from 2023-11-14 18-30-30](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/2bab5c94-a854-4e7a-b5ba-e8c77415ba80)
+
+**DRC violation is zero**
+
+![Screenshot from 2023-11-18 19-53-29](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/39433200-6800-49d9-915d-105302fce7d1)
+
+## Performance Calculation
+
+* Given a Clock period of 10ns in Json file , setup slack we got after routing is 6.95ns
+```
+                              1
+Max Performance =  ------------------------
+                     clock period - slack(setup)
+```
+
+```
+Max Performance = 0.0271 Ghz
+```
 
 ## References
 
