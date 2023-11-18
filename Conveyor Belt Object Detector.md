@@ -41,7 +41,8 @@ Our Target in this project is to make a detector that detects objects running on
 
 ![IR-Sensor-Module-Sensitivity-set](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/f7923c27-cb3f-4615-b1c9-81bce4acd238)
 
-## C-Code for Assembly
+## C-Code with Inline Assembly Code:
+
 ```
 
 
@@ -86,6 +87,36 @@ while(1)
 
 
 ```
+
+**Explaining above C-Code**
+
+* Initialization:
+Three integer variables (sensor_input, buzzer, and led) are declared to store values.
+mask is initialized to 0xFFFFFFF9.
+
+* Infinite Loop: 
+The program enters an infinite loop (while(1)) for continuous operation.
+Inline Assembly - Reading Sensor Input:
+
+* The first inline assembly block reads the value from register x30 and performs a bitwise AND operation with 1. The result is stored in the sensor_input variable.
+  
+* Conditional Block:
+The code then checks if sensor_input is equal to 1 using an if statement.
+Inline Assembly - If sensor_input is 1:
+
+If true, another inline assembly block is executed. It performs bitwise OR (ori) and AND (andi) operations on register x30, modifying specific bits and the results are stored in the buzzer and led variables.
+
+
+Inline Assembly - If sensor_input is not 1:
+
+If false, a different inline assembly block is executed.It performs bitwise AND (and) and AND (andi) operations on register x30. The results are again stored in the buzzer and led variables.
+
+* Loop Continuation:
+This loop continues indefinitely.
+
+* Return Statement:
+The return 0; statement is present but is practically unreachable in an infinite loop.
+
 
 ## Testing of Code
 
