@@ -403,14 +403,14 @@ constraints.
 * Logic Synthesis = Translation + Mapping + Optimization
 * So firstly there is a translation(read) of Verilog, VHDL code into Generic Boolean Netlist(GTECH) which is then Mapping/Optimization (compile) into the Standard Cell on Targeted Technology Mapping
   
-* Command used in Openlane for Synthesis is as follows
+* Command used in Openlane for Synthesis is as follows:
   ```
   run_synthesis
   ```
   
 ![Screenshot from 2023-11-14 16-04-54](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/f11e93da-4e05-40d1-b38a-bc81c1a01fb6)
 
-**Synthesis Report**
+**Synthesis_Report**
 
 ![Screenshot from 2023-11-15 10-23-35](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/dfc0b041-0266-49e0-9233-917fb85b3c0e)
 
@@ -438,7 +438,7 @@ Note: Usually, vertical metal layer and horizontal metal layer values will be 1 
   
 ![Screenshot from 2023-11-14 16-04-54](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/e0f45189-e5db-4627-88a5-3621695427f5)
 
-**Floorplan_report**
+**Floorplan_Report**
 
 ![Screenshot from 2023-11-15 10-53-17](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/c3a07837-cdcd-4931-ab9e-d346edc50246)
 
@@ -446,8 +446,29 @@ Note: Usually, vertical metal layer and horizontal metal layer values will be 1 
 
 ![Screenshot from 2023-11-15 10-54-03](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/56085393-4238-4637-bada-1885d5685d17)
 
-* Here,in Floorplan we can analyse the Die area, Core area, Number of Endcap and Tap cells and also the Number of voltage sources added
-* 
+* Here, in Floorplan we can analyse the Die area, Core area, Number of Endcap and Tap cells and also the Number of voltage sources added
+
+* Following the completion of the floorplan run, a .def file is generated in the results/floorplan directory. You can inspect floorplan files by examining the floorplan.tcl.
+* To visualize the floorplan, navigate to the results/floorplan directory and execute the following command using Magic:
+```
+$ magic -T /home/solanki-pratikkumar/.volare/volare/sky130/versions/1341f54f5ce0c4955326297f235e4ace1eb6d419/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.nom.lef def read wrapper.def &
+```
+![Screenshot from 2023-11-18 13-25-15](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/bae102aa-0118-4cc9-9f33-45d235774c37)
+
+![Screenshot from 2023-11-18 13-24-42](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/1cb212c0-976d-42b6-ba33-8407d92e3690)
+
+![Screenshot from 2023-11-18 13-26-42](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/77b9c07b-6e19-47d4-b8b0-ad2b1008b80b)
+* Over here we can observe the wrapper of floorplan with tapcell and data_mem and inst_mem block vacant and ready for further process to get the placement cells
+  
+## Placement 
+
+* In the context of OpenLane ASIC design, placement refers to the process of determining the physical locations of standard cells and other components on the chip's silicon die. This step is crucial for achieving optimal performance, signal integrity, and overall efficiency in the final integrated circuit. Here's a brief explanation of the placement process in OpenLane:
+
+Global Placement (Replace): The placement process starts with a global placement step, often performed using the "Replace" tool in OpenLane. This step involves assigning approximate locations to the standard cells and macros on the chip, considering factors such as signal delay, power consumption, and area utilization. Global placement provides a high-level arrangement of components.
+
+Detailed Placement (OpenDP): Following global placement, detailed placement is performed to refine and legalize the positions of the cells. OpenDP (OpenLane's Detailed Placement tool) is commonly used for this task. Detailed placement aims to meet specific design constraints, such as avoiding overlap between cells, adhering to the floorplan, and optimizing the placement for performance and power.
+
+Legalization: Legalization ensures that the detailed placement adheres to the physical and manufacturing constraints specified in the design rules. This step guarantees that the final placement is manufacturable and meets the requirements of the target technology.
 ## References
 
 * https://github.com/SakethGajawada/RISCV_GNU
