@@ -535,11 +535,13 @@ logic, Swapping pins, Deleting buffers, Moving instances, Applying useful skew, 
 
 * Clock Tree Synthesis (CTS) is the process of inserting buffers in the clock path, with the goal of minimizing clock skew and latency to optimize timing distribution across the chip
 * Here's a brief explanation of the Clock Tree Synthesis process in OpenLane: Input Constraints, Hierarchical Clock Tree Construction, Buffer Insertion, Clock Skew Optimization, Clock Routing, Clock Tree Verification, Integration with Overall Design Flow
+  
 *  Command used in Openlane for CTS and PDN is as follows:
 ```
 run_cts
 gen_pdn
 ```
+
 ![Screenshot from 2023-11-14 16-05-10](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/19828fe8-88eb-4fe5-aeb0-33bc1b7ae2d3)
 
 **CTS_Report**
@@ -629,14 +631,10 @@ run_antenna_check
 ![Screenshot from 2023-11-14 16-25-02](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/a57dc5ae-bec4-4a1c-82c1-a66f9e619dab)
 
 
-## References
+## Word of Thanks
 
-* https://github.com/SakethGajawada/RISCV_GNU
-* https://circuitdigest.com/microcontroller-projects/interfacing-ir-sensor-module-with-arduino
-* https://chat.openai.com/
-* https://www.elprocus.com/infrared-ir-sensor-circuit-and-working/
-* https://www.electroduino.com/what-is-ir-sensor-module-how-ir-sensor-module-works/
-  
+* I sincerely thank Mr. Kunal Gosh(Founder/VSD) and also Mr. Mayank Kabra (Founder Chipcron Pvt.Ltd) for Teaching and Helping me to complete this course smoothly
+
 ## Acknowledgement
 
 * Kunal Ghosh, VSD Corp. Pvt. Ltd.
@@ -645,3 +643,13 @@ run_antenna_check
 * Pruthvi parate, MS Collegue
 * Divyam Satle, M.Tech Collegue
 * Nitesh Sharma, M.Tech Collegue
+*   
+## References
+
+* https://github.com/SakethGajawada/RISCV_GNU
+* https://circuitdigest.com/microcontroller-projects/interfacing-ir-sensor-module-with-arduino
+* https://chat.openai.com/
+* https://www.elprocus.com/infrared-ir-sensor-circuit-and-working/
+* https://www.electroduino.com/what-is-ir-sensor-module-how-ir-sensor-module-works/
+  
+
