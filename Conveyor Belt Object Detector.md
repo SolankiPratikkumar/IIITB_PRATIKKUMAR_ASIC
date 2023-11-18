@@ -431,7 +431,7 @@ FP_CORE_UTIL - floorplan core utilisation; FP_ASPECT_RATIO - floorplan aspect ra
 ```
 Note: Usually, vertical metal layer and horizontal metal layer values will be 1 more than that specified in the file
   
-* Command used in Openlane for Synthesis is as follows
+* Command used in Openlane for Synthesis is as follows:
   ```
   run_floorplan
   ```
@@ -458,17 +458,34 @@ $ magic -T /home/solanki-pratikkumar/.volare/volare/sky130/versions/1341f54f5ce0
 ![Screenshot from 2023-11-18 13-24-42](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/1cb212c0-976d-42b6-ba33-8407d92e3690)
 
 ![Screenshot from 2023-11-18 13-26-42](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/77b9c07b-6e19-47d4-b8b0-ad2b1008b80b)
-* Over here we can observe the wrapper of floorplan with tapcell and data_mem and inst_mem block vacant and ready for further process to get the placement cells
+
+![Screenshot from 2023-11-18 13-44-13](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/b146d548-c3f2-468b-9a77-3f46e7aa1622)
+
+* Over here we can observe the wrapper of the floorplan with tapcell and data_mem and inst_mem block vacant and ready for further process to get the placement cells
   
 ## Placement 
 
 * In the context of OpenLane ASIC design, placement refers to the process of determining the physical locations of standard cells and other components on the chip's silicon die. This step is crucial for achieving optimal performance, signal integrity, and overall efficiency in the final integrated circuit. Here's a brief explanation of the placement process in OpenLane:
 
-Global Placement (Replace): The placement process starts with a global placement step, often performed using the "Replace" tool in OpenLane. This step involves assigning approximate locations to the standard cells and macros on the chip, considering factors such as signal delay, power consumption, and area utilization. Global placement provides a high-level arrangement of components.
+* Global Placement (Replace): The placement process starts with a global placement step, often performed using the "Replace" tool in OpenLane. This step involves assigning approximate locations to the standard cells and macros on the chip, considering factors such as signal delay, power consumption, and area utilization. Global placement provides a high-level arrangement of components.
 
-Detailed Placement (OpenDP): Following global placement, detailed placement is performed to refine and legalize the positions of the cells. OpenDP (OpenLane's Detailed Placement tool) is commonly used for this task. Detailed placement aims to meet specific design constraints, such as avoiding overlap between cells, adhering to the floorplan, and optimizing the placement for performance and power.
+* Detailed Placement (OpenDP): Following global placement, detailed placement is performed to refine and legalize the positions of the cells. OpenDP (OpenLane's Detailed Placement tool) is commonly used for this task. Detailed placement aims to meet specific design constraints, such as avoiding overlap between cells, adhering to the floorplan, and optimizing the placement for performance and power.
 
-Legalization: Legalization ensures that the detailed placement adheres to the physical and manufacturing constraints specified in the design rules. This step guarantees that the final placement is manufacturable and meets the requirements of the target technology.
+* Legalization: Legalization ensures that the detailed placement adheres to the physical and manufacturing constraints specified in the design rules. This step guarantees that the final placement is manufacturable and meets the requirements of the target technology.
+
+* Optimization is the process of iterating through a design such that it meets timing, area, and power specifications.
+* Depending on the stage of the design, optimization can include the following operations: Adding buffers, Resizing gates, Restructuring the netlist, Remapping
+logic, Swapping pins, Deleting buffers, Moving instances, Applying useful skew, Layer optimization, and Track optimization.
+* Command used in Openlane for Synthesis is as follows:
+  ```
+  run_placement
+  ```
+![Screenshot from 2023-11-14 16-04-54](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/7808df5b-ae58-4f79-b4d6-a59d1c4964bc)
+  
+![Screenshot from 2023-11-14 16-05-10](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/c9215fb0-576d-4246-a080-98f4570d4bd9)
+
+
+
 ## References
 
 * https://github.com/SakethGajawada/RISCV_GNU
