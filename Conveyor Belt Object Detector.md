@@ -359,13 +359,13 @@ Clock Tree Synthesis (CTS), Routing
 
 Below are the stages and the respective tools that are called by Openlane for the functionalities as described:
 
-* Synthesis is generating gate-level netlist using yosys. Performing cell mapping by ABC. Performing pre-layout STA using (OpenSTA)
-* Floorplanning defining the core area for the macro as well as the cell sites and the tracks (init_fp). Placing the macro input and output ports (ioplacer). Generating the power distribution network (pdn)
-* Placement Performing global placement (Replace). Performing detailed placement to legalize the globally placed components (OpenDP)
-* Clock Tree Synthesis (CTS) synthesizing the clock tree using TritonCTS
-* Routing Performing global routing to generate a guide file for the detailed router (FastRoute). Performing detailed routing (TritonRoute)
-* GDSII Generating Streaming out the final GDSII layout file from the routed def file using Magic
-
+* Synthesis involves the creation of a gate-level netlist using Yosys, incorporating cell mapping through ABC, and executing pre-layout Static Timing Analysis (STA) using OpenSTA.
+* Floorplanning encompasses the definition of the core area for the macro, placement of cell sites and tracks (init_fp), and arrangement of macro input and output ports using ioplacer. Additionally, it includes the generation of the power distribution network (pdn).
+* Placement involves global placement through Replace, followed by detailed placement to legalize the globally placed components using OpenDP.
+* Clock Tree Synthesis (CTS) entails the synthesis of the clock tree using TritonCTS.
+* Routing comprises global routing to generate a guide file for the detailed router (FastRoute), and subsequent detailed routing using TritonRoute.
+* GDSII generation involves the creation of the final GDSII layout file from the routed DEF file using Magic.
+* 
 ## OpenLane
 
 * OpenLane is an RTL to GDSII automated flow that integrates various components such as OpenROAD, Yosys, Magic, Netgen, CVC, SPEF-Extractor, CU-GR, Klayout, and several custom scripts for design exploration and optimization.
@@ -380,7 +380,7 @@ Below are the stages and the respective tools that are called by Openlane for th
 
 ## Preparing the Design Flow
 
-* Preparing the design and including the lef files: The commands to prepare the design and overwite in a existing run folder the reports and results along with the command to include the lef files is given below:
+* Preparing the design and including the lef files: The commands to prepare the design and overwrite in an existing run folder the reports and results along with the command to include the lef files is given below:
 ```
 sed -i's/max_transition   :0.04/max_transition   :0.75'*/*.lib
 ```
@@ -393,6 +393,61 @@ make mount
 ```
 ![Screenshot from 2023-11-17 00-31-14](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/5f7601c1-a00e-40d0-898e-585b21605063)
 
+## Synthesis
+
+* In ASIC (Application-Specific Integrated Circuit) design, synthesis is a crucial step that involves the translation of a high-level hardware description of a digital circuit, typically written in a hardware description language (HDL) such as Verilog or VHDL, converted into a gate-level netlist. The netlist represents the logical functionality of the circuit using lower-level components like gates, flip-flops, and other digital elements.
+* Logic Synthesis is the process of transforming HDL code into a logic circuit based on a compiled technology-specific library and user-specified optimization
+constraints.
+* ASIC design Synthesis includes the steps of HDL Input, Pre-Synthesis Checks, Optimization, Technology Mapping, Cell Mapping, Netlist Generation, Timing Analysis, constraint handling, and Output Generation.
+* The goal is to achieve a design that meets performance, area, and power requirements.
+* Logic Synthesis = Translation + Mapping + Optimization
+* So firstly there is a translation(read) of Verilog, VHDL code into Generic Boolean Netlist(GTECH) which is then Mapping/Optimization (compile) into the Standard Cell on Targeted Technology Mapping
+  
+* Command used in Openlane for Synthesis is as follows
+  ```
+  run_synthesis
+  ```
+  
+![Screenshot from 2023-11-14 16-04-54](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/f11e93da-4e05-40d1-b38a-bc81c1a01fb6)
+
+**Synthesis Report**
+
+![Screenshot from 2023-11-15 10-23-35](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/dfc0b041-0266-49e0-9233-917fb85b3c0e)
+
+![Screenshot from 2023-11-15 10-33-24](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/2f9d2aa7-7630-4a07-ac88-101ef79c767a)
+
+![Screenshot from 2023-11-15 10-34-41](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/f91b8e84-8f55-42e2-90d6-07530a4ff062)
+
+* By this report we can analyse the Area, Power and the Timing summary for the Synthesis process
+  
+## Floorplan
+
+* In ASIC design with OpenLane, the floorplanning process involves defining the physical layout of the chip on the silicon die. It includes the allocation of space for various components and establishes the core area, cell sites, and routing tracks.
+* Here's a brief explanation of the floorplan process in OpenLane, they are Initiating Floorplan (init_fp), Predefined Macro Placement, Input-Output port Placement (ioplacer), Power Distribution Network (pdn), Tracks and Rows for layout
+* Here the pads and pins are assigned as a part of Design Import by reading an IO assignment file or reading in a DEF file
+* Floorplan environment variables or switches:
+```
+FP_CORE_UTIL - floorplan core utilisation; FP_ASPECT_RATIO - floorplan aspect ratio ; FP_CORE_MARGIN - Core to die margin area ; FP_IO_MODE - defines pin configurations (1 = equidistant/0 = not equidistant); FP_CORE_VMETAL - vertical metal layer; FP_CORE_HMETAL - horizontal metal layer
+```
+Note: Usually, vertical metal layer and horizontal metal layer values will be 1 more than that specified in the file
+  
+* Command used in Openlane for Synthesis is as follows
+  ```
+  run_floorplan
+  ```
+  
+![Screenshot from 2023-11-14 16-04-54](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/e0f45189-e5db-4627-88a5-3621695427f5)
+
+**Floorplan_report**
+
+![Screenshot from 2023-11-15 10-53-17](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/c3a07837-cdcd-4931-ab9e-d346edc50246)
+
+![Screenshot from 2023-11-18 12-32-10](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/0ff023c5-cec2-4071-ad6f-936bd1f2913f)
+
+![Screenshot from 2023-11-15 10-54-03](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/56085393-4238-4637-bada-1885d5685d17)
+
+* Here,in Floorplan we can analyse the Die area, Core area, Number of Endcap and Tap cells and also the Number of voltage sources added
+* 
 ## References
 
 * https://github.com/SakethGajawada/RISCV_GNU
