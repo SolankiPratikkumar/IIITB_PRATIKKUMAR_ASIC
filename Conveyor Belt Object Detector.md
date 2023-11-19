@@ -384,7 +384,7 @@ iverilog -o synth_processor.v testbench.v synth_test.v sky130_sram_1kbyte_1rw1r_
   
 ![Screenshot from 2023-11-03 00-04-58](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/44b0c928-7e78-4908-a231-880574dcc777)
 
-* We generate the netlist by using following commands 
+* We generate the netlist by using the following commands 
 ```
 show wrapper
 ```
@@ -656,7 +656,7 @@ run_magic_drc
 run_antenna_check
 ```
 
-[Screenshot from 2023-11-14 16-05-54](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/6e213d89-bdef-4d23-80e1-f85b6e7fb2c7)
+![Screenshot from 2023-11-14 16-05-54](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/6e213d89-bdef-4d23-80e1-f85b6e7fb2c7)
 
 ![Screenshot from 2023-11-14 16-25-02](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/a57dc5ae-bec4-4a1c-82c1-a66f9e619dab)
 
@@ -669,14 +669,14 @@ run_antenna_check
 
 * Kunal Ghosh, VSD Corp. Pvt. Ltd.
 * Mayank Kabra, Founder Chipcron Pvt.Ltd
-* Bhargav DV,MS Collegue
-* Pruthvi parate, MS Collegue
-* Divyam Satle, M.Tech Collegue
-* Nitesh Sharma, M.Tech Collegue
-*   
+* Bhargav DV, MS Colleague
+* Pruthvi Parate, MS Colleague
+* Divyam Satle, M.Tech Colleague
+* Nitesh Sharma, M.Tech Colleague
+ 
 ## References
 
-* https://github.com/SakethGajawada/RISCV_GNU
+* https://github.com/SakethGajawada/RISCV_GNUReferences
 * https://circuitdigest.com/microcontroller-projects/interfacing-ir-sensor-module-with-arduino
 * https://chat.openai.com/
 * https://www.elprocus.com/infrared-ir-sensor-circuit-and-working/
