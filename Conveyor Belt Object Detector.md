@@ -253,11 +253,14 @@ int main() {
 }
 
 ```
+
 ## Commands to Get Output of Spike
+
 ```
 riscv64-unknown-elf-gcc -march=rv64i -mabi=lp64 -ffreestanding -o out file.c
 spike pk out
 ```
+
 ## Spike Simulation Output
 
 ![Screenshot from 2023-10-31 23-07-13](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/f249c9dc-d965-43de-a5da-7c8d3251489d)
@@ -335,6 +338,7 @@ dfflibmap -liberty sky130_fd_sc_hd__tt_025C_1v80_256.lib
 abc -liberty sky130_fd_sc_hd__tt_025C_1v80_256.lib
 write_verilog synth_processor.v
 ```
+
 * Yosys Invoke and .lib file imported and verilog module instantiation:
   
 ![Screenshot from 2023-11-02 23-21-04](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/c9340e57-bdbd-4f57-a8cc-0859ed57d2c7)
@@ -366,6 +370,7 @@ write_verilog synth_processor.v
 
 
 * Command to run Gate Level Simulation:
+  
 ```
 iverilog -o synth_processor.v testbench.v synth_test.v sky130_sram_1kbyte_1rw1r_32x256_8.v sky130_fd_sc_hd.v primitives.v
 
@@ -384,7 +389,8 @@ iverilog -o synth_processor.v testbench.v synth_test.v sky130_sram_1kbyte_1rw1r_
   
 ![Screenshot from 2023-11-03 00-04-58](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/44b0c928-7e78-4908-a231-880574dcc777)
 
-* We generate the netlist by using the following commands 
+* We generate the netlist by using the following commands
+   
 ```
 show wrapper
 ```
@@ -411,7 +417,7 @@ Below are the stages and the respective tools that are called by Openlane for th
 * Clock Tree Synthesis (CTS) entails the synthesis of the clock tree using TritonCTS.
 * Routing comprises global routing to generate a guide file for the detailed router (FastRoute), and subsequent detailed routing using TritonRoute.
 * GDSII generation involves the creation of the final GDSII layout file from the routed DEF file using Magic.
-* 
+  
 ## OpenLane
 
 * OpenLane is an RTL to GDSII automated flow that integrates various components such as OpenROAD, Yosys, Magic, Netgen, CVC, SPEF-Extractor, CU-GR, Klayout, and several custom scripts for design exploration and optimization.
@@ -427,16 +433,20 @@ Below are the stages and the respective tools that are called by Openlane for th
 ## Preparing the Design Flow
 
 * Preparing the design and including the lef files: The commands to prepare the design and overwrite in an existing run folder the reports and results along with the command to include the lef files is given below:
+  
 ```
 sed -i's/max_transition   :0.04/max_transition   :0.75'*/*.lib
 ```
+
 * Perform below to start the interface of OpenLane and run the below commands:
+  
 ```
 make mount
 %./flow.tcl -interactive
 % package require openlane 0.9
 % prep -design Object_sensor_PNR
 ```
+
 ![Screenshot from 2023-11-17 00-31-14](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/5f7601c1-a00e-40d0-898e-585b21605063)
 
 **Changed JSON File**
@@ -458,6 +468,7 @@ constraints.
 * So firstly there is a translation(read) of Verilog, VHDL code into Generic Boolean Netlist(GTECH) which is then Mapping/Optimization (compile) into the Standard Cell on Targeted Technology Mapping
   
 * Command used in Openlane for Synthesis is as follows:
+  
   ```
   run_synthesis
   ```
@@ -480,12 +491,14 @@ constraints.
 * Here's a brief explanation of the floorplan process in OpenLane, they are Initiating Floorplan (init_fp), Predefined Macro Placement, Input-Output port Placement (ioplacer), Power Distribution Network (pdn), Tracks and Rows for layout
 * Here the pads and pins are assigned as a part of Design Import by reading an IO assignment file or reading in a DEF file
 * Floorplan environment variables or switches:
+  
 ```
 FP_CORE_UTIL - floorplan core utilisation; FP_ASPECT_RATIO - floorplan aspect ratio ; FP_CORE_MARGIN - Core to die margin area ; FP_IO_MODE - defines pin configurations (1 = equidistant/0 = not equidistant); FP_CORE_VMETAL - vertical metal layer; FP_CORE_HMETAL - horizontal metal layer
 ```
 Note: Usually, the vertical metal layer and horizontal metal layer values will be 1 more than that specified in the file
   
 * Command used in Openlane for Floorplan is as follows:
+  
   ```
   run_floorplan
   ```
@@ -504,6 +517,7 @@ Note: Usually, the vertical metal layer and horizontal metal layer values will b
 
 * Following the completion of the floorplan run, a .def file is generated in the results/floorplan directory.
 * To visualize the floorplan wrapper, navigate to the  /home/solanki-pratikkumar/OpenLane/designs/Objectsensor_PNR/runs/RUN_2023.11.14_06.47.11/results/floorplan  directory and execute the following command using Magic:
+  
 ```
 $ magic -T /home/solanki-pratikkumar/.volare/volare/sky130/versions/1341f54f5ce0c4955326297f235e4ace1eb6d419/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.nom.lef def read wrapper.def &
 ```
@@ -533,9 +547,11 @@ $ magic -T /home/solanki-pratikkumar/.volare/volare/sky130/versions/1341f54f5ce0
 logic, Swapping pins, Deleting buffers, Moving instances, Applying useful skew, Layer optimization, and Track optimization.
 
 * Command used in Openlane for Placement is as follows:
+  
   ```
   run_placement
   ```
+  
 ![Screenshot from 2023-11-14 16-04-54](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/7808df5b-ae58-4f79-b4d6-a59d1c4964bc)
   
 ![Screenshot from 2023-11-14 16-05-10](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/c9215fb0-576d-4246-a080-98f4570d4bd9)
@@ -567,6 +583,7 @@ logic, Swapping pins, Deleting buffers, Moving instances, Applying useful skew, 
 * Here's a brief explanation of the Clock Tree Synthesis process in OpenLane: Input Constraints, Hierarchical Clock Tree Construction, Buffer Insertion, Clock Skew Optimization, Clock Routing, Clock Tree Verification, Integration with Overall Design Flow
   
 *  Command used in Openlane for CTS and PDN is as follows:
+  
 ```
 run_cts
 gen_pdn
@@ -638,7 +655,8 @@ magic -T /home/solanki-pratikkumar/.volare/volare/sky130/versions/1341f54f5ce0c4
 
 ## Performance Calculation
 
-* Given a Clock period of 10ns in json file , setup slack we got after routing is 6.95ns
+* Given a Clock period of 10ns in json file, setup slack we got after routing is 6.95ns
+  
 ```
                               1
 Max Performance =  ------------------------
@@ -648,7 +666,9 @@ Max Performance =  ------------------------
 ```
 Max Performance = 0.3278 Ghz
 ```
+
 **Antenna_Checks**
+
 ```
 run_magic
 run__magic_spice_export
