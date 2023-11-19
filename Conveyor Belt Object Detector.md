@@ -696,10 +696,10 @@ run_antenna_check
  
 ## References
 
-* https://github.com/SakethGajawada/RISCV_GNUReferences
+
 * https://circuitdigest.com/microcontroller-projects/interfacing-ir-sensor-module-with-arduino
 * https://chat.openai.com/
 * https://www.elprocus.com/infrared-ir-sensor-circuit-and-working/
 * https://www.electroduino.com/what-is-ir-sensor-module-how-ir-sensor-module-works/
-  
+* https://github.com/SakethGajawada/RISCV_GNUReferences  
 
