@@ -43,12 +43,15 @@ Our Target in this project is to make a detector that detects objects running on
 
 ## GPIO PINS:
 
+![Screenshot from 2023-12-09 15-08-44](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/b2730883-9460-497e-9787-24667c4378bf)
 
+* x30[0] is the input pin where the sensor value is received
+* x30[1] is pin to provide output and it will blink output LED
+* x30[2] is pin to provide output and it will sound output Buzzer
+  
 ## C-Code with Inline Assembly Code:
 
 ```
-
-
 int main() {
     int sensor_input;  //Declares an integer variable named sensor_input. This variable is likely intended to store input from a sensor
     int buzzer;  // Declares an integer variable named buzzer. This variable might be used to control a buzzer.
