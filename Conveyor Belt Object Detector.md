@@ -171,17 +171,67 @@ This loop continues indefinitely.
 The return 0; statement is present but is practically unreachable in an infinite loop.
 
 
+## Testing GCC C-Code:
+
+```
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main() {
+    int sensor_input;      // bit 0
+    int buzzer;      // bit 1
+    int mask = 0xFFFFFFF2;
+    int min = 1;
+    int max = 100;
+    int j = 0;
+    int k = 0;
+    srand(time(NULL));  // Seed the random number generator with the current time
+
+    while (j < 11) {
+        int randomNum = rand();
+        printf("Random number: %d\n", randomNum);
+        sensor = randomNum % 2;
+        printf("Sensor value: %d\n", sensor);
+
+        if (sensor == 1) { 
+            printf("Presence of Object\n");
+            buzzer = 1;
+            /*asm(
+            "and x30, x30, %1\n\t"
+            "or x30, x30, %0\n\t"
+            :"=r"(buzzer)
+            :"r"(shift));*/
+            for (int k = 0; k < 1000000; k++);
+        }
+        else { 
+            printf("Presence of Object is not detected\n");
+            buzzer = 0; 
+            /*asm(
+            "and x30, x30, %1\n\t"
+            "or x30, x30, %0\n\t"
+            :"=r"(buzzer)
+            :"r"(shift));*/
+            for (int k = 0; k < 1000000; k++);
+        }
+
+        j++;
+    }
+
+    return 0;
+}
+
+```
+
 
 ## Testing of Code
 
-* Run the following code to run Test code:
+* Run the following commands to run Test code:
   
 ```
 gcc test_object.c
 ./a.out
 ```
-
-
 
 ![Screenshot from 2023-10-05 22-47-17](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/5b9c2a7a-2cf1-48de-be71-c2a5ccf3f280)
 
@@ -742,6 +792,16 @@ run_antenna_check
 
 https://iiitbac-my.sharepoint.com/:f:/r/personal/solanki_pratikkumar_iiitb_ac_in/Documents/RUN_2023.11.14_06.47.11?csf=1&web=1&e=kZV40n
 
+
+## Output Photo
+
+![Screenshot from 2023-12-09 15-18-51](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/7b40f960-77d6-428d-905c-af3ed78f764c)
+
+![Screenshot from 2023-12-09 15-20-46](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/f6bf8dae-047a-485c-8b4b-c1c5a0a4f80b)
+
+![Screenshot from 2023-12-09 15-21-50](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/e92229fc-97a4-49d0-886b-35ca7c4bb87d)
+
+
 ## Word of Thanks
 
 * I sincerely thank Mr. Kunal Gosh(Founder/VSD) and also Mr. Mayank Kabra (Founder Chipcron Pvt.Ltd) for Teaching and Helping me to complete this course smoothly
@@ -763,4 +823,4 @@ https://iiitbac-my.sharepoint.com/:f:/r/personal/solanki_pratikkumar_iiitb_ac_in
 * https://www.elprocus.com/infrared-ir-sensor-circuit-and-working/
 * https://www.electroduino.com/what-is-ir-sensor-module-how-ir-sensor-module-works/
 * https://github.com/SakethGajawada/RISCV_GNUReferences  
-
+* https://www.youtube.com/watch?v=fFCuOSerek4&t=302s&ab_channel=EasyHomeMadeProjects
