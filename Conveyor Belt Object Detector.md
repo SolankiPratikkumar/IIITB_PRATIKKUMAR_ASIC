@@ -804,7 +804,7 @@ https://iiitbac-my.sharepoint.com/:f:/r/personal/solanki_pratikkumar_iiitb_ac_in
 
 ## Word of Thanks
 
-* I sincerely thank Mr. Kunal Gosh(Founder/VSD) and also Mr. Mayank Kabra (Founder Chipcron Pvt.Ltd) for Teaching and Helping me to complete this course smoothly
+* I sincerely Thank Prof.Kunal Gosh(Founder/VSD) and also Mr. Mayank Kabra (Founder Chipcron Pvt.Ltd) for Teaching and Helping me to complete this course smoothly
 
 ## Acknowledgement
 
