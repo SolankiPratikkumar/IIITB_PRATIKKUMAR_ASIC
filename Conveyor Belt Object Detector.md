@@ -197,21 +197,21 @@ int main() {
         if (sensor == 1) { 
             printf("Presence of Object\n");
             buzzer = 1;
-            /*asm(
+            /* asm(
             "and x30, x30, %1\n\t"
             "or x30, x30, %0\n\t"
             :"=r"(buzzer)
-            :"r"(shift));*/
+            :"r"(shift)); */
             for (int k = 0; k < 1000000; k++);
         }
         else { 
             printf("Presence of Object is not detected\n");
             buzzer = 0; 
-            /*asm(
+            /* asm(
             "and x30, x30, %1\n\t"
             "or x30, x30, %0\n\t"
             :"=r"(buzzer)
-            :"r"(shift));*/
+            :"r"(shift)); */
             for (int k = 0; k < 1000000; k++);
         }
 
