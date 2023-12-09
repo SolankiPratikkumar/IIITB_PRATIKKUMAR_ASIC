@@ -2,7 +2,7 @@
 # RISC-V CONVEYOR BELT OBJECT DETECTOR
 
 
-## Aim
+## Abstract
 
 Our Target in this project is to make a detector that detects objects running on the conveyor belt by IR Proximity Sensor and output is obtained in LED and Buzzer. As automation is increasing this project can be used as an indicator in the Industry Conveyor Belt Process Initiation
 
@@ -40,6 +40,9 @@ Our Target in this project is to make a detector that detects objects running on
   
 
 ![IR-Sensor-Module-Sensitivity-set](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/f7923c27-cb3f-4615-b1c9-81bce4acd238)
+
+## GPIO PINS:
+
 
 ## C-Code with Inline Assembly Code:
 
