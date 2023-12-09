@@ -47,39 +47,44 @@ Our Target in this project is to make a detector that detects objects running on
 
 
 int main() {
-    int sensor_input;
-    int buzzer;
-    int led;
-    int mask = 0xFFFFFFF9;
+    int sensor_input;  //Declares an integer variable named sensor_input. This variable is likely intended to store input from a sensor
+    int buzzer;  // Declares an integer variable named buzzer. This variable might be used to control a buzzer.
+    int led;   // Declares an integer variable named led. This variable might be used to control an LED
+    int mask = 0xFFFFFFF9;   // Declares an integer variable named mask and initializes it with the hexadecimal value 0xFFFFFFF9. This value is a bitmask used for bitwise operations. In binary, 0xFFFFFFF9 is 11111111111111111111111111111001.. This bitmask is often used to manipulate specific bits in a variable while leaving others unchanged.
   
 while(1)
 {
      asm (
                 
-		"andi %0, x30, 1\n\t"
-		: "=r"(sensor_input) 
-		: 
-                :
-                 );
+		"andi %0, x30, 1\n\t"  //The andi instruction performs a bitwise AND operation between the contents of register x30 and the immediate value 1 and stores resulting in the first operand 0 pin in x30
+		: "=r"(sensor_input)   //The result of this above operation is stored in the sensor_input variable
+		:                      // The first colon separates the output operand constraint from the input operand constraints (which are not present here)
+                :                      // The second colon separates the input operand constraints from the clobbered registers (modified registers) 
+                 );                    // This first code snippet extracts the least significant bit of register x30 and stores it in the sensor_input variable. The result in sensor_input will be either 0 or 1, depending on the value of the least significant bit in register x30
 
-    if (sensor_input == 1) {
+
+
+    if (sensor_input == 1) {            // entered into if loop when sensor input value is received as 1
         asm (
-            "ori x30, x30, 6\n\t"
-            "andi %0, x30, 4\n\t"
-            "andi %1, x30, 2"
-            : "=r"(buzzer), "=r"(led)
-            : "r"(mask)
-        );
-    } 
-    else {
+            "ori x30, x30, 6\n\t"      //immediate or of x30 register value with 6(110) then sets the bits 0, 1, and 2 of register x30 
+            "andi %0, x30, 4\n\t"      //immediate and of x30 above value with 4(100),checks if the third bit of register x30 is set and sets the value of buzzer
+            "andi %1, x30, 2"          //immediate and of x30 above value with 2(010), checks if the second bit of register x30 is set and sets the value of LED 
+            : "=r"(buzzer), "=r"(led)  //gives a signal to the Buzzer and LED by updated set(1) values of x30 register 
+            : "r"(mask)                // Specifies that the value of the mask will be placed in an x30 register to use within the inline assembly code
+        );     
+    }    //this code snippet modifies the contents of register x30 based on the value of sensor_input. If sensor_input is 1, specific bits in x30 are set, and the values of buzzer and led are determined based on the state of certain bits
+
+
+
+    else {                           // entered into if loop when sensor input value is received as 0 
         asm (
-            "and x30, x30, %2\n\t"
-            "andi %0,x30, 4\n\t"
-            "andi %1, x30, 2"
-            : "=r"(buzzer), "=r"(led)
-            : "r"(mask)
+            "and x30, x30, %2\n\t"  //performs a bitwise AND operation between the contents of register x30 and the value of mask, effectively clearing bits that are not set in mask
+            "andi %0,x30, 4\n\t"  //immediate and of x30 above value with 4(100),checks if the third bit of register x30 is set and sets the value of buzzer
+            "andi %1, x30, 2"     //immediate and of x30 above value with 2(010), checks if the second bit of register x30 is set and sets the value of LED
+            : "=r"(buzzer), "=r"(led)  //gives a signal to the Buzzer and LED by updated reset(0) values of x30 register
+            : "r"(mask)       // Specifies that the value of the mask will be placed in an x30 register to use within the inline assembly code
         );
-    }
+    }    //this code snippet modifies the contents of register x30 by applying a bitwise AND operation with mask. The values of buzzer and led are then determined based on the state of certain bits in the modified x30
 
    } 
     return 0;
@@ -93,28 +98,72 @@ while(1)
 * Initialization:
 Three integer variables (sensor_input, buzzer, and led) are declared to store values.
 mask is initialized to 0xFFFFFFF9.
+* Declares an integer variable named mask and initializes it with the hexadecimal value 0xFFFFFFF9. This value is a bitmask used for bitwise operations. In binary, 0xFFFFFFF9 is 11111111111111111111111111111001. This bitmask is often used to manipulate specific bits in a variable while leaving others unchanged.
+
+The bitmask here has certain bits set to 0 (cleared) and others set to 1 (preserved). The specific bits that are set to 0 are the 1st, 2nd, and 3rd from the right. The rest of the bits are set to 1. The bitmask is commonly used to clear specific bits in a variable without affecting the others.
 
 * Infinite Loop: 
 The program enters an infinite loop (while(1)) for continuous operation.
-Inline Assembly - Reading Sensor Input:
+
+* "andi %0, x30, 1\n\t":
+
+This is the actual assembly code written in a string. It is a RISC-V assembly instruction.
+andi: Stands for "AND Immediate." It performs a bitwise AND operation between two operands.
+%0: This is a placeholder for the first operand, which will be replaced by a variable when the assembly code is used.
+x30: Refers to register x30 in the RISC-V architecture.
+, 1: Specifies the immediate value 1 that will be used in the AND operation.
+\n\t: Newline and tab characters, which are part of the assembly code syntax.
+
+
+* Reading Sensor Input:
 
 * The first inline assembly block reads the value from register x30 and performs a bitwise AND operation with 1. The result is stored in the sensor_input variable.
   
 * Conditional Block:
 The code then checks if sensor_input is equal to 1 using an if statement.
 
-Inline Assembly - If sensor_input is 1:
- If true, another inline assembly block is executed. It performs bitwise OR (ori) and AND (andi) operations on register x30, modifying specific bits and the results are stored in the buzzer and led variables.
+* "ori x30, x30, 6\n\t":
 
-Inline Assembly - If sensor_input is not 1:
+ori: Stands for "OR Immediate." It performs a bitwise OR operation between two operands.
+x30: Refers to register x30 in the RISC-V architecture.
+, x30, 6: Specifies that register x30 should be ORed with the immediate value 6.
+The result is that bits 0 and 1 of register x30 are set to 1 (bitwise OR with 6 sets bits 0, 1, and 2)
 
-If false, a different inline assembly block is executed.It performs bitwise AND (and) and AND (andi) operations on register x30. The results are again stored in the buzzer and led variables.
+* "andi %0, x30, 4\n\t":
+
+andi: Stands for "AND Immediate." It performs a bitwise AND operation between two operands.
+%0: Refers to the first output operand, which is buzzer in this case.
+x30, 4: Specifies that register x30 should be ANDed with the immediate value 4.
+The result is that %0 (buzzer) will be set to 4 if the third bit of register x30 is set; otherwise, it will be set to 0
+
+* "andi %1, x30, 2":
+
+Similar to the previous instruction, this performs a bitwise AND operation between register x30 and the immediate value 2.
+%1: Refers to the second output operand, which is led in this case.
+The result is that %1 (led) will be set to 2 if the second bit of register x30 is set; otherwise, it will be set to 0
+
+* If sensor_input is 1:
+ If true, another inline assembly block is executed. It performs bitwise OR (ori) and AND (andi) operations on register x30, modifying specific bits and the results are stored in the buzzer and led variables which will turn on Buzzer and LED
+
+
+* "and x30, x30, %2\n\t":
+
+and: Stands for "AND" and performs a bitwise AND operation between two operands.
+x30: Refers to register x30 in the RISC-V architecture.
+x30, %2: Specifies that register x30 should be ANDed with the value of mask.
+The result is that only the bits set in mask will be preserved in register x30, and other bits will be cleared.
+
+
+* If sensor_input is not 1:
+
+If false, a different inline assembly block is executed. It performs bitwise AND (and) and AND (andi) operations on register x30. The results are again stored in the buzzer and led variables.
 
 * Loop Continuation:
 This loop continues indefinitely.
 
 * Return Statement:
 The return 0; statement is present but is practically unreachable in an infinite loop.
+
 
 
 ## Testing of Code
@@ -125,6 +174,8 @@ The return 0; statement is present but is practically unreachable in an infinite
 gcc test_object.c
 ./a.out
 ```
+
+
 
 ![Screenshot from 2023-10-05 22-47-17](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/5b9c2a7a-2cf1-48de-be71-c2a5ccf3f280)
 
