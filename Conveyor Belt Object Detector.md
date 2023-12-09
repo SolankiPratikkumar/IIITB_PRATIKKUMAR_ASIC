@@ -224,9 +224,9 @@ int main() {
 ```
 
 
-## Testing of Code
+## Commands for Testing of GCC-Code
 
-* Run the following commands to run Test code:
+* Run the following commands to run Test commands:
   
 ```
 gcc test_object.c
@@ -236,7 +236,7 @@ gcc test_object.c
 ![Screenshot from 2023-10-05 22-47-17](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/5b9c2a7a-2cf1-48de-be71-c2a5ccf3f280)
 
 
-## Code for Conversion of C-Code to Assembly Code
+## Commands for Conversion of C-Code to Assembly Code
 
 ```
 riscv64-unknown-elf-gcc -march=rv32i -mabi=ilp32 -ffreestanding -nostdlib -o out objectdetector.c 
@@ -466,7 +466,7 @@ write_verilog synth_processor.v
   
 ![Screenshot from 2023-11-02 23-25-20](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/f27ecb72-5f90-4f6c-b095-650a91509d5f)
 
-* Prior to conducting gate-level simulation using the synthesized netlist, certain modifications are implemented in the synthesized netlist file.
+* Before conducting gate-level simulation using the synthesized netlist, certain modifications are implemented in the synthesized netlist file.
 * Before the synthesis stage, we had altered the instantiation names of the SRAM module to align them with the standard cells. sky130_sram_1kbyte_1rw1r_32x256_8_inst and sky130_sram_1kbyte_1rw1r_32x256_8_data, since the module definition is present in that file.
   
 ![Screenshot from 2023-11-03 00-24-58](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/5167042a-59e4-4303-92db-7a4c6247f8b5)
