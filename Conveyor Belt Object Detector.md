@@ -802,6 +802,10 @@ https://iiitbac-my.sharepoint.com/:f:/r/personal/solanki_pratikkumar_iiitb_ac_in
 ![Screenshot from 2023-12-09 15-21-50](https://github.com/SolankiPratikkumar/IIITB_PRATIKKUMAR_ASIC/assets/140999250/e92229fc-97a4-49d0-886b-35ca7c4bb87d)
 
 
+## Final Presentation Video
+
+https://iiitbac-my.sharepoint.com/:f:/g/personal/solanki_pratikkumar_iiitb_ac_in/EtlDFc0uvV1Mglrv_FZIR70BGGnBbyo5gUHmoT9rewXXzQ
+
 ## Word of Thanks
 
 * I sincerely Thank Prof.Kunal Gosh(Founder/VSD) and also Mr. Mayank Kabra (Founder Chipcron Pvt.Ltd) for Teaching and Helping me to complete this course smoothly
