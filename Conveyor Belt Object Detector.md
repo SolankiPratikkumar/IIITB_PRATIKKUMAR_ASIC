@@ -790,7 +790,7 @@ run_antenna_check
 
 ## Runs Folder 
 
-https://iiitbac-my.sharepoint.com/:f:/r/personal/solanki_pratikkumar_iiitb_ac_in/Documents/RUN_2023.11.14_06.47.11?csf=1&web=1&e=kZV40n
+https://iiitbac-my.sharepoint.com/:f:/g/personal/solanki_pratikkumar_iiitb_ac_in/EtlDFc0uvV1Mglrv_FZIR70BGGnBbyo5gUHmoT9rewXXzQ?e=MezLpU
 
 
 ## Output Photo
@@ -804,7 +804,7 @@ https://iiitbac-my.sharepoint.com/:f:/r/personal/solanki_pratikkumar_iiitb_ac_in
 
 ## Final Presentation Video
 
-https://iiitbac-my.sharepoint.com/:f:/g/personal/solanki_pratikkumar_iiitb_ac_in/EtlDFc0uvV1Mglrv_FZIR70BGGnBbyo5gUHmoT9rewXXzQ
+https://iiitbac-my.sharepoint.com/:f:/g/personal/solanki_pratikkumar_iiitb_ac_in/EtlDFc0uvV1Mglrv_FZIR70BGGnBbyo5gUHmoT9rewXXzQ?e=jiDvpn
 
 ## Word of Thanks
 
